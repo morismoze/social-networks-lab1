@@ -1,0 +1,35 @@
+@import './src/styles/colors.module';
+
+.container {
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 10px;
+
+  &__logo {
+    margin-bottom: 100px;
+  }
+
+  &__header {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  &__headerTitle {
+    font-size: 30px;
+    font-weight: 600;
+    color: $dark-gray;
+    margin-bottom: 20px;
+  }
+
+  &__headerSubTitle {
+    font-size: 15px;
+    color: $light-gray;
+  }
+
+  &__loginButtonWrapper {
+    margin-top: 30px;
+  }
+}

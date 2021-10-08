@@ -1,13 +1,17 @@
 import React from 'react';
 
-import FBLoginButton from "./components/FBLoginButton";
-import styles from './App.scss';
+import { BrowserRouter } from "react-router-dom";
+
+import Routes from "./router/Routes";
+
+import './App.scss';
 
 const App = () => {
 
-
   return (
-    <FBLoginButton/>
+    <BrowserRouter>
+      <Routes/>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,19 @@
+@import './src/styles/colors.module';
+
+.fbLoginButton {
+  border: none;
+  background-color: $facebook;
+  padding: 12px 20px;
+  color: $white;
+  font-weight: 500;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  &__text {
+    margin-left: 15px;
+    margin-top: 1px;
+    font-weight: 600;
+  }
+}
