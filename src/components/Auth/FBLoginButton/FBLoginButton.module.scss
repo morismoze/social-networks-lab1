@@ -1,0 +1,23 @@
+@import 'src/styles/colors.module';
+
+.fbLoginButton {
+  border: none;
+  padding: 15px 20px;
+  color: $facebook;
+  background-color: white;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+
+  &__text {
+    margin-left: 15px;
+    margin-top: 1px;
+    font-weight: 600;
+    color: $dark-gray;
+  }
+}

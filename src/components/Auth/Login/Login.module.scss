@@ -1,12 +1,8 @@
-@import './src/styles/colors.module';
+@import 'src/styles/colors.module';
 
 .container {
-  border-radius: 15px;
-  overflow: hidden;
-  padding: 10px;
-
   &__logo {
-    margin-bottom: 100px;
+    margin-bottom: 120px;
   }
 
   &__header {
@@ -30,6 +26,6 @@
   }
 
   &__loginButtonWrapper {
-    margin-top: 30px;
+    margin-top: 40px;
   }
 }

@@ -10,8 +10,6 @@ export const initFacebookSdk = () => {
                 xfbml: true,
                 version: 'v8.0'
             });
-
-            resolve();
         };
 
         // load facebook sdk script
@@ -24,6 +22,8 @@ export const initFacebookSdk = () => {
             js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         })(document, 'script', 'facebook-jssdk');
+
+        resolve();
     });
 };
 
@@ -32,7 +32,7 @@ const getUserFbData = (storeUserData) => {
 };
 
 export const fbLogin = (callback = null) => {
-    window.FB.login(response => {console.log(response)
+    window.FB.login(response => {
         if(response.status === 'connected') {
             getUserFbData(storeUserData);
 
@@ -48,12 +48,12 @@ export const fbLogout = () => {
     window.FB.api('/me/permissions', 'delete', null, () => window.FB.logout());
 };
 
-export const getFbLoginStatus = () => {
-    let statusResponse;
-
+export const getFbLoginStatus = async () => {
     // @todo: dispatch a loading spinner
 
-    window.FB.getLoginStatus((response) => { statusResponse = response.status });
-
-    return statusResponse;
+    return new Promise((resolve) =>
+        window.FB.getLoginStatus((response) => {
+            resolve(response.status);
+        }
+    ));
 };

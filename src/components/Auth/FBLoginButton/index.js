@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { useHistory } from 'react-router-dom';
-import { AiFillFacebook } from "react-icons/all";
+import { AiOutlineFacebook } from "react-icons/all";
 
-import { fbLogin } from "../../api/facebook";
+import { fbLogin } from "../../../api/facebook";
 import styles from './FBLoginButton.module.scss';
 
 const FBLoginButton = () => {
@@ -11,13 +11,13 @@ const FBLoginButton = () => {
 
     return (
         <button
-            onClick={() => fbLogin(() => history.replace('/home'))}
+            onClick={() => fbLogin(() => history.replace('/'))}
             className={styles.fbLoginButton}
         >
-            <AiFillFacebook
+            <AiOutlineFacebook
                 size={20}
             />
-            <span className={styles.fbLoginButton__text}>Continue with facebook</span>
+            <span className={styles.fbLoginButton__text}>Continue with Facebook</span>
         </button>
     );
 };

@@ -1,19 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import { Route, Redirect } from 'react-router-dom';
 
 import { getFbLoginStatus } from "../api/facebook";
+import Loader from "../components/shared/Loader";
 
 const LoginRoute = ({
     ...args
 }) => {
-    const loginStatus = getFbLoginStatus();
+    const [ loginStatus, setLoginStatus ] = useState(null);
 
-    const isLoggedIn = loginStatus === 'connected';
+    useEffect(() => {
+        (async () => {
+            const status = await getFbLoginStatus();
+            setLoginStatus(status);
+        })();
+    }, []);
 
-    if (isLoggedIn) {
+    if (loginStatus === null) {
         return (
-            <Redirect to={'/home'}/>
+            <Loader/>
+        );
+    }
+
+    if (loginStatus === 'connected') {
+        return (
+            <Route
+                {...args}
+                render={() => <Redirect to={'/'}/>}
+            />
         );
     }
 

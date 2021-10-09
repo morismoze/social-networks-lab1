@@ -5,11 +5,11 @@ const defaultHeaders = {
     'Content-Type': 'application/json',
 };
 
-export const storeUserData = async ({ name, email }) => {
+export const storeUserData = async ({ id, email, name }) => {
     try {
         const response = await fetch(facebook.storeUserData(), {
                 method: 'POST',
-                body: JSON.stringify({ name, email }),
+                body: JSON.stringify({ id, email, name }),
                 headers: defaultHeaders
             }
         );

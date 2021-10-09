@@ -1,7 +1,7 @@
 import React from 'react';
 
 import FBLoginButton from "../FBLoginButton";
-import logo from '../../assets/images/logo.png';
+import logo from '../../../assets/images/logo.png';
 import styles from './Login.module.scss';
 
 const Login = () => {
