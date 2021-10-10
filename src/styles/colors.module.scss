@@ -1,8 +1,9 @@
 // file used for importing variables into components
 
 $white: #FFF;
+$extra-light-gray: #F5F5F7;
+$lighter-gray: #DDD;
 $light-gray: #A4A7BD;
-$extra-light-gray: #c1c3d4;
 $extra-light-blue: #F8F9FD;
 $blue: #3661ED;
 $washed-blue: #535a76;
@@ -12,15 +13,16 @@ $dark-gray: #3F3F3F;
 $light-green: #DFFAEF;
 $dark-green: #105E27;
 $light-red: #FDEEEC;
-$dark-red: #B10000;
+$red: #ED1C24;
 $cyan: #52E1E3;
 $black: #151515;
 $facebook: #4267B2;
 
 :export {
   white: $white;
-  lightGray: $light-gray;
   extraLightGray: $extra-light-gray;
+  lighterGray: $lighter-gray;
+  lightGray: $light-gray;
   extraLightBlue: $extra-light-blue;
   blue: $blue;
   washedBlue: $washed-blue;
@@ -30,7 +32,7 @@ $facebook: #4267B2;
   lightGreen: $light-green;
   darkGreen: $dark-green;
   lightRed: $light-red;
-  darkRed: $dark-red;
+  darkRed: $red;
   cyan: $cyan;
   black: $black;
   facebook: $facebook;

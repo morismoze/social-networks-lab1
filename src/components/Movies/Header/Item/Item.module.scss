@@ -1,0 +1,47 @@
+@import './src/styles/colors.module';
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  height: 100%;
+
+  &__icon {
+    color: $white;
+    margin-bottom: 2px;
+    transition: color .25s ease-in-out;
+  }
+
+  &__name {
+    color: $white;
+    font-size: 12px;
+    transition: color .25s ease-in-out;
+  }
+
+  &:before {
+    content: '';
+    background-color: $red;
+    height: 5px;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    transition: width .4s ease-in-out;
+  }
+
+  &.active:before {
+    width: 100%;
+  }
+
+  &.active &__name {
+    color: $red;
+    font-weight: 600;
+  }
+
+  &:hover:before {
+    width: 100%;
+  }
+}

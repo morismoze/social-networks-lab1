@@ -1,0 +1,55 @@
+@import './src/styles/variables.module';
+@import './src/styles/colors.module';
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: $homePageHeaderSize;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 35px;
+  background-color: transparent;
+  transition: background-color .5s ease-in-out;
+  z-index: 2;
+
+  &__logoWrapper {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  &__logoIcon {
+    margin-right: 10px;
+    width: 25px;
+    height: auto;
+  }
+
+  &__logoName {
+    font-weight: 500;
+    color: $white;
+  }
+
+  &__nav {
+    height: 100%;
+  }
+
+  &__navList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+    height: 100%;
+  }
+
+  &__navListItem {
+    padding: 0 20px;
+    height: 100%;
+  }
+
+  &__user {
+    padding: 10px 0;
+  }
+}

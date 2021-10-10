@@ -27,20 +27,22 @@ export const initFacebookSdk = () => {
     });
 };
 
-const getUserFbData = (storeUserData) => {
-    window.FB.api('/me?fields=email,name', storeUserData);
+export const getUserFbData = (callback) => {
+    window.FB.api('/v12.0/me?fields=email,name,picture.type(small)', (response) => {
+        const {id, email, name, picture: {data: {url}}} = response;
+
+        storeUserData(id, email, name, url);
+
+        callback({id, email, name, url})
+    });
 };
 
-export const fbLogin = (callback = null) => {
+export const fbLogin = async (callback) => {
     window.FB.login(response => {
-        if(response.status === 'connected') {
-            getUserFbData(storeUserData);
-
-            if(callback) {
-                callback();
-            }
+        if (response.status === 'connected') {
+            getUserFbData(callback);
         }
-    }, { scope: 'public_profile, email' });
+    }, { scope: 'public_profile, email' })
 };
 
 export const fbLogout = () => {
