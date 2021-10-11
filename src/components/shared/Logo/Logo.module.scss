@@ -1,0 +1,19 @@
+@import './src/styles/colors.module';
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px 0;
+
+  &__icon {
+    margin-right: 10px;
+    width: 25px;
+    height: auto;
+  }
+
+  &__name {
+    font-weight: 500;
+    color: $black;
+  }
+}

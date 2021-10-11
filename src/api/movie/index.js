@@ -1,15 +1,14 @@
-import { user } from "./paths";
+import { moviePaths } from "./paths";
 
 const defaultHeaders = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
 };
 
-export const storeUserData = async (id, email, name, url) => {
+export const getFeaturedMovie = async () => {
     try {
-        const response = await fetch(user.storeUserData(), {
-                method: 'POST',
-                body: JSON.stringify({ id, email, name, url }),
+        const response = await fetch(moviePaths.getFeaturedMovie(), {
+                method: 'GET',
                 headers: defaultHeaders
             }
         );

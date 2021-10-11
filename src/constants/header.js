@@ -1,12 +1,12 @@
-export const HEADER_MAV_ITEMS = [
+export const HEADER_NAV_ITEMS = [
     {
         id: 1,
-        name: 'Recommended',
-        icon: 'AiOutlineStar'
+        name: 'Featured',
+        icon: 'AiFillStar'
     },
     {
         id: 2,
-        name: 'Community',
-        icon: 'AiOutlineComment'
+        name: 'Recommended',
+        icon: 'AiTwotoneLike'
     }
 ];

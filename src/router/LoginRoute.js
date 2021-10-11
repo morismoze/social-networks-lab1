@@ -25,10 +25,9 @@ const LoginRoute = ({
 
     if (loginStatus === 'connected') {
         return (
-            <Route
-                {...args}
-                render={() => <Redirect to={'/'}/>}
-            />
+            <Route {...args}>
+                <Redirect to='/'/>
+            </Route>
         );
     }
 

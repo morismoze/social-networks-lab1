@@ -4,6 +4,6 @@ const api = {
     userData: `${apiUrl}/user/store`
 };
 
-export const facebook = {
+export const user = {
     storeUserData: () => api.userData
 };

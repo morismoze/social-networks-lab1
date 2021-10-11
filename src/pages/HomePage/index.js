@@ -3,15 +3,20 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../../components/Movies/Header";
-import Hero from "../../components/Hero";
+import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
 import * as UserSelectors from '../../store/shared/User.selectors';
+import * as HeaderSelectors from '../../components/Movies/Header/redux/Header.selectors';
 import { getUserFbData } from "../../api/facebook";
 import { storeUserInfo } from "../../store/shared/User.slice";
+import { HEADER_NAV_ITEMS } from "../../constants/header";
+import FeaturedMovie from "../../components/Movies/FeaturedMovie";
 
 const HomePage = () => {
     const dispatch = useDispatch();
 
     const userName = useSelector(UserSelectors.name);
+
+    const activeTab = useSelector(HeaderSelectors.activeTab);
 
     const userPictureLink = useSelector(UserSelectors.pictureLink);
 
@@ -23,6 +28,20 @@ const HomePage = () => {
         await getUserFbData(callback);
     };
 
+    const Children = () => (
+        <>
+            <Header
+                userName={userName}
+                userPictureLink={userPictureLink}
+            />
+            {HEADER_NAV_ITEMS[0].id === activeTab &&
+                <FeaturedMovie/>
+            }
+        </>
+    );
+
+    const WithHomePageLayout = WithLayoutWrapper(Children);
+
     useEffect(() => {
         if(!userName) {
             onUserDataFetch();
@@ -30,13 +49,7 @@ const HomePage = () => {
     }, [userName]);
 
     return (
-        <div>
-            <Header
-                userName={userName}
-                userPictureLink={userPictureLink}
-            />
-            <Hero/>
-        </div>
+        <WithHomePageLayout/>
     );
 };
 

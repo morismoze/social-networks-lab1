@@ -34,10 +34,9 @@ const ProtectedRoute = ({
     }
 
     return (
-        <Route
-            {...args}
-            render={() => <Redirect to={'/auth'}/>}
-        />
+        <Route {...args}>
+            <Redirect to='/auth'/>
+        </Route>
     );
 };
 

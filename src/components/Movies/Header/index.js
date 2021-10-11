@@ -2,8 +2,8 @@ import React from 'react';
 
 import Item from "./Item";
 import User from "./User";
-import { HEADER_MAV_ITEMS } from "../../../constants/header";
-import logoIcon from '../../../assets/images/logo-icon.svg';
+import Logo from "../../shared/Logo";
+import { HEADER_NAV_ITEMS } from "../../../constants/header";
 import styles from './Header.module.scss';
 
 const Header = ({
@@ -12,19 +12,10 @@ const Header = ({
 }) => {
     return (
       <header className={styles.header}>
-          <div className={styles.header__logoWrapper}>
-              <img
-                  src={logoIcon}
-                  alt={'Logo icon, movie ticket'}
-                  className={styles.header__logoIcon}
-              />
-              <span className={styles.header__logoName}>
-                  recommend.me
-              </span>
-          </div>
+          <Logo/>
           <nav className={styles.header__nav}>
               <ul className={styles.header__navList}>
-                  {HEADER_MAV_ITEMS.map((item, index) => (
+                  {HEADER_NAV_ITEMS.map((item, index) => (
                       <li
                           className={styles.header__navListItem}
                           key={index}
@@ -32,6 +23,7 @@ const Header = ({
                           <Item
                               id={item.id}
                               name={item.name}
+                              icon={item.icon}
                               key={item.id}
                           />
                       </li>
