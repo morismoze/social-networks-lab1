@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 import * as AntDesignIcons from 'react-icons/ai';
 
-import * as HeaderSelectors from "../redux/Header.selectors";
-import { toggleActiveTab } from "../redux/Header.slice";
+import * as HeaderSelectors from "../../../../store/shared/navigation/Navigation.selectors";
+import { toggleActiveTab } from "../../../../store/shared/navigation/Navigation.slice";
 import styles from './Item.module.scss';
 
 const Item = ({

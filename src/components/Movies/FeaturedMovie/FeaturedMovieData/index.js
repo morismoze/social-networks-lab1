@@ -5,6 +5,7 @@ import styles from './FeaturedMovieData.modules.scss';
 const FeaturedMovieData = ({
     name,
     releaseDate,
+    duration,
     rating,
     genres,
     cast,

@@ -4,7 +4,8 @@ const initialState = {
     movies: [
         {
             name: 'Moonlight',
-            releaseDate: '11/30/2017',
+            releaseDate: 'Nov/30/2017',
+            posterLink: 'https://www.joblo.com/wp-content/uploads/2019/12/venom-let-there-be-carnage-poster-2-819x1024-1.jpg',
             rating: '8/10',
             genres: ['Same-sex', 'American', 'English'],
             duration: {

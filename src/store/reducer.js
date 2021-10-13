@@ -1,11 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import { userReducer } from "./shared/User.slice";
-import { headerReducer } from "../components/Movies/Header/redux/Header.slice";
-import { movieReducer } from "../components/Movies/redux/Movie.slice";
+import { userReducer } from "./shared/user/User.slice";
+import { navigationReducer } from "./shared/navigation/Navigation.slice";
+import { movieReducer } from "./shared/movie/Movie.slice";
 
 export const rootReducer = combineReducers({
     userReducer,
-    headerReducer,
+    navigationReducer,
     movieReducer
 });

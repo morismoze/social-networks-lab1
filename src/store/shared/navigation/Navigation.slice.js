@@ -4,9 +4,9 @@ const initialState = {
     activeTab: 1,
 };
 
-const headerSlice = createSlice({
+const navigationSlice = createSlice({
     initialState,
-    name: 'header',
+    name: 'navigation',
     reducers: {
         toggleActiveTab: (state, action) => {
             state.activeTab = action.payload.id;
@@ -14,6 +14,6 @@ const headerSlice = createSlice({
     }
 });
 
-export const { toggleActiveTab } = headerSlice.actions;
+export const { toggleActiveTab } = navigationSlice.actions;
 
-export const headerReducer = headerSlice.reducer;
+export const navigationReducer = navigationSlice.reducer;

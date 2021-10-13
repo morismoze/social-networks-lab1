@@ -4,13 +4,31 @@ import FeaturedMoviePoster from "./FeaturedMoviePoster";
 import FeaturedMovieData from "./FeaturedMovieData";
 import styles from './FeaturedMovie.module.scss';
 
-const FeaturedMovie = () => {
+const FeaturedMovie = ({
+    name,
+    posterLink,
+    duration,
+    cast,
+    genres,
+    rating,
+    releaseDate,
+    synopsys
+}) => {
     return (
         <div className={styles.featuredMovie}>
             <FeaturedMoviePoster
-
+                posterLink={posterLink}
+                releaseDate={releaseDate}
             />
-            <FeaturedMovieData/>
+            <FeaturedMovieData
+                name={name}
+                cast={cast}
+                duration={duration}
+                genres={genres}
+                rating={rating}
+                releaseDate={releaseDate}
+                synopsys={synopsys}
+            />
         </div>
     );
 }

@@ -5,7 +5,7 @@ export const movies = createSelector(
     (state) => state.movies
 );
 
-export const featuredMovie = createSelector(
+export const featuredMovies = createSelector(
     (globalState) => globalState.movieReducer,
-    (state) => state.movies.find(movie => movie.featured === true)
+    (state) => state.movies.filter(movie => movie.featured === true)
 );

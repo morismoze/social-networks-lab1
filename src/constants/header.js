@@ -8,5 +8,10 @@ export const HEADER_NAV_ITEMS = [
         id: 2,
         name: 'Recommended',
         icon: 'AiTwotoneLike'
-    }
+    },
+    {
+        id: 3,
+        name: 'Movies',
+        icon: 'AiFillPlaySquare'
+    },
 ];

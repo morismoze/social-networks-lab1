@@ -27,11 +27,13 @@ export const initFacebookSdk = () => {
     });
 };
 
-export const getUserFbData = (callback) => {
+export const getUserFbData = (callback, storeDataFlag = false) => {
     window.FB.api('/v12.0/me?fields=email,name,picture.type(small)', (response) => {
         const {id, email, name, picture: {data: {url}}} = response;
 
-        storeUserData(id, email, name, url);
+        if (storeDataFlag) {
+            storeUserData(id, email, name, url);
+        }
 
         callback({id, email, name, url})
     });
@@ -40,7 +42,7 @@ export const getUserFbData = (callback) => {
 export const fbLogin = async (callback) => {
     window.FB.login(response => {
         if (response.status === 'connected') {
-            getUserFbData(callback);
+            getUserFbData(callback, true);
         }
     }, { scope: 'public_profile, email' })
 };
