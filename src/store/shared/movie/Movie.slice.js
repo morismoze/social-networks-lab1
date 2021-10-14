@@ -7,7 +7,7 @@ const initialState = {
             releaseDate: 'Nov/30/2017',
             posterLink: 'https://www.joblo.com/wp-content/uploads/2019/12/venom-let-there-be-carnage-poster-2-819x1024-1.jpg',
             rating: '8/10',
-            genres: ['Same-sex', 'American', 'English'],
+            genres: ['Comedy', 'American', 'English'],
             duration: {
                 hour: 1,
                 minutes: 59

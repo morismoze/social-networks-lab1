@@ -1,9 +1,9 @@
 import React from 'react';
 
 import MovieReleaseDate from "../MovieReleaseDate";
-import styles from './FeaturedMoviePoster.module.scss';
+import styles from './MoviePoster.module.scss';
 
-const FeaturedMoviePoster = ({
+const MoviePoster = ({
     releaseDate,
     posterLink
 }) => {
@@ -11,6 +11,7 @@ const FeaturedMoviePoster = ({
         <div className={styles.featuredMoviePoster}>
             <MovieReleaseDate
                 releaseDate={releaseDate}
+                className={styles.featuredMoviePoster__releaseDatePosition}
             />
             <img
                 className={styles.featuredMoviePoster__poster}
@@ -21,4 +22,4 @@ const FeaturedMoviePoster = ({
     );
 }
 
-export default FeaturedMoviePoster;
+export default MoviePoster;

@@ -1,0 +1,17 @@
+.featuredMoviePoster {
+  height: 100%;
+  position: relative;
+
+  &__poster {
+    height: 100%;
+    width: auto;
+    border-radius: 3px;
+    object-fit: cover;
+  }
+
+  &__releaseDatePosition {
+    position: absolute;
+    top: 50px;
+    transform: translateX(-50%);
+  }
+}

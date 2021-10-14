@@ -1,7 +1,7 @@
 import React from 'react';
 
-import FeaturedMoviePoster from "./FeaturedMoviePoster";
-import FeaturedMovieData from "./FeaturedMovieData";
+import MoviePoster from "./MoviePoster";
+import MovieData from "./MovieData";
 import styles from './FeaturedMovie.module.scss';
 
 const FeaturedMovie = ({
@@ -16,17 +16,16 @@ const FeaturedMovie = ({
 }) => {
     return (
         <div className={styles.featuredMovie}>
-            <FeaturedMoviePoster
+            <MoviePoster
                 posterLink={posterLink}
                 releaseDate={releaseDate}
             />
-            <FeaturedMovieData
+            <MovieData
                 name={name}
-                cast={cast}
-                duration={duration}
                 genres={genres}
+                duration={duration}
                 rating={rating}
-                releaseDate={releaseDate}
+                cast={cast}
                 synopsys={synopsys}
             />
         </div>
