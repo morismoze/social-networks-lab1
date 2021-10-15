@@ -7,8 +7,13 @@ const CastMember = ({
     pictureLink
 }) => {
     return (
-        <div>
-
+        <div className={styles.castMember}>
+            <img
+                src={pictureLink}
+                alt={`Cast member, ${name}`}
+                title={name}
+                className={styles.castMember__img}
+            />
         </div>
     );
 };

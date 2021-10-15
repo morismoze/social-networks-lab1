@@ -20,6 +20,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 15px;
   }
 
   &__genresWrapper {
@@ -35,14 +36,31 @@
     padding: 0 7px;
   }
 
+  &__durationWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__durationIcon {
+    color: $dark-gray;
+    margin-right: 5px;
+  }
+
   &__duration {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
     color: $red;
   }
 
-  &__castWrapper {
+  &__castContainer {
+    margin-top: 30px;
+  }
 
+  &__castWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    gap: 15px;
   }
 
   &__castTitle,
@@ -51,10 +69,12 @@
   }
 
   &__synopsysWrapper {
-
+    margin-top: 30px;
   }
 
   &__synopsys {
-
+    font-size: 14px;
+    color: $light-gray;
+    line-height: 20px;
   }
 }

@@ -1,7 +1,10 @@
 import React from 'react';
 
+import { AiOutlineClockCircle } from "react-icons/all";
+
 import MovieRating from "../MovieRating";
 import CastMember from "../CastMember";
+import WithDataParagraphLayoutWrapper from "../withDataParagraphLayoutWrapper";
 import styles from './MovieData.module.scss';
 
 const MovieData = ({
@@ -26,25 +29,36 @@ const MovieData = ({
                         </React.Fragment>
                     ))}
                 </div>
-                <span className={styles.data__duration}>
-                    {duration.hour}h {duration.minutes}m
-                </span>
+                <div className={styles.data__durationWrapper}>
+                    <AiOutlineClockCircle
+                        className={styles.data__durationIcon}
+                    />
+                    <span className={styles.data__duration}>
+                        {duration.hour}h {duration.minutes}m
+                    </span>
+                </div>
             </div>
             <MovieRating rating={rating}/>
-            <div className={styles.data__castWrapper}>
-                <span className={styles.data__castTitle}>The cast</span>
-                {cast.map((member, index) => (
-                    <CastMember
-                        name={member.name}
-                        pictureLink={member.pictureLink}
-                        key={index}
-                    />
-                ))}
-            </div>
-            <div className={styles.data__synopsysWrapper}>
-                <span className={styles.data__synopsysTitle}>Synopsys</span>
+            <WithDataParagraphLayoutWrapper
+                paragraphTitle={'The cast'}
+                className={styles.data__castContainer}
+            >
+                <div className={styles.data__castWrapper}>
+                    {cast.map((member, index) => (
+                        <CastMember
+                            name={member.name}
+                            pictureLink={member.pictureLink}
+                            key={index}
+                        />
+                    ))}
+                </div>
+            </WithDataParagraphLayoutWrapper>
+            <WithDataParagraphLayoutWrapper
+                paragraphTitle={'Synopsys'}
+                className={styles.data__synopsysWrapper}
+            >
                 <p className={styles.data__synopsys}>{synopsys}</p>
-            </div>
+            </WithDataParagraphLayoutWrapper>
         </div>
     );
 }

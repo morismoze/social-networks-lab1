@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     movies: [
         {
-            name: 'Moonlight',
-            releaseDate: 'Nov/30/2017',
+            name: 'Venom',
+            releaseDate: 'Oct/01/2021',
             posterLink: 'https://www.joblo.com/wp-content/uploads/2019/12/venom-let-there-be-carnage-poster-2-819x1024-1.jpg',
-            rating: '8/10',
+            rating: '8',
             genres: ['Comedy', 'American', 'English'],
             duration: {
                 hour: 1,
@@ -14,23 +14,71 @@ const initialState = {
             },
             cast: [
                 {
-                    name: '',
-                    pictureLink: ''
+                    name: 'Lillian Burke',
+                    pictureLink: 'https://randomuser.me/api/portraits/women/55.jpg'
                 },
                 {
-                    name: '',
-                    pictureLink: ''
+                    name: 'Alexis Lo',
+                    pictureLink: 'https://randomuser.me/api/portraits/men/22.jpg'
                 },
                 {
-                    name: '',
-                    pictureLink: ''
+                    name: 'Johannes Laurent',
+                    pictureLink: 'https://randomuser.me/api/portraits/men/42.jpg'
                 },
                 {
-                    name: '',
-                    pictureLink: ''
+                    name: 'Iina Saksa',
+                    pictureLink: 'https://randomuser.me/api/portraits/women/78.jpg'
+                },
+                {
+                    name: 'Lillian Burke',
+                    pictureLink: 'https://randomuser.me/api/portraits/women/55.jpg'
+                },
+                {
+                    name: 'Alexis Lo',
+                    pictureLink: 'https://randomuser.me/api/portraits/men/22.jpg'
+                },
+                {
+                    name: 'Johannes Laurent',
+                    pictureLink: 'https://randomuser.me/api/portraits/men/42.jpg'
+                },
+                {
+                    name: 'Iina Saksa',
+                    pictureLink: 'https://randomuser.me/api/portraits/women/78.jpg'
+                },
+                {
+                    name: 'Lillian Burke',
+                    pictureLink: 'https://randomuser.me/api/portraits/women/55.jpg'
+                },
+                {
+                    name: 'Alexis Lo',
+                    pictureLink: 'https://randomuser.me/api/portraits/men/22.jpg'
+                },
+                {
+                    name: 'Johannes Laurent',
+                    pictureLink: 'https://randomuser.me/api/portraits/men/42.jpg'
+                },
+                {
+                    name: 'Iina Saksa',
+                    pictureLink: 'https://randomuser.me/api/portraits/women/78.jpg'
+                },
+                {
+                    name: 'Lillian Burke',
+                    pictureLink: 'https://randomuser.me/api/portraits/women/55.jpg'
+                },
+                {
+                    name: 'Alexis Lo',
+                    pictureLink: 'https://randomuser.me/api/portraits/men/22.jpg'
+                },
+                {
+                    name: 'Johannes Laurent',
+                    pictureLink: 'https://randomuser.me/api/portraits/men/42.jpg'
+                },
+                {
+                    name: 'Iina Saksa',
+                    pictureLink: 'https://randomuser.me/api/portraits/women/78.jpg'
                 }
             ],
-            synopsys: 'A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood. Three time periods - young adolescence, mid-teen and young adult - in the life of black-American Chiron is presented.',
+            synopsys: 'After a faulty interview with the Life Foundation ruins his career, former reporter Eddie Brock\'s life is in pieces. Six months later, he comes across the Life Foundation again, and he comes into contact with an alien symbiote and becomes Venom, a parasitic antihero.',
             featured: true
         }
     ]
