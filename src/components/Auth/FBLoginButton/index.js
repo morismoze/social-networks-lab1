@@ -16,7 +16,7 @@ const FBLoginButton = () => {
     const onLoginClick = async () => {
         const callback = ({id, email, name, url}) => {
             dispatch(storeUserInfo({id, email, name, url}));
-            history.replace('/');
+            history.replace('/top-rated');
         };
 
         await fbLogin(callback);

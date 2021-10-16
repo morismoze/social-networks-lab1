@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
 import classNames from 'classnames';
 
@@ -15,7 +15,6 @@ const WithLayoutWrapper = (
     */
 
     const WithLayoutWrapperComponent = ({ className }) => {
-
         return (
             <div
                 className={classNames(
@@ -28,7 +27,7 @@ const WithLayoutWrapper = (
         )
     };
 
-    return WithLayoutWrapperComponent;
+    return useMemo(() => WithLayoutWrapperComponent, []);
 };
 
 export default WithLayoutWrapper;

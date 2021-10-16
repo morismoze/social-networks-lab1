@@ -1,7 +1,7 @@
 export const HEADER_NAV_ITEMS = [
     {
         id: 1,
-        name: 'Featured',
+        name: 'Top Rated',
         icon: 'AiFillStar'
     },
     {
@@ -11,7 +11,7 @@ export const HEADER_NAV_ITEMS = [
     },
     {
         id: 3,
-        name: 'Movies',
+        name: 'All Movies',
         icon: 'AiFillPlaySquare'
     },
 ];

@@ -26,7 +26,7 @@ const LoginRoute = ({
     if (loginStatus === 'connected') {
         return (
             <Route {...args}>
-                <Redirect to='/'/>
+                <Redirect to='/top-rated'/>
             </Route>
         );
     }

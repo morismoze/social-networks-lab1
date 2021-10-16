@@ -47,9 +47,12 @@ export const fbLogin = async (callback) => {
     }, { scope: 'public_profile, email' })
 };
 
-export const fbLogout = () => {
+export const fbLogout = (callback) => {
     // revoke app permissions to logout completely because FB.logout() doesn't remove FB cookie
-    window.FB.api('/me/permissions', 'delete', null, () => window.FB.logout());
+    window.FB.api('/me/permissions', 'delete', null, () => {
+        window.FB.logout();
+        callback();
+    });
 };
 
 export const getFbLoginStatus = async () => {
