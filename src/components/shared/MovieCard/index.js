@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from "react-router-dom";
 
+import MovieCardRating from "./MovieCardRating";
 import styles from './MovieCard.module.scss';
 
 const MovieCard = ({
@@ -9,7 +10,7 @@ const MovieCard = ({
     pictureUrl,
     rating,
     releaseYear
-}) => {
+}) => {console.log(pictureUrl)
     return (
         <div className={styles.movieCard}>
             <Link to={'/negdje'} className={styles.movieCard__link}>

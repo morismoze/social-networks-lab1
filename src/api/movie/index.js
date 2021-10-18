@@ -17,4 +17,18 @@ export const getFeaturedMovie = async () => {
     } catch (err) {
         console.error(err);
     }
+};
+
+export const getPopularMovies = async () => {
+    try {
+        const response = await fetch(moviePaths.getPopularMovies, {
+                method: 'GET',
+                headers: defaultHeaders
+            }
+        );
+
+        return response.json();
+    } catch (err) {
+        console.error(err);
+    }
 }
