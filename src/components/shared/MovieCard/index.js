@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Link } from "react-router-dom";
+import { Fade } from "@mui/material";
 
 import MovieCardRating from "./MovieCardRating";
 import styles from './MovieCard.module.scss';
@@ -9,25 +10,43 @@ const MovieCard = ({
     name,
     pictureUrl,
     rating,
-    releaseYear
-}) => {console.log(pictureUrl)
+    releaseYear,
+    index
+}) => {
     return (
-        <div className={styles.movieCard}>
-            <Link to={'/negdje'} className={styles.movieCard__link}>
-                <img
-                    src={pictureUrl}
-                    alt={name}
-                    className={styles.movieCard__img}
-                />
-            </Link>
-            <div className={styles.movieCard__dataWrapper}>
-                <span>{name}</span>
-                <div>
-                    <span>{releaseYear}</span>
-                    <MovieCardRating rating={rating}/>
+        <Fade
+            in={true}
+            timeout={150 * index}
+        >
+            <div className={styles.movieCard}>
+                <Link to={'/negdje'} className={styles.movieCard__link}>
+                    <div className={styles.movieCard__imgWrapper}>
+                        <img
+                            src={pictureUrl}
+                            alt={name}
+                            loading={'lazy'}
+                            className={styles.movieCard__img}
+                            style={{
+                                height: '100%',
+                                width: '100%'
+                            }}
+                        />
+                    </div>
+                </Link>
+                <div className={styles.movieCard__dataWrapper}>
+                <span
+                    className={styles.movieCard__name}
+                    title={name}
+                >
+                    {name}
+                </span>
+                    <div className={styles.movieCard__yearRatingWrapper}>
+                        <span className={styles.movieCard__year}>{releaseYear}</span>
+                        <MovieCardRating rating={rating}/>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Fade>
     );
 };
 

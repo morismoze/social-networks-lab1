@@ -1,11 +1,17 @@
 @import 'src/styles/colors.module';
 
 .movieCardRating {
-  &__icon {
+  display: flex;
+  align-items: center;
 
+  &__icon {
+    color: $yellow;
+    margin-right: 4px;
   }
 
   &__rating {
-
+    font-size: 14px;
+    font-weight: 600;
+    color: $black;
   }
 }

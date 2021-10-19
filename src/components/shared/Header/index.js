@@ -8,12 +8,14 @@ import { AiOutlineLogout } from "react-icons/all";
 import Item from "./Item";
 import User from "./User";
 import Logo from "../Logo";
-import UserMenu from "../../UserMenu";
+import Menu from "../../Menu";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
+import useScrollPosition from "../../../hooks/useScrollPosition";
 import { storeUserInfo } from "../../../store/shared/user/User.slice";
-import {fbLogout, getUserFbData } from "../../../api/facebook";
+import { fbLogout, getUserFbData } from "../../../api/facebook";
 import { HEADER_NAV_ITEMS } from "../../../constants/header";
 import styles from './Header.module.scss';
+import classNames from "classnames";
 
 const Header = () => {
     const [ anchorElement, setAnchorElement ] = useState(null);
@@ -27,6 +29,8 @@ const Header = () => {
     const userName = useSelector(UserSelectors.name);
 
     const userPictureLink = useSelector(UserSelectors.pictureLink);
+
+    const scrollPosition = useScrollPosition();
 
     const handleUSerMenuClick = (event) => {
         setAnchorElement(event.currentTarget);
@@ -57,7 +61,12 @@ const Header = () => {
 
     return (
         <>
-            <header className={styles.header}>
+            <header
+                className={classNames(
+                    styles.header,
+                    { [ styles.scrolled ]: scrollPosition > 200 }
+                )}
+            >
                 <Logo/>
                 <nav className={styles.header__nav}>
                     <ul className={styles.header__navList}>
@@ -85,7 +94,7 @@ const Header = () => {
                         pictureLink={userPictureLink}
                     />
                 </div>
-                <UserMenu
+                <Menu
                     open={isMenuOpen}
                     onClose={handleUserMenuClose}
                     anchorEl={anchorElement}
@@ -97,7 +106,7 @@ const Header = () => {
                         />
                         Log out
                     </MenuItem>
-                </UserMenu>
+                </Menu>
             </header>
         </>
     );

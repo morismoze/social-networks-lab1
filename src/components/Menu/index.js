@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Menu from '@mui/material/Menu';
+import { Menu as MaterialMenu } from '@mui/material';
 import { makeStyles } from "@mui/styles";
 
 import colors from '../../styles/colors.module.scss';
 
-const UserMenu = (props) => {
+const Menu = (props) => {
     const useStyles = makeStyles((theme) => ({
         menu: {
             '& .MuiPaper-root': {
@@ -27,7 +27,7 @@ const UserMenu = (props) => {
     const classes = useStyles();
 
     return (
-        <Menu
+        <MaterialMenu
             elevation={0}
             anchorOrigin={{
                 vertical: 'bottom',
@@ -38,10 +38,11 @@ const UserMenu = (props) => {
                 horizontal: 'right',
             }}
             disableAutoFocusItem
+            disableScrollLock
             className={classes.menu}
             {...props}
         />
     );
 };
 
-export default UserMenu;
+export default Menu;

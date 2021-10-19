@@ -10,7 +10,7 @@ const MovieCardRating = ({
     return (
         <div className={styles.movieCardRating}>
             <AiFillStar
-                size={10}
+                size={15}
                 className={styles.movieCardRating__icon}
             />
             <span className={styles.movieCardRating__rating}>
