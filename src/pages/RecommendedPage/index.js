@@ -21,7 +21,7 @@ const RecommendedPage = () => {
         if (popularMoviesStatus === 'idle') {
             dispatch(popularMoviesActions.getPopularMovies());
         }
-    }, [dispatch]);
+    }, []);
 
     return (
         <>
@@ -33,15 +33,16 @@ const RecommendedPage = () => {
                 />
                 <div className={styles.recommendedMoviesContainer__wrapper}>
                     {popularMoviesStatus === 'success' &&
-                    popularMovies.map((movie, index) => {
-                        return <MovieCard
-                            name={movie.title}
-                            rating={movie.vote_average}
-                            releaseYear={getYearFromReleaseDate(movie.release_date)}
-                            pictureUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                            index={index + 1}
-                        />
-                    })
+                        popularMovies.map((movie, index) => (
+                            <MovieCard
+                                name={movie.title}
+                                rating={movie.vote_average}
+                                releaseYear={getYearFromReleaseDate(movie.release_date)}
+                                pictureUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                index={index + 1}
+                                key={index}
+                            />
+                        ))
                     }
                 </div>
             </WithLayoutWrapper>

@@ -3,7 +3,7 @@ import React from 'react';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
-import { getDecimalRatingValue, getFormattedRatingValue } from "../../../../util/string";
+import { getDecimalRatingValue, setFixedNumberOfDecimals } from "../../../../util/string";
 import colors from '../../../../styles/colors.module.scss';
 import styles from './MovieRating.module.scss';
 
@@ -14,7 +14,7 @@ const MovieRating = ({
 }) => {
     const decimalRatingValue = getDecimalRatingValue(rating);
 
-    const formattedValue = getFormattedRatingValue(rating);
+    const formattedValue = setFixedNumberOfDecimals(rating);
 
     return (
         <div className={styles.rating}>

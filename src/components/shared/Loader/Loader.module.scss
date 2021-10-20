@@ -1,0 +1,54 @@
+@import 'src/styles/colors.module';
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $black;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__wrapper {
+    display: flex;
+    gap: 7px;
+    height: 80px;
+  }
+
+  &__pillar {
+    background-color: $white;
+    width: 6px;
+    height: 100%;
+    animation: pulse 1s infinite ease-in-out;
+
+    &:nth-of-type(2) {
+      animation-delay: .1s;
+    }
+
+    &:nth-of-type(3) {
+      animation-delay: .15s;
+    }
+
+    &:nth-of-type(4) {
+      animation-delay: .2s;
+    }
+
+    &:last-of-type {
+      animation-delay: .25s;
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    40%,
+    100% {
+      transform: scaleY(.5) translateX(-10px);
+    }
+    20% {
+      transform: scaleY(1) translateX(0);
+    }
+  }
+}

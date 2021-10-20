@@ -2,11 +2,14 @@ import React from 'react';
 
 import { AiFillStar } from "react-icons/all";
 
+import { setFixedNumberOfDecimals } from "../../../../util/string";
 import styles from './MovieCardRating.module.scss';
 
 const MovieCardRating = ({
     rating
 }) => {
+    const formattedRating = setFixedNumberOfDecimals(rating);
+
     return (
         <div className={styles.movieCardRating}>
             <AiFillStar
@@ -14,7 +17,11 @@ const MovieCardRating = ({
                 className={styles.movieCardRating__icon}
             />
             <span className={styles.movieCardRating__rating}>
-                {rating}
+                {formattedRating ? (
+                    formattedRating
+                ) : (
+                    '-'
+                )}
             </span>
         </div>
     );

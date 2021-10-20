@@ -4,3 +4,8 @@ export const activeTab = createSelector(
     (globalState) => globalState.navigationReducer,
     (state) => state.activeTab
 );
+
+export const isLoading = createSelector(
+    (globalState) => globalState.navigationReducer,
+    (state) => state.isLoading
+);

@@ -6,9 +6,9 @@ import Header from "../../components/shared/Header";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
 import FeaturedMovie from "../../components/Movies/TopRatedMovie";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
-import styles from './FeaturedPage.module.scss';
+import styles from './TopRatedPage.module.scss';
 
-const FeaturedPage = () => {
+const TopRatedPage = () => {
     const featuredMovies = useSelector(MovieSelectors.featuredMovies);
 
     return (
@@ -35,4 +35,4 @@ const FeaturedPage = () => {
     );
 };
 
-export default FeaturedPage;
+export default TopRatedPage;

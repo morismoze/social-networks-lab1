@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     activeTab: 1,
+    isLoading: false
 };
 
 const navigationSlice = createSlice({
@@ -10,10 +11,13 @@ const navigationSlice = createSlice({
     reducers: {
         toggleActiveTab: (state, action) => {
             state.activeTab = action.payload.id;
+        },
+        toggleLoading: (state, action) => {
+            state.isLoading = action.payload
         }
     }
 });
 
-export const { toggleActiveTab } = navigationSlice.actions;
+export const { toggleActiveTab, toggleLoading } = navigationSlice.actions;
 
 export const navigationReducer = navigationSlice.reducer;

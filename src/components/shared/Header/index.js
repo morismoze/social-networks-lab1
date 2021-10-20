@@ -12,6 +12,7 @@ import Menu from "../../Menu";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import useScrollPosition from "../../../hooks/useScrollPosition";
 import { storeUserInfo } from "../../../store/shared/user/User.slice";
+import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
 import { fbLogout, getUserFbData } from "../../../api/facebook";
 import { HEADER_NAV_ITEMS } from "../../../constants/header";
 import styles from './Header.module.scss';
@@ -32,7 +33,7 @@ const Header = () => {
 
     const scrollPosition = useScrollPosition();
 
-    const handleUSerMenuClick = (event) => {
+    const handleUserMenuClick = (event) => {
         setAnchorElement(event.currentTarget);
     };
 
@@ -41,8 +42,9 @@ const Header = () => {
     };
 
     const logoutUser = () => {
-        const callback = () => history.push('/auth');
-        fbLogout(callback)
+        handleUserMenuClose();
+        dispatch(toggleLoading(true));
+        fbLogout(() => history.push('/auth'))
     };
 
     const fetchUserData = async () => {
@@ -87,7 +89,7 @@ const Header = () => {
                 </nav>
                 <div
                     className={styles.header__user}
-                    onClick={handleUSerMenuClick}
+                    onClick={handleUserMenuClick}
                 >
                     <User
                         name={userName}

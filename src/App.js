@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import Routes from "./router/Routes";
 import store from "./store";
 import './App.scss';
+import Loader from "./components/shared/Loader";
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
           <BrowserRouter>
               <Routes/>
           </BrowserRouter>
+          <Loader/>
       </Provider>
     );
 }

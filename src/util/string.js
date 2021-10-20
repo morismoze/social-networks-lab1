@@ -2,8 +2,8 @@ export const getDecimalRatingValue = (rating) => {
     return Number(rating) / 10;
 };
 
-export const getFormattedRatingValue = (rating) => {
-    return Number(rating).toFixed(1);
+export const setFixedNumberOfDecimals = (data, numberOfDecimals = 1) => {
+    return Number(data).toFixed(numberOfDecimals);
 };
 
 export const getYearFromReleaseDate = (date) => {

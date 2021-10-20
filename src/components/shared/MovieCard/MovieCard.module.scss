@@ -16,23 +16,8 @@
     height: 95%;
     flex: 1;
     text-decoration: none;
-  }
-
-  &__imgWrapper {
-    overflow: hidden;
-    height: 100%;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px -2px 15px;
-    border-radius: 5px;
     background-color: transparent;
-  }
-
-  &__img {
-    filter: brightness(70%);
-    transition: transform .25s ease-in-out;
-
-    &:hover {
-      transform: scale(1.15);
-    }
+    border-radius: 5px;
   }
 
   &__dataWrapper {
