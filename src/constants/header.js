@@ -12,6 +12,6 @@ export const HEADER_NAV_ITEMS = [
     {
         id: 3,
         name: 'All Movies',
-        icon: 'AiFillPlaySquare'
+        icon: 'AiFillCaretRight'
     },
 ];

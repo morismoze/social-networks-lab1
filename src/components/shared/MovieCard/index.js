@@ -11,6 +11,7 @@ const MovieCard = ({
     pictureUrl,
     rating,
     releaseYear,
+    adult,
     index
 }) => {
     return (
@@ -34,13 +35,21 @@ const MovieCard = ({
                     )}
                 </span>
                 <div className={styles.movieCard__yearRatingWrapper}>
+                    <div className={styles.movieCard__yearAdultWrapper}>
                         <span className={styles.movieCard__year}>
-                            {releaseYear ? (
-                                releaseYear
-                            ) : (
-                                '--'
-                            )}
-                        </span>
+                        {releaseYear ? (
+                            releaseYear
+                        ) : (
+                            '--'
+                        )}
+                    </span>
+                        {adult &&
+                            <>
+                                <span className={styles.movieCard__bullet}/>
+                                <span className={styles.movieCard__adult}>18+</span>
+                            </>
+                        }
+                    </div>
                     <MovieCardRating rating={rating}/>
                 </div>
             </div>

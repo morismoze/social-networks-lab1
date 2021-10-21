@@ -38,6 +38,12 @@
     align-items: flex-end;
   }
 
+  &__weatherUserWrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
   &__user {
     padding: 10px 0;
   }

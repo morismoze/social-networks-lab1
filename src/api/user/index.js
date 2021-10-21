@@ -1,4 +1,5 @@
 import { user } from "./paths";
+import {moviePaths} from "../movie/paths";
 
 const defaultHeaders = {
     'Accept': 'application/json',
@@ -18,4 +19,18 @@ export const storeUserData = async (id, email, name, url) => {
     } catch (err) {
         console.error(err);
     }
-}
+};
+
+export const getRecommendedMovies = async (id) => {
+    try {
+        const response = await fetch(user.getRecommendedMovies(id), {
+                method: 'GET',
+                headers: defaultHeaders
+            }
+        );
+
+        return response.json();
+    } catch (err) {
+        console.error(err);
+    }
+};

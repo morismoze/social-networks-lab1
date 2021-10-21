@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Fade } from "@mui/material";
 
 import * as NavigationSelectors from '../../../store/shared/navigation/Navigation.selectors';
+import logoLoader from '../../../assets/images/logo-loader.png';
 import styles from './Loader.module.scss';
 
 const Loader = () => {
@@ -14,13 +15,18 @@ const Loader = () => {
     }
 
     return (
-        <Fade in={true}>
+        <Fade in={true} exit={true}>
             <div className={styles.loader}>
                 <div className={styles.loader__wrapper}>
                     {Array(5).fill(
                         <div className={styles.loader__pillar}/>
                     )}
                 </div>
+                <img
+                    src={logoLoader}
+                    className={styles.loader__logo}
+                    alt={'Logo'}
+                />
             </div>
         </Fade>
     );

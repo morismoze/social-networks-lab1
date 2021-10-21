@@ -1,9 +1,10 @@
-const apiUrl = process.env.REACT_APP_API_BASE_URL
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
 const api = {
-    userData: `${apiUrl}/user/store`
+    users: `${apiUrl}/users`
 };
 
 export const user = {
-    storeUserData: () => api.userData
+    storeUserData: () => `${api.users}/create`,
+    getRecommendedMovies: (id) => `${api.users}/${id}/recommended-movies`
 };

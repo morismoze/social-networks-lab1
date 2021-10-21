@@ -15,7 +15,7 @@ const TopRatedMovie = ({
     synopsys
 }) => {
     return (
-        <div className={styles.featuredMovie}>
+        <div className={styles.topRatedMovie}>
             <MoviePoster
                 posterLink={posterLink}
                 releaseDate={releaseDate}

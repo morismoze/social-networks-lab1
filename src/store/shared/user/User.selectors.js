@@ -1,5 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 
+export const id = createSelector(
+    (globalState) => globalState.userReducer,
+    (state) => state.id
+);
+
 export const name = createSelector(
     (globalState) => globalState.userReducer,
     (state) => state.name
