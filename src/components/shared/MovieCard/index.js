@@ -8,7 +8,7 @@ import styles from './MovieCard.module.scss';
 
 const MovieCard = ({
     name,
-    pictureUrl,
+    posterUrl,
     rating,
     releaseYear,
     adult,
@@ -18,7 +18,7 @@ const MovieCard = ({
         <div className={styles.movieCard}>
             <Link to={'/negdje'} className={styles.movieCard__link}>
                 <LazyLoadedImage
-                    src={pictureUrl}
+                    src={posterUrl}
                     alt={name}
                     index={index}
                 />

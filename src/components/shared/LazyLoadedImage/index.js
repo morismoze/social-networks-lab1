@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
 
-import { Fade } from "@mui/material";
+import classNames from "classnames";
 
+import LoadingShimmer from "../LoadingShimmer";
 import { useIntersection } from "../../../hooks/useIntersection";
 import styles from './LazyLoadedImage.module.scss';
-import classNames from "classnames";
 
 const LazyLoadedImage = ({
     src,
@@ -34,7 +34,10 @@ const LazyLoadedImage = ({
             ref={imgRef}
         >
             <div className={styles.lazyLoadedImg__inner}>
-                {isInView ? (
+                {!isLoaded && (
+                    <LoadingShimmer/>
+                )}
+                {isInView && (
                     <img
                         src={src}
                         alt={alt}
@@ -44,8 +47,6 @@ const LazyLoadedImage = ({
                         )}
                         onLoad={handleOnLoad}
                     />
-                ) : (
-                    <div className={styles.lazyLoadedImg__shimmer}/>
                 )}
             </div>
         </div>

@@ -34,3 +34,17 @@ export const getRecommendedMovies = async (id) => {
         console.error(err);
     }
 };
+
+export const getTopRatedMovies = async (id) => {
+    try {
+        const response = await fetch(user.getTopRatedMovies(id), {
+                method: 'GET',
+                headers: defaultHeaders
+            }
+        );
+
+        return response.json();
+    } catch (err) {
+        console.error(err);
+    }
+};

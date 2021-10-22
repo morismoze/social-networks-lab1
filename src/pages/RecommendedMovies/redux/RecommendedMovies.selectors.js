@@ -1,11 +1,11 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-export const recommendedMovies = createSelector(
+export const movies = createSelector(
     (state) => state.recommendedMoviesReducer,
-    (state) => state.recommendedMovies
+    (state) => state.movies
 );
 
-export const recommendedMoviesStatus = createSelector(
+export const status = createSelector(
     (state) => state.recommendedMoviesReducer,
     (state) => state.status
 );

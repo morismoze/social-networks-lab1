@@ -1,28 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 
+import LoadingShimmer from "../../LoadingShimmer";
 import styles from './User.module.scss';
 
 const User = ({
     name,
     pictureLink
 }) => {
-    const onClick = () => {
-        // @todo: open dropdown menu
+    const [ isLoaded, setIsLoaded ] = useState(false);
+
+    const handleOnLoad = () => {
+        setIsLoaded(true);
     };
 
     return (
-        <div
-            className={styles.user}
-            onClick={onClick}
-        >
+        <div className={styles.user}>
             <span className={styles.user__name}>
                 {name}
             </span>
-            <img
-                className={styles.user__picture}
-                alt={`User name - ${name}`}
-                src={pictureLink}
-            />
+            <div className={styles.user__imgWrapper}>
+                {!isLoaded &&
+                    <LoadingShimmer/>
+                }
+                <img
+                    className={styles.user__img}
+                    alt={name}
+                    src={pictureLink}
+                    onLoad={handleOnLoad}
+                />
+            </div>
         </div>
     );
 };

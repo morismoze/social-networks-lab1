@@ -4,10 +4,10 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import ProtectedRoute from "./ProtectedRoute";
 import LoginRoute from "./LoginRoute";
-import LoginPage from "../pages/LoginPage";
-import TopRatedPage from "../pages/TopRatedPage";
-import RecommendedPage from "../pages/RecommendedPage";
-import AllMoviesPage from "../pages/AllMoviesPage";
+import LoginPage from "../pages/Login";
+import TopRatedPage from "../pages/TopRatedMovies";
+import RecommendedPage from "../pages/RecommendedMovies";
+import AllMoviesPage from "../pages/AllMovies";
 
 const Routes = () => {
     return (

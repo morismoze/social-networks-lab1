@@ -6,7 +6,7 @@ import styles from './TopRatedMovie.module.scss';
 
 const TopRatedMovie = ({
     name,
-    posterLink,
+    posterUrl,
     duration,
     cast,
     genres,
@@ -17,8 +17,9 @@ const TopRatedMovie = ({
     return (
         <div className={styles.topRatedMovie}>
             <MoviePoster
-                posterLink={posterLink}
+                posterUrl={posterUrl}
                 releaseDate={releaseDate}
+                name={name}
             />
             <MovieData
                 name={name}

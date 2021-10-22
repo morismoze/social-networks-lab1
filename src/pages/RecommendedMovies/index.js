@@ -6,8 +6,8 @@ import Header from "../../components/shared/Header";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
 import Title from "../../components/shared/Title";
 import MovieCard from "../../components/shared/MovieCard";
-import { actions as recommendedMoviesActions} from './RecommendedMoviesData/RecommendedMoviesData.actions';
-import * as RecommendedMoviesSelectors from './RecommendedMoviesData/RecommendedMoviesData.selectors';
+import { actions as recommendedMoviesActions} from './redux/RecommendedMovies.actions';
+import * as RecommendedMoviesSelectors from './redux/RecommendedMovies.selectors';
 import * as UserSelectors from '../../store/shared/user/User.selectors';
 import { getYearFromReleaseDate } from "../../util/string";
 import styles from './RecommendedPage.module.scss';
@@ -17,12 +17,12 @@ const RecommendedPage = () => {
 
     const userId = useSelector(UserSelectors.id);
 
-    const recommendedMoviesStatus = useSelector(RecommendedMoviesSelectors.recommendedMoviesStatus);
-    const recommendedMovies = useSelector(RecommendedMoviesSelectors.recommendedMovies);
+    const recommendedMoviesStatus = useSelector(RecommendedMoviesSelectors.status);
+    const recommendedMovies = useSelector(RecommendedMoviesSelectors.movies);
 
     useEffect(() => {
         if (userId) {
-            dispatch(recommendedMoviesActions.getRecommendedMovies(userId));
+            dispatch(recommendedMoviesActions.getMovies(userId));
         }
     }, [userId]);
 
@@ -41,7 +41,7 @@ const RecommendedPage = () => {
                                 name={movie.title}
                                 rating={movie.vote_average}
                                 releaseYear={getYearFromReleaseDate(movie.release_date)}
-                                pictureUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                 adult={movie.adult}
                                 index={index + 1}
                                 key={index}

@@ -7,7 +7,8 @@ import styles from './MoviePoster.module.scss';
 
 const MoviePoster = ({
     releaseDate,
-    posterLink
+    posterUrl,
+    name
 }) => {
     return (
         <Grow in={true}>
@@ -18,8 +19,8 @@ const MoviePoster = ({
                 />
                 <img
                     className={styles.topRatedMoviePoster__poster}
-                    src={posterLink}
-                    alt={'Movie poster'}
+                    src={posterUrl}
+                    alt={name}
                 />
             </div>
         </Grow>

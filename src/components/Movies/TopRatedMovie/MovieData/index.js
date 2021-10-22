@@ -15,7 +15,7 @@ const MovieData = ({
     genres,
     cast,
     synopsys
-}) => {
+}) => {console.log(genres)
     return (
         <Grow
             in={true}
@@ -25,14 +25,14 @@ const MovieData = ({
                 <span className={styles.data__name}>{name}</span>
                 <div className={styles.data__genresDurationWrapper}>
                     <div className={styles.data__genresWrapper}>
-                        {genres.map((genre, index) => (
+                        {/*{genres.map((genre, index) => (
                             <React.Fragment key={index}>
                                 <span className={styles.data__genre}>{genre}</span>
                                 {index < (genres.length - 1) &&
                                     <span className={styles.data__genreSlash}>/</span>
                                 }
                             </React.Fragment>
-                        ))}
+                        ))}*/}
                     </div>
                     <div className={styles.data__durationWrapper}>
                         <AiOutlineClockCircle

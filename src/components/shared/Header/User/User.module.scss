@@ -12,7 +12,15 @@
     font-weight: 600;
   }
 
-  &__picture {
+  &__imgWrapper {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__img {
     border-radius: 50%;
     width: 32px;
     height: 32px;
