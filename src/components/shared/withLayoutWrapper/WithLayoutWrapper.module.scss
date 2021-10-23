@@ -1,6 +1,5 @@
 @import './src/styles/variables.module';
 
 .screenWrapper {
-  height: 100vh;
-  padding-top: $homePageHeaderSize;
+  padding-top: $homePageHeaderHeight;
 }

@@ -10,16 +10,16 @@
   height: 100%;
 
   &__icon {
-    color: rgba($black, .3);
+    color: $white;
     margin-bottom: 3px;
     transition: color .25s ease-in-out;
   }
 
   &__name {
-    color: $black;
+    color: $white;
     font-size: 11px;
     transition: color .25s ease-in-out;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   &:before {

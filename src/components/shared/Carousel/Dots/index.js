@@ -17,14 +17,14 @@ const Dot = ({
 
 const Dots = ({
     images,
-    activeIndex
+    activeSlide
 }) => {
     return (
         <div className={styles.dots}>
             {images.map((slide, i) => (
                 <Dot
                     key={slide + i}
-                    active={activeIndex === i}
+                    active={activeSlide === i}
                 />
             ))}
         </div>

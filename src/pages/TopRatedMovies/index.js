@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/shared/Header";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
 import TopRatedMovie from "../../components/Movies/TopRatedMovie";
+import Carousel from "../../components/shared/Carousel";
 import * as TopRatedSelectors from './redux/TopRatedMovies.selectors';
 import * as UserSelectors from "../../store/shared/user/User.selectors";
 import { actions as topRatedMoviesActions } from "./redux/TopRatedMovies.actions";
 import styles from './TopRatedMovies.module.scss';
-import Carousel from "../../components/shared/Carousel";
 
 const TopRatedPage = () => {
     const dispatch = useDispatch();
@@ -21,15 +21,15 @@ const TopRatedPage = () => {
 
     useEffect(() => {
         if (userId) {
-            dispatch(topRatedMoviesActions.getMovies(userId));
+            dispatch(topRatedMoviesActions.getMoviesAndStartLoading(userId));
         }
     }, [userId]);
 
     return (
         <>
             <Header/>
-            <WithLayoutWrapper>
-                <div className={styles.featuredMoviesContainer}>
+            <WithLayoutWrapper className={styles.topRatedMovies}>
+                <div className={styles.topRatedMovies__carousel}>
                    {topRatedMoviesStatus === 'success' &&
                         <Carousel
                             data={
@@ -47,6 +47,7 @@ const TopRatedPage = () => {
                                     />
                                 ))
                             }
+                            autoplay={false}
                         />
                    }
                 </div>

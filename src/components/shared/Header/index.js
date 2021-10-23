@@ -67,7 +67,7 @@ const Header = () => {
             <header
                 className={classNames(
                     styles.header,
-                    { [ styles.scrolled ]: scrollPosition > 200 }
+                    { [ styles.scrolled ]: scrollPosition > 1 }
                 )}
             >
                 <Logo/>

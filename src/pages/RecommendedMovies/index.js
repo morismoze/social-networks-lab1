@@ -10,7 +10,7 @@ import { actions as recommendedMoviesActions} from './redux/RecommendedMovies.ac
 import * as RecommendedMoviesSelectors from './redux/RecommendedMovies.selectors';
 import * as UserSelectors from '../../store/shared/user/User.selectors';
 import { getYearFromReleaseDate } from "../../util/string";
-import styles from './RecommendedPage.module.scss';
+import styles from './RecommendedMovies.module.scss';
 
 const RecommendedPage = () => {
     const dispatch = useDispatch();
@@ -30,10 +30,6 @@ const RecommendedPage = () => {
         <>
             <Header/>
             <WithLayoutWrapper className={styles.recommendedMoviesContainer}>
-                <Title
-                    title={'Recommended for You'}
-                    className={styles.recommendedMoviesContainer__title}
-                />
                 <div className={styles.recommendedMoviesContainer__wrapper}>
                     {recommendedMoviesStatus === 'success' &&
                         recommendedMovies.map((movie, index) => (
@@ -41,7 +37,7 @@ const RecommendedPage = () => {
                                 name={movie.title}
                                 rating={movie.vote_average}
                                 releaseYear={getYearFromReleaseDate(movie.release_date)}
-                                posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                posterUrl={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`}
                                 adult={movie.adult}
                                 index={index + 1}
                                 key={index}

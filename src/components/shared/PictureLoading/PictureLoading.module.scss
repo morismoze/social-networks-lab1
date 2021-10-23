@@ -1,0 +1,23 @@
+@import 'src/styles/colors.module';
+
+.pictureLoading {
+  height: 100%;
+  width: 100%;
+  background-color: darken($dark-gray, 5%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__spinner {
+    animation: rotation 1s infinite linear;
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+}

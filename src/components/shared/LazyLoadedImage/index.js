@@ -2,14 +2,15 @@ import React, { useRef, useState } from 'react';
 
 import classNames from "classnames";
 
-import LoadingShimmer from "../LoadingShimmer";
+import PictureLoading from "../PictureLoading";
 import { useIntersection } from "../../../hooks/useIntersection";
 import styles from './LazyLoadedImage.module.scss';
 
 const LazyLoadedImage = ({
     src,
     alt,
-    index
+    index,
+    className
 }) => {
     const [ isInView, setIsInView ] = useState();
 
@@ -29,14 +30,14 @@ const LazyLoadedImage = ({
         <div
             className={classNames(
                 styles.lazyLoadedImg,
-                { [styles.loaded]: isLoaded }
+                className
             )}
             ref={imgRef}
         >
+            {!isLoaded && (
+                <PictureLoading/>
+            )}
             <div className={styles.lazyLoadedImg__inner}>
-                {!isLoaded && (
-                    <LoadingShimmer/>
-                )}
                 {isInView && (
                     <img
                         src={src}

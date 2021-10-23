@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import LoadingShimmer from "../../LoadingShimmer";
+import LoadingShimmer from "../../PictureLoading";
 import styles from './User.module.scss';
 
 const User = ({

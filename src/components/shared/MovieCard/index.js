@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Link } from "react-router-dom";
+import { AiOutlineCalendar } from "react-icons/all";
 
 import MovieCardRating from "./MovieCardRating";
 import LazyLoadedImage from "../LazyLoadedImage";
@@ -21,37 +22,31 @@ const MovieCard = ({
                     src={posterUrl}
                     alt={name}
                     index={index}
+                    className={styles.movieCard__poster}
                 />
-            </Link>
-            <div className={styles.movieCard__dataWrapper}>
                 <span
                     className={styles.movieCard__name}
                     title={name}
                 >
-                    {name ? (
-                        name
-                    ) : (
-                        '--'
-                    )}
+                    {name}
                 </span>
-                <div className={styles.movieCard__yearRatingWrapper}>
-                    <div className={styles.movieCard__yearAdultWrapper}>
+            </Link>
+            <div className={styles.movieCard__dataWrapper}>
+                <div className={styles.movieCard__yearAdultWrapper}>
+                    <div className={styles.movieCard__yearWrapper}>
+                        <AiOutlineCalendar
+                            size={25}
+                            className={styles.movieCard__yearIcon}
+                        />
                         <span className={styles.movieCard__year}>
-                        {releaseYear ? (
-                            releaseYear
-                        ) : (
-                            '--'
-                        )}
-                    </span>
-                        {adult &&
-                            <>
-                                <span className={styles.movieCard__bullet}/>
-                                <span className={styles.movieCard__adult}>18+</span>
-                            </>
-                        }
+                            {releaseYear}
+                        </span>
                     </div>
-                    <MovieCardRating rating={rating}/>
+                    {adult &&
+                        <span className={styles.movieCard__adult}>18+</span>
+                    }
                 </div>
+                <MovieCardRating rating={rating}/>
             </div>
         </div>
     );

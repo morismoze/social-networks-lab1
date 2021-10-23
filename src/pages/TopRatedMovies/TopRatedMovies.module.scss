@@ -1,8 +1,10 @@
-.featuredMoviesContainer {
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-  padding: 50px 0;
-  height: 100%;
+.topRatedMovies {
+  margin: 50px 0 0 ;
+  height: 200vh;
   width: 100vw;
+
+  &__carousel {
+    height: 80vh;
+    width: 100vw;
+  }
 }

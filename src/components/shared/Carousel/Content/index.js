@@ -5,21 +5,24 @@ import Slide from '../Slide/index';
 import styles from './Content.module.scss';
 
 const Content = ({
-    data,
-    translate
+    slides,
+    translate,
+    transition,
+    width
 }) => {
     return (
         <div
             className={styles.content}
             style={{
-                width: `${data.length * 100}%`,
-                transform: `translateX(-${translate / data.length}%)`
+                width: `${width}px`,
+                transform: `translateX(-${translate}px)`,
+                transition: `transform ease-in-out ${transition}s`
             }}
         >
-            {data.map((item, i) => (
+            {slides.map((item, i) => (
                 <Slide
                     item={item}
-                    key={i}
+                    key={item + i}
                 />
             ))}
         </div>
