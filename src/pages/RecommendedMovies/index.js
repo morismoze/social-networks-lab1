@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../../components/shared/Header";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
-import Title from "../../components/shared/Title";
 import MovieCard from "../../components/shared/MovieCard";
 import { actions as recommendedMoviesActions} from './redux/RecommendedMovies.actions';
 import * as RecommendedMoviesSelectors from './redux/RecommendedMovies.selectors';
 import * as UserSelectors from '../../store/shared/user/User.selectors';
-import { getYearFromReleaseDate } from "../../util/string";
 import styles from './RecommendedMovies.module.scss';
 
 const RecommendedPage = () => {
@@ -36,7 +34,8 @@ const RecommendedPage = () => {
                             <MovieCard
                                 name={movie.title}
                                 rating={movie.vote_average}
-                                releaseYear={getYearFromReleaseDate(movie.release_date)}
+                                releaseDate={movie.release_date}
+                                aspectRatio={789/439}
                                 posterUrl={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`}
                                 adult={movie.adult}
                                 index={index + 1}

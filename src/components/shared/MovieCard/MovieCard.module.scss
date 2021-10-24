@@ -1,5 +1,4 @@
 @import 'src/styles/colors.module';
-@import 'src/styles/img-shade';
 
 .movieCard {
   width: 100%;
@@ -13,16 +12,6 @@
     width: 100%;
     text-decoration: none;
     position: relative;
-  }
-
-  &__dataWrapper {
-    width: 100%;
-    height: 50px;
-    padding: 5px 15px;
-    background-color: $black;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 
   &__name {
@@ -40,30 +29,31 @@
     left: 20px;
   }
 
-  &__yearAdultWrapper {
+  &__dataWrapper {
+    width: 100%;
+    height: 50px;
+    padding: 5px 15px;
+    background-color: $black;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
-  &__yearWrapper {
+  &__reactionsWrapper {
     display: flex;
     align-items: center;
     gap: 7px;
   }
 
-  &__yearIcon {
-    color: $white;
-  }
-
-  &__year {
-    font-size: 15px;
-    color: $white;
-  }
-
-
   &__adult {
     color: $white;
     font-weight: 600;
     font-size: 14px;
+  }
+
+  &__yearRatingWrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 }

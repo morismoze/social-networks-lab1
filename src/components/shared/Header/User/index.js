@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import LoadingShimmer from "../../PictureLoading";
+import PictureLoading from "../../PictureLoading";
 import styles from './User.module.scss';
 
 const User = ({
@@ -20,7 +20,7 @@ const User = ({
             </span>
             <div className={styles.user__imgWrapper}>
                 {!isLoaded &&
-                    <LoadingShimmer/>
+                    <PictureLoading iconSize={15}/>
                 }
                 <img
                     className={styles.user__img}

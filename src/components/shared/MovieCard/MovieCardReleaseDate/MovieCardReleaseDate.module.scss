@@ -1,17 +1,18 @@
 @import 'src/styles/colors.module';
 
-.movieCardRating {
+.movieCardRelease {
   display: flex;
   align-items: center;
   gap: 4px;
+  cursor: default;
 
-  &__icon {
-    color: $yellow;
+  &__yearIcon {
+    color: $facebook;
   }
 
-  &__rating {
+  &__year {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: $white;
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Header from "../../components/shared/Header";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
-import styles from './AllMoviesPage.module.scss';
+import styles from './AllMovies.module.scss';
 
 const AllMoviesPage = () => {
     return (

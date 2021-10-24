@@ -18,9 +18,12 @@ const Loader = () => {
         <Fade in={true} exit={true}>
             <div className={styles.loader}>
                 <div className={styles.loader__wrapper}>
-                    {Array(5).fill(
-                        <div className={styles.loader__pillar}/>
-                    )}
+                    {[...Array(5)].map((_, index) => (
+                        <div
+                            className={styles.loader__pillar}
+                            key={index}
+                        />
+                    ))}
                 </div>
                 <img
                     src={logoLoader}

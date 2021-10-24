@@ -6,7 +6,7 @@ import { Fade } from "@mui/material";
 import Login from "../../components/Auth/Login";
 import * as NavigationSelectors from '../../store/shared/navigation/Navigation.selectors';
 import { toggleLoading } from "../../store/shared/navigation/Navigation.slice";
-import styles from './LoginPage.module.scss';
+import styles from './Login.module.scss';
 
 const LoginPage = () => {
     const dispatch = useDispatch();

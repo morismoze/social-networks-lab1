@@ -8,6 +8,7 @@ import styles from './LazyLoadedImage.module.scss';
 
 const LazyLoadedImage = ({
     src,
+    aspectRatio,
     alt,
     index,
     className
@@ -37,7 +38,12 @@ const LazyLoadedImage = ({
             {!isLoaded && (
                 <PictureLoading/>
             )}
-            <div className={styles.lazyLoadedImg__inner}>
+            <div
+                className={styles.lazyLoadedImg__inner}
+                style={{
+                    paddingBottom: `${100/aspectRatio}%`
+                }}
+            >
                 {isInView && (
                     <img
                         src={src}

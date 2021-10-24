@@ -1,28 +1,42 @@
 import React from 'react';
 
 import { Link } from "react-router-dom";
-import { AiOutlineCalendar } from "react-icons/all";
+import { useDispatch } from "react-redux";
 
 import MovieCardRating from "./MovieCardRating";
 import LazyLoadedImage from "../LazyLoadedImage";
+import Heart from "../reactions/Heart";
+import MovieCardReleaseDate from "./MovieCardReleaseDate";
+import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
 import styles from './MovieCard.module.scss';
 
 const MovieCard = ({
     name,
     posterUrl,
+    aspectRatio,
     rating,
-    releaseYear,
+    releaseDate,
     adult,
     index
 }) => {
+    const dispatch = useDispatch();
+
+    const handleOnClick = () => {
+        dispatch(toggleLoading(true));
+    };
+
     return (
         <div className={styles.movieCard}>
-            <Link to={'/negdje'} className={styles.movieCard__link}>
+            <Link
+                to={encodeURI(`/recommended/${name}`)}
+                onClick={handleOnClick}
+                className={styles.movieCard__link}
+            >
                 <LazyLoadedImage
                     src={posterUrl}
+                    aspectRatio={aspectRatio}
                     alt={name}
                     index={index}
-                    className={styles.movieCard__poster}
                 />
                 <span
                     className={styles.movieCard__name}
@@ -32,21 +46,16 @@ const MovieCard = ({
                 </span>
             </Link>
             <div className={styles.movieCard__dataWrapper}>
-                <div className={styles.movieCard__yearAdultWrapper}>
-                    <div className={styles.movieCard__yearWrapper}>
-                        <AiOutlineCalendar
-                            size={25}
-                            className={styles.movieCard__yearIcon}
-                        />
-                        <span className={styles.movieCard__year}>
-                            {releaseYear}
-                        </span>
-                    </div>
+                <div className={styles.movieCard__reactionsWrapper}>
+                    <Heart onClick={() => console.log('ww')}/>
                     {adult &&
                         <span className={styles.movieCard__adult}>18+</span>
                     }
                 </div>
-                <MovieCardRating rating={rating}/>
+                <div className={styles.movieCard__yearRatingWrapper}>
+                    <MovieCardReleaseDate releaseDate={releaseDate}/>
+                    <MovieCardRating rating={rating}/>
+                </div>
             </div>
         </div>
     );
