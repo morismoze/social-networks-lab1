@@ -39,7 +39,8 @@ const RecommendedPage = () => {
                                 posterUrl={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`}
                                 adult={movie.adult}
                                 index={index + 1}
-                                key={index}
+                                id={movie.id}
+                                key={movie.id}
                             />
                         ))
                     }

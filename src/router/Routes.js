@@ -11,7 +11,7 @@ import AllMoviesPage from "../pages/AllMovies";
 import MovieDetails from "../pages/MovieDetails";
 
 const Routes = () => {
-    const movieDetailsPathRegex = '/(top-rated|recommended|all-movies)/:movieName';
+    const movieDetailsPathRegex = '/(top-rated|recommended|all-movies)/details/:id';
 
     return (
         <Switch>

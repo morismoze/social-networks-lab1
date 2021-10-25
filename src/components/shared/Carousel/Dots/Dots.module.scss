@@ -14,13 +14,13 @@
   border-radius: 50%;
   transition: background-color .15s ease-in;
   cursor: pointer;
-  border: 1px solid $black;
+  border: 1px solid $lighter-black;
 
   &--active {
-    background-color: $black;
+    background-color: $lighter-black;
   }
 
   &:hover {
-    background-color: $black;
+    background-color: $lighter-black;
   }
 }

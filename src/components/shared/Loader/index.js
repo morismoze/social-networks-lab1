@@ -15,7 +15,10 @@ const Loader = () => {
     }
 
     return (
-        <Fade in={true} exit={true}>
+        <Fade
+            in={true}
+            exit={true}
+        >
             <div className={styles.loader}>
                 <div className={styles.loader__wrapper}>
                     {[...Array(5)].map((_, index) => (

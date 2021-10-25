@@ -1,11 +1,17 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const movies = createSelector(
+export const status = createSelector(
     (globalState) => globalState.movieReducer,
-    (state) => state.movies
+    (state) => state.status
 );
 
-export const featuredMovies = createSelector(
+
+export const activeId = createSelector(
     (globalState) => globalState.movieReducer,
-    (state) => state.movies.filter(movie => movie.featured === true)
+    (state) => state.activeId
+);
+
+export const activeIdDetails = createSelector(
+    (globalState) => globalState.movieReducer,
+    (state) => state.activeIdDetails
 );

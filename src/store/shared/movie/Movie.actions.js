@@ -1,7 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { moviePaths } from '../../../api/movie/paths';
 import * as api from '../../../api/movie';
+import { toggleLoading } from "../navigation/Navigation.slice";
 
 
-const fetchFeaturedMovie = createAsyncThunk(moviePaths.getFeaturedMovie(), api.getTopRatedMovies)
+const getDetails = createAsyncThunk('movie/getDetails', api.getMovieDetails);
+
+const getMovieDetailsAndToggleLoader = (params) => async (dispatch) => {
+    await dispatch(toggleLoading(true));
+    await dispatch(getDetails(params));
+    await dispatch(toggleLoading(false));
+};
+
+export const actions = {
+    getDetails,
+    getMovieDetailsAndToggleLoader
+};

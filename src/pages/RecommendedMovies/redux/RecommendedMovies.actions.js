@@ -6,4 +6,4 @@ const getMovies = createAsyncThunk('recommended/getMovies', api.getRecommendedMo
 
 export const actions = {
     getMovies
-}
+};

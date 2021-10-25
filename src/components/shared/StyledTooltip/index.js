@@ -7,10 +7,10 @@ import colors from '../../../styles/colors.module.scss';
 
 const useStyles = makeStyles(theme => ({
     tooltip: {
-        backgroundColor: `${colors.black} !important`,
+        backgroundColor: `${colors.lighterBlack} !important`,
     },
     arrow: {
-        color: `${colors.black} !important`,
+        color: `${colors.lighterBlack} !important`,
     },
 }));
 

@@ -16,7 +16,8 @@ $dark-green: #105E27;
 $light-red: #FDEEEC;
 $red: #ED1C24;
 $cyan: #52E1E3;
-$black: #151515;
+$black: #000;
+$lighter-black: #151515;
 $facebook: #4267B2;
 
 :export {
@@ -37,5 +38,6 @@ $facebook: #4267B2;
   darkRed: $red;
   cyan: $cyan;
   black: $black;
+  lighterBlack: $lighter-black;
   facebook: $facebook;
 }

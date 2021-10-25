@@ -18,3 +18,17 @@ export const getTopRatedMovies = async () => {
         console.error(err);
     }
 };
+
+export const getMovieDetails = async (id) => {
+    try {
+        const response = await fetch(moviePaths.getMovieDetails(id), {
+                method: 'GET',
+                headers: defaultHeaders
+            }
+        );
+
+        return response.json();
+    } catch (err) {
+        console.error(err);
+    }
+};

@@ -17,9 +17,12 @@ import { storeUserInfo } from "../../../store/shared/user/User.slice";
 import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
 import { fbLogout, getUserFbData } from "../../../api/facebook";
 import { HEADER_NAV_ITEMS } from "../../../constants/header";
+import colors from '../../../styles/colors.module.scss';
 import styles from './Header.module.scss';
 
-const Header = () => {
+const Header = ({
+    opacity
+}) => {
     const [ anchorElement, setAnchorElement ] = useState(null);
 
     const isMenuOpen = Boolean(anchorElement);
@@ -69,6 +72,9 @@ const Header = () => {
                     styles.header,
                     { [ styles.scrolled ]: scrollPosition > 1 }
                 )}
+                style={{
+                    backgroundColor: `rgba(${colors.black}, ${opacity})`
+                }}
             >
                 <Logo/>
                 <nav className={styles.header__nav}>

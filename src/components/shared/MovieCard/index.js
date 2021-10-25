@@ -1,16 +1,15 @@
 import React from 'react';
 
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 
 import MovieCardRating from "./MovieCardRating";
 import LazyLoadedImage from "../LazyLoadedImage";
 import Heart from "../reactions/Heart";
 import MovieCardReleaseDate from "./MovieCardReleaseDate";
-import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
 import styles from './MovieCard.module.scss';
 
 const MovieCard = ({
+    id,
     name,
     posterUrl,
     aspectRatio,
@@ -19,17 +18,12 @@ const MovieCard = ({
     adult,
     index
 }) => {
-    const dispatch = useDispatch();
-
-    const handleOnClick = () => {
-        dispatch(toggleLoading(true));
-    };
+    const history = useHistory();
 
     return (
         <div className={styles.movieCard}>
             <Link
-                to={encodeURI(`/recommended/${name}`)}
-                onClick={handleOnClick}
+                to={history.location.pathname + encodeURI(`/details/${id}`)}
                 className={styles.movieCard__link}
             >
                 <LazyLoadedImage

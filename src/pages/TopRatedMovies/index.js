@@ -21,7 +21,7 @@ const TopRatedPage = () => {
 
     useEffect(() => {
         if (userId) {
-            dispatch(topRatedMoviesActions.getMoviesAndStartLoading(userId));
+            dispatch(topRatedMoviesActions.getMoviesAndToggleLoader(userId));
         }
     }, [userId]);
 
