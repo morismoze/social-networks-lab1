@@ -10,7 +10,7 @@ export const getYearFromReleaseDate = (date) => {
     return date.split('-')[0];
 };
 
-export const sortObjectsBy = (property) => {
+export const sortObjectsByProperty = (property) => {
     return function(a, b) {
         if (a[property] > b[property]) {
             return -1;
@@ -19,4 +19,13 @@ export const sortObjectsBy = (property) => {
         }
         return 0;
     };
-}
+};
+
+export const formatPrice = (price, currency = 'USD') => {
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: currency,
+    });
+
+    return formatter.format(price);
+};
