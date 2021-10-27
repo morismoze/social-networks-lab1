@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Container, Fade } from "@mui/material";
 
-import Stat from "../Stat";
-import ImageLink from "../ImageLink";
+import Stat from "./Stat";
+import ImageLink from "./ImageLink";
 import ImdbIcon from '../../../assets/images/imdb_logo.png';
 import styles from './Backdrop.module.scss';
 
@@ -26,7 +26,7 @@ const Backdrop = ({
                 />
                 <div className={styles.imgWrapper__stats}>
                     <Container
-                        maxWidth={'md'}
+                        maxWidth={'lg'}
                         className={styles.imgWrapper__statsAndLinks}
                     >
                         <div className={styles.imgWrapper__statsValues}>

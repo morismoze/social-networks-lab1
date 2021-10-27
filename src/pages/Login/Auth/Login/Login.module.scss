@@ -1,5 +1,5 @@
 @import 'src/styles/colors.module';
-@import './src/styles/variables.module';
+@import 'src/styles/variables.module';
 
 .container {
   width: $loginArticleWidth;
@@ -31,7 +31,7 @@
     border-radius: 50%;
     z-index: 2;
     border: 7px double $red;
-    background-image: url(../../../../src/assets/images/logo-icon.svg);
+    background-image: url(../../../../assets/images/logo-icon.svg);
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
@@ -68,7 +68,7 @@
     padding: 20px;
     margin-top: auto;
     text-align: center;
-    border-top: solid 1px $lighter-gray;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   }
 
   &__terms {

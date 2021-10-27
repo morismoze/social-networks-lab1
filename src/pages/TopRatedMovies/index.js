@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../../components/shared/Header";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
-import TopRatedMovie from "../../components/Movies/TopRatedMovie";
+import TopRatedMovie from "./TopRatedMovie";
 import Carousel from "../../components/shared/Carousel";
 import * as TopRatedSelectors from './redux/TopRatedMovies.selectors';
 import * as UserSelectors from "../../store/shared/user/User.selectors";

@@ -7,15 +7,23 @@
   opacity: 1;
 
   &__detailsSection {
-    display: flex;
+    display: flex !important;
+    gap: 50px;
     margin-top: 50px;
   }
 
-  &__sidebar {
-
+  &__sidenavWrapper {
+    position: sticky;
+    top: 0;
   }
 
   &__data {
+    & > cite {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__paragraphsWrapper {
 
   }
 }

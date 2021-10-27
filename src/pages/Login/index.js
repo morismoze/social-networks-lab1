@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Fade } from "@mui/material";
 
-import Login from "../../components/Auth/Login";
+import Login from "./Auth/Login";
 import * as NavigationSelectors from '../../store/shared/navigation/Navigation.selectors';
 import { toggleLoading } from "../../store/shared/navigation/Navigation.slice";
 import styles from './Login.module.scss';

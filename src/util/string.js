@@ -6,8 +6,16 @@ export const setFixedNumberOfDecimals = (data, numberOfDecimals = 1) => {
     return Number(data).toFixed(numberOfDecimals);
 };
 
-export const getYearFromReleaseDate = (date) => {
+export const extractYearFromReleaseDate = (date) => {
     return date.split('-')[0];
+};
+
+export const extractMonthFromReleaseDate = (date) => {
+    return date.split('-')[1];
+};
+
+export const extractDayFromReleaseDate = (date) => {
+    return date.split('-')[2];
 };
 
 export const sortObjectsByProperty = (property) => {
@@ -29,3 +37,20 @@ export const formatPrice = (price, currency = 'USD') => {
 
     return formatter.format(price);
 };
+
+const getTextMonth = (month) => {
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    return months[month - 1];
+};
+
+export const getStyledReleaseDate = (date) => {
+    const day = extractDayFromReleaseDate(date);
+    const month = extractMonthFromReleaseDate(date);
+    const year = extractYearFromReleaseDate(date);
+    const textMonth = getTextMonth(month);
+
+    return `${textMonth} ${day}, ${year}`;
+}

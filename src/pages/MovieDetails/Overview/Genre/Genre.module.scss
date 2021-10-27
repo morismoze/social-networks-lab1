@@ -1,0 +1,17 @@
+@import 'src/styles/colors.module';
+
+.genre {
+  padding: 6px 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $dark-gray;
+  background-color: transparent;
+  cursor: default;
+
+  &__name {
+    color: lighten($dark-gray, 20%);
+    font-size: 14px;
+  }
+}

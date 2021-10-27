@@ -3,13 +3,13 @@ import React from 'react';
 import { AiOutlineCalendar } from "react-icons/all";
 
 import StyledTooltip from "../../StyledTooltip";
-import { getYearFromReleaseDate } from "../../../../util/string";
+import { extractYearFromReleaseDate } from "../../../../util/string";
 import styles from './MovieCardReleaseDate.module.scss';
 
 const MovieCardReleaseDate = ({
     releaseDate
 }) => {
-    const releaseYear = getYearFromReleaseDate(releaseDate);
+    const releaseYear = extractYearFromReleaseDate(releaseDate);
 
     return (
         <StyledTooltip title={releaseDate}>

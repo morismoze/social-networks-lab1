@@ -1,0 +1,14 @@
+@import 'src/styles/colors.module';
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+
+  &__genresWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
