@@ -27,6 +27,14 @@ const LazyLoadedImage = ({
         setIsInView(true);
     });
 
+    if (src === null) {
+        return (
+            <PictureLoading
+                animation={false}
+            />
+        );
+    }
+
     return (
         <div
             className={classNames(

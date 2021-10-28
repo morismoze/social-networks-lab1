@@ -8,14 +8,16 @@ import Header from "../../components/shared/Header";
 import Backdrop from "./Backdrop";
 import Poster from "./Poster";
 import Sidenav from "./Sidenav";
-import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
-import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
-import { setActiveMovie } from "../../store/shared/movie/Movie.slice";
-import styles from './MovieDetails.module.scss';
-import {movieDetailsNavItems} from "../../constants/movieDetails";
 import WithParagraphLayoutWrapper from "./withParagraphLayoutWrapper";
 import Overview from "./Overview";
 import Tagline from "./Overview/Tagline";
+import CastMember from "./Overview/CastMember";
+import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
+import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
+import { setActiveMovie } from "../../store/shared/movie/Movie.slice";
+import { sortObjectsByProperty } from "../../util/string";
+import { movieDetailsNavItems } from "../../constants/movieDetails";
+import styles from './MovieDetails.module.scss';
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
@@ -74,26 +76,56 @@ const MovieDetails = () => {
                                 {movieDetailsNavItems.map((item, index, arr) => {
                                     switch (item) {
                                         case arr[0]: {
-                                            return <WithParagraphLayoutWrapper title={item}>
-                                                <Overview
-                                                    synopsys={details.overview}
-                                                    genres={genres}
-                                                    released={released}
-                                                    adult={details.adult ? 'Yes' : 'No'}
-                                                    budget={budget}
-                                                    spokenLanguages={spokenLanguages}
-                                                />
-                                            </WithParagraphLayoutWrapper>
+                                            return (
+                                                <WithParagraphLayoutWrapper
+                                                    title={item}
+                                                    key={index}
+                                                >
+                                                    <Overview
+                                                        synopsys={details.overview}
+                                                        genres={genres}
+                                                        released={released}
+                                                        adult={details.adult ? 'Yes' : 'No'}
+                                                        budget={budget}
+                                                        spokenLanguages={spokenLanguages}
+                                                    />
+                                                </WithParagraphLayoutWrapper>
+                                            )
                                         }
                                         case arr[1]: {
-                                            return <WithParagraphLayoutWrapper title={item}>
-
-                                            </WithParagraphLayoutWrapper>
+                                            return (
+                                                <WithParagraphLayoutWrapper
+                                                    title={item}
+                                                    key={index}
+                                                    className={styles.movieDetails__castOverflow}
+                                                >
+                                                    <div className={styles.movieDetails__castWrapper}>
+                                                        {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => (
+                                                            <CastMember
+                                                                pictureLink={
+                                                                    member.profile_path ?
+                                                                        `https://image.tmdb.org/t/p/w154${member.profile_path}`
+                                                                        :
+                                                                        null
+                                                                }
+                                                                name={member.name}
+                                                                character={member.character}
+                                                                key={index}
+                                                            />
+                                                        ))}
+                                                    </div>
+                                                </WithParagraphLayoutWrapper>
+                                            )
                                         }
                                         case arr[2]: {
-                                            return <WithParagraphLayoutWrapper title={item}>
+                                            return (
+                                                <WithParagraphLayoutWrapper
+                                                    title={item}
+                                                    key={index}
+                                                >
 
-                                            </WithParagraphLayoutWrapper>
+                                                </WithParagraphLayoutWrapper>
+                                            )
                                         }
                                     }
                                 })}

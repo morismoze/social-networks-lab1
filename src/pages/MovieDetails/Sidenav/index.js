@@ -9,8 +9,11 @@ const Sidenav = ({
     return (
         <div className={styles.sidebar}>
             <ul className={styles.sidebar__list}>
-                {movieDetailsNavItems.map((item) => (
-                   <li className={styles.sidebar__listItem}>
+                {movieDetailsNavItems.map((item, index) => (
+                   <li
+                       className={styles.sidebar__listItem}
+                       key={index}
+                   >
                        <a
                            href={`#${item}`}
                            className={styles.sidebar__item}

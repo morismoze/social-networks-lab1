@@ -30,15 +30,17 @@ const getIntersectionObserver = () => {
 
 export const useIntersection = (elem, callback) => {
     useEffect(() => {
-        let target = elem.current;
-        let observer = getIntersectionObserver();
+        if (elem.current !== undefined) {
+            let target = elem.current;
+            let observer = getIntersectionObserver();
 
-        listenerCallbacks.set(target, callback);
-        observer.observe(target);
+            listenerCallbacks.set(target, callback);
+            observer.observe(target);
 
-        return () => {
-            listenerCallbacks.delete(target);
-            observer.unobserve(target);
-        };
+            return () => {
+                listenerCallbacks.delete(target);
+                observer.unobserve(target);
+            };
+        }
     }, []);
 }

@@ -11,7 +11,7 @@ const Data = ({
             <span className={styles.data__title}>{title.split(/(?=[A-Z])/).join(' ')}:</span>
             {Array.isArray(value) ? (
                 value.map((item, index) => (
-                    <span className={styles.data__value}>
+                    <span className={styles.data__value} key={index}>
                         {item} {index < value.length - 1 ? ', ' : ''}
                     </span>
                 ))

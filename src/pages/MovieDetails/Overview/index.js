@@ -13,15 +13,16 @@ const Overview = ({
     return (
         <div className={styles.overview}>
             <Synopsys synopsys={synopsys}/>
-            {Object.keys(rest).map(data => (
+            {Object.keys(rest).map((data, index) => (
                 <Data
                     title={data}
                     value={rest[data]}
+                    key={index}
                 />
             ))}
             <div className={styles.overview__genresWrapper}>
-                {genres.map((genre) => (
-                    <Genre name={genre}/>
+                {genres.map((genre, index) => (
+                    <Genre name={genre} key={index}/>
                 ))}
             </div>
         </div>

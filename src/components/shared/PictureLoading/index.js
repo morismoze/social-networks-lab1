@@ -4,7 +4,8 @@ import { ReactComponent as Logo } from '../../../assets/images/logo-icon.svg';
 import styles from './PictureLoading.module.scss';
 
 const PictureLoading = ({
-    iconSize = 32
+    iconSize = 32,
+    animation = true
 }) => {
     return (
         <div className={styles.pictureLoading}>
@@ -12,7 +13,8 @@ const PictureLoading = ({
                 className={styles.pictureLoading__spinner}
                 style={{
                     width: iconSize,
-                    height: iconSize
+                    height: iconSize,
+                    animation: animation === false && 'none'
                 }}
             />
         </div>

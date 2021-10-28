@@ -18,12 +18,45 @@
   }
 
   &__data {
+    min-width: 0;
     & > cite {
       margin-bottom: 20px;
     }
   }
 
   &__paragraphsWrapper {
+    display: flex;
+    flex-direction: column;
+  }
 
+  &__castOverflow {
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: block !important;
+      height: 8px;
+
+      &-track {
+        background-color: lighten($dark-gray, 5%);
+      }
+
+      &-thumb:horizontal {
+        background-color: $lighter-gray;
+        border-radius: 20px;
+      }
+
+      &-thumb:hover {
+        background-color: darken($lighter-gray, 10%);
+      }
+    }
+  }
+
+  &__castWrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-bottom: 10px;
   }
 }

@@ -1,0 +1,32 @@
+@import 'src/styles/colors.module';
+
+.castMember {
+  width: 140px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lighten($dark-gray, 5%);
+  height: 250px;
+
+  &__imgWrapper {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: scroll;
+    height: 205px;
+  }
+
+  &__name {
+    color: $lighter-gray;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 7px 5px 0;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: default;
+  }
+}
