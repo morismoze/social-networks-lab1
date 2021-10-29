@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .movieDetails {
   width: 100%;
@@ -10,15 +11,19 @@
     display: flex !important;
     gap: 50px;
     margin-top: 50px;
+    top: calc(#{$homePageHeaderHeight} + 30px);
+    scroll-behavior: smooth;
   }
 
   &__sidenavWrapper {
     position: sticky;
-    top: 0;
+    align-self: flex-start;
+    top: calc(#{$homePageHeaderHeight} + 30px);
   }
 
   &__data {
     min-width: 0;
+
     & > cite {
       margin-bottom: 20px;
     }
@@ -29,8 +34,18 @@
     flex-direction: column;
   }
 
+  &__paragraph {
+    scroll-snap-align: start;
+    scroll-margin-top: calc(#{$homePageHeaderHeight} + 30px);
+  }
+
+  &__castAnchor {
+    scroll-snap-align: start;
+    scroll-margin-top: calc(#{$homePageHeaderHeight} + 30px);
+  }
+
   &__castOverflow {
-    overflow-x: scroll;
+    overflow-x: auto;
 
     &::-webkit-scrollbar {
       display: block !important;
@@ -56,7 +71,6 @@
     align-items: flex-start;
     gap: 15px;
     flex-wrap: nowrap;
-    overflow-x: scroll;
     padding-bottom: 10px;
   }
 }

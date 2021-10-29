@@ -79,6 +79,8 @@ const MovieDetails = () => {
                                             return (
                                                 <WithParagraphLayoutWrapper
                                                     title={item}
+                                                    id={item}
+                                                    className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >
                                                     <Overview
@@ -94,36 +96,43 @@ const MovieDetails = () => {
                                         }
                                         case arr[1]: {
                                             return (
-                                                <WithParagraphLayoutWrapper
-                                                    title={item}
-                                                    key={index}
-                                                    className={styles.movieDetails__castOverflow}
+                                                <div
+                                                    id={item}
+                                                    className={styles.movieDetails__castAnchor}
                                                 >
-                                                    <div className={styles.movieDetails__castWrapper}>
-                                                        {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => (
-                                                            <CastMember
-                                                                pictureLink={
-                                                                    member.profile_path ?
-                                                                        `https://image.tmdb.org/t/p/w154${member.profile_path}`
-                                                                        :
-                                                                        null
-                                                                }
-                                                                name={member.name}
-                                                                character={member.character}
-                                                                key={index}
-                                                            />
-                                                        ))}
-                                                    </div>
-                                                </WithParagraphLayoutWrapper>
+                                                    <WithParagraphLayoutWrapper
+                                                        title={item}
+                                                        className={styles.movieDetails__castOverflow}
+                                                        key={index}
+                                                    >
+                                                        <div className={styles.movieDetails__castWrapper}>
+                                                            {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => (
+                                                                <CastMember
+                                                                    pictureLink={
+                                                                        member.profile_path ?
+                                                                            `https://image.tmdb.org/t/p/w154${member.profile_path}`
+                                                                            :
+                                                                            null
+                                                                    }
+                                                                    name={member.name}
+                                                                    character={member.character}
+                                                                    key={index}
+                                                                />
+                                                            ))}
+                                                        </div>
+                                                    </WithParagraphLayoutWrapper>
+                                                </div>
                                             )
                                         }
                                         case arr[2]: {
                                             return (
                                                 <WithParagraphLayoutWrapper
                                                     title={item}
+                                                    id={item}
+                                                    className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >
-
+                                                    <div style={{height: '1000px'}}></div>
                                                 </WithParagraphLayoutWrapper>
                                             )
                                         }

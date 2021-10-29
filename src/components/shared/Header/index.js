@@ -21,7 +21,7 @@ import colors from '../../../styles/colors.module.scss';
 import styles from './Header.module.scss';
 
 const Header = ({
-    opacity
+    opacity = 0.9
 }) => {
     const [ anchorElement, setAnchorElement ] = useState(null);
 
@@ -73,7 +73,7 @@ const Header = ({
                     { [ styles.scrolled ]: scrollPosition > 1 }
                 )}
                 style={{
-                    backgroundColor: `rgba(${colors.black}, ${opacity})`
+                    backgroundColor: `rgba(0, 0, 0, ${opacity})`
                 }}
             >
                 <Logo/>

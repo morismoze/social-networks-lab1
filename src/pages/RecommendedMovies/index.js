@@ -19,9 +19,7 @@ const RecommendedPage = () => {
     const recommendedMovies = useSelector(RecommendedMoviesSelectors.movies);
 
     useEffect(() => {
-        if (userId) {
-            dispatch(recommendedMoviesActions.getMovies(userId));
-        }
+        dispatch(recommendedMoviesActions.getMovies());
     }, [userId]);
 
     return (

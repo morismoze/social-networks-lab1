@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import styles from './WithParagraphLayoutWrapper.module.scss';
 
 const WithParagraphLayoutWrapper = ({
+    id,
     children,
     title,
     className
@@ -15,7 +16,7 @@ const WithParagraphLayoutWrapper = ({
                 styles.paragraphWrapper,
                 className
             )}
-            id={title}
+            id={id && id}
         >
             <h3 className={styles.paragraphWrapper__title}>{title}</h3>
             {children}

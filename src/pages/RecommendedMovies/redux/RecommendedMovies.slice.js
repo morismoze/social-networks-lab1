@@ -19,7 +19,7 @@ const recommendedMoviesSlice = createSlice({
             })
             .addCase(actions.getMovies.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.movies = action.payload[0].results;
+                state.movies = action.payload;
             })
             .addCase(actions.getMovies.rejected, (state) => {
                 state.status = 'failure';

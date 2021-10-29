@@ -17,13 +17,9 @@ const TopRatedPage = () => {
     const topRatedMovies = useSelector(TopRatedSelectors.movies);
     const topRatedMoviesStatus = useSelector(TopRatedSelectors.status);
 
-    const userId = useSelector(UserSelectors.id);
-
     useEffect(() => {
-        if (userId) {
-            dispatch(topRatedMoviesActions.getMoviesAndToggleLoader(userId));
-        }
-    }, [userId]);
+        dispatch(topRatedMoviesActions.getMoviesAndToggleLoader());
+    }, []);
 
     return (
         <>
