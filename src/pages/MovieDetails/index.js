@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "@mui/material";
 
@@ -15,12 +15,15 @@ import CastMember from "./Overview/CastMember";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
 import { setActiveMovie } from "../../store/shared/movie/Movie.slice";
+import {setActiveTab} from "../../store/shared/navigation/Navigation.slice";
 import { sortObjectsByProperty } from "../../util/string";
 import { movieDetailsNavItems } from "../../constants/movieDetails";
 import styles from './MovieDetails.module.scss';
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
+
+    const params = useParams();
 
     const history = useHistory();
 
@@ -43,6 +46,7 @@ const MovieDetails = () => {
         readMovieIdFromPath((activeId) => {
             dispatch(movieActions.getMovieDetailsAndToggleLoader(activeId))
         });
+        dispatch(setActiveTab(params[0]));
     }, []);
 
     return (
@@ -96,32 +100,28 @@ const MovieDetails = () => {
                                         }
                                         case arr[1]: {
                                             return (
-                                                <div
+                                                <WithParagraphLayoutWrapper
+                                                    title={item}
                                                     id={item}
-                                                    className={styles.movieDetails__castAnchor}
+                                                    className={styles.movieDetails__paragraph}
+                                                    key={index}
                                                 >
-                                                    <WithParagraphLayoutWrapper
-                                                        title={item}
-                                                        className={styles.movieDetails__castOverflow}
-                                                        key={index}
-                                                    >
-                                                        <div className={styles.movieDetails__castWrapper}>
-                                                            {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => (
-                                                                <CastMember
-                                                                    pictureLink={
-                                                                        member.profile_path ?
-                                                                            `https://image.tmdb.org/t/p/w154${member.profile_path}`
-                                                                            :
-                                                                            null
-                                                                    }
-                                                                    name={member.name}
-                                                                    character={member.character}
-                                                                    key={index}
-                                                                />
-                                                            ))}
-                                                        </div>
-                                                    </WithParagraphLayoutWrapper>
-                                                </div>
+                                                    <div className={styles.movieDetails__castWrapper}>
+                                                        {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => (
+                                                            <CastMember
+                                                                pictureLink={
+                                                                    member.profile_path ?
+                                                                        `https://image.tmdb.org/t/p/w154${member.profile_path}`
+                                                                        :
+                                                                        null
+                                                                }
+                                                                name={member.name}
+                                                                character={member.character}
+                                                                key={index}
+                                                            />
+                                                        ))}
+                                                    </div>
+                                                </WithParagraphLayoutWrapper>
                                             )
                                         }
                                         case arr[2]: {

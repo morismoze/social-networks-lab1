@@ -17,7 +17,6 @@ import { storeUserInfo } from "../../../store/shared/user/User.slice";
 import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
 import { fbLogout, getUserFbData } from "../../../api/facebook";
 import { HEADER_NAV_ITEMS } from "../../../constants/header";
-import colors from '../../../styles/colors.module.scss';
 import styles from './Header.module.scss';
 
 const Header = ({

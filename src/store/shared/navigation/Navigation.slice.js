@@ -9,8 +9,8 @@ const navigationSlice = createSlice({
     initialState,
     name: 'navigation',
     reducers: {
-        toggleActiveTab: (state, action) => {
-            state.activeTab = action.payload.id;
+        setActiveTab: (state, action) => {
+            state.activeTab = action.payload;
         },
         toggleLoading: (state, action) => {
             state.isLoading = action.payload
@@ -18,6 +18,6 @@ const navigationSlice = createSlice({
     }
 });
 
-export const { toggleActiveTab, toggleLoading } = navigationSlice.actions;
+export const { setActiveTab, toggleLoading } = navigationSlice.actions;
 
 export const navigationReducer = navigationSlice.reducer;

@@ -9,6 +9,7 @@ body {
   scrollbar-width: none; /* Firefox 64 */
   font-family: 'Montserrat', sans-serif;
   background-color: $lighter-black;
+  overflow-x: hidden;
 }
 
 * {

@@ -5,7 +5,7 @@ const api = {
 };
 
 export const moviePaths = {
-    getRecommendedMovies: `${api.movies}/recommended-movies`,
-    getTopRatedMovies: `${api.movies}/top-rated-movies`,
+    getRecommendedMovies: `${api.movies}/recommended`,
+    getTopRatedMovies: `${api.movies}/top-rated`,
     getMovieDetails: (id) => `${api.movies}/details/${id}`,
 };

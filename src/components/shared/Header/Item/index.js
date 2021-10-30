@@ -6,7 +6,7 @@ import classNames from "classnames";
 import * as AntDesignIcons from 'react-icons/ai';
 
 import * as HeaderSelectors from "../../../../store/shared/navigation/Navigation.selectors";
-import { toggleActiveTab } from "../../../../store/shared/navigation/Navigation.slice";
+import { setActiveTab } from "../../../../store/shared/navigation/Navigation.slice";
 import styles from './Item.module.scss';
 
 const Item = ({
@@ -24,20 +24,20 @@ const Item = ({
 
     const onClick = () => {
         switch (id) {
-            case 1: {
+            case 'top-rated': {
                 history.push('/top-rated');
                 break;
             }
-            case 2: {
+            case 'recommended': {
                 history.push('/recommended');
                 break;
             }
-            case 3: {
+            case 'all-movies': {
                 history.push('/all-movies');
                 break;
             }
         }
-        dispatch(toggleActiveTab({ id: id }));
+        dispatch(setActiveTab(id));
     };
 
     return (

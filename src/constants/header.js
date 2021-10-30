@@ -1,16 +1,16 @@
 export const HEADER_NAV_ITEMS = [
     {
-        id: 1,
+        id: 'top-rated',
         name: 'Top Rated',
         icon: 'AiFillStar'
     },
     {
-        id: 2,
+        id: 'recommended',
         name: 'Recommended',
         icon: 'AiTwotoneLike'
     },
     {
-        id: 3,
+        id: 'all-movies',
         name: 'All Movies',
         icon: 'AiFillCaretRight'
     },

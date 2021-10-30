@@ -10,28 +10,4 @@
     flex-direction: column;
     margin-top: 15px;
   }
-
-  &__listItem {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    &:not(:last-of-type) {
-      border-bottom: 1px solid $lighter-gray;
-    }
-  }
-
-  &__item {
-    text-decoration: none;
-    padding: 10px 0;
-    color: $lighter-gray;
-    font-size: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: color .25s ease-in-out;
-
-    &:hover {
-      color: $red;
-    }
-  }
 }
