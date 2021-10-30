@@ -68,6 +68,8 @@ const MovieDetails = () => {
                         <div className={styles.movieDetails__sidenavWrapper}>
                             <Poster
                                 src={`https://image.tmdb.org/t/p/w300${details.poster_path}`}
+                                width={300}
+                                height={450}
                                 alt={details.original_title}
                             />
                             <Sidenav/>
@@ -83,7 +85,6 @@ const MovieDetails = () => {
                                             return (
                                                 <WithParagraphLayoutWrapper
                                                     title={item}
-                                                    id={item}
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >
@@ -102,7 +103,6 @@ const MovieDetails = () => {
                                             return (
                                                 <WithParagraphLayoutWrapper
                                                     title={item}
-                                                    id={item}
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >
@@ -115,6 +115,8 @@ const MovieDetails = () => {
                                                                         :
                                                                         null
                                                                 }
+                                                                width={154}
+                                                                height={231}
                                                                 name={member.name}
                                                                 character={member.character}
                                                                 key={index}
@@ -128,7 +130,6 @@ const MovieDetails = () => {
                                             return (
                                                 <WithParagraphLayoutWrapper
                                                     title={item}
-                                                    id={item}
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >

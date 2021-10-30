@@ -5,10 +5,13 @@ import classNames from "classnames";
 import PictureLoading from "../PictureLoading";
 import { useIntersection } from "../../../hooks/useIntersection";
 import styles from './LazyLoadedImage.module.scss';
+import Image from "../Image";
 
 const LazyLoadedImage = ({
     src,
-    aspectRatio,
+    fallback,
+    width,
+    height,
     alt,
     index,
     className
@@ -27,14 +30,6 @@ const LazyLoadedImage = ({
         setIsInView(true);
     });
 
-    if (src === null) {
-        return (
-            <PictureLoading
-                animation={false}
-            />
-        );
-    }
-
     return (
         <div
             className={classNames(
@@ -43,22 +38,26 @@ const LazyLoadedImage = ({
             )}
             ref={imgRef}
         >
-            {!isLoaded && (
+            {!isLoaded && src !== null && (
                 <PictureLoading/>
             )}
             <div
                 className={styles.lazyLoadedImg__inner}
                 style={{
-                    paddingBottom: `${100/aspectRatio}%`
+                    paddingBottom: `${100/(width/height)}%`
                 }}
             >
                 {isInView && (
-                    <img
+                    <Image
                         src={src}
+                        fallback={fallback}
                         alt={alt}
+                        width={width}
+                        height={height}
                         className={classNames(
                             styles.lazyLoadedImg__img,
-                            { [styles.lazyLoadedImg__imgLoaded]: isLoaded }
+                            { [styles.lazyLoadedImg__imgLoaded]: isLoaded },
+                            { [styles.noTransition]: !src }
                         )}
                         onLoad={handleOnLoad}
                     />

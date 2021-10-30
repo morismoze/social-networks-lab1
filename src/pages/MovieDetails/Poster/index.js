@@ -1,17 +1,30 @@
 import React from 'react';
 
+import Image from "../../../components/shared/Image";
+import Fallback from '../../../assets/images/poster-fallback.png';
 import styles from './Poster.module.scss';
 
 const Poster = ({
     src,
+    width,
+    height,
     alt
 }) => {
+    if (!src) {
+        return
+    }
+
     return (
-        <img
-            src={src}
-            alt={alt}
-            className={styles.poster}
-        />
+        <div className={styles.poster}>
+            <Image
+                src={src}
+                width={width}
+                height={height}
+                fallback={Fallback}
+                alt={alt}
+                className={styles.poster__img}
+            />
+        </div>
     );
 };
 

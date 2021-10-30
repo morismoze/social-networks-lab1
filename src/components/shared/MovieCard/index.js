@@ -6,13 +6,15 @@ import MovieCardRating from "./MovieCardRating";
 import LazyLoadedImage from "../LazyLoadedImage";
 import Heart from "../reactions/Heart";
 import MovieCardReleaseDate from "./MovieCardReleaseDate";
+import Fallback from '../../../assets/images/movie-card-fallback.png';
 import styles from './MovieCard.module.scss';
 
 const MovieCard = ({
     id,
     name,
     posterUrl,
-    aspectRatio,
+    width,
+    height,
     rating,
     releaseDate,
     adult,
@@ -28,7 +30,9 @@ const MovieCard = ({
             >
                 <LazyLoadedImage
                     src={posterUrl}
-                    aspectRatio={aspectRatio}
+                    fallback={Fallback}
+                    width={width}
+                    height={height}
                     alt={name}
                     index={index}
                 />

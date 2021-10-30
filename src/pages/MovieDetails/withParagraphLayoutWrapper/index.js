@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import { useLocation } from "react-router-dom";
 import classNames from 'classnames';
 
 import styles from './WithParagraphLayoutWrapper.module.scss';
 
 const WithParagraphLayoutWrapper = ({
-    id,
     children,
     title,
     className
 }) => {
+    const { hash } = useLocation();
+
+    useEffect(() => {
+        if (hash === '') {
+            window.scrollTo(0, 0);
+        } else {
+            const elementId = hash.replace('#', '');
+            const element = document.getElementById(elementId);
+
+            if (element && title === elementId) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }, []);
+
     return (
         <div
             className={classNames(
                 styles.paragraphWrapper,
                 className
             )}
-            id={id && id}
+            id={title}
         >
             <h3 className={styles.paragraphWrapper__title}>{title}</h3>
             {children}

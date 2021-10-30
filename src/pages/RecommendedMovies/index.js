@@ -33,7 +33,8 @@ const RecommendedPage = () => {
                                 name={movie.title}
                                 rating={movie.vote_average}
                                 releaseDate={movie.release_date}
-                                aspectRatio={789/439}
+                                width={789}
+                                height={439}
                                 posterUrl={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`}
                                 adult={movie.adult}
                                 index={index + 1}
