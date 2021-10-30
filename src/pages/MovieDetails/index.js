@@ -19,6 +19,7 @@ import {setActiveTab} from "../../store/shared/navigation/Navigation.slice";
 import { sortObjectsByProperty } from "../../util/string";
 import { movieDetailsNavItems } from "../../constants/movieDetails";
 import styles from './MovieDetails.module.scss';
+import YoutubeEmbed from "./YoutubeEmbed";
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const MovieDetails = () => {
     const released = useSelector(MovieSelectors.released);
     const spokenLanguages = useSelector(MovieSelectors.spokenLanguages);
     const budget = useSelector(MovieSelectors.budget);
+    const ytVideo = useSelector(MovieSelectors.ytVideo);
 
     const readMovieIdFromPath = (callback) => {
         const id = history.location.pathname.split('/').pop();
@@ -133,7 +135,18 @@ const MovieDetails = () => {
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >
-                                                    <div style={{height: '1000px'}}></div>
+
+                                                </WithParagraphLayoutWrapper>
+                                            )
+                                        }
+                                        case arr[3]: {
+                                            return (
+                                                <WithParagraphLayoutWrapper
+                                                    title={item}
+                                                    className={styles.movieDetails__paragraph}
+                                                    key={index}
+                                                >
+                                                    <YoutubeEmbed info={ytVideo}/>
                                                 </WithParagraphLayoutWrapper>
                                             )
                                         }

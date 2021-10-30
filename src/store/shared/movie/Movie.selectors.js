@@ -59,3 +59,12 @@ export const spokenLanguages = createSelector(
     (globalState) => globalState.movieReducer,
     (state) => state.activeIdDetails?.spoken_languages.map(lang => lang.english_name)
 );
+
+export const ytVideo = createSelector(
+    (globalState) => globalState.movieReducer,
+    (state) => {
+        const ytVideo = state.activeIdDetails?.videos.results.find(video => video.site === 'YouTube' && video.type === 'Trailer');
+
+        return ytVideo;
+    }
+);

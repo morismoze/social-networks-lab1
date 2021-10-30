@@ -18,6 +18,10 @@
     text-transform: uppercase;
     transition: color .25s ease-in-out;
 
+    &--active {
+      color: $red;
+    }
+
     &:hover {
       color: $red;
     }

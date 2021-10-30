@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Image = ({
     src,
@@ -10,6 +10,10 @@ const Image = ({
     const handleError = () => {
         setImgSrc(null);
     };
+
+    useEffect(() => {
+        setImgSrc(src);
+    }, [src]);
 
     return (
         <img

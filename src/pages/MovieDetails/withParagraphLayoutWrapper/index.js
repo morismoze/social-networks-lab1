@@ -13,9 +13,7 @@ const WithParagraphLayoutWrapper = ({
     const { hash } = useLocation();
 
     useEffect(() => {
-        if (hash === '') {
-            window.scrollTo(0, 0);
-        } else {
+        if (hash) {
             const elementId = hash.replace('#', '');
             const element = document.getElementById(elementId);
 

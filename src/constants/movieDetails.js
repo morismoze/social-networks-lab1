@@ -1,1 +1,1 @@
-export const movieDetailsNavItems = ['overview', 'actors', 'production'];
+export const movieDetailsNavItems = ['overview', 'actors', 'production', 'trailer'];

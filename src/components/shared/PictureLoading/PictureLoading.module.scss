@@ -8,6 +8,20 @@
   align-items: center;
   justify-content: center;
 
+  &__wrapperBorder {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: 1px solid $red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__wrapperBorderNone {
+    border: none;
+  }
+
   &__spinner {
     animation: rotation 1s infinite linear;
   }

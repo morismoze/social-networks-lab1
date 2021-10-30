@@ -58,10 +58,12 @@ const Header = ({
         await getUserFbData(callback, false);
     };
 
-    useEffect(() => {
-        if (!userName) {
-            fetchUserData();
-        }
+    useEffect( () => {
+        (async () => {
+            if (!userName) {
+                await fetchUserData();
+            }
+        })();
     }, []);
 
     return (
