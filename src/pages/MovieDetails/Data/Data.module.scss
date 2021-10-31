@@ -2,17 +2,24 @@
 
 .data {
   display: flex;
-  align-items: center;
   gap: 10px;
 
   &__title {
     text-transform: uppercase;
     font-size: 14px;
     color: lighten($dark-gray, 10%);
+    line-height: 25px;
+  }
+
+  &__values {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   &__value {
     font-size: 14px;
     color: $lighter-gray;
+    white-space: nowrap;
+    line-height: 25px;
   }
 }

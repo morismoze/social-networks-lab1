@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../../components/shared/Header";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
 import MovieCard from "../../components/shared/MovieCard";
-import { actions as recommendedMoviesActions} from './redux/RecommendedMovies.actions';
+import CustomPagination from "../../components/shared/CustomPagination";
 import * as RecommendedMoviesSelectors from './redux/RecommendedMovies.selectors';
 import * as UserSelectors from '../../store/shared/user/User.selectors';
+import { actions as recommendedMoviesActions} from './redux/RecommendedMovies.actions';
+import { actions as userActivityActions} from '../../store/shared/userActivity/UserActivity.actions';
 import styles from './RecommendedMovies.module.scss';
 
 const RecommendedPage = () => {
+    const [ page, setPage ] = useState(1);
+
     const dispatch = useDispatch();
 
     const userId = useSelector(UserSelectors.id);
@@ -18,8 +22,16 @@ const RecommendedPage = () => {
     const recommendedMoviesStatus = useSelector(RecommendedMoviesSelectors.status);
     const recommendedMovies = useSelector(RecommendedMoviesSelectors.movies);
 
+    const handleOnPageChange = (event, value) => {
+        // @todo: call BE
+        setPage(value);
+    };
+
     useEffect(() => {
-        dispatch(recommendedMoviesActions.getMovies());
+        if (userId) {
+            dispatch(recommendedMoviesActions.getMovies());
+            dispatch(userActivityActions.getLikedMovies(userId));
+        }
     }, [userId]);
 
     return (
@@ -45,6 +57,13 @@ const RecommendedPage = () => {
                     }
                 </div>
             </WithLayoutWrapper>
+            {recommendedMoviesStatus === 'success' &&
+                <CustomPagination
+                    count={20}
+                    page={page}
+                    onChange={handleOnPageChange}
+                />
+            }
         </>
     );
 };

@@ -1,0 +1,15 @@
+@import 'src/styles/colors.module';
+
+.releaseYear {
+  display: flex;
+  align-items: center;
+  border: 1px solid lighten($dark-gray, 50%);
+  border-radius: 2px;
+  padding: 2px 5px;
+
+  &__year {
+    font-size: 22px;
+    font-weight: 500;
+    color: lighten($dark-gray, 50%);
+  }
+}

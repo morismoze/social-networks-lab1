@@ -11,6 +11,10 @@ const MovieCardReleaseDate = ({
 }) => {
     const releaseYear = extractYearFromReleaseDate(releaseDate);
 
+    if (!releaseYear) {
+        return null;
+    }
+
     return (
         <StyledTooltip title={releaseDate}>
             <div className={styles.movieCardRelease}>

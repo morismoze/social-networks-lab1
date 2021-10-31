@@ -2,7 +2,8 @@ import React from 'react';
 
 import Synopsys from "./Synopsys";
 import Genre from "./Genre";
-import Data from "./Data";
+import Data from "../Data";
+import NotAvailable from "../NotAvailable";
 import styles from './Overview.module.scss';
 
 const Overview = ({
@@ -21,9 +22,13 @@ const Overview = ({
                 />
             ))}
             <div className={styles.overview__genresWrapper}>
-                {genres.map((genre, index) => (
-                    <Genre name={genre} key={index}/>
-                ))}
+                {genres.length > 0 ? (
+                    genres.map((genre, index) => (
+                        <Genre name={genre} key={index}/>
+                    ))
+                ) : (
+                    <NotAvailable itemNotAvailable='Genres'/>
+                )}
             </div>
         </div>
     );

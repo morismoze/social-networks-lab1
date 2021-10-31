@@ -5,5 +5,8 @@ const api = {
 };
 
 export const user = {
-    storeUserData: () => `${api.users}/create`
+    storeUserData: `${api.users}/create`,
+    getLikedMovies: (id) => `${api.users}/${id}/movies/likes`,
+    storeUserLike: (id) => `${api.users}/${id}/movies/like`,
+    storeUserUnlike: (id) => `${api.users}/${id}/movies/unlike`,
 };

@@ -12,14 +12,15 @@ import WithParagraphLayoutWrapper from "./withParagraphLayoutWrapper";
 import Overview from "./Overview";
 import Tagline from "./Overview/Tagline";
 import CastMember from "./Overview/CastMember";
+import Trailer from "./Trailer";
+import Production from "./Production";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
 import { setActiveMovie } from "../../store/shared/movie/Movie.slice";
 import {setActiveTab} from "../../store/shared/navigation/Navigation.slice";
-import { sortObjectsByProperty } from "../../util/string";
+import { extractYearFromReleaseDate, sortObjectsByProperty } from "../../util/string";
 import { movieDetailsNavItems } from "../../constants/movieDetails";
 import styles from './MovieDetails.module.scss';
-import YoutubeEmbed from "./YoutubeEmbed";
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
@@ -36,6 +37,8 @@ const MovieDetails = () => {
     const spokenLanguages = useSelector(MovieSelectors.spokenLanguages);
     const budget = useSelector(MovieSelectors.budget);
     const ytVideo = useSelector(MovieSelectors.ytVideo);
+
+    const releaseYear = extractYearFromReleaseDate(details?.release_date);
 
     const readMovieIdFromPath = (callback) => {
         const id = history.location.pathname.split('/').pop();
@@ -58,6 +61,8 @@ const MovieDetails = () => {
                 <>
                     <div className={styles.movieDetails}>
                         <Backdrop
+                            movieName={details.title}
+                            releaseYear={releaseYear}
                             pictureUrl={details.backdrop_path}
                             mainStats={mainStats}
                             imdbId={details.imdb_id}
@@ -135,7 +140,10 @@ const MovieDetails = () => {
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >
-
+                                                    <Production
+                                                        companies={details.production_companies}
+                                                        countries={details.production_countries}
+                                                    />
                                                 </WithParagraphLayoutWrapper>
                                             )
                                         }
@@ -146,7 +154,7 @@ const MovieDetails = () => {
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >
-                                                    <YoutubeEmbed info={ytVideo}/>
+                                                    <Trailer info={ytVideo}/>
                                                 </WithParagraphLayoutWrapper>
                                             )
                                         }

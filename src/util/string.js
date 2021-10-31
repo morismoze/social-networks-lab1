@@ -3,18 +3,34 @@ export const getDecimalRatingValue = (rating) => {
 };
 
 export const setFixedNumberOfDecimals = (data, numberOfDecimals = 1) => {
+    if (!data) {
+        return null;
+    }
+
     return Number(data).toFixed(numberOfDecimals);
 };
 
 export const extractYearFromReleaseDate = (date) => {
+    if (!date) {
+        return null;
+    }
+
     return date.split('-')[0];
 };
 
 export const extractMonthFromReleaseDate = (date) => {
+    if (!date) {
+        return null;
+    }
+
     return date.split('-')[1];
 };
 
 export const extractDayFromReleaseDate = (date) => {
+    if (!date) {
+        return null;
+    }
+
     return date.split('-')[2];
 };
 
@@ -30,6 +46,10 @@ export const sortObjectsByProperty = (property) => {
 };
 
 export const formatPrice = (price, currency = 'USD') => {
+    if (!price) {
+        return null;
+    }
+
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: currency,
@@ -47,10 +67,18 @@ const getTextMonth = (month) => {
 };
 
 export const getStyledReleaseDate = (date) => {
+    if (!date) {
+        return null;
+    }
+
     const day = extractDayFromReleaseDate(date);
     const month = extractMonthFromReleaseDate(date);
     const year = extractYearFromReleaseDate(date);
     const textMonth = getTextMonth(month);
 
     return `${textMonth} ${day}, ${year}`;
-}
+};
+
+export const splitCamelCase = (data) => {
+    return data.split(/(?=[A-Z])/).join(' ');
+};

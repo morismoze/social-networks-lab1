@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
-import Tooltip from '@mui/material/Tooltip';
+import { useSelector } from "react-redux";
+import classNames from "classnames";
 import { AiFillHeart } from "react-icons/all";
 
-import styles from './Heart.module.scss';
-import classNames from "classnames";
 import StyledTooltip from "../../StyledTooltip";
+import * as UserActivitySelectors from '../../../../store/shared/userActivity/UserActivity.selectors';
+import styles from './Heart.module.scss';
 
 const Heart = ({
-    onClick
+    onClick,
+    id
 }) => {
-    const [ isActive, setIsActive ] = useState(false);
+    const [ isLiked, setIsLiked ] = useState(false);
+
+    const likedMovies = useSelector(UserActivitySelectors.likedMovies);
 
     const handleOnClick = () => {
         onClick();
-        setIsActive(!isActive);
     };
 
+    useEffect(() => {
+        const isMovieLiked = likedMovies?.find(movieId => movieId === id);
+
+        if (isMovieLiked) {
+            setIsLiked(true);
+        } else {
+            setIsLiked(false);
+        }
+    }, [id, likedMovies]);
+
     return (
-        <StyledTooltip title={!isActive ? 'Like' : 'Dislike'}>
+        <StyledTooltip title={!isLiked ? 'Like' : 'Dislike'}>
             <div
                 className={styles.heartReaction}
                 onClick={handleOnClick}
@@ -27,7 +40,7 @@ const Heart = ({
                     size={25}
                     className={classNames(
                         styles.heartReaction__icon,
-                        { [styles.heartReaction__isActive]: isActive }
+                        { [styles.heartReaction__isActive]: isLiked }
                     )}
                 />
             </div>

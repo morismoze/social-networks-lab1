@@ -39,7 +39,13 @@ const MovieRating = ({
                 }
                 title={formattedValue}
             />
-            <span className={styles.rating__value}>{formattedValue}</span>
+            <span className={styles.rating__value}>
+                {formattedValue ? (
+                    formattedValue
+                ) : (
+                    '--'
+                )}
+            </span>
         </div>
     );
 };

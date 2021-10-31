@@ -1,0 +1,17 @@
+@import 'src/styles/colors.module';
+
+.notAvailable {
+  font-style: italic;
+  font-weight: 500;
+  color: $lighter-gray;
+  font-size: 14px;
+
+  &__item {
+    text-transform: lowercase;
+    display: inline-block;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

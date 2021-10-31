@@ -12,7 +12,7 @@ const Stat = ({
                 {name}
             </span>
             <span className={styles.stat__value}>
-                {value}
+                {value ? (value) : ('--')}
             </span>
         </div>
     );

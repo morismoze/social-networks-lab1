@@ -20,7 +20,7 @@ const MovieCardRating = ({
                 {formattedRating ? (
                     formattedRating
                 ) : (
-                    '-'
+                    '--'
                 )}
             </span>
         </div>

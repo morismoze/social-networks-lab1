@@ -37,7 +37,6 @@
 
   &__paragraph {
     scroll-margin-top: calc(#{$homePageHeaderHeight} + 30px);
-    scroll-behavior: smooth;
   }
 
   &__castWrapper {

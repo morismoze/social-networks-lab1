@@ -29,9 +29,8 @@ export const mainStats = createSelector(
         return {
             'Rating': formattedRating,
             'Status': state.activeIdDetails?.status,
-            'Runtime': minutesAndHours.hours && minutesAndHours.minutes ?
-                `${minutesAndHours.hours}h ${minutesAndHours.minutes}min` : '--',
-            'Revenue': state.activeIdDetails?.revenue === 0 ? '--' : formattedRevenue
+            'Runtime': minutesAndHours ? `${minutesAndHours.hours}h ${minutesAndHours.minutes}min` : null,
+            'Revenue': formattedRevenue
         }
     }
 );
@@ -51,7 +50,7 @@ export const budget = createSelector(
     (state) => {
         const formattedBudget = formatPrice(state.activeIdDetails?.budget);
 
-        return state.activeIdDetails && state.activeIdDetails?.budget === 0 ? '--' : formattedBudget
+        return formattedBudget;
     }
 );
 
