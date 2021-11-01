@@ -4,9 +4,9 @@ import { Container, Fade } from "@mui/material";
 
 import Stat from "./Stat";
 import ImageLink from "./ImageLink";
+import ReleaseYear from "./ReleaseYear";
 import ImdbIcon from '../../../assets/images/imdb_logo.png';
 import styles from './Backdrop.module.scss';
-import ReleaseYear from "./ReleaseYear";
 
 const Backdrop = ({
     movieName,
@@ -51,10 +51,12 @@ const Backdrop = ({
                             ))}
                         </div>
                         <div className={styles.backdrop__links}>
-                            <ImageLink
-                                href={`https://imdb.com/title/${imdbId}`}
-                                picture={ImdbIcon}
-                            />
+                            {imdbId &&
+                                <ImageLink
+                                    href={`https://imdb.com/title/${imdbId}`}
+                                    picture={ImdbIcon}
+                                />
+                            }
                         </div>
                     </Container>
                 </div>

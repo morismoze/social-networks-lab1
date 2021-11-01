@@ -1,0 +1,23 @@
+@import 'src/styles/colors.module';
+
+.star {
+  color: $lighter-gray;
+  width: 12px;
+  font-size: 28px;
+  cursor: pointer;
+  overflow: hidden;
+  font-style: unset;
+  display: inline-block;
+
+  &__isSelected {
+    color: $dark-red;
+  }
+
+  &__addSelection {
+    color: lighten($dark-red, 25%);
+  }
+
+  &__removeSelection {
+    color: lighten($dark-red, 25%);
+  }
+}

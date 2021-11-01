@@ -52,8 +52,6 @@ const LazyLoadedImage = ({
                         src={src}
                         fallback={fallback}
                         alt={alt}
-                        width={width}
-                        height={height}
                         className={classNames(
                             styles.lazyLoadedImg__img,
                             { [styles.lazyLoadedImg__imgLoaded]: isLoaded },

@@ -5,7 +5,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  opacity: 1;
 
   &__detailsSection {
     display: flex !important;
@@ -20,6 +19,10 @@
     align-self: flex-start;
     top: calc(#{$homePageHeaderHeight} + 30px);
     width: 250px;
+
+    & > div:last-of-type {
+      margin-top: 15px;
+    }
   }
 
   &__data {

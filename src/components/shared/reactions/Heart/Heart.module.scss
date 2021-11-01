@@ -7,16 +7,16 @@
   justify-content: center;
 
   &__icon {
-    color: $red;
+    color: $dark-red;
     transition: fill .25s ease-in-out;
-    stroke: $red !important;
+    stroke: $dark-red !important;
     stroke-width: 80 !important;
     fill: transparent !important;
   }
 
   &__isActive {
     animation: scaleAnimation .8s ease-in-out;
-    fill: $red !important;
+    fill: $dark-red !important;
   }
 
   @keyframes scaleAnimation {

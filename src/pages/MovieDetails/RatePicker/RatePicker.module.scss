@@ -1,0 +1,12 @@
+@import 'src/styles/colors.module';
+
+.ratePicker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__label {
+    color: $lighter-gray;
+    font-size: 13px;
+  }
+}

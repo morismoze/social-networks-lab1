@@ -10,25 +10,17 @@ import styles from './Heart.module.scss';
 
 const Heart = ({
     onClick,
-    id
+    movieId
 }) => {
-    const [ isLiked, setIsLiked ] = useState(false);
+    // @todo: fix large number of rerenders
 
     const likedMovies = useSelector(UserActivitySelectors.likedMovies);
+
+    const isLiked = likedMovies?.find(likedMovieId => likedMovieId === movieId);
 
     const handleOnClick = () => {
         onClick();
     };
-
-    useEffect(() => {
-        const isMovieLiked = likedMovies?.find(movieId => movieId === id);
-
-        if (isMovieLiked) {
-            setIsLiked(true);
-        } else {
-            setIsLiked(false);
-        }
-    }, [id, likedMovies]);
 
     return (
         <StyledTooltip title={!isLiked ? 'Like' : 'Dislike'}>

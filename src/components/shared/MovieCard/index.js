@@ -32,7 +32,7 @@ const MovieCard = ({
 
     const likedMovies = useSelector(UserActivitySelectors.likedMovies);
 
-    const handleMovieLike = (callback) => {
+    const handleMovieLike = () => {
         const isLiked = likedMovies.find(movieId => movieId === id);
 
         if (isLiked) {
@@ -65,7 +65,7 @@ const MovieCard = ({
             </Link>
             <div className={styles.movieCard__dataWrapper}>
                 <div className={styles.movieCard__reactionsWrapper}>
-                    <Heart onClick={handleMovieLike} id={id}/>
+                    <Heart onClick={handleMovieLike} movieId={id}/>
                     {adult &&
                         <span className={styles.movieCard__adult}>18+</span>
                     }

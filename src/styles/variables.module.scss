@@ -3,3 +3,15 @@ $loginArticleWidth: 350px;
 $homePageHeaderHeight: 50px;
 
 $movieDetailsBackdropStatsHeight: 60px;
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+:export {
+  small: $sm;
+  medium: $md;
+  large: $lg;
+  extraLarge: $xl;
+}
