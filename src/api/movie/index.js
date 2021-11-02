@@ -5,9 +5,11 @@ const defaultHeaders = {
     'Content-Type': 'application/json',
 };
 
-export const getRecommendedMovies = async () => {
+const RESULTS_PER_PAGE = 22;
+
+export const getRecommendedMovies = async (page) => {
     try {
-        const response = await fetch(moviePaths.getRecommendedMovies, {
+        const response = await fetch(moviePaths.getRecommendedMovies(page, RESULTS_PER_PAGE), {
                 method: 'GET',
                 headers: defaultHeaders
             }
@@ -19,9 +21,9 @@ export const getRecommendedMovies = async () => {
     }
 };
 
-export const getTopRatedMovies = async () => {
+export const getTopRatedMovies = async (page) => {
     try {
-        const response = await fetch(moviePaths.getTopRatedMovies, {
+        const response = await fetch(moviePaths.getTopRatedMovies(page), {
                 method: 'GET',
                 headers: defaultHeaders
             }

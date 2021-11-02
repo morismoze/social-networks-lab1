@@ -6,6 +6,7 @@ import Stat from "./Stat";
 import ImageLink from "./ImageLink";
 import ReleaseYear from "./ReleaseYear";
 import ImdbIcon from '../../../assets/images/imdb_logo.png';
+import Fallback from '../../../assets/images/movie-backdrop-fallback.png';
 import styles from './Backdrop.module.scss';
 
 const Backdrop = ({
@@ -15,6 +16,8 @@ const Backdrop = ({
     mainStats,
     imdbId
 }) => {
+    const picture = pictureUrl ? `url(https://image.tmdb.org/t/p/w1280${pictureUrl})` : `url(${Fallback})`;
+
     return (
         <Fade
             timeout={1000}
@@ -24,7 +27,7 @@ const Backdrop = ({
                 <div
                     className={styles.backdrop__img}
                     style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/w1280${pictureUrl})`
+                        backgroundImage: picture
                     }}
                 />
                 <div className={styles.backdrop__movieNameShadow}/>

@@ -5,7 +5,7 @@ const api = {
 };
 
 export const moviePaths = {
-    getRecommendedMovies: `${api.movies}/recommended`,
-    getTopRatedMovies: `${api.movies}/top-rated`,
+    getRecommendedMovies: (page, limit) => `${api.movies}/recommended?page=${page}&limit=${limit}`,
+    getTopRatedMovies: (page) =>`${api.movies}/top-rated?page=${page}`,
     getMovieDetails: (id) => `${api.movies}/details/${id}`,
 };

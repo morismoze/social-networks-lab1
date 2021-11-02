@@ -23,7 +23,7 @@ const Data = ({
     return (
         <div className={styles.data}>
             <span className={styles.data__title}>{splitTitle}:</span>
-            {data ? (
+            {data && data.length > 0 ? (
                 <div className={styles.data__values}>
                     {data.map((item, index) => (
                         <span className={styles.data__value} key={index}>

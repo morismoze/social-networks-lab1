@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import queryString from 'query-string';
 
 import Header from "../../components/shared/Header";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
@@ -13,9 +15,13 @@ import { actions as userActivityActions} from '../../store/shared/userActivity/U
 import styles from './RecommendedMovies.module.scss';
 
 const RecommendedPage = () => {
-    const [ page, setPage ] = useState(1);
+    const history = useHistory();
+
+    const location = useLocation();
 
     const dispatch = useDispatch();
+
+    const [ page, setPage ] = useState(null);
 
     const userId = useSelector(UserSelectors.id);
 
@@ -23,16 +29,26 @@ const RecommendedPage = () => {
     const recommendedMovies = useSelector(RecommendedMoviesSelectors.movies);
 
     const handleOnPageChange = (event, value) => {
-        // @todo: call BE
         setPage(value);
+        history.push({
+            pathname: `${location.pathname}`,
+            search: `?page=${value}`
+        });
     };
 
     useEffect(() => {
         if (userId) {
-            dispatch(recommendedMoviesActions.getMovies());
             dispatch(userActivityActions.getLikedMovies(userId));
         }
     }, [userId]);
+
+    useEffect(() => {
+        if (location && location.search) {
+            const page = queryString.parse(location.search).page;
+            setPage(page);
+            dispatch(recommendedMoviesActions.getMoviesAndToggleLoader(page));
+        }
+    }, [location]);
 
     return (
         <>
@@ -57,10 +73,10 @@ const RecommendedPage = () => {
                     }
                 </div>
             </WithLayoutWrapper>
-            {recommendedMoviesStatus === 'success' &&
+            {recommendedMoviesStatus === 'success' && page &&
                 <CustomPagination
-                    count={20}
-                    page={page}
+                    count={11}
+                    page={Number(page)}
                     onChange={handleOnPageChange}
                 />
             }

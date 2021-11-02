@@ -6,4 +6,4 @@ export const getUserLocation = (callback) => {
     } else {
         return null;
     }
-}
+};

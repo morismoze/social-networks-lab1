@@ -20,7 +20,7 @@ const Item = ({
 
     const activeTab = useSelector(HeaderSelectors.activeTab);
 
-    const Icon =AntDesignIcons[icon];
+    const Icon = AntDesignIcons[icon];
 
     const onClick = () => {
         switch (id) {
@@ -29,7 +29,7 @@ const Item = ({
                 break;
             }
             case 'recommended': {
-                history.push('/recommended');
+                history.push('/recommended?page=1');
                 break;
             }
             case 'all-movies': {
