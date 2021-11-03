@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 import Loader from "../components/shared/Loader";
@@ -9,9 +9,10 @@ import { getFbLoginStatus } from "../api/facebook";
 
 const ProtectedRoute = ({
     component: Component,
-    onEnter,
     ...args
 }) => {
+    const location = useLocation();
+
     const [ loginStatus, setLoginStatus ] = useState(null);
 
     const activeTab = useSelector(navigationSelectors.activeTab);
@@ -30,11 +31,7 @@ const ProtectedRoute = ({
     }
 
     if (loginStatus === 'connected') {
-        if (onEnter) {
-            onEnter();
-        }
-
-        return (
+         return (
             <Route
                 {...args}
                 component={Component}
@@ -44,7 +41,7 @@ const ProtectedRoute = ({
 
     return (
         <Route {...args}>
-            <Redirect to='/auth'/>
+            <Redirect to={{ pathname: '/auth', state: { from: location } }}/>
         </Route>
     );
 };

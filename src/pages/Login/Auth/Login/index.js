@@ -27,9 +27,9 @@ const Login = () => {
                     </div>
                 </div>
                 <div className={styles.container__footer}>
-                        <span className={styles.container__terms}>
-                            By signing in you agree to our <a href='#' className={'decoratedLink'}>terms of service</a>
-                        </span>
+                    <span className={styles.container__terms}>
+                        By signing in you agree to our <a href='#' className={'decoratedLink'}>terms of service</a>
+                    </span>
                 </div>
             </div>
         </Fade>

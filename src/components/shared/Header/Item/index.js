@@ -29,7 +29,10 @@ const Item = ({
                 break;
             }
             case 'recommended': {
-                history.push('/recommended?page=1');
+                history.push({
+                    pathname: '/recommended',
+                    search: '?page=1'
+                });
                 break;
             }
             case 'all-movies': {

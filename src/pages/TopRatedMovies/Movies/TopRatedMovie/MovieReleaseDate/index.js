@@ -2,7 +2,7 @@ import React from 'react';
 
 import classNames from "classnames";
 
-import { getReleaseDateParts } from "../../../../util/date";
+import { getReleaseDateParts } from "../../../../../util/date";
 import styles from './MovieReleaseDate.module.scss';
 
 const MovieReleaseDate = ({
