@@ -2,15 +2,26 @@ import axios from "axios";
 
 export const instance = axios.create();
 
-instance.interceptors.response.use((response) => {
-    return response;
+instance.interceptors.request.use((config) => {
+    // @todo: attach token auth only on particular list of routes
+    const token = localStorage.getItem('fb_token');
+    config.headers.Authorization = `Bearer ${token}`;
+
+    return config;
 }, (error) => {
-    if (error.response.status === 401) {
-        window.location.href = `https://${window.location.host}/auth`;
-    }
+    // @todo: handle REQUEST errors
 });
 
+export const setResponsesInterceptor = (navigate) => {
+    instance.interceptors.response.use((response) => {
+        return response;
+    }, (error) => {console.log(error)
+        if (error.response.status === 401) {
+            navigate('/auth');
+        }
+    });
+}
+
 export const defaultHeaders = {
-    'Content-Type': 'text/plain',
-    'Authorization': `Basic ${localStorage.getItem('fb_token')}`
+    'Content-Type': 'application/json'
 };

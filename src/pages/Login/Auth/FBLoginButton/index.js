@@ -29,7 +29,7 @@ const FBLoginButton = () => {
         }
     };
 
-    const onLoginClick = async () => {
+    const onLoginClick = () => {
         const callback = ({id, email, name, url}) => {
             dispatch(storeUserInfo({id, email, name, url}));
 
@@ -37,7 +37,7 @@ const FBLoginButton = () => {
             navigate(protectedRouteToVisit);
         };
 
-        await fbLogin(callback);
+        fbLogin(callback);
     };
 
     return (

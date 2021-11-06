@@ -41,19 +41,22 @@ export const getUserFbData = (callback, storeDataFlag = false) => {
     });
 };
 
-export const fbLogin = async (callback) => {
+export const fbLogin = (callback) => {
     window.FB.login((response) => {
-        if (response.status === 'connected') {console.log(response.authResponse.accessToken)
+        if (response.status === 'connected') {
             localStorage.setItem('fb_token', response.authResponse.accessToken);
             getUserFbData(callback, true);
         }
     }, { scope: 'public_profile, email' });
 };
 
-export const fbLogout = (callback) => {console.log(window.FB)
-    window.FB.logout((response) => {
-        console.log(response)
-        localStorage.removeItem('fb_token');
-        callback();
-    });
+export const fbLogout = (callback) => {
+    window.FB.getLoginStatus((response) => {
+        if (response.status === 'connected') {
+            window.FB.logout((response) => {
+                localStorage.removeItem('fb_token');
+                callback();
+            });
+        }
+    })
 };

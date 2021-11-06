@@ -1,0 +1,21 @@
+@import 'src/styles/colors.module';
+
+.item {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+
+  &__name {
+    color: $white;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: color .25s ease-in-out;
+    font-weight: 600;
+  }
+
+  &:hover &__name {
+    color: $red;
+  }
+}

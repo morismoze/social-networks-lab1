@@ -76,7 +76,7 @@ const Movies = () => {
             </WithLayoutWrapper>
             {recommendedMoviesStatus === 'success' && page &&
                 <CustomPagination
-                    count={11}
+                    count={10}
                     page={Number(page)}
                     onChange={handleOnPageChange}
                 />

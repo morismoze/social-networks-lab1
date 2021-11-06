@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 
 import MainRoutes from "./router/Routes";
 import Loader from "./components/shared/Loader";
-import Header from "./components/shared/Header";
 import store from "./store";
 import './App.scss';
 
@@ -13,11 +12,6 @@ const App = () => {
     return (
       <Provider store={store}>
           <BrowserRouter>
-              {window.location.pathname !== '/auth' ?
-                  <Header/>
-                  :
-                  null
-              }
               <MainRoutes/>
           </BrowserRouter>
           <Loader/>

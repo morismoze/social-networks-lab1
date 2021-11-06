@@ -11,7 +11,7 @@ export const storeUserData = async (id, email, name, url) => {
 
         return response.data;
     } catch (err) {
-        console.error(err.response.data);
+        console.error(err.response);
     }
 };
 
@@ -25,7 +25,7 @@ export const storeUserLike = async ({ userId, movieId }) => {
 
         return response.data;
     } catch (err) {
-        console.error(err.response.data);
+        console.error(err.response);
     }
 };
 
@@ -39,7 +39,7 @@ export const storeUserUnlike = async ({ userId, movieId }) => {
 
         return response.data;
     } catch (err) {
-        console.error(err.response.data);
+        console.error(err.response);
     }
 };
 
@@ -52,6 +52,6 @@ export const getLikedMovies = async (userId) => {
 
         return response.data;
     } catch (err) {
-        console.error(err.response.data);
+        console.error(err.response);
     }
 };

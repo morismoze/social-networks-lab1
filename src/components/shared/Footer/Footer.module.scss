@@ -1,0 +1,30 @@
+@import 'src/styles/colors.module';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &__upper {
+    z-index: 2;
+  }
+
+  &__lower {
+    width: 100%;
+    height: 100px;
+    background-color: $black;
+    padding: 18px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: -25px;
+  }
+
+  &__lowerNav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+}
