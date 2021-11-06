@@ -1,65 +1,57 @@
 import { user } from "./paths";
-
-const defaultHeaders = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-};
+import { defaultHeaders, instance } from "../network";
 
 export const storeUserData = async (id, email, name, url) => {
     try {
-        const response = await fetch(user.storeUserData, {
-                method: 'POST',
-                body: JSON.stringify({ id, email, name, url }),
-                headers: defaultHeaders
-            }
+        const response = await instance.post(
+            user.storeUserData,
+            { id, email, name, url },
+            { headers: defaultHeaders }
         );
 
-        return response.json();
+        return response.data;
     } catch (err) {
-        console.error(err);
+        console.error(err.response.data);
     }
 };
 
 export const storeUserLike = async ({ userId, movieId }) => {
     try {
-        const response = await fetch(user.storeUserLike(userId), {
-                method: 'POST',
-                body: JSON.stringify({ movieId: movieId }),
-                headers: defaultHeaders
-            }
+        const response = await instance.post(
+            user.storeUserLike(userId),
+            { movieId: movieId },
+            { headers: defaultHeaders }
         );
 
-        return response.json();
+        return response.data;
     } catch (err) {
-        console.error(err);
+        console.error(err.response.data);
     }
 };
 
 export const storeUserUnlike = async ({ userId, movieId }) => {
     try {
-        const response = await fetch(user.storeUserUnlike(userId), {
-                method: 'POST',
-                body: JSON.stringify({ movieId: movieId }),
-                headers: defaultHeaders
-            }
+        const response = await instance.post(
+            user.storeUserUnlike(userId),
+            { movieId: movieId },
+            { headers: defaultHeaders }
         );
 
-        return response.json();
+        return response.data;
     } catch (err) {
-        console.error(err);
+        console.error(err.response.data);
     }
 };
 
 export const getLikedMovies = async (userId) => {
     try {
-        const response = await fetch(user.getLikedMovies(userId), {
-                method: 'GET',
-                headers: defaultHeaders
-            }
+        const response = await instance.get(
+            user.getLikedMovies(userId),
+            { headers: defaultHeaders }
         );
 
-        return response.json();
+        return response.data;
     } catch (err) {
-        console.error(err);
+        console.error(err.response.data);
     }
 };

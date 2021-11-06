@@ -22,7 +22,6 @@ const Movies = () => {
 
     return (
         <>
-            <Header/>
             <WithLayoutWrapper className={styles.topRatedMovies}>
                 <div className={styles.topRatedMovies__carousel}>
                     {topRatedMoviesStatus === 'success' &&

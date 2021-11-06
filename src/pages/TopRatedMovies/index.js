@@ -1,15 +1,11 @@
 import React from 'react';
 
-import Header from "../../components/shared/Header";
 import TopRatedMoviesRoutes from "../../router/TopRatedMoviesRoutes";
 
-const TopRatedPage = () => {
+const TopRatedMoviesPage = () => {
     return (
-        <>
-            <Header/>
-            <TopRatedMoviesRoutes/>
-        </>
+        <TopRatedMoviesRoutes/>
     );
 };
 
-export default TopRatedPage;
+export default TopRatedMoviesPage;

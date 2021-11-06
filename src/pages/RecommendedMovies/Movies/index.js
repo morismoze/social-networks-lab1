@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import queryString from 'query-string';
 
@@ -14,7 +14,7 @@ import { actions as userActivityActions} from '../../../store/shared/userActivit
 import styles from './Movies.module.scss';
 
 const Movies = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const location = useLocation();
 
@@ -29,7 +29,7 @@ const Movies = () => {
 
     const handleOnPageChange = (event, value) => {
         setPage(value);
-        history.push({
+        navigate({
             pathname: `${location.pathname}`,
             search: `?page=${value}`
         });
@@ -39,13 +39,16 @@ const Movies = () => {
         if (userId) {
             dispatch(userActivityActions.getLikedMovies(userId));
         }
-    }, []);
+    }, [userId]);
 
     useEffect(() => {
         if (location && location.search) {
             const page = queryString.parse(location.search).page;
             setPage(page);
             dispatch(recommendedMoviesActions.getMoviesAndToggleLoader(page));
+        } else if (!location.search) {
+            setPage(1);
+            dispatch(recommendedMoviesActions.getMoviesAndToggleLoader(1));
         }
     }, [location]);
 

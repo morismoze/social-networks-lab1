@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { MenuItem } from "@mui/material";
 import { AiOutlineLogout } from "react-icons/all";
@@ -19,14 +19,12 @@ import { fbLogout, getUserFbData } from "../../../api/facebook";
 import { HEADER_NAV_ITEMS } from "../../../constants/header";
 import styles from './Header.module.scss';
 
-const Header = ({
-    opacity = 0.9
-}) => {
+const Header = () => {
     const [ anchorElement, setAnchorElement ] = useState(null);
 
     const isMenuOpen = Boolean(anchorElement);
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -47,15 +45,18 @@ const Header = ({
     const logoutUser = () => {
         handleUserMenuClose();
         dispatch(toggleLoading(true));
-        fbLogout(() => history.push('/auth'))
+        fbLogout(() => {
+            navigate('/auth');
+            dispatch(toggleLoading(false));
+        });
     };
 
-    const fetchUserData = async () => {
+    const fetchUserData = () => {
         const callback = ({id, email, name, url}) => {
             dispatch(storeUserInfo({id, email, name, url}));
         };
 
-        await getUserFbData(callback, false);
+        getUserFbData(callback, false);
     };
 
     useEffect( () => {
@@ -73,9 +74,6 @@ const Header = ({
                     styles.header,
                     { [ styles.scrolled ]: scrollPosition > 1 }
                 )}
-                style={{
-                    backgroundColor: `rgba(0, 0, 0, ${opacity})`
-                }}
             >
                 <Logo/>
                 <nav className={styles.header__nav}>
@@ -88,7 +86,7 @@ const Header = ({
                                 <Item
                                     id={item.id}
                                     name={item.name}
-                                    icon={item.icon}
+                                    dropdown={item.dropdown}
                                     key={item.id}
                                 />
                             </li>

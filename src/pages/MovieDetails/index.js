@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "@mui/material";
 
-import Header from "../../components/shared/Header";
 import Backdrop from "./Backdrop";
 import Poster from "./Poster";
 import Sidenav from "./Sidenav";
@@ -18,7 +17,6 @@ import RatePicker from "./RatePicker";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
 import { setActiveMovie } from "../../store/shared/movie/Movie.slice";
-import {setActiveTab} from "../../store/shared/navigation/Navigation.slice";
 import { extractYearFromReleaseDate, sortObjectsByProperty } from "../../util/string";
 import { movieDetailsNavItems } from "../../constants/movieDetails";
 import styles from './MovieDetails.module.scss';
@@ -27,8 +25,6 @@ const MovieDetails = () => {
     const dispatch = useDispatch();
 
     const params = useParams();
-
-    const history = useHistory();
 
     const status = useSelector(MovieSelectors.status);
     const details = useSelector(MovieSelectors.activeIdDetails);
@@ -42,22 +38,18 @@ const MovieDetails = () => {
     const releaseYear = extractYearFromReleaseDate(details?.release_date);
 
     const readMovieIdFromPath = (callback) => {
-        const id = history.location.pathname.split('/').pop();
-
-        dispatch(setActiveMovie(id));
-        callback(id);
+        dispatch(setActiveMovie(params.id));
+        callback(params.id);
     };
 
     useEffect(() => {
         readMovieIdFromPath((activeId) => {
             dispatch(movieActions.getMovieDetailsAndToggleLoader(activeId))
         });
-        dispatch(setActiveTab(params[0]));
     }, []);
 
     return (
         <>
-            <Header opacity={0.6}/>
             {status === 'success' &&
                 <>
                     <div className={styles.movieDetails}>

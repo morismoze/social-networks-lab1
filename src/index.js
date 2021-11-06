@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import App from './App';
-
 import { initFacebookSdk } from './api/facebook/index';
 import './index.scss';
 

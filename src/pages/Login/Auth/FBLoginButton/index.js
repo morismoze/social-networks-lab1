@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useDispatch } from "react-redux";
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { AiOutlineFacebook } from "react-icons/all";
 
 import { storeUserInfo } from "../../../../store/shared/user/User.slice";
@@ -9,13 +9,13 @@ import { fbLogin } from "../../../../api/facebook";
 import styles from './FBLoginButton.module.scss';
 
 const FBLoginButton = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const location = useLocation();
 
     const dispatch = useDispatch();
 
-    const getProtectedRouteToVisit = () => {
+    const getProtectedRouteToVisit = () => {console.log(location)
         if (location.state && location.state.from) {
             const { state: { from: { pathname, search } } } = location;
 
@@ -25,7 +25,7 @@ const FBLoginButton = () => {
                 return pathname;
             }
         } else {
-            return '/top-rated';
+            return '/';
         }
     };
 
@@ -34,7 +34,7 @@ const FBLoginButton = () => {
             dispatch(storeUserInfo({id, email, name, url}));
 
             const protectedRouteToVisit = getProtectedRouteToVisit();
-            history.replace(protectedRouteToVisit);
+            navigate(protectedRouteToVisit);
         };
 
         await fbLogin(callback);

@@ -3,6 +3,7 @@ import { weatherPaths } from "./paths";
 const defaultHeaders = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
+    'Authorization': localStorage.getItem('fb_token')
 };
 
 export const getCurrentWeather = async ({ lat, lon }) => {

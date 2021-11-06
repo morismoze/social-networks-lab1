@@ -1,23 +1,17 @@
 @import 'src/styles/colors.module';
 
 .item {
+  height: 100%;
+  text-decoration: none;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  cursor: pointer;
-  position: relative;
-  height: 100%;
-
-  &__icon {
-    color: $white;
-    margin-bottom: 3px;
-    transition: color .25s ease-in-out;
-  }
 
   &__name {
     color: $white;
-    font-size: 11px;
+    font-size: 13px;
+    text-transform: uppercase;
     transition: color .25s ease-in-out;
     font-weight: 500;
   }
@@ -28,27 +22,19 @@
     height: 3px;
     width: 100%;
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     display: inline-block;
-    transform: scale(0, 1);
+    transform: scaleY(0);
     transition: transform 0.35s;
-    transform-origin: 50% 0;
+    transform-origin: bottom;
   }
 
   &.active:before {
-    transform: scale(1, 1);
+    transform: scaleY(1);
   }
 
   &.active &__name {
     color: $red;
-  }
-
-  &.active &__icon {
-    color: $red;
-  }
-
-  &:hover:before {
-    transform: scale(1, 1);
   }
 }

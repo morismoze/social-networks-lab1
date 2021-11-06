@@ -1,50 +1,49 @@
 import { moviePaths } from "./paths";
-
-const defaultHeaders = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-};
+import { defaultHeaders, instance } from "../network";
 
 const RESULTS_PER_PAGE = 22;
 
 export const getRecommendedMovies = async (page) => {
     try {
-        const response = await fetch(moviePaths.getRecommendedMovies(page, RESULTS_PER_PAGE), {
-                method: 'GET',
+        const response = await instance.get(
+            moviePaths.getRecommendedMovies(page, RESULTS_PER_PAGE),
+            {
                 headers: defaultHeaders
             }
         );
 
-        return response.json();
+        return response.data;
     } catch (err) {
-        console.error(err);
+        console.error(err.response.data);
     }
 };
 
 export const getTopRatedMovies = async (page) => {
     try {
-        const response = await fetch(moviePaths.getTopRatedMovies(page), {
-                method: 'GET',
+        const response = await instance.get(
+            moviePaths.getTopRatedMovies(page),
+            {
                 headers: defaultHeaders
             }
         );
 
-        return response.json();
+        return response.data;
     } catch (err) {
-        console.error(err);
+        console.error(err.response.data);
     }
 };
 
 export const getMovieDetails = async (id) => {
     try {
-        const response = await fetch(moviePaths.getMovieDetails(id), {
-                method: 'GET',
+        const response = await instance.get(
+            moviePaths.getMovieDetails(id),
+            {
                 headers: defaultHeaders
             }
         );
 
-        return response.json();
+        return response.data;
     } catch (err) {
-        console.error(err);
+        console.error(err.response.data);
     }
 };

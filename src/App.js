@@ -3,16 +3,22 @@ import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 
-import Routes from "./router/Routes";
+import MainRoutes from "./router/Routes";
+import Loader from "./components/shared/Loader";
+import Header from "./components/shared/Header";
 import store from "./store";
 import './App.scss';
-import Loader from "./components/shared/Loader";
 
 const App = () => {
     return (
       <Provider store={store}>
           <BrowserRouter>
-              <Routes/>
+              {window.location.pathname !== '/auth' ?
+                  <Header/>
+                  :
+                  null
+              }
+              <MainRoutes/>
           </BrowserRouter>
           <Loader/>
       </Provider>

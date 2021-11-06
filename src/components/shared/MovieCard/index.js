@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import MovieCardRating from "./MovieCardRating";
@@ -26,7 +26,7 @@ const MovieCard = ({
 }) => {
     const dispatch = useDispatch();
 
-    const history = useHistory();
+    const location = useLocation();
 
     const userId = useSelector(UserSelectors.id);
 
@@ -45,7 +45,7 @@ const MovieCard = ({
     return (
         <div className={styles.movieCard}>
             <Link
-                to={history.location.pathname + encodeURI(`/details/${id}`)}
+                to={location.pathname + encodeURI(`/${id}/details`)}
                 className={styles.movieCard__link}
             >
                 <LazyLoadedImage

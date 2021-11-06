@@ -28,39 +28,32 @@ export const initFacebookSdk = () => {
 };
 
 export const getUserFbData = (callback, storeDataFlag = false) => {
-    window.FB.api('/v12.0/me?fields=email,name,picture.type(small)', (response) => {
-        const {id, email, name, picture: {data: {url}}} = response;
+    const fb_token = localStorage.getItem('fb_token');
+
+    window.FB.api('/v12.0/me?fields=email,name,picture.type(small)', { access_token: fb_token }, (response) => {
+        const {id, email, name, picture: { data: { url } }} = response;
 
         if (storeDataFlag) {
             storeUserData(id, email, name, url);
         }
 
-        callback({id, email, name, url})
+        callback({ id, email, name, url });
     });
 };
 
 export const fbLogin = async (callback) => {
-    window.FB.login(response => {
-        if (response.status === 'connected') {
+    window.FB.login((response) => {
+        if (response.status === 'connected') {console.log(response.authResponse.accessToken)
+            localStorage.setItem('fb_token', response.authResponse.accessToken);
             getUserFbData(callback, true);
         }
-    }, { scope: 'public_profile, email' })
+    }, { scope: 'public_profile, email' });
 };
 
-export const fbLogout = (callback) => {
-    // revoke app permissions to logout completely because FB.logout() doesn't remove FB cookie
-    window.FB.api('/me/permissions', 'delete', null, () => {
-        window.FB.logout();
+export const fbLogout = (callback) => {console.log(window.FB)
+    window.FB.logout((response) => {
+        console.log(response)
+        localStorage.removeItem('fb_token');
         callback();
     });
-};
-
-export const getFbLoginStatus = async () => {
-    // @todo: dispatch a loading spinner
-
-    return new Promise((resolve) =>
-        window.FB.getLoginStatus((response) => {
-            resolve(response.status);
-        }
-    ));
 };

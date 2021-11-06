@@ -1,0 +1,14 @@
+@import 'src/styles/colors.module';
+
+.item {
+  padding: 5px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 14px;
+  text-decoration: none;
+  color: $white;
+
+  &:hover {
+    background-color: $red;
+  }
+}
