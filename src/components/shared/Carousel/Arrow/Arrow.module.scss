@@ -7,7 +7,7 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  background-color: $lighter-black;
+  background-color: rgba($extra-light-gray, .6);
   transition: width .15s ease-in-out;
   display: flex;
   justify-content: center;
@@ -15,8 +15,8 @@
   cursor: pointer;
 
   &__icon {
-    fill: $white;
-    stroke: $white;
+    fill: $dark-gray;
+    stroke: $dark-gray;
   }
 
   &:hover {

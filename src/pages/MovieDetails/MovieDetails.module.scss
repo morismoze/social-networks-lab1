@@ -1,10 +1,14 @@
 @import 'src/styles/colors.module';
 @import 'src/styles/variables.module';
+@import 'src/styles/footer';
 
 .movieDetails {
   width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+  @include footer-container;
 
   &__detailsSection {
     display: flex !important;

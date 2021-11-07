@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 
-import Header from "../../../components/shared/Header";
+import Footer from "../../../components/shared/Footer";
 import WithLayoutWrapper from "../../../components/shared/withLayoutWrapper";
 import TopRatedMovie from "./TopRatedMovie";
 import Carousel from "../../../components/shared/Carousel";
@@ -22,16 +22,15 @@ const Movies = () => {
 
     return (
         <>
-            <WithLayoutWrapper className={styles.topRatedMovies}>
-                <div className={styles.topRatedMovies__carousel}>
-                    {topRatedMoviesStatus === 'success' &&
+            <div className={styles.topRatedMovies}>
+                {topRatedMoviesStatus === 'success' &&
                     <Carousel
                         data={
                             topRatedMovies.map((movie, index) => (
                                 <TopRatedMovie
                                     name={movie.title}
                                     releaseDate={movie.release_date}
-                                    posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                    backdropUrl={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
                                     duration={{hour: '1', minutes: '49'}}
                                     cast={[]}
                                     synopsys={movie.overview}
@@ -43,9 +42,9 @@ const Movies = () => {
                         }
                         autoplay={false}
                     />
-                    }
-                </div>
-            </WithLayoutWrapper>
+                }
+                <Footer/>
+            </div>
         </>
     );
 };

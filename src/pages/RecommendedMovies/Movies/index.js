@@ -54,10 +54,9 @@ const Movies = () => {
     }, [location]);
 
     return (
-        <>
-            <WithLayoutWrapper className={styles.recommendedMoviesContainer}>
-                <div className={styles.recommendedMoviesContainer__wrapper}>
-                    {recommendedMoviesStatus === 'success' &&
+        <WithLayoutWrapper className={styles.recommendedMoviesContainer}>
+            <div className={styles.recommendedMoviesContainer__wrapper}>
+                {recommendedMoviesStatus === 'success' &&
                     recommendedMovies.map((movie, index) => (
                         <MovieCard
                             name={movie.title}
@@ -71,21 +70,19 @@ const Movies = () => {
                             id={movie.id}
                             key={movie.id}
                         />
-                    ))
-                    }
-                </div>
-            </WithLayoutWrapper>
+                ))}
+            </div>
             {recommendedMoviesStatus === 'success' && page &&
-                <CustomPagination
-                    count={10}
-                    page={Number(page)}
-                    onChange={handleOnPageChange}
-                />
+            <CustomPagination
+                count={10}
+                page={Number(page)}
+                onChange={handleOnPageChange}
+            />
             }
             {recommendedMoviesStatus === 'success' &&
                 <Footer/>
             }
-        </>
+        </WithLayoutWrapper>
     );
 };
 

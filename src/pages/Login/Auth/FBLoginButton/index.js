@@ -34,7 +34,7 @@ const FBLoginButton = () => {
             dispatch(storeUserInfo({id, email, name, url}));
 
             const protectedRouteToVisit = getProtectedRouteToVisit();
-            navigate(protectedRouteToVisit);
+            navigate(protectedRouteToVisit, { replace: true });
         };
 
         fbLogin(callback);

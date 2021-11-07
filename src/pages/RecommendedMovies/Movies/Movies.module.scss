@@ -1,8 +1,10 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/footer';
 
 .recommendedMoviesContainer {
   width: 100%;
   background-color: $lighter-black;
+  @include footer-container;
 
   &__title {
     align-self: flex-start;

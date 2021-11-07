@@ -1,10 +1,6 @@
-.topRatedMovies {
-  margin: 50px 0 0 ;
-  height: 200vh;
-  width: 100vw;
+@import 'src/styles/footer';
 
-  &__carousel {
-    height: 80vh;
-    width: 100vw;
-  }
+.topRatedMovies {
+  width: 100%;
+  @include footer-container;
 }
