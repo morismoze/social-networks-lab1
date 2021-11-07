@@ -14,6 +14,7 @@ import CastMember from "./Overview/CastMember";
 import Trailer from "./Trailer";
 import Production from "./Production";
 import RatePicker from "./RatePicker";
+import Footer from "../../components/shared/Footer";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
 import { setActiveMovie } from "../../store/shared/movie/Movie.slice";
@@ -157,6 +158,7 @@ const MovieDetails = () => {
                             </div>
                         </Container>
                     </div>
+                    <Footer/>
                 </>
             }
         </>

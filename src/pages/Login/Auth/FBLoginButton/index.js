@@ -15,17 +15,17 @@ const FBLoginButton = () => {
 
     const dispatch = useDispatch();
 
-    const getProtectedRouteToVisit = () => {console.log(location)
-        if (location.state && location.state.from) {
-            const { state: { from: { pathname, search } } } = location;
-
-            if (search) {
-                return pathname + search;
-            } else {
-                return pathname;
-            }
-        } else {
+    const getProtectedRouteToVisit = () => {
+        if (!location.state) {
             return '/';
+        }
+
+        const { state: { pathname, search } } = location;
+
+        if (search) {
+            return pathname + search;
+        } else {
+            return pathname;
         }
     };
 

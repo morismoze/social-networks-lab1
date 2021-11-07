@@ -14,7 +14,8 @@ export const getRecommendedMovies = async (page) => {
 
         return response.data;
     } catch (err) {
-        console.error(err.response);
+        console.error(err);
+        return Promise.reject(err.statusText);
     }
 };
 
@@ -29,7 +30,8 @@ export const getTopRatedMovies = async (page) => {
 
         return response.data;
     } catch (err) {
-        console.error(err.response);
+        console.error(err);
+        return Promise.reject(err.statusText);
     }
 };
 
@@ -44,6 +46,7 @@ export const getMovieDetails = async (id) => {
 
         return response.data;
     } catch (err) {
-        console.error(err.response);
+        console.error(err);
+        return Promise.reject(err.statusText);
     }
 };

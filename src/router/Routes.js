@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import LoginPage from "../pages/Login";
 import HomePage from "../pages/Home";
@@ -10,7 +10,9 @@ import { setResponsesInterceptor } from "../api/network";
 const MainRoutes = () => {
     const navigate = useNavigate();
 
-    setResponsesInterceptor(navigate);
+    const location = useLocation();
+
+    setResponsesInterceptor(navigate, location);
 
     return (
         <Routes>

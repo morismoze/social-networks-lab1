@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 
 import RecommendedMoviesPage from "../pages/RecommendedMovies";

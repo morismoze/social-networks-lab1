@@ -31,13 +31,15 @@ export const getUserFbData = (callback, storeDataFlag = false) => {
     const fb_token = localStorage.getItem('fb_token');
 
     window.FB.api('/v12.0/me?fields=email,name,picture.type(small)', { access_token: fb_token }, (response) => {
-        const {id, email, name, picture: { data: { url } }} = response;
+        if (!response.error) {
+            const {id, email, name, picture: { data: { url } }} = response;
 
-        if (storeDataFlag) {
-            storeUserData(id, email, name, url);
+            if (storeDataFlag) {
+                storeUserData(id, email, name, url);
+            }
+
+            callback({ id, email, name, url });
         }
-
-        callback({ id, email, name, url });
     });
 };
 

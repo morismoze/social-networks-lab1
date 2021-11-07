@@ -1,4 +1,4 @@
-<svg width="1920" height="172" viewBox="0 0 1920 172" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1920" height="150" viewBox="0 0 1920 150" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="1920" height="150" fill="#ED1C24"/>
 <mask id="mask0_235:220" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="150">
 <rect width="1920" height="150" fill="#ED1C24"/>
@@ -80,7 +80,6 @@
 <path d="M1704.04 105.264L1705.77 107" stroke="#151515" stroke-opacity="0.1" stroke-width="2" stroke-miterlimit="10"/>
 </g>
 </g>
-<path d="M945 172L923.349 149.5H966.651L945 172Z" fill="#ED1C24"/>
 <defs>
 <clipPath id="clip0_235:220">
 <rect width="111.111" height="111.111" fill="white" transform="translate(-29.5554 24.4443)"/>

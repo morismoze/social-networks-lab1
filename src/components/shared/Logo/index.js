@@ -7,14 +7,16 @@ const Logo = ({
     horizontal = true,
 }) => {
     return (
-        <div className={styles.logo}>
+        <div
+            className={styles.logo}
+            style={{
+                flexDirection: horizontal ? 'row' : 'column'
+            }}
+        >
             <img
                 src={logoIcon}
                 alt={'Logo icon, movie ticket'}
                 className={styles.logo__icon}
-                style={{
-                    flexDirection: horizontal ? 'row' : 'column'
-                }}
             />
             <span className={styles.logo__name}>
                   recommend.me

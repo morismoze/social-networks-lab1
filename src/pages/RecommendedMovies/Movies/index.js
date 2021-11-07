@@ -7,6 +7,7 @@ import queryString from 'query-string';
 import WithLayoutWrapper from "../../../components/shared/withLayoutWrapper";
 import MovieCard from "../../../components/shared/MovieCard";
 import CustomPagination from "../../../components/shared/CustomPagination";
+import Footer from "../../../components/shared/Footer";
 import * as RecommendedMoviesSelectors from './redux/RecommendedMovies.selectors';
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import { actions as recommendedMoviesActions} from './redux/RecommendedMovies.actions';
@@ -80,6 +81,9 @@ const Movies = () => {
                     page={Number(page)}
                     onChange={handleOnPageChange}
                 />
+            }
+            {recommendedMoviesStatus === 'success' &&
+                <Footer/>
             }
         </>
     );

@@ -12,12 +12,14 @@ instance.interceptors.request.use((config) => {
     // @todo: handle REQUEST errors
 });
 
-export const setResponsesInterceptor = (navigate) => {
+export const setResponsesInterceptor = (navigate, location) => {
     instance.interceptors.response.use((response) => {
         return response;
-    }, (error) => {console.log(error)
+    }, (error) => {
         if (error.response.status === 401) {
-            navigate('/auth');
+            navigate('/auth', { state: location });
+
+            return Promise.reject(error.response);
         }
     });
 }
