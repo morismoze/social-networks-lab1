@@ -86,7 +86,6 @@ const Header = () => {
                                 <Item
                                     id={item.id}
                                     name={item.name}
-                                    dropdown={item.dropdown}
                                     key={item.id}
                                 />
                             </li>

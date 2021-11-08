@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     activeTab: 1,
-    isLoading: false
+    isLoading: false,
+    activeMovieGroup: 'top-rated'
 };
 
 const navigationSlice = createSlice({
@@ -14,10 +15,13 @@ const navigationSlice = createSlice({
         },
         toggleLoading: (state, action) => {
             state.isLoading = action.payload
-        }
+        },
+        setActiveMovieGroup: (state, action) => {
+            state.activeMovieGroup = action.payload;
+        },
     }
 });
 
-export const { setActiveTab, toggleLoading } = navigationSlice.actions;
+export const { setActiveTab, toggleLoading, setActiveMovieGroup } = navigationSlice.actions;
 
 export const navigationReducer = navigationSlice.reducer;

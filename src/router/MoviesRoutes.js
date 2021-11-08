@@ -16,9 +16,9 @@ const MoviesRoutes = () => {
 
     return (
         <Routes>
-            <Route exact path='/' element={<Navigate to={'/top-rated'}/>} />
-            <Route exact path='/recommended/*' element={<RecommendedMoviesPage/>} />
-            <Route exact path='/top-rated/*' element={<TopRatedMoviesPage/>} />
+            <Route exact path='' element={<Navigate to={'top-rated'}/>} />
+            <Route exact path='recommended/*' element={<RecommendedMoviesPage/>} />
+            <Route exact path='top-rated/*' element={<TopRatedMoviesPage/>} />
         </Routes>
     );
 };

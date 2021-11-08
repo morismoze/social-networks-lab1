@@ -9,3 +9,8 @@ export const isLoading = createSelector(
     (globalState) => globalState.navigationReducer,
     (state) => state.isLoading
 );
+
+export const activeMovieGroup = createSelector(
+    (globalState) => globalState.navigationReducer,
+    (state) => state.activeMovieGroup
+);

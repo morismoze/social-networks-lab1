@@ -15,7 +15,7 @@ const HomeRoutes = () => {
 
     return (
         <Routes>
-            <Route exact path='/' element={<Home/>}/>
+            <Route exact path='' element={<Home/>}/>
         </Routes>
     );
 };

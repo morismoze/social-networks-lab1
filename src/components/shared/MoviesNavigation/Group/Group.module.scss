@@ -1,0 +1,17 @@
+@import 'src/styles/colors.module';
+
+.group {
+  text-decoration: none;
+  color: $red;
+  border: 1px solid $red;
+  padding: 5px 10px;
+  font-weight: 500;
+  transition: color, background-color .25s ease-in-out;
+  font-size: 15px;
+
+  &--active,
+  &:hover {
+    background-color: $red;
+    color: $lighter-black;
+  }
+}

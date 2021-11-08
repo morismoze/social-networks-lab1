@@ -5,16 +5,6 @@ export const HEADER_NAV_ITEMS = [
     },
     {
         id: 'movies',
-        name: 'Movies',
-        dropdown: [
-            {
-                id: 'recommended',
-                name: 'Recommended'
-            },
-            {
-                id: 'top-rated',
-                name: 'Top rated'
-            },
-        ]
+        name: 'Movies'
     },
 ];

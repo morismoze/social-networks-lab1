@@ -30,6 +30,10 @@
     transform-origin: bottom;
   }
 
+  &:hover:before {
+    transform: scaleY(1);
+  }
+
   &.active:before {
     transform: scaleY(1);
   }

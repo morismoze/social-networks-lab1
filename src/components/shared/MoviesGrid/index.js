@@ -11,6 +11,7 @@ import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import { actions as userActivityActions} from '../../../store/shared/userActivity/UserActivity.actions';
 import styles from './MoviesGrid.module.scss';
 import Footer from "../Footer";
+import MoviesNavigation from "../MoviesNavigation";
 
 const MoviesGrid = ({
     status,
@@ -54,6 +55,9 @@ const MoviesGrid = ({
 
     return (
         <WithLayoutWrapper className={styles.moviesContainer}>
+            {status === 'success' &&
+                <MoviesNavigation/>
+            }
             <div className={styles.moviesContainer__wrapper}>
                 {status === 'success' &&
                     movies.map((movie, index) => (
