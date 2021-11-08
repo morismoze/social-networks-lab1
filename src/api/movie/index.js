@@ -22,7 +22,7 @@ export const getRecommendedMovies = async (page) => {
 export const getTopRatedMovies = async (page) => {
     try {
         const response = await instance.get(
-            moviePaths.getTopRatedMovies(page),
+            moviePaths.getTopRatedMovies(page, RESULTS_PER_PAGE),
             {
                 headers: defaultHeaders
             }

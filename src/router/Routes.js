@@ -3,8 +3,8 @@ import React from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import LoginPage from "../pages/Login";
-import HomePage from "../pages/Home";
-import MoviesPage from "../pages/Movies";
+import HomePage from "../pages/HomePage";
+import MoviesPage from "../pages/MoviesPage";
 import { setResponsesInterceptor } from "../api/network";
 
 const MainRoutes = () => {

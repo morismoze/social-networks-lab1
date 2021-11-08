@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 
 import RecommendedMoviesPage from "../pages/RecommendedMovies";
@@ -16,7 +16,7 @@ const MoviesRoutes = () => {
 
     return (
         <Routes>
-            <Route exact path='/' />
+            <Route exact path='/' element={<Navigate to={'/top-rated'}/>} />
             <Route exact path='/recommended/*' element={<RecommendedMoviesPage/>} />
             <Route exact path='/top-rated/*' element={<TopRatedMoviesPage/>} />
         </Routes>

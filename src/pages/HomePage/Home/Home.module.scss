@@ -1,0 +1,5 @@
+@import 'src/styles/footer';
+
+.home {
+  @include footer-container;
+}

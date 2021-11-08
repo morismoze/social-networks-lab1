@@ -9,7 +9,7 @@ const TopRatedMoviesRoutes = () => {
     return (
         <Routes>
             <Route exact path='/' element={<Movies/>} />
-            <Route path='/details/:id' element={<MovieDetails/>} />
+            <Route path='/:id/details/' element={<MovieDetails/>} />
         </Routes>
     );
 };
