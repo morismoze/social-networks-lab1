@@ -30,14 +30,10 @@ const FBLoginButton = () => {
     };
 
     const onLoginClick = () => {
-        const callback = ({id, email, name, url}) => {
-            dispatch(storeUserInfo({id, email, name, url}));
-
+        fbLogin(() => {
             const protectedRouteToVisit = getProtectedRouteToVisit();
             navigate(protectedRouteToVisit, { replace: true });
-        };
-
-        fbLogin(callback);
+        });
     };
 
     return (

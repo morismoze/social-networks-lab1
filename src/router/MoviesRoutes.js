@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 
 import RecommendedMoviesPage from "../pages/RecommendedMovies";
 import TopRatedMoviesPage from "../pages/TopRatedMovies";
+import PopularMoviesPage from "../pages/PopularMovies";
 import { setActiveTab } from "../store/shared/navigation/Navigation.slice";
 
 const MoviesRoutes = () => {
@@ -19,6 +20,7 @@ const MoviesRoutes = () => {
             <Route exact path='' element={<Navigate to={'top-rated'}/>} />
             <Route exact path='recommended/*' element={<RecommendedMoviesPage/>} />
             <Route exact path='top-rated/*' element={<TopRatedMoviesPage/>} />
+            <Route exact path='popular/*' element={<PopularMoviesPage/>} />
         </Routes>
     );
 };

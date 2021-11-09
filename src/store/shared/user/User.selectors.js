@@ -15,7 +15,7 @@ export const email = createSelector(
     (state) => state.email
 );
 
-export const pictureLink = createSelector(
+export const pictureUrl = createSelector(
     (globalState) => globalState.userReducer,
-    (state) => state.pictureLink
+    (state) => state.pictureUrl
 );

@@ -10,7 +10,7 @@ const LoginPage = () => {
         <div className={styles.container}>
             <Fade
                 in={true}
-                timeout={500}
+                timeout={1000}
             >
                 <div className={styles.container__imgWrapper}>
                     <div className={styles.container__img}/>

@@ -12,10 +12,11 @@ import Logo from "../Logo";
 import Menu from "../../Menu";
 import Weather from "../../Weather";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
+import { actions as userActions } from "../../../store/shared/user/User.actions";
 import useScrollPosition from "../../../hooks/useScrollPosition";
 import { storeUserInfo } from "../../../store/shared/user/User.slice";
 import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
-import { fbLogout, getUserFbData } from "../../../api/facebook";
+import { fbLogout } from "../../../api/facebook";
 import { HEADER_NAV_ITEMS } from "../../../constants/header";
 import styles from './Header.module.scss';
 
@@ -30,7 +31,7 @@ const Header = () => {
 
     const userName = useSelector(UserSelectors.name);
 
-    const userPictureLink = useSelector(UserSelectors.pictureLink);
+    const userPictureUrl = useSelector(UserSelectors.pictureUrl);
 
     const scrollPosition = useScrollPosition();
 
@@ -52,11 +53,7 @@ const Header = () => {
     };
 
     const fetchUserData = () => {
-        const callback = ({id, email, name, url}) => {
-            dispatch(storeUserInfo({id, email, name, url}));
-        };
-
-        getUserFbData(callback, false);
+        dispatch(userActions.getUserData());
     };
 
     useEffect( () => {
@@ -100,7 +97,7 @@ const Header = () => {
                     >
                         <User
                             name={userName}
-                            pictureLink={userPictureLink}
+                            pictureUrl={userPictureUrl}
                         />
                     </div>
                 </div>

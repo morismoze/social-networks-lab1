@@ -27,18 +27,15 @@ export const initFacebookSdk = () => {
     });
 };
 
-export const getUserFbData = (callback, storeDataFlag = false) => {
+export const getUserFbData = (callback) => {
     const fb_token = localStorage.getItem('fb_token');
 
     window.FB.api('/v12.0/me?fields=email,name,picture.type(small)', { access_token: fb_token }, (response) => {
         if (!response.error) {
-            const {id, email, name, picture: { data: { url } }} = response;
+            const { id, email, name, picture: { data: { url } } } = response;
 
-            if (storeDataFlag) {
-                storeUserData(id, email, name, url);
-            }
-
-            callback({ id, email, name, url });
+            storeUserData(id, email, name, url);
+            callback();
         }
     });
 };
@@ -47,7 +44,7 @@ export const fbLogin = (callback) => {
     window.FB.login((response) => {
         if (response.status === 'connected') {
             localStorage.setItem('fb_token', response.authResponse.accessToken);
-            getUserFbData(callback, true);
+            getUserFbData(callback);
         }
     }, { scope: 'public_profile, email' });
 };

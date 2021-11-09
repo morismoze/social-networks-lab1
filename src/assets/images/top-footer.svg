@@ -1,7 +1,7 @@
-<svg width="1920" height="150" viewBox="0 0 1920 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="1920" height="150" fill="#ED1C24"/>
+<svg width="100%" height="100%" viewBox="0 0 1920 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="100%" height="100%" fill="#ED1C24"/>
 <mask id="mask0_235:220" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="150">
-<rect width="1920" height="150" fill="#ED1C24"/>
+<rect width="100%" height="100%" fill="#ED1C24"/>
 </mask>
 <g mask="url(#mask0_235:220)">
 <circle cx="26" cy="80" r="90" stroke="#151515" stroke-opacity="0.1" stroke-width="20"/>

@@ -7,7 +7,7 @@ import Image from "../../Image";
 
 const User = ({
     name,
-    pictureLink
+    pictureUrl
 }) => {
     const [ isLoaded, setIsLoaded ] = useState(false);
 
@@ -30,7 +30,7 @@ const User = ({
                 <Image
                     className={styles.user__img}
                     alt={name}
-                    src={pictureLink}
+                    src={pictureUrl}
                     fallback={Fallback}
                     onLoad={handleOnLoad}
                 />

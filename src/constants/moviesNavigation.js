@@ -4,6 +4,10 @@ export const MOVIES_GROUPS = [
         name: 'Top rated'
     },
     {
+        id: 'popular',
+        name: 'Popular'
+    },
+    {
         id: 'recommended',
         name: 'Recommended'
     }

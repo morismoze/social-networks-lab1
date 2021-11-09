@@ -2,4 +2,8 @@
 
 .home {
   @include footer-container;
+
+  &__carouselWrapper {
+    height: 70vh;
+  }
 }

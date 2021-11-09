@@ -7,12 +7,16 @@ import { recommendedMoviesReducer } from "../pages/RecommendedMovies/Movies/redu
 import { weatherReducer } from "../components/Weather/redux/Weather.slice";
 import { movieReducer } from "./shared/movie/Movie.slice";
 import { userActivityReducer } from "./shared/userActivity/UserActivity.slice";
+import { popularMoviesReducer } from "../pages/PopularMovies/Movies/redux/PopularMovies.slice";
+import { featuredMoviesReducer } from "../pages/HomePage/Home/redux/FeaturedMovies/FeaturedMovies.slice";
 
 export const rootReducer = combineReducers({
     movieReducer,
     navigationReducer,
     recommendedMoviesReducer,
     topRatedMoviesReducer,
+    popularMoviesReducer,
+    featuredMoviesReducer,
     userActivityReducer,
     userReducer,
     weatherReducer,
