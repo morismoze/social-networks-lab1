@@ -13,7 +13,6 @@ const FeaturedMovie = ({
                 backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`
             }}
         >
-            <div className={styles.featuredMovie__backdropShade}/>
             <MovieData
                 name={movie.title}
                 genres={movie.genre_ids}

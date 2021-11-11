@@ -1,8 +1,27 @@
+@import 'src/styles/colors.module';
+
 .carousel {
   height: 100%;
+
+  .awssld__bullets--active {
+    background-color: red;
+  }
 
   &__item {
     height: 100%;
     width: 100%;
+  }
+
+  & nav {
+    bottom: 30px;
+    right: 40px;
+    width: unset;
+    z-index: 2;
+
+    & button {
+      width: 8px;
+      height: 8px;
+      background-color: $white;
+    }
   }
 }

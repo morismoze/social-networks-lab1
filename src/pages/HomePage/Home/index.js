@@ -31,8 +31,7 @@ const Home = () => {
                         items={featuredMoviesStatus === 'success' &&
                             featuredMovies.map((movie, index) => (<FeaturedMovie movie={movie} key={index}/>))
                         }
-                        autoplay={false}
-                        animation='fade'
+                        interval={8000}
                     />
                 </div>
                 <Footer/>

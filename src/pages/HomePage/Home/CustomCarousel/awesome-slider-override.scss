@@ -1,0 +1,6 @@
+@import 'src/styles/colors.module';
+
+.awssld__bullets--active {
+  background-color: transparent !important;
+  border: 1px solid $white !important;
+}

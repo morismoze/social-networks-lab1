@@ -1,4 +1,3 @@
-@import 'src/styles/img-shade';
 @import 'src/styles/colors.module';
 
 .featuredMovie {
@@ -8,8 +7,4 @@
   background-repeat: no-repeat;
   background-color: $dark-gray;
   position: relative;
-
-  &__backdropShade {
-    @include img-shade;
-  }
 }
