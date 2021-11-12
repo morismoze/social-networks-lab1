@@ -17,10 +17,10 @@ const MoviesRoutes = () => {
 
     return (
         <Routes>
-            <Route exact path='' element={<Navigate to={'top-rated'}/>} />
-            <Route exact path='recommended/*' element={<RecommendedMoviesPage/>} />
-            <Route exact path='top-rated/*' element={<TopRatedMoviesPage/>} />
-            <Route exact path='popular/*' element={<PopularMoviesPage/>} />
+            <Route path='' element={<Navigate to={'top-rated'}/>} />
+            <Route path='recommended/*' element={<RecommendedMoviesPage/>} />
+            <Route path='top-rated/*' element={<TopRatedMoviesPage/>} />
+            <Route path='popular/*' element={<PopularMoviesPage/>} />
         </Routes>
     );
 };

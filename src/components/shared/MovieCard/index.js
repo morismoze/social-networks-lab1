@@ -45,7 +45,7 @@ const MovieCard = ({
     return (
         <div className={styles.movieCard}>
             <Link
-                to={location.pathname + encodeURI(`/${id}/details`)}
+                to={`${location.pathname}/${id}/details`}
                 className={styles.movieCard__link}
             >
                 <LazyLoadedImage

@@ -14,6 +14,7 @@ const FeaturedMovie = ({
             }}
         >
             <MovieData
+                id={movie.id}
                 name={movie.title}
                 genres={movie.genre_ids}
                 rating={movie.vote_average}

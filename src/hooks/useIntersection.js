@@ -5,7 +5,7 @@ let listenerCallbacks = new WeakMap();
 let observer;
 
 const handleIntersections = (entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
         if (listenerCallbacks.has(entry.target)) {
             let cb = listenerCallbacks.get(entry.target);
 
@@ -19,7 +19,7 @@ const handleIntersections = (entries) => {
 }
 
 const getIntersectionObserver = () => {
-    if (observer === undefined) {
+    if (!observer) {
         observer = new IntersectionObserver(handleIntersections, {
             threshold: '0.15',
         });
@@ -30,9 +30,9 @@ const getIntersectionObserver = () => {
 
 export const useIntersection = (elem, callback) => {
     useEffect(() => {
-        if (elem.current !== undefined) {
-            let target = elem.current;
-            let observer = getIntersectionObserver();
+        if (elem.current) {
+            const target = elem.current;
+            const observer = getIntersectionObserver();
 
             listenerCallbacks.set(target, callback);
             observer.observe(target);

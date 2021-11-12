@@ -22,7 +22,7 @@ const CustomCarousel = ({
     return (
         <AutoplaySlider
             animation={animation}
-            play={autoplay}
+            play={false}
             organicArrows={false}
             interval={interval}
             className={styles.carousel}

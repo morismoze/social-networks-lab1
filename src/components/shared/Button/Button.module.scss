@@ -1,0 +1,16 @@
+@import 'src/styles/colors.module';
+
+.detailsButton {
+  padding: 6px 15px;
+  background-color: $red;
+  color: $lighter-black;
+  font-weight: 500;
+  border: 2px solid $red;
+  transition: all .25s ease-in-out;
+  cursor: pointer;
+
+  &.noFill {
+    background-color: transparent;
+    color: $red;
+  }
+}

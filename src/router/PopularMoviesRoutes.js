@@ -8,8 +8,8 @@ import Movies from "../pages/PopularMovies/Movies";
 const PopularMoviesRoutes = () => {
     return (
         <Routes>
-            <Route exact path='' element={<Movies/>} />
-            <Route path={':id/details'} element={<MovieDetails/>} />
+            <Route path='' element={<Movies/>} />
+            <Route path=':id/details' element={<MovieDetails/>} />
         </Routes>
     );
 };
