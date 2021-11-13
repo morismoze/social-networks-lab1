@@ -7,7 +7,7 @@ import { Container } from "@mui/material";
 import Backdrop from "./Backdrop";
 import Poster from "./Poster";
 import Sidenav from "./Sidenav";
-import WithParagraphLayoutWrapper from "./withParagraphLayoutWrapper";
+import ParagraphLayoutWrapper from "./ParagraphLayoutWrapper";
 import Overview from "./Overview";
 import Tagline from "./Overview/Tagline";
 import CastMember from "./Overview/CastMember";
@@ -83,7 +83,7 @@ const MovieDetails = () => {
                                     switch (item) {
                                         case arr[0]: {
                                             return (
-                                                <WithParagraphLayoutWrapper
+                                                <ParagraphLayoutWrapper
                                                     title={item}
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
@@ -96,12 +96,12 @@ const MovieDetails = () => {
                                                         budget={budget}
                                                         spokenLanguages={spokenLanguages}
                                                     />
-                                                </WithParagraphLayoutWrapper>
+                                                </ParagraphLayoutWrapper>
                                             )
                                         }
                                         case arr[1]: {
                                             return (
-                                                <WithParagraphLayoutWrapper
+                                                <ParagraphLayoutWrapper
                                                     title={item}
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
@@ -123,12 +123,12 @@ const MovieDetails = () => {
                                                             />
                                                         ))}
                                                     </div>
-                                                </WithParagraphLayoutWrapper>
+                                                </ParagraphLayoutWrapper>
                                             )
                                         }
                                         case arr[2]: {
                                             return (
-                                                <WithParagraphLayoutWrapper
+                                                <ParagraphLayoutWrapper
                                                     title={item}
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
@@ -137,18 +137,18 @@ const MovieDetails = () => {
                                                         companies={details.production_companies}
                                                         countries={details.production_countries}
                                                     />
-                                                </WithParagraphLayoutWrapper>
+                                                </ParagraphLayoutWrapper>
                                             )
                                         }
                                         case arr[3]: {
                                             return (
-                                                <WithParagraphLayoutWrapper
+                                                <ParagraphLayoutWrapper
                                                     title={item}
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >
                                                     <Trailer info={ytVideo}/>
-                                                </WithParagraphLayoutWrapper>
+                                                </ParagraphLayoutWrapper>
                                             )
                                         }
                                     }

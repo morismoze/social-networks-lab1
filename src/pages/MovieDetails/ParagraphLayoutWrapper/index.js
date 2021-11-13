@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import classNames from 'classnames';
 
-import styles from './WithParagraphLayoutWrapper.module.scss';
+import styles from './ParagraphLayoutWrapper.module.scss';
 
-const WithParagraphLayoutWrapper = ({
+const ParagraphLayoutWrapper = ({
     children,
     title,
     className
@@ -37,5 +37,5 @@ const WithParagraphLayoutWrapper = ({
     );
 };
 
-export default WithParagraphLayoutWrapper;
+export default ParagraphLayoutWrapper;
 

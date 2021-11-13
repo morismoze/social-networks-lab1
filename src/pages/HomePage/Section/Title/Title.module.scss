@@ -1,0 +1,32 @@
+@import 'src/styles/colors.module';
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__name {
+    color: $white;
+    margin: 0;
+    font-size: 22px;
+    position: relative;
+    padding-left: 15px;
+    font-weight: 600;
+    line-height: 35px;
+
+    &.dark {
+      color: $lighter-black;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 7px;
+      height: 100%;
+      background-color: $red;
+    }
+  }
+}

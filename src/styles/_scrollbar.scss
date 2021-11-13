@@ -1,0 +1,21 @@
+@import 'src/styles/colors.module';
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    display: block !important;
+    height: 8px;
+
+    &-track {
+      background-color: transparent;
+    }
+
+    &-thumb:horizontal {
+      background-color: $lighter-gray;
+      border-radius: 20px;
+    }
+
+    &-thumb:hover {
+      background-color: darken($lighter-gray, 10%);
+    }
+  }
+}

@@ -9,7 +9,7 @@ import './awesome-slider-override.scss';
 
 const CustomCarousel = ({
     items,
-    autoplay = true,
+    autoplay,
     animation = 'open',
     interval
 }) => {
@@ -22,7 +22,7 @@ const CustomCarousel = ({
     return (
         <AutoplaySlider
             animation={animation}
-            play={false}
+            play={autoplay}
             organicArrows={false}
             interval={interval}
             className={styles.carousel}

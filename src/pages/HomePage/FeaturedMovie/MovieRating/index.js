@@ -3,8 +3,8 @@ import React from 'react';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
-import { getDecimalRatingValue, setFixedNumberOfDecimals } from "../../../../../util/string";
-import colors from '../../../../../styles/colors.module.scss';
+import { getDecimalRatingValue, setFixedNumberOfDecimals } from "../../../../util/string";
+import colors from '../../../../styles/colors.module.scss';
 import styles from './MovieRating.module.scss';
 
 export const NUMBER_OF_STARS = 5;

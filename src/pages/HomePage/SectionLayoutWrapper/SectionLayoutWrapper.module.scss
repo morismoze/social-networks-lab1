@@ -1,0 +1,17 @@
+@import 'src/styles/colors.module';
+
+.sectionWrapper {
+  margin: 20px 0 60px;
+
+  &.light {
+    background-color: $white;
+  }
+
+  &__container {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 30px 40px 0 !important;
+  }
+}

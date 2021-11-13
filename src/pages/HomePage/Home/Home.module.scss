@@ -1,9 +1,22 @@
 @import 'src/styles/footer';
+@import 'src/styles/scrollbar';
 
 .home {
   @include footer-container;
 
   &__carouselWrapper {
     height: 70vh;
+  }
+
+  &__sectionMoviesWrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: nowrap;
+    padding-bottom: 15px;
+    overflow-x: auto;
+    max-width: 100%;
+
+    @include scrollbar;
   }
 }

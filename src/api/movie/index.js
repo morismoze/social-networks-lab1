@@ -3,8 +3,6 @@ import { defaultHeaders, instance } from "../network";
 
 const RESULTS_PER_PAGE = 22;
 
-const HOMEPAGE_CAROUSEL_ITEMS = 5;
-
 export const getRecommendedMovies = async (page) => {
     try {
         const response = await instance.get(
@@ -56,7 +54,23 @@ export const getPopularMovies = async (page) => {
 export const getFeaturedMovies = async (limit) => {
     try {
         const response = await instance.get(
-            moviePaths.getFeaturedMovie(limit),
+            moviePaths.getFeaturedMovies(limit),
+            {
+                headers: defaultHeaders
+            }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};
+
+export const getMoviesInTheaters = async (limit) => {
+    try {
+        const response = await instance.get(
+            moviePaths.getMoviesInTheaters(limit),
             {
                 headers: defaultHeaders
             }

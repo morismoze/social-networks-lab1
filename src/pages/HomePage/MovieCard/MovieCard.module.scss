@@ -1,0 +1,35 @@
+@import 'src/styles/colors.module';
+
+.movieCard {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__link {
+    display: block;
+    height: 270px;
+    border-radius: 7px;
+    overflow: hidden;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__name {
+    color: $white;
+    font-weight: 600;
+    width: 100%;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &--dark {
+      color: $lighter-black;
+    }
+  }
+}

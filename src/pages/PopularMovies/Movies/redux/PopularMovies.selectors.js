@@ -1,10 +1,8 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-import { sortObjectsByProperty } from "../../../../util/string";
-
 export const movies = createSelector(
     (state) => state.popularMoviesReducer,
-    (state) => state.movies?.slice().sort(sortObjectsByProperty('popularity'))
+    (state) => state.movies
 );
 
 export const status = createSelector(

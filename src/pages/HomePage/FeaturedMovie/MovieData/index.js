@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 import MovieRating from "../MovieRating";
-import Button from "../../../../../components/shared/Button";
+import Button from "../../../../components/shared/Button";
 import styles from './MovieData.module.scss';
 
 const MovieData = ({
