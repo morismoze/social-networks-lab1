@@ -59,7 +59,7 @@ const userSlice = createSlice({
             })
             .addCase(actions.addToWatchlist.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.likes = [...state.watchlist, action.payload]
+                state.watchlist = [...state.watchlist, action.payload]
             })
             .addCase(actions.addToWatchlist.rejected, (state, action) => {
                 state.status = 'failure';
@@ -69,7 +69,7 @@ const userSlice = createSlice({
             })
             .addCase(actions.removeFromWatchlist.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.likes = [...state.watchlist.filter(id => id !== action.payload)]
+                state.watchlist = [...state.watchlist.filter(id => id !== action.payload)]
             })
             .addCase(actions.removeFromWatchlist.rejected, (state, action) => {
                 state.status = 'failure';

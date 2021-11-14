@@ -23,7 +23,11 @@
     font-weight: 400;
   }
 
-  &:hover {
+  &--active:hover {
+    background-color: rgba($black, .5);
+  }
+
+  &:not(&--active):hover {
     background-color: rgba($dark-gray, .85);
   }
 }

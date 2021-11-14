@@ -37,11 +37,11 @@ export const getUserFbData = (callback) => {
 
             // @todo: improve this logic !!!
             getUserLocation(({ lat, lon }) => {
-                getUserCountry(lat, lon)
-                    .then((result) => {
-                        storeUserData(id, email, name, url, result.data.features[0])
-                            .then(() => callback());
-                    });
+                getUserCountry(lat, lon).then((result) => {
+                    storeUserData(id, email, name, url, result.data.features[0])
+                        .then(() => callback())
+                        .catch(() => callback());
+                });
             });
         }
     });

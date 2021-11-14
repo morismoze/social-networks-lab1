@@ -14,7 +14,7 @@ const Heart = ({
         <StyledTooltip title={active ? 'Like' : 'Dislike'}>
             <div
                 className={styles.heartReaction}
-                onClick={onClick()}
+                onClick={onClick}
             >
                 <AiFillHeart
                     size={25}

@@ -45,7 +45,7 @@ export const addToLikes = async ({ userId, movieId }) => {
     }
 };
 
-export const removeFromLikes = async ({ userId, movieId }) => {
+export const removeFromLikes = async ({ userId, movieId }) => {console.log(movieId)
     try {
         const response = await instance.post(
             user.removeFromLikes(userId),
