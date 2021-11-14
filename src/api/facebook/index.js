@@ -1,4 +1,5 @@
-import { storeUserData } from "../user";
+import {getUserCountry, storeUserData} from "../user";
+import { getUserLocation } from "../../util/location";
 
 export const initFacebookSdk = () => {
     return new Promise(resolve => {
@@ -34,8 +35,14 @@ export const getUserFbData = (callback) => {
         if (!response.error) {
             const { id, email, name, picture: { data: { url } } } = response;
 
-            storeUserData(id, email, name, url);
-            callback();
+            // @todo: improve this logic !!!
+            getUserLocation(({ lat, lon }) => {
+                getUserCountry(lat, lon)
+                    .then((result) => {
+                        storeUserData(id, email, name, url, result.data.features[0])
+                            .then(() => callback());
+                    });
+            });
         }
     });
 };

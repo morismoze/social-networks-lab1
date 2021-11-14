@@ -1,0 +1,29 @@
+@import 'src/styles/colors.module';
+
+.ribbon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  background-color: rgba($black, .5);
+  clip-path: polygon(100% 0%, 100% 100%, 50% 80%, 0 100%, 0 0);;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+  padding: 0 10px 10px 10px;
+  transition: background-color .2s ease-in-out;
+
+  &--active {
+    background-color: rgba($red, .5);
+  }
+
+  &__text {
+    font-size: 25px;
+    color: $white;
+    font-weight: 400;
+  }
+
+  &:hover {
+    background-color: rgba($dark-gray, .85);
+  }
+}

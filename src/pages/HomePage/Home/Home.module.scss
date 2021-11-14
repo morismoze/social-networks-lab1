@@ -9,20 +9,19 @@
   }
 
   &__sectionMoviesWrapper {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-auto-flow: column;
     padding-bottom: 15px;
+    gap: 20px;
     overflow-x: auto;
     max-width: 100%;
+    width: 100%;
 
     @include scrollbar;
   }
 
-  &__lightSection {
-    background-image: radial-gradient($red 1px, transparent 0);
-    background-size: 40px 40px;
-    background-position-y: 5px;
+  &__darkSection {
+    background: rgb(62,62,62);
+    background: radial-gradient(circle, rgba(62,62,62,1) 0%, rgba(21,21,21,1) 0%, rgba(226,226,226,1) 100%);
   }
 }

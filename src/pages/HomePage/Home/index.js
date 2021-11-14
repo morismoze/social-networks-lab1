@@ -31,7 +31,7 @@ const Home = () => {
     const regionMoviesStatus = useSelector(RegionMoviesSelectors.status);
     const regionMovies = useSelector(RegionMoviesSelectors.movies);
 
-    const userCountry = useSelector(UserSelectors.country);
+    const userLocation = useSelector(UserSelectors.location);
 
     useEffect(() => {
         dispatch(featuredMoviesActions.getMoviesAndToggleLoader(NUMBER_OF_CAROUSEL_ITEMS));
@@ -39,13 +39,13 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        if (userCountry) {
+        if (userLocation) {
             dispatch(regionMoviesActions.getMoviesAndToggleLoader({
-                country: userCountry.code,
+                country: userLocation.properties.country_code,
                 limit: 20
             }));
         }
-    }, [userCountry]);
+    }, [userLocation]);
 
     return (
         <WithLayoutWrapper>
@@ -53,8 +53,13 @@ const Home = () => {
                 <div className={styles.home__carouselWrapper}>
                     <CustomCarousel
                         items={featuredMoviesStatus === 'success' &&
-                            featuredMovies.map((movie, index) => (<FeaturedMovie movie={movie} key={index}/>))
-                        }
+                            featuredMovies.map((movie, index) => (
+                                <FeaturedMovie
+                                    movie={movie}
+                                    key={index}
+                                />
+                            )
+                        )}
                         autoplay
                         interval={8000}
                     />
@@ -62,19 +67,30 @@ const Home = () => {
                 <SectionLayoutWrapper title={'In Theatres'}>
                     <div className={styles.home__sectionMoviesWrapper}>
                         {moviesInTheatersStatus === 'success' &&
-                            moviesInTheaters.map((movie) => <MovieCard movie={movie}/>)
-                        }
+                            moviesInTheaters.map((movie, index) => (
+                                <MovieCard
+                                    movie={movie}
+                                    key={index}
+                                />
+                            )
+                        )}
                     </div>
                 </SectionLayoutWrapper>
                 <SectionLayoutWrapper
-                    title={`Top Picks in ${userCountry && userCountry.country}`}
+                    title={`Top Picks in ${userLocation && userLocation.properties.country}`}
                     mode={'light'}
-                    className={styles.home__lightSection}
+                    className={styles.home__darkSection}
                 >
                     <div className={styles.home__sectionMoviesWrapper}>
                         {regionMoviesStatus === 'success' &&
-                            regionMovies.map((movie) => <MovieCard movie={movie} mode={'dark'}/>)
-                        }
+                            regionMovies.map((movie, index) => (
+                                <MovieCard
+                                    movie={movie}
+                                    mode={'dark'}
+                                    key={index}
+                                />
+                            )
+                        )}
                     </div>
                 </SectionLayoutWrapper>
                 <Footer/>

@@ -8,7 +8,9 @@ const initialState = {
     name: '',
     email: '',
     pictureUrl: null,
-    country: null
+    likes: [],
+    watchlist: [],
+    location: null
 };
 
 const userSlice = createSlice({
@@ -25,21 +27,51 @@ const userSlice = createSlice({
                 state.name = action.payload.name;
                 state.email = action.payload.email;
                 state.pictureUrl = action.payload.pictureUrl;
+                state.likes = action.payload.likes;
+                state.watchlist = action.payload.watchlist;
+                state.location = action.payload.location;
             })
             .addCase(actions.getUserData.rejected, (state, action) => {
                 state.status = 'failure';
             })
-            .addCase(actions.getUserCountry.pending, (state, action) => {
+            .addCase(actions.addToLikes.pending, (state, action) => {
                 state.status = 'waiting';
             })
-            .addCase(actions.getUserCountry.fulfilled, (state, action) => {
+            .addCase(actions.addToLikes.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.country = {
-                    country: action.payload.features[0].properties.country,
-                    code: action.payload.features[0].properties.country_code
-                };
+                state.likes = [...state.likes, action.payload]
             })
-            .addCase(actions.getUserCountry.rejected, (state, action) => {
+            .addCase(actions.addToLikes.rejected, (state, action) => {
+                state.status = 'failure';
+            })
+            .addCase(actions.removeFromLikes.pending, (state, action) => {
+                state.status = 'waiting';
+            })
+            .addCase(actions.removeFromLikes.fulfilled, (state, action) => {
+                state.status = 'success';
+                state.likes = [...state.likes.filter(id => id !== action.payload)]
+            })
+            .addCase(actions.removeFromLikes.rejected, (state, action) => {
+                state.status = 'failure';
+            })
+            .addCase(actions.addToWatchlist.pending, (state, action) => {
+                state.status = 'waiting';
+            })
+            .addCase(actions.addToWatchlist.fulfilled, (state, action) => {
+                state.status = 'success';
+                state.likes = [...state.watchlist, action.payload]
+            })
+            .addCase(actions.addToWatchlist.rejected, (state, action) => {
+                state.status = 'failure';
+            })
+            .addCase(actions.removeFromWatchlist.pending, (state, action) => {
+                state.status = 'waiting';
+            })
+            .addCase(actions.removeFromWatchlist.fulfilled, (state, action) => {
+                state.status = 'success';
+                state.likes = [...state.watchlist.filter(id => id !== action.payload)]
+            })
+            .addCase(actions.removeFromWatchlist.rejected, (state, action) => {
                 state.status = 'failure';
             })
     }

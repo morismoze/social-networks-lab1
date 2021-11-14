@@ -8,20 +8,14 @@ import LazyLoadedImage from "../LazyLoadedImage";
 import Heart from "../reactions/Heart";
 import MovieCardReleaseDate from "./MovieCardReleaseDate";
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
-import * as UserActivitySelectors from '../../../store/shared/userActivity/UserActivity.selectors';
-import { actions as userActions } from '../../../store/shared/userActivity/UserActivity.actions';
+import { actions as userActions } from '../../../store/shared/user/User.actions';
 import Fallback from '../../../assets/images/movie-card-fallback.png';
 import styles from './MovieCard.module.scss';
 
 const MovieCard = ({
-    id,
-    name,
-    posterUrl,
+    movie,
     width,
     height,
-    rating,
-    releaseDate,
-    adult,
     index
 }) => {
     const dispatch = useDispatch();
@@ -30,49 +24,52 @@ const MovieCard = ({
 
     const userId = useSelector(UserSelectors.id);
 
-    const likedMovies = useSelector(UserActivitySelectors.likedMovies);
+    const likedMovies = useSelector(UserSelectors.likedMovies);
+
+    const isLiked = likedMovies.find(movieId => movieId === movie.id);
 
     const handleMovieLike = () => {
-        const isLiked = likedMovies.find(movieId => movieId === id);
-
         if (isLiked) {
-            dispatch(userActions.storeUserUnlike({ userId, movieId: id }));
+            dispatch(userActions.removeFromLikes({ userId, movieId: movie.id }));
         } else {
-            dispatch(userActions.storeUserLike({ userId, movieId: id }));
+            dispatch(userActions.addToLikes({ userId, movieId: movie.id }));
         }
     };
 
     return (
         <div className={styles.movieCard}>
             <Link
-                to={`${location.pathname}/${id}/details`}
+                to={`${location.pathname}/${movie.id}/details`}
                 className={styles.movieCard__link}
             >
                 <LazyLoadedImage
-                    src={posterUrl}
+                    src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}` : null}
                     fallback={Fallback}
                     width={width}
                     height={height}
-                    alt={name}
+                    alt={movie.title}
                     index={index}
                 />
                 <span
                     className={styles.movieCard__name}
-                    title={name}
+                    title={movie.title}
                 >
-                    {name}
+                    {movie.title}
                 </span>
             </Link>
             <div className={styles.movieCard__dataWrapper}>
                 <div className={styles.movieCard__reactionsWrapper}>
-                    <Heart onClick={handleMovieLike} movieId={id}/>
-                    {adult &&
+                    <Heart
+                        onClick={handleMovieLike}
+                        active={isLiked}
+                    />
+                    {movie.adult &&
                         <span className={styles.movieCard__adult}>18+</span>
                     }
                 </div>
                 <div className={styles.movieCard__yearRatingWrapper}>
-                    <MovieCardReleaseDate releaseDate={releaseDate}/>
-                    <MovieCardRating rating={rating}/>
+                    <MovieCardReleaseDate releaseDate={movie.release_date}/>
+                    <MovieCardRating rating={movie.vote_average}/>
                 </div>
             </div>
         </div>

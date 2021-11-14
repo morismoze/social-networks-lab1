@@ -12,11 +12,11 @@
     stroke: $dark-red !important;
     stroke-width: 80 !important;
     fill: transparent !important;
-  }
 
-  &__isActive {
-    animation: scaleAnimation .8s ease-in-out;
-    fill: $dark-red !important;
+    &--active {
+      animation: scaleAnimation .8s ease-in-out;
+      fill: $dark-red !important;
+    }
   }
 
   @keyframes scaleAnimation {

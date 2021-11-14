@@ -1,11 +1,11 @@
 import { user } from "./paths";
 import { defaultHeaders, instance } from "../network";
 
-export const storeUserData = async (id, email, name, url) => {
+export const storeUserData = async (id, email, name, url, location) => {
     try {
         const response = await instance.post(
             user.storeUserData,
-            { id, email, name, url },
+            { id, email, name, url, location },
             { headers: defaultHeaders }
         );
 
@@ -30,10 +30,10 @@ export const getUserData = async () => {
     }
 };
 
-export const storeUserLike = async ({ userId, movieId }) => {
+export const addToLikes = async ({ userId, movieId }) => {
     try {
         const response = await instance.post(
-            user.storeUserLike(userId),
+            user.addToLikes(userId),
             { movieId: movieId },
             { headers: defaultHeaders }
         );
@@ -45,10 +45,10 @@ export const storeUserLike = async ({ userId, movieId }) => {
     }
 };
 
-export const storeUserUnlike = async ({ userId, movieId }) => {
+export const removeFromLikes = async ({ userId, movieId }) => {
     try {
         const response = await instance.post(
-            user.storeUserUnlike(userId),
+            user.removeFromLikes(userId),
             { movieId: movieId },
             { headers: defaultHeaders }
         );
@@ -60,10 +60,11 @@ export const storeUserUnlike = async ({ userId, movieId }) => {
     }
 };
 
-export const getLikedMovies = async (userId) => {
+export const addToWatchlist = async ({ userId, movieId }) => {
     try {
-        const response = await instance.get(
-            user.getLikedMovies(userId),
+        const response = await instance.post(
+            user.addToWatchlist(userId),
+            { movieId: movieId },
             { headers: defaultHeaders }
         );
 
@@ -74,14 +75,29 @@ export const getLikedMovies = async (userId) => {
     }
 };
 
-export const getUserCountry = async ({ lat, lon }) => {
+export const removeFromWatchlist = async ({ userId, movieId }) => {
+    try {
+        const response = await instance.post(
+            user.removeFromWatchlist(userId),
+            { movieId: movieId },
+            { headers: defaultHeaders }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};
+
+export const getUserCountry = async (lat, lon) => {
     try {
         const response = await instance.get(
             user.getUserCountry(lat, lon),
             { headers: defaultHeaders }
         );
 
-        return response.data;
+        return response;
     } catch (err) {
         console.error(err);
         return Promise.reject(err.statusText);

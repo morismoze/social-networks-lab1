@@ -27,8 +27,13 @@ const CustomCarousel = ({
             interval={interval}
             className={styles.carousel}
         >
-            {items.map((item) => (
-                <div className={styles.carousel__item}>{item}</div>
+            {items.map((item, index) => (
+                <div
+                    className={styles.carousel__item}
+                    key={index}
+                >
+                    {item}
+                </div>
             ))}
         </AutoplaySlider>
     );

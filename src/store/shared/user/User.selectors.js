@@ -20,7 +20,17 @@ export const pictureUrl = createSelector(
     (state) => state.pictureUrl
 );
 
-export const country = createSelector(
+export const likedMovies = createSelector(
     (globalState) => globalState.userReducer,
-    (state) => state.country
+    (state) => state.likes
+);
+
+export const watchlist = createSelector(
+    (globalState) => globalState.userReducer,
+    (state) => state.watchlist
+);
+
+export const location = createSelector(
+    (globalState) => globalState.userReducer,
+    (state) => state.location
 );
