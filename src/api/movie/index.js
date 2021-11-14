@@ -83,6 +83,22 @@ export const getMoviesInTheaters = async (limit) => {
     }
 };
 
+export const getRegionMovies = async ({ country, limit }) => {
+    try {
+        const response = await instance.get(
+            moviePaths.getRegionMovies(country, limit),
+            {
+                headers: defaultHeaders
+            }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};
+
 export const getMovieDetails = async (id) => {
     try {
         const response = await instance.get(

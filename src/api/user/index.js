@@ -73,3 +73,17 @@ export const getLikedMovies = async (userId) => {
         return Promise.reject(err.statusText);
     }
 };
+
+export const getUserCountry = async ({ lat, lon }) => {
+    try {
+        const response = await instance.get(
+            user.getUserCountry(lat, lon),
+            { headers: defaultHeaders }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};

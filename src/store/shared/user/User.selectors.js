@@ -19,3 +19,8 @@ export const pictureUrl = createSelector(
     (globalState) => globalState.userReducer,
     (state) => state.pictureUrl
 );
+
+export const country = createSelector(
+    (globalState) => globalState.userReducer,
+    (state) => state.country
+);

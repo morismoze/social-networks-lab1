@@ -14,7 +14,6 @@ import Weather from "../../Weather";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
 import useScrollPosition from "../../../hooks/useScrollPosition";
-import { storeUserInfo } from "../../../store/shared/user/User.slice";
 import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
 import { fbLogout } from "../../../api/facebook";
 import { HEADER_NAV_ITEMS } from "../../../constants/header";

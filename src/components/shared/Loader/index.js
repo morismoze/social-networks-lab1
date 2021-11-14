@@ -10,10 +10,14 @@ import styles from './Loader.module.scss';
 const Loader = () => {
     const isLoading = useSelector(NavigationSelectors.isLoading);
 
+    if (!isLoading) {
+        return null;
+    }
+
     return (
         <Fade
-            in={isLoading}
-            easing={{ exit: 'fade' }}
+            in={true}
+            exit={true}
         >
             <div className={styles.loader}>
                 <div className={styles.loader__wrapper}>

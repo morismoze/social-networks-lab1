@@ -19,4 +19,10 @@
 
     @include scrollbar;
   }
+
+  &__lightSection {
+    background-image: radial-gradient($red 1px, transparent 0);
+    background-size: 40px 40px;
+    background-position-y: 5px;
+  }
 }

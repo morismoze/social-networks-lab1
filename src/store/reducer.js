@@ -10,6 +10,7 @@ import { userActivityReducer } from "./shared/userActivity/UserActivity.slice";
 import { popularMoviesReducer } from "../pages/PopularMovies/Movies/redux/PopularMovies.slice";
 import { featuredMoviesReducer } from "../pages/HomePage/redux/FeaturedMovies/FeaturedMovies.slice";
 import { moviesInTheatersReducer } from "../pages/HomePage/redux/MoviesInTheaters/MoviesInTheaters.slice";
+import { regionMoviesReducer } from "../pages/HomePage/redux/RegionMovies/RegionMovies.slice";
 
 export const rootReducer = combineReducers({
     movieReducer,
@@ -22,4 +23,5 @@ export const rootReducer = combineReducers({
     userActivityReducer,
     userReducer,
     weatherReducer,
+    regionMoviesReducer
 });

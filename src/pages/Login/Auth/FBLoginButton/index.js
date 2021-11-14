@@ -1,10 +1,8 @@
 import React from 'react';
 
-import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AiOutlineFacebook } from "react-icons/all";
 
-import { storeUserInfo } from "../../../../store/shared/user/User.slice";
 import { fbLogin } from "../../../../api/facebook";
 import styles from './FBLoginButton.module.scss';
 
@@ -12,8 +10,6 @@ const FBLoginButton = () => {
     const navigate = useNavigate();
 
     const location = useLocation();
-
-    const dispatch = useDispatch();
 
     const getProtectedRouteToVisit = () => {
         if (!location.state) {

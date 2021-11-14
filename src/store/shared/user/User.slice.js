@@ -7,7 +7,8 @@ const initialState = {
     id: '',
     name: '',
     email: '',
-    pictureUrl: null
+    pictureUrl: null,
+    country: null
 };
 
 const userSlice = createSlice({
@@ -28,9 +29,20 @@ const userSlice = createSlice({
             .addCase(actions.getUserData.rejected, (state, action) => {
                 state.status = 'failure';
             })
+            .addCase(actions.getUserCountry.pending, (state, action) => {
+                state.status = 'waiting';
+            })
+            .addCase(actions.getUserCountry.fulfilled, (state, action) => {
+                state.status = 'success';
+                state.country = {
+                    country: action.payload.features[0].properties.country,
+                    code: action.payload.features[0].properties.country_code
+                };
+            })
+            .addCase(actions.getUserCountry.rejected, (state, action) => {
+                state.status = 'failure';
+            })
     }
 });
-
-export const { storeUserInfo } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;
