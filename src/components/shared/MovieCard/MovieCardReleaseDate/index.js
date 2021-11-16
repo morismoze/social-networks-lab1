@@ -16,7 +16,10 @@ const MovieCardReleaseDate = ({
     }
 
     return (
-        <StyledTooltip title={releaseDate}>
+        <StyledTooltip
+            title={releaseDate}
+            placement='top'
+        >
             <div className={styles.movieCardRelease}>
                 <AiOutlineCalendar
                     size={15}

@@ -1,11 +1,8 @@
 @import 'src/styles/colors.module';
 
 .ribbon {
-  position: absolute;
-  top: 0;
-  left: 10px;
   background-color: rgba($black, .5);
-  clip-path: polygon(100% 0%, 100% 100%, 50% 80%, 0 100%, 0 0);;
+  clip-path: polygon(100% 0%, 100% 100%, 50% 80%, 0 100%, 0 0);
   display: flex;
   justify-content: center;
   z-index: 2;

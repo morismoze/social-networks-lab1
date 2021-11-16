@@ -7,6 +7,12 @@
   gap: 5px;
   position: relative;
 
+  & > div:first-child {
+    position: absolute;
+    top: 0;
+    left: 10px;
+  }
+
   &__link {
     display: block;
     height: 270px;

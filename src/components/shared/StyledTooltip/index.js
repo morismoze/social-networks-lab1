@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
 const StyledTooltip = ({
     title,
     arrow = true,
-    children
+    children,
+    ...rest
 }) => {
     const classes = useStyles();
 
@@ -25,6 +26,7 @@ const StyledTooltip = ({
         <Tooltip
             title={title}
             arrow={arrow}
+            {...rest}
             classes={{
                 tooltip: classes.tooltip,
                 arrow: classes.arrow

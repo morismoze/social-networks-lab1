@@ -54,6 +54,7 @@ const MovieDetails = () => {
             {status === 'success' &&
                 <div className={styles.movieDetails}>
                     <Backdrop
+                        id={details.id}
                         movieName={details.title}
                         releaseYear={releaseYear}
                         pictureUrl={details.backdrop_path}
@@ -76,7 +77,7 @@ const MovieDetails = () => {
                         </div>
                         <div className={styles.movieDetails__data}>
                             {details.tagline &&
-                            <Tagline tagline={details.tagline}/>
+                                <Tagline tagline={details.tagline}/>
                             }
                             <div className={styles.movieDetails__paragraphsWrapper}>
                                 {movieDetailsNavItems.map((item, index, arr) => {

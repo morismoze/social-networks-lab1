@@ -4,23 +4,26 @@ import classNames from "classnames";
 import { AiFillHeart } from "react-icons/all";
 
 import StyledTooltip from "../../StyledTooltip";
-import styles from './Heart.module.scss';
+import styles from './HeartButton.module.scss';
 
-const Heart = ({
+const HeartButton = ({
     onClick,
     active
 }) => {
     return (
-        <StyledTooltip title={active ? 'Like' : 'Dislike'}>
+        <StyledTooltip
+            title={active ? 'Dislike' : 'Like'}
+            placement='top'
+        >
             <div
-                className={styles.heartReaction}
+                className={styles.heartBtn}
                 onClick={onClick}
             >
                 <AiFillHeart
                     size={25}
                     className={classNames(
-                        styles.heartReaction__icon,
-                        { [styles['heartReaction__icon--active']]: active }
+                        styles.heartBtn__icon,
+                        { [styles['heartBtn__icon--active']]: active }
                     )}
                 />
             </div>
@@ -28,4 +31,4 @@ const Heart = ({
     );
 };
 
-export default Heart;
+export default HeartButton;

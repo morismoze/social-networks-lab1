@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 import LazyLoadedImage from "../../../components/shared/LazyLoadedImage";
 import MovieCardRating from "../../../components/shared/MovieCard/MovieCardRating";
-import RibbonButton from "../../../components/shared/RibbonButton";
+import RibbonButton from "../../../components/shared/userActivity/RibbonButton";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
 import Fallback from '../../../assets/images/poster-fallback.png';
