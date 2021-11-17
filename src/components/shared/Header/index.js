@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { MenuItem } from "@mui/material";
-import { AiOutlineLogout } from "react-icons/all";
+import { AiOutlineLogout, AiOutlineUser } from "react-icons/all";
 import classNames from "classnames";
 
 import Item from "./Item";
@@ -14,7 +14,7 @@ import Weather from "../../Weather";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
 import useScrollPosition from "../../../hooks/useScrollPosition";
-import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
+import {setActiveTab, toggleLoading} from "../../../store/shared/navigation/Navigation.slice";
 import { fbLogout } from "../../../api/facebook";
 import { HEADER_NAV_ITEMS } from "../../../constants/header";
 import styles from './Header.module.scss';
@@ -42,13 +42,19 @@ const Header = () => {
         setAnchorElement(null);
     };
 
-    const logoutUser = () => {
+    const handleLogoutUser = () => {
         handleUserMenuClose();
         dispatch(toggleLoading(true));
         fbLogout(() => {
             navigate('/auth');
             dispatch(toggleLoading(false));
         });
+    };
+
+    const handleGoToMyProfile = () => {
+        handleUserMenuClose();
+        dispatch(setActiveTab(null));
+        navigate('/profile');
     };
 
     const fetchUserData = () => {
@@ -105,10 +111,22 @@ const Header = () => {
                     onClose={handleUserMenuClose}
                     anchorEl={anchorElement}
                 >
-                    <MenuItem onClick={logoutUser}>
+                    <MenuItem onClick={handleGoToMyProfile}>
+                        <Link
+                            to='/profile'
+                            className={styles.header__menuLink}
+                        >
+                            <AiOutlineUser
+                                size={15}
+                                className={styles.header__menuIcon}
+                            />
+                            Profile
+                        </Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleLogoutUser}>
                         <AiOutlineLogout
                             size={15}
-                            className={styles.header__logoutIcon}
+                            className={styles.header__menuIcon}
                         />
                         Log out
                     </MenuItem>

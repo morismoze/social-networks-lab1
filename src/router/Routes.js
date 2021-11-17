@@ -5,6 +5,7 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import LoginPage from "../pages/Login";
 import HomePage from "../pages/HomePage";
 import MoviesPage from "../pages/MoviesPage";
+import ProfilePage from "../pages/Profile";
 import { setResponsesInterceptor } from "../api/network";
 
 const MainRoutes = () => {
@@ -18,6 +19,7 @@ const MainRoutes = () => {
         <Routes>
             <Route path='/*' element={<HomePage/>} />
             <Route path='/movies/*' element={<MoviesPage/>} />
+            <Route path='/profile/*' element={<ProfilePage/>} />
             <Route path='/auth' element={<LoginPage/>} />
         </Routes>
     );

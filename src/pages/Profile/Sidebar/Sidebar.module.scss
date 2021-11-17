@@ -1,0 +1,32 @@
+@import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
+
+.sidebar {
+  position: fixed;
+  top: $homePageHeaderHeight;
+  left: 0;
+  bottom: 0;
+  width: 30%;
+  max-width: 250px;
+  padding: 35px 0 35px 35px;
+
+  &__title {
+    display: inline-block;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: $lighter-gray;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    margin-top: 40px;
+    list-style-type: none;
+  }
+
+  &__listItem {
+    width: 100%;
+  }
+}
