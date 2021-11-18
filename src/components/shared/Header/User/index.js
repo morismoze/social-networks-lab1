@@ -1,40 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import PictureLoading from "../../PictureLoading";
-import Fallback from '../../../../assets/images/user-profile-fallback.png';
+import Avatar from "../../../Avatar";
 import styles from './User.module.scss';
-import Image from "../../Image";
 
 const User = ({
     name,
     pictureUrl
 }) => {
-    const [ isLoaded, setIsLoaded ] = useState(false);
-
-    const handleOnLoad = () => {
-        setIsLoaded(true);
-    };
-
-    return (
+        return (
         <div className={styles.user}>
             <span className={styles.user__name}>
                 {name}
             </span>
-            <div className={styles.user__imgWrapper}>
-                {!isLoaded &&
-                    <PictureLoading
-                        iconSize={15}
-                        wrapperBorder={false}
-                    />
-                }
-                <Image
-                    className={styles.user__img}
-                    alt={name}
-                    src={pictureUrl}
-                    fallback={Fallback}
-                    onLoad={handleOnLoad}
-                />
-            </div>
+            <Avatar
+                pictureUrl={pictureUrl}
+                size={32}
+                name={name}
+            />
         </div>
     );
 };

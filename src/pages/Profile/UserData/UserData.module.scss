@@ -1,0 +1,35 @@
+@import 'src/styles/colors.module';
+
+.userData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 25%;
+  gap: 60px;
+
+  &__basicDataContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__basicData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__name {
+    color: $dark-red;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  &__location {
+    font-size: 14px;
+    color: rgba($lighter-gray, .3);
+    font-weight: 500;
+  }
+}

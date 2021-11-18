@@ -17,6 +17,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 12px;
+    transition: background-color .25s ease-in-out;
   }
 
   &__icon {

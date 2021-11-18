@@ -6,13 +6,12 @@
   top: $homePageHeaderHeight;
   left: 0;
   bottom: 0;
-  width: 30%;
-  max-width: 250px;
+  width: 250px;
   padding: 35px 0 35px 35px;
 
   &__title {
     display: inline-block;
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
     color: $lighter-gray;
   }
@@ -22,7 +21,7 @@
     flex-direction: column;
     gap: 15px;
     align-items: flex-start;
-    margin-top: 40px;
+    margin-top: 25px;
     list-style-type: none;
   }
 

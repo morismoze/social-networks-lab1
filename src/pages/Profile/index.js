@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar";
 import styles from './ProfilePage.module.scss';
 
 const ProfilePage = () => {
-    const [ activeTab, setActiveTab ] = useState('data');
+    const [ activeTab, setActiveTab ] = useState('personal-information');
 
     return (
         <>

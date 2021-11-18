@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import {Link, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { MenuItem } from "@mui/material";
-import { AiOutlineLogout, AiOutlineUser } from "react-icons/all";
 import classNames from "classnames";
 
 import Item from "./Item";
 import User from "./User";
 import Logo from "../Logo";
-import Menu from "../../Menu";
+import Menu from "./Menu";
 import Weather from "../../Weather";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
@@ -20,30 +18,25 @@ import { HEADER_NAV_ITEMS } from "../../../constants/header";
 import styles from './Header.module.scss';
 
 const Header = () => {
-    const [ anchorElement, setAnchorElement ] = useState(null);
-
-    const isMenuOpen = Boolean(anchorElement);
-
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
-    const userName = useSelector(UserSelectors.name);
+    const userRef = useRef(null);
 
+    const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+
+    const userName = useSelector(UserSelectors.name);
     const userPictureUrl = useSelector(UserSelectors.pictureUrl);
 
     const scrollPosition = useScrollPosition();
 
-    const handleUserMenuClick = (event) => {
-        setAnchorElement(event.currentTarget);
-    };
-
-    const handleUserMenuClose = () => {
-        setAnchorElement(null);
+    const handleUserMenuClick = () => {
+        setIsMenuOpen(!isMenuOpen);
     };
 
     const handleLogoutUser = () => {
-        handleUserMenuClose();
+        handleUserMenuClick();
         dispatch(toggleLoading(true));
         fbLogout(() => {
             navigate('/auth');
@@ -52,7 +45,7 @@ const Header = () => {
     };
 
     const handleGoToMyProfile = () => {
-        handleUserMenuClose();
+        handleUserMenuClick();
         dispatch(setActiveTab(null));
         navigate('/profile');
     };
@@ -99,6 +92,7 @@ const Header = () => {
                     <div
                         className={styles.header__user}
                         onClick={handleUserMenuClick}
+                        ref={userRef}
                     >
                         <User
                             name={userName}
@@ -107,30 +101,12 @@ const Header = () => {
                     </div>
                 </div>
                 <Menu
-                    open={isMenuOpen}
-                    onClose={handleUserMenuClose}
-                    anchorEl={anchorElement}
-                >
-                    <MenuItem onClick={handleGoToMyProfile}>
-                        <Link
-                            to='/profile'
-                            className={styles.header__menuLink}
-                        >
-                            <AiOutlineUser
-                                size={15}
-                                className={styles.header__menuIcon}
-                            />
-                            Profile
-                        </Link>
-                    </MenuItem>
-                    <MenuItem onClick={handleLogoutUser}>
-                        <AiOutlineLogout
-                            size={15}
-                            className={styles.header__menuIcon}
-                        />
-                        Log out
-                    </MenuItem>
-                </Menu>
+                    handleCloseMenu={handleUserMenuClick}
+                    handleGoToAccountDetails={handleGoToMyProfile}
+                    handleLogout={handleLogoutUser}
+                    isOpen={isMenuOpen}
+                    userRef={userRef}
+                />
             </header>
         </>
     );

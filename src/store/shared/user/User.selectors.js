@@ -34,3 +34,16 @@ export const location = createSelector(
     (globalState) => globalState.userReducer,
     (state) => state.location
 );
+
+export const user = createSelector(
+    (globalState) => globalState.userReducer,
+    (state) => ({
+        id: state.id,
+        name: state.name,
+        email: state.email,
+        pictureUrl: state.pictureUrl,
+        likedMovies: state.likedMovies,
+        watchlist: state.watchlist,
+        location: state.location
+    })
+);

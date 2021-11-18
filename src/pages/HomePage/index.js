@@ -5,7 +5,8 @@ import Header from "../../components/shared/Header";
 
 const HomePage = () => {
     useEffect(() => {
-        window.scrollTo(0, 0);
+        // @todo: fix behavior to instant
+        window.scrollTo(0, 0, { behavior: 'instant' });
     }, []);
 
     return (

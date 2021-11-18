@@ -13,12 +13,14 @@ const Sidebar = ({
             <span className={styles.sidebar__title}>Menu</span>
             <ul className={styles.sidebar__list}>
                 {SIDEBAR_NAV_ITEMS.map((item, index) => (
-                    <li className={styles.sidebar__listItem}>
+                    <li
+                        className={styles.sidebar__listItem}
+                        key={index}
+                    >
                         <Item
                             item={item}
                             activeTab={activeTab}
                             onClick={setActiveTab}
-                            key={item.id}
                         />
                     </li>
                 ))}

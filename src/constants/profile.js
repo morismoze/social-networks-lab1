@@ -1,7 +1,7 @@
 export const SIDEBAR_NAV_ITEMS = [
     {
-        id: 'data',
-        name: 'Data',
+        id: 'personal-information',
+        name: 'Personal information',
         icon: 'AiFillProfile'
     },
     {
