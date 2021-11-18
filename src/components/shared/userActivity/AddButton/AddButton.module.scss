@@ -10,15 +10,14 @@
     color: $facebook;
     transition: fill .25s ease-in-out;
     stroke: $facebook !important;
+  }
+
+  &__addedIcon {
+    fill: $facebook !important;
     stroke-width: 40 !important;
-    fill: transparent !important;
 
-    &--active {
-      fill: $facebook !important;
-
-      & > path:last-of-type {
-        stroke: $lighter-black !important;
-      }
+    & > path:last-of-type {
+      stroke: $lighter-black !important;
     }
   }
 

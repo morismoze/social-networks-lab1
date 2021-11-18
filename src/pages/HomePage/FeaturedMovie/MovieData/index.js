@@ -28,6 +28,7 @@ const MovieData = ({
                 <Button
                     onClick={handleOnDetailsClick}
                     fill={false}
+                    text='Details'
                 />
             </div>
         </div>

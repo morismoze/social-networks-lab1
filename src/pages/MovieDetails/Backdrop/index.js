@@ -84,14 +84,16 @@ const Backdrop = ({
                                     key={index}
                                 />
                             ))}
-                            <HeartButton
-                                onClick={handleMovieLike}
-                                active={isLiked}
-                            />
-                            <AddButton
-                                onClick={handleAddToWatchlist}
-                                active={isAddedToWatchlist}
-                            />
+                            <div className={styles.backdrop__activity}>
+                                <HeartButton
+                                    onClick={handleMovieLike}
+                                    active={isLiked}
+                                />
+                                <AddButton
+                                    onClick={handleAddToWatchlist}
+                                    active={isAddedToWatchlist}
+                                />
+                            </div>
                         </div>
                         <div className={styles.backdrop__links}>
                             {imdbId &&

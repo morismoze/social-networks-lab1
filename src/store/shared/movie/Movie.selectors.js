@@ -8,7 +8,6 @@ export const status = createSelector(
     (state) => state.status
 );
 
-
 export const activeId = createSelector(
     (globalState) => globalState.movieReducer,
     (state) => state.activeId

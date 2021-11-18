@@ -5,7 +5,8 @@ import classNames from "classnames";
 
 const Button = ({
     onClick,
-    fill = true
+    fill = true,
+    text
 }) => {
     const handleOnClick = () => {
         onClick();
@@ -19,7 +20,7 @@ const Button = ({
                 { [styles.noFill]: !fill }
             )}
         >
-            Details
+            {text}
         </button>
     );
 };
