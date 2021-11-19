@@ -1,12 +1,12 @@
 import React from 'react';
 
+import { Fade } from "@mui/material";
 import { useSelector } from "react-redux";
 
 import Avatar from "../../../components/Avatar";
+import Data from "./Data";
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import styles from './UserData.module.scss';
-import Data from "./Data";
-import {Fade} from "@mui/material";
 
 const UserData = () => {
     const user = useSelector(UserSelectors.user);

@@ -11,9 +11,11 @@ import { featuredMoviesReducer } from "../pages/HomePage/redux/FeaturedMovies/Fe
 import { moviesInTheatersReducer } from "../pages/HomePage/redux/MoviesInTheaters/MoviesInTheaters.slice";
 import { regionMoviesReducer } from "../pages/HomePage/redux/RegionMovies/RegionMovies.slice";
 import { tableMoviesReducer } from "../pages/Profile/redux/TableMovies.slice";
+import { latestMovieReducer } from "../pages/HomePage/redux/LatestMovie/LatestMovie.slice";
 
 export const rootReducer = combineReducers({
     featuredMoviesReducer,
+    latestMovieReducer,
     movieReducer,
     moviesInTheatersReducer,
     navigationReducer,

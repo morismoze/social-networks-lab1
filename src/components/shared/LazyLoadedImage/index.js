@@ -38,7 +38,7 @@ const LazyLoadedImage = ({
             )}
             ref={imgRef}
         >
-            {!isLoaded && src !== null && (
+            {!isLoaded && (
                 <PictureLoading/>
             )}
             <div

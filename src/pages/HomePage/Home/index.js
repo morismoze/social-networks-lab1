@@ -15,7 +15,11 @@ import { actions as moviesInTheatersSelectorsActions } from '../redux/MoviesInTh
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import * as RegionMoviesSelectors from '../redux/RegionMovies/RegionMovies.selectors';
 import { actions as regionMoviesActions } from '../redux/RegionMovies/RegionMovies.actions';
+import * as LatestMovieSelectors from '../redux/LatestMovie/LatestMovie.selectors';
+import { actions as latestMovieActions } from '../redux/LatestMovie/LatestMovie.actions';
 import styles from './Home.module.scss';
+import {toggleLoading} from "../../../store/shared/navigation/Navigation.slice";
+import LatestMovie from "../LatestMovie";
 
 const NUMBER_OF_CAROUSEL_ITEMS = 5;
 
@@ -31,11 +35,17 @@ const Home = () => {
     const regionMoviesStatus = useSelector(RegionMoviesSelectors.status);
     const regionMovies = useSelector(RegionMoviesSelectors.movies);
 
+    const latestMovieStatus = useSelector(LatestMovieSelectors.status);
+    const latestMovie = useSelector(LatestMovieSelectors.movie);
+
     const userLocation = useSelector(UserSelectors.location);
 
     useEffect(() => {
-        dispatch(featuredMoviesActions.getMoviesAndToggleLoader(NUMBER_OF_CAROUSEL_ITEMS));
-        dispatch(moviesInTheatersSelectorsActions.getMoviesAndToggleLoader(20));
+        dispatch(toggleLoading(true));
+        dispatch(featuredMoviesActions.getMovies(NUMBER_OF_CAROUSEL_ITEMS));
+        dispatch(moviesInTheatersSelectorsActions.getMovies(20));
+        dispatch(latestMovieActions.getMovie());
+        dispatch(toggleLoading(false));
     }, []);
 
     useEffect(() => {
@@ -92,6 +102,14 @@ const Home = () => {
                             )
                         )}
                     </div>
+                </SectionLayoutWrapper>
+                <SectionLayoutWrapper
+                    title={'Latest movie'}
+                    className={styles.home__singular}
+                >
+                    {latestMovieStatus === 'success' &&
+                        <LatestMovie movie={latestMovie}/>
+                    }
                 </SectionLayoutWrapper>
                 <Footer/>
             </div>

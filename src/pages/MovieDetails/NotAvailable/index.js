@@ -10,7 +10,9 @@ const NotAvailable = ({
 
     return (
         <span className={styles.notAvailable}>
-            <span className={styles.notAvailable__item}>{splitItem}</span> data not available.
+            <span>
+                <span className={styles.notAvailable__item}>{splitItem}</span> data not available.
+            </span>
         </span>
     );
 };

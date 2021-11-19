@@ -58,4 +58,13 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  &__loaderCell {
+    text-align: center;
+    padding: 0;
+
+    & > span {
+      color: $red;
+    }
+  }
 }

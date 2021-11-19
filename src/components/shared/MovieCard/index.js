@@ -51,7 +51,11 @@ const MovieCard = ({
     return (
         <div className={styles.movieCard}>
             <Link
-                to={`${location.pathname}/${movie.id}/details`}
+                to={location.pathname === '/' ?
+                    `${movie.id}/details`
+                    :
+                    `${location.pathname}/${movie.id}/details`
+                }
                 className={styles.movieCard__link}
             >
                 <LazyLoadedImage

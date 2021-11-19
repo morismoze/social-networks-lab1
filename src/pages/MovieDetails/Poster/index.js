@@ -10,10 +10,6 @@ const Poster = ({
     height,
     alt
 }) => {
-    if (!src) {
-        return;
-    }
-
     return (
         <div
             className={styles.poster}

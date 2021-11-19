@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
 
 import { Link } from "react-router-dom";
-import { Fade } from "@mui/material";
+import { CircularProgress, Fade } from "@mui/material";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 
 import MovieCardRating from "../../../../components/shared/MovieCard/MovieCardRating";
 import AddButton from "../../../../components/shared/userActivity/AddButton";
 import Image from "../../../../components/shared/Image";
+import HeartButton from "../../../../components/shared/userActivity/HeartButton";
 import * as TableMoviesSelectors from '../../redux/TableMovies.selectors';
 import * as UserSelectors from '../../../../store/shared/user/User.selectors';
 import { actions as userActions } from "../../../../store/shared/user/User.actions";
@@ -16,7 +17,6 @@ import { useIntersection } from "../../../../hooks/useIntersection";
 import { extractYearFromReleaseDate } from "../../../../util/string";
 import Fallback from '../../../../assets/images/table-movie-poster-fallback.png';
 import styles from './MoviesTableRow.module.scss';
-import HeartButton from "../../../../components/shared/userActivity/HeartButton";
 
 const MoviesTableRow = ({
     type,
@@ -52,7 +52,7 @@ const MoviesTableRow = ({
                 ref={rowRef}
                 className={styles.moviesTableRow}
             >
-                {movie &&
+                {movie ? (
                     <>
                         <td className={styles.moviesTableRow__cell}>
                             <Image
@@ -74,17 +74,23 @@ const MoviesTableRow = ({
                         </td>
                         <td className={styles.moviesTableRow__cell}>
                             <span>
-                                {extractYearFromReleaseDate(movie.release_date)}
+                                {movie.release_date ? (
+                                    extractYearFromReleaseDate(movie.release_date)
+                                ) : (
+                                    '--'
+                                )}
                             </span>
                         </td>
                         <td className={styles.moviesTableRow__cell}>
                             <span className={styles.moviesTableRow__genresCell}>
-                                {movie.genres.length > 0 && (
+                                {movie.genres.length > 0 ? (
                                     movie.genres.map((genre, index) => (
                                         <span key={index}>
                                             {genre.name}{index < movie.genres.length - 1 ? ',' : ''}&nbsp;
                                         </span>
                                     ))
+                                ) : (
+                                    '--'
                                 )}
                             </span>
                         </td>
@@ -107,7 +113,17 @@ const MoviesTableRow = ({
                             )}
                         </td>
                     </>
-                }
+                ) : (
+                    <td
+                        className={classNames(
+                            styles.moviesTableRow__cell,
+                            styles.moviesTableRow__loaderCell
+                        )}
+                        colSpan='6'
+                    >
+                        <CircularProgress />
+                    </td>
+                )}
             </tr>
         </Fade>
     );

@@ -5,6 +5,8 @@
   font-weight: 500;
   color: $lighter-gray;
   font-size: 14px;
+  display: flex;
+  align-items: center;
 
   &__item {
     text-transform: lowercase;

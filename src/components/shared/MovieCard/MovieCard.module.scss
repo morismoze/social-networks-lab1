@@ -15,11 +15,10 @@
   }
 
   &__name {
-    width: 100%;
+    width: calc(100% - 20px);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    text-align: left;
     color: $white;
     font-weight: 600;
     display: inline-block;

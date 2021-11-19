@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createTheme, TextField } from '@mui/material';
-import { ThemeProvider } from "@mui/styles";
+import {makeStyles, ThemeProvider} from "@mui/styles";
 
 import colors from '../../../../styles/colors.module.scss';
 import styles from './Data.module.scss';
@@ -9,14 +9,25 @@ import styles from './Data.module.scss';
 const theme = createTheme({
     palette: {
         primary: {
-            main: colors.lighterBlack
+            main: colors.darkGray
         },
 
         text: {
-            disabled: colors.lighterBlack
+            disabled: colors.darkGray
         }
     },
 });
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+            borderColor: `${colors.darkGray} !important`
+        },
+    },
+    label: {
+        color: `${colors.darkGray} !important`
+    }
+}));
 
 const Data = ({
     name,
@@ -25,6 +36,8 @@ const Data = ({
     city
 }) => {
     const userName = name.split(' ');
+
+    const classes = useStyles();
 
     return (
         <div className={styles.data}>
@@ -40,6 +53,10 @@ const Data = ({
                     value={userName[0] || ''}
                     spellCheck='false'
                     disabled
+                    className={classes.root}
+                    InputLabelProps={{
+                        className: classes.label,
+                    }}
                 />
                 <TextField
                     id='lastName'
@@ -52,6 +69,10 @@ const Data = ({
                     value={userName[1] || ''}
                     spellCheck='false'
                     disabled
+                    className={classes.root}
+                    InputLabelProps={{
+                        className: classes.label,
+                    }}
                 />
                 <TextField
                     id='email'
@@ -64,6 +85,10 @@ const Data = ({
                     value={email || ''}
                     spellCheck='false'
                     disabled
+                    className={classes.root}
+                    InputLabelProps={{
+                        className: classes.label,
+                    }}
                 />
                 <TextField
                     id='country'
@@ -76,6 +101,10 @@ const Data = ({
                     value={country || ''}
                     spellCheck='false'
                     disabled
+                    className={classes.root}
+                    InputLabelProps={{
+                        className: classes.label,
+                    }}
                 />
                 <TextField
                     id='city'
@@ -88,6 +117,10 @@ const Data = ({
                     value={city || ''}
                     spellCheck='false'
                     disabled
+                    className={classes.root}
+                    InputLabelProps={{
+                        className: classes.label,
+                    }}
                 />
             </ThemeProvider>
         </div>

@@ -15,6 +15,7 @@ import Trailer from "./Trailer";
 import Production from "./Production";
 import RatePicker from "./RatePicker";
 import Footer from "../../components/shared/Footer";
+import NotAvailable from "./NotAvailable";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
 import { setActiveMovie } from "../../store/shared/movie/Movie.slice";
@@ -107,23 +108,27 @@ const MovieDetails = () => {
                                                     className={styles.movieDetails__paragraph}
                                                     key={index}
                                                 >
-                                                    <div className={styles.movieDetails__castWrapper}>
-                                                        {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => (
-                                                            <CastMember
-                                                                pictureLink={
-                                                                    member.profile_path ?
-                                                                        `https://image.tmdb.org/t/p/w154${member.profile_path}`
-                                                                        :
-                                                                        null
-                                                                }
-                                                                width={154}
-                                                                height={231}
-                                                                name={member.name}
-                                                                character={member.character}
-                                                                key={index}
-                                                            />
-                                                        ))}
-                                                    </div>
+                                                    {details.cast.length > 0 ? (
+                                                        <div className={styles.movieDetails__castWrapper}>
+                                                            {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => (
+                                                                <CastMember
+                                                                    pictureLink={
+                                                                        member.profile_path ?
+                                                                            `https://image.tmdb.org/t/p/w154${member.profile_path}`
+                                                                            :
+                                                                            null
+                                                                    }
+                                                                    width={154}
+                                                                    height={231}
+                                                                    name={member.name}
+                                                                    character={member.character}
+                                                                    key={index}
+                                                                />
+                                                            ))}
+                                                        </div>
+                                                    ) : (
+                                                        <NotAvailable itemNotAvailable='Actors'/>
+                                                    )}
                                                 </ParagraphLayoutWrapper>
                                             )
                                         }

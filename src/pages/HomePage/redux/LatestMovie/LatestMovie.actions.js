@@ -2,8 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import * as api from '../../../../api/movie';
 
-const getMovies = createAsyncThunk('featured/getMovies', api.getFeaturedMovies);
+const getMovie = createAsyncThunk('latest/getMovie', api.getLatestMovie);
 
 export const actions = {
-    getMovies
+    getMovie
 };

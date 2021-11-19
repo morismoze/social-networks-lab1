@@ -19,10 +19,14 @@ const Avatar = ({
     return (
         <div
             className={styles.avatar}
+            style={{
+                width: size,
+                height: size
+            }}
         >
             {!isLoaded &&
                 <PictureLoading
-                    iconSize={15}
+                    iconSize={size / 3}
                     wrapperBorder={false}
                 />
             }
