@@ -16,7 +16,7 @@ const tableMoviesSlice = createSlice({
                 state.status = 'waiting';
             })
             .addCase(actions.getMovie.fulfilled, (state, action) => {
-                state.status = 'success';console.log(action.payload)
+                state.status = 'success';
                 state.movies = [...state.movies, action.payload];
             })
             .addCase(actions.getMovie.rejected, (state) => {

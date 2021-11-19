@@ -46,7 +46,6 @@ const Header = () => {
 
     const handleGoToMyProfile = () => {
         handleUserMenuClick();
-        dispatch(setActiveTab(null));
         navigate('/profile');
     };
 

@@ -5,6 +5,7 @@ import { MOVIES_TABLE_HEADER_ITEMS } from "../../../constants/moviesTable";
 import styles from './MoviesTable.module.scss';
 
 const MoviesTable = ({
+    type,
     moviesIds
 }) => {
     return (
@@ -24,7 +25,9 @@ const MoviesTable = ({
             <tbody>
                 {moviesIds.map((id, index) => (
                     <MoviesTableRow
+                        type={type}
                         id={id}
+                        moviesIds={moviesIds}
                         key={index}
                     />
                 ))}

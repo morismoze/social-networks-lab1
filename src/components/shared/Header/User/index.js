@@ -7,7 +7,7 @@ const User = ({
     name,
     pictureUrl
 }) => {
-        return (
+    return (
         <div className={styles.user}>
             <span className={styles.user__name}>
                 {name}

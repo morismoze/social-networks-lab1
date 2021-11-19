@@ -1,11 +1,61 @@
 @import 'src/styles/colors.module';
 
 .moviesTableRow {
-  background-color: lighten($lighter-black, 2.5%);
-  height: 70px;
-  width: 100%;
+  background-color: $lighter-black;
+  border-radius: 5px;
+  height: 116px;
 
   &__cell {
+    padding: 8px 35px 8px 8px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 400;
+    color: $white;
+    min-width: 80px;
+    line-height: 22px;
 
+    & > * {
+      vertical-align: middle;
+    }
+
+    &:first-child {
+      border-color: lighten($lighter-black, 1.5%);
+      border-left-style: solid;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    &:last-child {
+      border-color: lighten($lighter-black, 1.5%);
+      border-right-style: solid;
+      border-bottom-right-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+
+  &__poster {
+    height: 100px;
+    width: auto;
+  }
+
+  &__textCell {
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    max-width: 300px;
+  }
+
+  &__titleCell {
+    font-weight: 600;
+    color: $white;
+    text-decoration: underline;
+  }
+
+  &__genresCell {
+    display: flex;
+    flex-wrap: wrap;
   }
 }

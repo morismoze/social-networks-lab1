@@ -5,8 +5,8 @@ import styles from './Sidebar.module.scss';
 import Item from "./Item";
 
 const Sidebar = ({
-    activeTab,
-    setActiveTab
+    activeSidebarTab,
+    setActiveSidebarTab
 }) => {
     return (
         <div className={styles.sidebar}>
@@ -19,8 +19,8 @@ const Sidebar = ({
                     >
                         <Item
                             item={item}
-                            activeTab={activeTab}
-                            onClick={setActiveTab}
+                            activeTab={activeSidebarTab}
+                            onClick={setActiveSidebarTab}
                         />
                     </li>
                 ))}

@@ -1,12 +1,18 @@
 @import 'src/styles/colors.module';
 
 .moviesTable {
-  background-color: lighten($lighter-black, 1.5%);
+  background-color: $black;
+  padding: 17px 30px 25px;
+  border-spacing: 0 10px;
+  border-collapse: separate;
+  border-radius: 10px;
   width: 100%;
-  padding: 20px;
 
   &__header {
-
+    margin-bottom: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
   }
 
   &__headerCell {
@@ -14,5 +20,10 @@
     font-weight: 400;
     font-size: 14px;
     text-align: left;
+    padding: 5px 5px 15px 0;
+
+    &:first-of-type {
+      padding-left: 10px;
+    }
   }
 }
