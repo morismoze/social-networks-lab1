@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 
@@ -7,6 +8,7 @@ import Item from "./Item";
 import User from "./User";
 import Logo from "../Logo";
 import UserMenu from "./UserMenu";
+import Button from "../Button";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
 import useScrollPosition from "../../../hooks/useScrollPosition";
@@ -15,6 +17,10 @@ import styles from './Header.module.scss';
 
 const Header = () => {
     const dispatch = useDispatch();
+
+    const location = useLocation();
+
+    const navigate = useNavigate();
 
     const [ anchorEl, setAnchorEl ] = React.useState(null);
 
@@ -64,18 +70,28 @@ const Header = () => {
                         ))}
                     </ul>
                 </nav>
-                <div className={styles.header__weatherUserWrapper}>
-                    {/*<Weather/>*/}
-                    <div
-                        className={styles.header__user}
-                        onClick={handleMenuClick}
-                    >
-                        <User
-                            name={name}
-                            pictureUrl={pictureUrl}
+                {name ? (
+                    <div className={styles.header__weatherUserWrapper}>
+                        {/*<Weather/>*/}
+                        <div
+                            className={styles.header__user}
+                            onClick={handleMenuClick}
+                        >
+                            <User
+                                name={name}
+                                pictureUrl={pictureUrl}
+                            />
+                        </div>
+                    </div>
+                ) : (
+                    <div className={styles.header__signInWrapper}>
+                        <Button
+                            onClick={() => navigate('/auth', { state: location })}
+                            text={'Sign In'}
+                            fill={false}
                         />
                     </div>
-                </div>
+                )}
                 <UserMenu
                     anchorEl={anchorEl}
                     handleCloseMenu={handleMenuClose}

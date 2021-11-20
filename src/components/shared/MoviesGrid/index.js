@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-import { useNavigate, useLocation } from "react-router-dom";
+import {useNavigate, useLocation, Link} from "react-router-dom";
+import { useSelector } from "react-redux";
 import queryString from 'query-string';
 
 import WithLayoutWrapper from "../../../components/shared/withLayoutWrapper";
 import MovieCard from "../../../components/shared/MovieCard";
 import CustomPagination from "../../../components/shared/CustomPagination";
-import styles from './MoviesGrid.module.scss';
 import Footer from "../Footer";
 import MoviesNavigation from "../MoviesNavigation";
+import * as UserSelectors from "../../../store/shared/user/User.selectors";
+import styles from './MoviesGrid.module.scss';
 
 const MoviesGrid = ({
     status,
@@ -21,6 +23,8 @@ const MoviesGrid = ({
 
     const [ page, setPage ] = useState(null);
 
+    const userId = useSelector(UserSelectors.id);
+
     const handleOnPageChange = (event, value) => {
         setPage(value);
         navigate({
@@ -28,6 +32,10 @@ const MoviesGrid = ({
             search: `?page=${value}`
         });
     };
+
+    const handleGoToLoginClick = () => {
+        navigate('/auth', { state: location })
+    }
 
     useEffect(() => {
         if (location && location.search) {
@@ -42,9 +50,7 @@ const MoviesGrid = ({
 
     return (
         <WithLayoutWrapper className={styles.moviesContainer}>
-            {status === 'success' &&
-                <MoviesNavigation/>
-            }
+            <MoviesNavigation/>
             <div className={styles.moviesContainer__wrapper}>
                 {status === 'success' &&
                     movies.map((movie, index) => (
@@ -58,6 +64,21 @@ const MoviesGrid = ({
                     ))
                 }
             </div>
+            {status === 'failure' && !userId && location.pathname.includes('recommended') &&
+                <div className={styles.moviesContainer__authErrWrapper}>
+                    <span className={styles.moviesContainer__authErrMsg}>
+                        To get the best recommended movies, please
+                        &nbsp;
+                        <span
+                            onClick={handleGoToLoginClick}
+                            className={styles.moviesContainer__loginLink}
+                        >
+                            Sign in
+                        </span>
+                        .
+                    </span>
+                </div>
+            }
             {status === 'success' && page &&
                 <CustomPagination
                     count={10}
@@ -65,7 +86,7 @@ const MoviesGrid = ({
                     onChange={handleOnPageChange}
                 />
             }
-            {status === 'success' &&
+            {(status === 'success' || status === 'failure') &&
                 <Footer/>
             }
         </WithLayoutWrapper>

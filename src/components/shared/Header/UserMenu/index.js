@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Divider, Menu, MenuItem } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { AiFillStar, AiFillHeart, AiOutlineLogout } from "react-icons/all";
+import classNames from "classnames";
 
-import * as UserSelectors from "../../../../store/shared/user/User.selectors";
+import { clearUser } from "../../../../store/shared/user/User.slice";
 import { toggleLoading } from "../../../../store/shared/navigation/Navigation.slice";
 import { fbLogout } from "../../../../api/facebook";
 import colors from '../../../../styles/colors.module.scss';
 import styles from './UserMenu.module.scss';
-import classNames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
     menu: {
@@ -61,6 +61,7 @@ const UserMenu = ({
         dispatch(toggleLoading(true));
         fbLogout(() => {
             navigate('/auth');
+            dispatch(clearUser());
             dispatch(toggleLoading(false));
         });
     };

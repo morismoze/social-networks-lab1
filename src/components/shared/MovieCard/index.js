@@ -40,7 +40,7 @@ const MovieCard = ({
         }
     };
 
-    const handleAddToWatchlist = () => {
+    const handleToggleWatchlist = () => {
         if (isAddedToWatchlist) {
             dispatch(userActions.removeFromWatchlist({ userId, movieId: movie.id }));
         } else {
@@ -81,7 +81,7 @@ const MovieCard = ({
                     />
                     <AddButton
                         active={isAddedToWatchlist}
-                        onClick={handleAddToWatchlist}
+                        onClick={handleToggleWatchlist}
                     />
                     {movie.adult &&
                         <span className={styles.movieCard__adult}>18+</span>

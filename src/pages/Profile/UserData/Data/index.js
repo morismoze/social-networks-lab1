@@ -106,22 +106,6 @@ const Data = ({
                         className: classes.label,
                     }}
                 />
-                <TextField
-                    id='city'
-                    name='city'
-                    label='City'
-                    variant='outlined'
-                    type='text'
-                    fullWidth={true}
-                    autoComplete='address-level2'
-                    value={city || ''}
-                    spellCheck='false'
-                    disabled
-                    className={classes.root}
-                    InputLabelProps={{
-                        className: classes.label,
-                    }}
-                />
             </ThemeProvider>
         </div>
     );

@@ -42,7 +42,7 @@ const Backdrop = ({
         }
     };
 
-    const handleAddToWatchlist = () => {
+    const handleToggleWatchlist = () => {
         if (isAddedToWatchlist) {
             dispatch(userActions.removeFromWatchlist({ userId, movieId: id }));
         } else {
@@ -90,7 +90,7 @@ const Backdrop = ({
                                     active={isLiked}
                                 />
                                 <AddButton
-                                    onClick={handleAddToWatchlist}
+                                    onClick={handleToggleWatchlist}
                                     active={isAddedToWatchlist}
                                 />
                             </div>

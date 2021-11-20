@@ -1,12 +1,12 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import Title from "../MoviesTable/Title";
 import MoviesTable from "../MoviesTable";
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import styles from './LikedList.module.scss';
-import {Link} from "react-router-dom";
 
 const LikedList = () => {
 

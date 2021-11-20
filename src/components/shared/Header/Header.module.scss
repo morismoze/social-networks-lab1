@@ -52,6 +52,12 @@
     }
   }
 
+  &__signInWrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
   &__weatherUserWrapper {
     display: flex;
     align-items: center;

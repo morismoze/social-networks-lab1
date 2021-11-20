@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
 import { Fade } from "@mui/material";
 
 import FBLoginButton from "../FBLoginButton";
@@ -15,9 +16,12 @@ const Login = () => {
                 <div className={styles.container__upper}>
                     <div className={styles.container__logoWrapper}/>
                     <div className={styles.container__header}>
-                    <span className={styles.container__headerTitle}>
+                    <Link
+                        to='/'
+                        className={styles.container__headerTitle}
+                    >
                         recommend.me
-                    </span>
+                    </Link>
                         <span className={styles.container__headerSubTitle}>
                         Log in to get the best movie recommendations.
                     </span>

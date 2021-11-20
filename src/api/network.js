@@ -19,9 +19,7 @@ export const setResponsesInterceptor = (navigate, location) => {
         return response;
     }, (error) => {
         if (error.response.status === 401) {
-            navigate('/auth', { state: location });
-
-            return Promise.reject(error.response);
+            // do nothing for now
         }
     });
 }

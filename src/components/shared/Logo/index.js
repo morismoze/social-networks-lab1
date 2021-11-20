@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
+
 import logoIcon from "../../../assets/images/logo-icon.svg";
 import styles from './Logo.module.scss';
 
@@ -7,7 +9,8 @@ const Logo = ({
     horizontal = true,
 }) => {
     return (
-        <div
+        <Link
+            to='/'
             className={styles.logo}
             style={{
                 flexDirection: horizontal ? 'row' : 'column'
@@ -21,7 +24,7 @@ const Logo = ({
             <span className={styles.logo__name}>
                   recommend.me
             </span>
-        </div>
+        </Link>
     );
 };
 

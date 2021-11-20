@@ -30,15 +30,14 @@ const UserData = () => {
                     <div className={styles.userData__basicData}>
                         <span className={styles.userData__name}>{user.name}</span>
                         <span className={styles.userData__location}>
-                        {user.location.properties.city}, {user.location.properties.country}
-                    </span>
+                            {user.location.timezone}
+                        </span>
                     </div>
                 </div>
                 <Data
                     name={user.name}
                     email={user.email}
-                    country={user.location.properties.country}
-                    city={user.location.properties.city}
+                    country={user.location.country}
                 />
             </div>
         </Fade>

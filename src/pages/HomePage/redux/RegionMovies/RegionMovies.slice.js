@@ -4,7 +4,8 @@ import { actions } from "./RegionMovies.actions";
 
 const initialState = {
     status: 'idle',
-    movies: []
+    movies: [],
+    region: ''
 };
 
 const regionMoviesSlice = createSlice({
@@ -20,6 +21,7 @@ const regionMoviesSlice = createSlice({
             .addCase(actions.getMovies.fulfilled, (state, action) => {
                 state.status = 'success';
                 state.movies = action.payload.results;
+                state.region = action.payload.country;
             })
             .addCase(actions.getMovies.rejected, (state) => {
                 state.status = 'failure';

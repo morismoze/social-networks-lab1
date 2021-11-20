@@ -1,11 +1,11 @@
 import { user } from "./paths";
 import { defaultHeaders, instance } from "../network";
 
-export const storeUserData = async (id, email, name, url, location) => {
+export const storeUserData = async (id, email, name, url) => {
     try {
         const response = await instance.post(
             user.storeUserData,
-            { id, email, name, url, location },
+            { id, email, name, url },
             { headers: defaultHeaders }
         );
 
@@ -26,7 +26,7 @@ export const getUserData = async () => {
         return response.data;
     } catch (err) {
         console.error(err);
-        return Promise.reject(err.statusText);
+        return Promise.reject(err);
     }
 };
 

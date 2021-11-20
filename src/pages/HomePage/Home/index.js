@@ -8,6 +8,7 @@ import FeaturedMovie from "../FeaturedMovie";
 import WithLayoutWrapper from "../../../components/shared/withLayoutWrapper";
 import SectionLayoutWrapper from "../SectionLayoutWrapper";
 import MovieCard from "../MovieCard";
+import LatestMovie from "../LatestMovie";
 import * as FeaturedMoviesSelectors from '../redux/FeaturedMovies/FeaturedMovies.selectors';
 import { actions as featuredMoviesActions } from '../redux/FeaturedMovies/FeaturedMovies.actions';
 import * as MoviesInTheatersSelectors from '../redux/MoviesInTheaters/MoviesInTheaters.selectors';
@@ -17,9 +18,9 @@ import * as RegionMoviesSelectors from '../redux/RegionMovies/RegionMovies.selec
 import { actions as regionMoviesActions } from '../redux/RegionMovies/RegionMovies.actions';
 import * as LatestMovieSelectors from '../redux/LatestMovie/LatestMovie.selectors';
 import { actions as latestMovieActions } from '../redux/LatestMovie/LatestMovie.actions';
+import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
 import styles from './Home.module.scss';
-import {toggleLoading} from "../../../store/shared/navigation/Navigation.slice";
-import LatestMovie from "../LatestMovie";
+import {region} from "../redux/RegionMovies/RegionMovies.selectors";
 
 const NUMBER_OF_CAROUSEL_ITEMS = 5;
 
@@ -34,6 +35,7 @@ const Home = () => {
 
     const regionMoviesStatus = useSelector(RegionMoviesSelectors.status);
     const regionMovies = useSelector(RegionMoviesSelectors.movies);
+    const region = useSelector(RegionMoviesSelectors.region);
 
     const latestMovieStatus = useSelector(LatestMovieSelectors.status);
     const latestMovie = useSelector(LatestMovieSelectors.movie);
@@ -45,17 +47,12 @@ const Home = () => {
         dispatch(featuredMoviesActions.getMovies(NUMBER_OF_CAROUSEL_ITEMS));
         dispatch(moviesInTheatersSelectorsActions.getMovies(20));
         dispatch(latestMovieActions.getMovie());
+        dispatch(regionMoviesActions.getMovies({
+            country: userLocation ? userLocation.country : null,
+            limit: 20
+        }));
         dispatch(toggleLoading(false));
     }, []);
-
-    useEffect(() => {
-        if (userLocation) {
-            dispatch(regionMoviesActions.getMoviesAndToggleLoader({
-                country: userLocation.properties.country_code,
-                limit: 20
-            }));
-        }
-    }, [userLocation]);
 
     return (
         <WithLayoutWrapper>
@@ -87,7 +84,7 @@ const Home = () => {
                     </div>
                 </SectionLayoutWrapper>
                 <SectionLayoutWrapper
-                    title={`Top Picks in ${userLocation && userLocation.properties.country}`}
+                    title={`Top Picks in ${region}`}
                     mode={'light'}
                     className={styles.home__darkSection}
                 >
