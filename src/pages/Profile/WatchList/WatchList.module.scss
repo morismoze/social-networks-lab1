@@ -1,3 +1,5 @@
+@import 'src/styles/colors.module';
+
 .watchlist {
   display: flex;
   align-items: flex-start;
@@ -6,4 +8,22 @@
   gap: 25px;
   width: 100%;
   padding: 0 50px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  &__emptyWatchlist {
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  &__exploreLink {
+    color: $red;
+    font-weight: 400;
+    font-size: 14px;
+  }
 }

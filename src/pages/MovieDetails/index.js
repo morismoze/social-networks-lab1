@@ -58,7 +58,7 @@ const MovieDetails = () => {
                         id={details.id}
                         movieName={details.title}
                         releaseYear={releaseYear}
-                        pictureUrl={details.backdrop_path}
+                        pictureUrl={details.backdrop_path ? `https://image.tmdb.org/t/p/w1280${details.backdrop_path}` : null}
                         mainStats={mainStats}
                         imdbId={details.imdb_id}
                     />
@@ -68,7 +68,7 @@ const MovieDetails = () => {
                     >
                         <div className={styles.movieDetails__sidenavWrapper}>
                             <Poster
-                                src={`https://image.tmdb.org/t/p/w300${details.poster_path}`}
+                                src={details.poster_path ? `https://image.tmdb.org/t/p/w300${details.poster_path}` : null}
                                 width={300}
                                 height={450}
                                 alt={details.original_title}

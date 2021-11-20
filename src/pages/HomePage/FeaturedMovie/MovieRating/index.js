@@ -32,7 +32,7 @@ const MovieRating = ({
                 }
                 emptyIcon={
                     <StarIcon
-                        htmlColor={colors.white}
+                        htmlColor='transparent'
                         fontSize={'small'}
                         style={{ stroke: colors.yellow, strokeWidth: '1px' }}
                     />

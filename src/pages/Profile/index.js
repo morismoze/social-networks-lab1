@@ -31,7 +31,7 @@ const ProfilePage = () => {
     useEffect(() => {
         dispatch(setActiveTab(null));
         extractTabFromPath();
-    }, []);
+    }, [location]);
 
     return (
         <>

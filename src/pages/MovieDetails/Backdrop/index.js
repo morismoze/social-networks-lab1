@@ -24,7 +24,7 @@ const Backdrop = ({
 }) => {
     const dispatch = useDispatch();
 
-    const picture = pictureUrl ? `url(https://image.tmdb.org/t/p/w1280${pictureUrl})` : `url(${Fallback})`;
+    const picture = pictureUrl ? `url(${pictureUrl})` : `url(${Fallback})`;
 
     const userId = useSelector(UserSelectors.id);
     const likedMovies = useSelector(UserSelectors.likedMovies);

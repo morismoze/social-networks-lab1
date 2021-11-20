@@ -1,0 +1,36 @@
+@import 'src/styles/colors.module';
+
+.menu {
+  width: 180px;
+
+  &__user {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 15px;
+    color: $black;
+  }
+
+  &__profileBtn {
+    font-size: 13px;
+    color: $lighter-gray;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & > svg {
+      color: $black;
+    }
+  }
+
+  &__btn {}
+
+  &__signoutBtn {}
+}

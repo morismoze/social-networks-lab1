@@ -1,64 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 
 import Item from "./Item";
 import User from "./User";
 import Logo from "../Logo";
-import Menu from "./Menu";
-import Weather from "../../Weather";
+import UserMenu from "./UserMenu";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
 import useScrollPosition from "../../../hooks/useScrollPosition";
-import {setActiveTab, toggleLoading} from "../../../store/shared/navigation/Navigation.slice";
-import { fbLogout } from "../../../api/facebook";
 import { HEADER_NAV_ITEMS } from "../../../constants/header";
 import styles from './Header.module.scss';
 
 const Header = () => {
-    const navigate = useNavigate();
-
     const dispatch = useDispatch();
 
-    const userRef = useRef(null);
+    const [ anchorEl, setAnchorEl ] = React.useState(null);
 
-    const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+    const isMenuOpen = Boolean(anchorEl);
 
-    const userName = useSelector(UserSelectors.name);
-    const userPictureUrl = useSelector(UserSelectors.pictureUrl);
+    const name = useSelector(UserSelectors.name);
+    const pictureUrl = useSelector(UserSelectors.pictureUrl);
 
     const scrollPosition = useScrollPosition();
 
-    const handleUserMenuClick = () => {
-        setIsMenuOpen(!isMenuOpen);
+    const handleMenuClick = (event) => {
+        setAnchorEl(event.currentTarget);
     };
 
-    const handleLogoutUser = () => {
-        handleUserMenuClick();
-        dispatch(toggleLoading(true));
-        fbLogout(() => {
-            navigate('/auth');
-            dispatch(toggleLoading(false));
-        });
-    };
-
-    const handleGoToMyProfile = () => {
-        handleUserMenuClick();
-        navigate('/profile');
-    };
-
-    const fetchUserData = () => {
-        dispatch(userActions.getUserData());
+    const handleMenuClose = () => {
+        setAnchorEl(null);
     };
 
     useEffect( () => {
-        (async () => {
-            if (!userName) {
-                await fetchUserData();
-            }
-        })();
+        if (!name) {
+            dispatch(userActions.getUserData());
+        }
     }, []);
 
     return (
@@ -90,21 +68,19 @@ const Header = () => {
                     {/*<Weather/>*/}
                     <div
                         className={styles.header__user}
-                        onClick={handleUserMenuClick}
-                        ref={userRef}
+                        onClick={handleMenuClick}
                     >
                         <User
-                            name={userName}
-                            pictureUrl={userPictureUrl}
+                            name={name}
+                            pictureUrl={pictureUrl}
                         />
                     </div>
                 </div>
-                <Menu
-                    handleCloseMenu={handleUserMenuClick}
-                    handleGoToAccountDetails={handleGoToMyProfile}
-                    handleLogout={handleLogoutUser}
+                <UserMenu
+                    anchorEl={anchorEl}
+                    handleCloseMenu={handleMenuClose}
                     isOpen={isMenuOpen}
-                    userRef={userRef}
+                    name={name}
                 />
             </header>
         </>

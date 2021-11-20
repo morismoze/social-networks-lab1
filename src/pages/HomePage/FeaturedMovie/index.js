@@ -1,6 +1,7 @@
 import React from 'react';
 
 import MovieData from "./MovieData";
+import Fallback from '../../../assets/images/movie-backdrop-fallback.png';
 import styles from './FeaturedMovie.module.scss';
 
 const FeaturedMovie = ({
@@ -10,7 +11,7 @@ const FeaturedMovie = ({
         <div
             className={styles.featuredMovie}
             style={{
-                backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`
+                backgroundImage: movie.backdrop_path ? `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` : `url(${Fallback})`
             }}
         >
             <MovieData

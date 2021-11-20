@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createTheme, TextField } from '@mui/material';
-import {makeStyles, ThemeProvider} from "@mui/styles";
+import { makeStyles, ThemeProvider } from "@mui/styles";
 
 import colors from '../../../../styles/colors.module.scss';
 import styles from './Data.module.scss';
@@ -9,11 +9,11 @@ import styles from './Data.module.scss';
 const theme = createTheme({
     palette: {
         primary: {
-            main: colors.darkGray
+            main: colors.white
         },
 
         text: {
-            disabled: colors.darkGray
+            disabled: colors.white
         }
     },
 });
@@ -21,11 +21,11 @@ const theme = createTheme({
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-            borderColor: `${colors.darkGray} !important`
+            borderColor: `${colors.white} !important`
         },
     },
     label: {
-        color: `${colors.darkGray} !important`
+        color: `${colors.white} !important`
     }
 }));
 
