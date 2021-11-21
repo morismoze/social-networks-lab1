@@ -10,14 +10,14 @@
   display: inline-block;
 
   &__isSelected {
-    color: $dark-red;
+    color: $golden;
   }
 
   &__addSelection {
-    color: lighten($dark-red, 25%);
+    color: lighten($golden, 25%);
   }
 
   &__removeSelection {
-    color: lighten($dark-red, 25%);
+    color: lighten($golden, 25%);
   }
 }

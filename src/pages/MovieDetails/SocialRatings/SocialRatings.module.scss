@@ -1,0 +1,19 @@
+@import 'src/styles/colors.module';
+
+.socialRatings {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__value {
+    color: $white;
+    font-weight: 600;
+    font-size: 18px;
+  }
+}

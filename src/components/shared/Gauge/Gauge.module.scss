@@ -1,0 +1,41 @@
+@import 'src/styles/colors.module';
+
+.gauge {
+  position: relative;
+
+  &__rail,
+  &__bar {
+    position: absolute;
+    fill: none;
+  }
+
+  &__rail {
+    z-index: 1;
+
+    & > circle {
+      stroke: rgba($white, .5);
+      stroke-width: .5px;
+    }
+  }
+
+  &__bar {
+    transform: rotate(-90deg);
+    z-index: 2;
+
+    & > circle {
+      stroke-linecap: butt;
+      transition: stroke-dashoffset .8s ease-in-out;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+    z-index: 2;
+  }
+}

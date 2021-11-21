@@ -19,13 +19,13 @@ const useStyles = makeStyles((theme) =>({
             color: colors.lighterGray,
             '&:hover': {
                 backgroundColor: 'transparent !important',
-                borderColor: colors.red,
-                color: colors.red,
+                borderColor: colors.golden,
+                color: colors.golden,
             }
         },
         '& .Mui-selected': {
-            color: colors.red,
-            borderColor: colors.red,
+            color: colors.golden,
+            borderColor: colors.golden,
             backgroundColor: 'transparent !important',
         },
     }

@@ -19,11 +19,11 @@
     transition: color .25s ease-in-out;
 
     &--active {
-      color: $red;
+      color: $golden;
     }
 
     &:hover {
-      color: $red;
+      color: $golden;
     }
   }
 }

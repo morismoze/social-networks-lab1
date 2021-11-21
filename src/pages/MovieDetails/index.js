@@ -16,6 +16,7 @@ import Production from "./Production";
 import RatePicker from "./RatePicker";
 import Footer from "../../components/shared/Footer";
 import NotAvailable from "./NotAvailable";
+import SocialRatings from "./SocialRatings";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
 import { setActiveMovie } from "../../store/shared/movie/Movie.slice";
@@ -112,6 +113,7 @@ const MovieDetails = () => {
                                                         <div className={styles.movieDetails__castWrapper}>
                                                             {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => (
                                                                 <CastMember
+                                                                    id={member.id}
                                                                     pictureLink={
                                                                         member.profile_path ?
                                                                             `https://image.tmdb.org/t/p/w154${member.profile_path}`
@@ -147,6 +149,17 @@ const MovieDetails = () => {
                                             )
                                         }
                                         case arr[3]: {
+                                            return (
+                                                <ParagraphLayoutWrapper
+                                                    title={item}
+                                                    className={styles.movieDetails__paragraph}
+                                                    key={index}
+                                                >
+                                                    <SocialRatings socialsRatings={details.social_ratings}/>
+                                                </ParagraphLayoutWrapper>
+                                            )
+                                        }
+                                        case arr[4]: {
                                             return (
                                                 <ParagraphLayoutWrapper
                                                     title={item}

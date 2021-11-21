@@ -2,8 +2,8 @@
 
 .group {
   text-decoration: none;
-  color: $red;
-  border: 1px solid $red;
+  color: $golden;
+  border: 1px solid $golden;
   padding: 5px 10px;
   font-weight: 500;
   transition: color, background-color .25s ease-in-out;
@@ -11,7 +11,7 @@
 
   &--active,
   &:hover {
-    background-color: $red;
+    background-color: $golden;
     color: $lighter-black;
   }
 }

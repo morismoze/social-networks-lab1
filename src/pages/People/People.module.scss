@@ -1,0 +1,5 @@
+@import 'src/styles/footer';
+
+.people {
+  @include footer-container;
+}

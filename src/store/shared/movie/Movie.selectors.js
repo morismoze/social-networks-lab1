@@ -19,15 +19,15 @@ export const activeIdDetails = createSelector(
 );
 
 export const mainStats = createSelector(
-    (globalState) => globalState.movieReducer,
-    (state) => {
-        const formattedRating = setFixedNumberOfDecimals(state.activeIdDetails?.vote_average);
-        const minutesAndHours = convertMinutesIntoHoursAndMinutes(state.activeIdDetails?.runtime);
-        const formattedRevenue = formatPrice(state.activeIdDetails?.revenue, 'USD');
+    activeIdDetails,
+    (details) => {
+        const formattedRating = setFixedNumberOfDecimals(details?.vote_average);
+        const minutesAndHours = convertMinutesIntoHoursAndMinutes(details?.runtime);
+        const formattedRevenue = formatPrice(details?.revenue, 'USD');
 
         return {
             'Rating': formattedRating,
-            'Status': state.activeIdDetails?.status,
+            'Status': details?.status,
             'Runtime': minutesAndHours ? `${minutesAndHours.hours}h ${minutesAndHours.minutes}min` : null,
             'Revenue': formattedRevenue
         }
@@ -35,33 +35,33 @@ export const mainStats = createSelector(
 );
 
 export const genres = createSelector(
-    (globalState) => globalState.movieReducer,
-    (state) => state.activeIdDetails?.genres.map(genre => genre.name)
+    activeIdDetails,
+    (details) => details?.genres.map(genre => genre.name)
 );
 
 export const released = createSelector(
-    (globalState) => globalState.movieReducer,
-    (state) => state.activeIdDetails && getStyledReleaseDate(state.activeIdDetails.release_date)
+    activeIdDetails,
+    (details) => getStyledReleaseDate(details?.release_date)
 );
 
 export const budget = createSelector(
-    (globalState) => globalState.movieReducer,
-    (state) => {
-        const formattedBudget = formatPrice(state.activeIdDetails?.budget);
+    activeIdDetails,
+    (details) => {
+        const formattedBudget = formatPrice(details?.budget);
 
         return formattedBudget;
     }
 );
 
 export const spokenLanguages = createSelector(
-    (globalState) => globalState.movieReducer,
-    (state) => state.activeIdDetails?.spoken_languages.map(lang => lang.english_name)
+    activeIdDetails,
+    (details) => details?.spoken_languages.map(lang => lang.english_name)
 );
 
 export const ytVideo = createSelector(
-    (globalState) => globalState.movieReducer,
-    (state) => {
-        const ytVideo = state.activeIdDetails?.videos.results.find(video => video.site === 'YouTube' && video.type === 'Trailer');
+    activeIdDetails,
+    (details) => {
+        const ytVideo = details?.videos.find(video => video.site === 'YouTube' && video.type === 'Trailer');
 
         return ytVideo;
     }

@@ -2,15 +2,15 @@
 
 .detailsButton {
   padding: 6px 15px;
-  background-color: $red;
+  background-color: $golden;
   color: $lighter-black;
   font-weight: 500;
-  border: 2px solid $red;
+  border: 2px solid $golden;
   transition: all .25s ease-in-out;
   cursor: pointer;
 
   &.noFill {
     background-color: transparent;
-    color: $red;
+    color: $golden;
   }
 }
