@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Routes, Route } from 'react-router-dom';
 
-import Person from "../pages/People/Person";
+import PersonDetails from "../pages/People/PersonDetails";
 
 const PeopleRoutes = () => {
     return (
         <Routes>
-            <Route path=':id' element={<Person/>} />
+            <Route path=':id' element={<PersonDetails/>} />
         </Routes>
     );
 };

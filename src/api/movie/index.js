@@ -130,3 +130,19 @@ export const getMovieDetails = async (id) => {
         return Promise.reject(err.statusText);
     }
 };
+
+export const getPersonDetails = async (id) => {
+    try {
+        const response = await instance.get(
+            moviePaths.getPersonDetails(id),
+            {
+                headers: defaultHeaders
+            }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};

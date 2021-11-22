@@ -5,21 +5,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container } from "@mui/material";
 
 import Backdrop from "./Backdrop";
-import Poster from "./Poster";
-import Sidenav from "./Sidenav";
-import ParagraphLayoutWrapper from "./ParagraphLayoutWrapper";
-import Overview from "./Overview";
-import Tagline from "./Overview/Tagline";
-import CastMember from "./Overview/CastMember";
+import ParagraphLayoutWrapper from "../../components/shared/ParagraphLayoutWrapper";
+import Overview from "../../components/shared/Overview";
+import Tagline from "./Tagline";
+import CastMember from "./Actors/CastMember";
 import Trailer from "./Trailer";
 import Production from "./Production";
 import RatePicker from "./RatePicker";
 import Footer from "../../components/shared/Footer";
-import NotAvailable from "./NotAvailable";
+import NotAvailable from "../../components/shared/NotAvailable";
 import SocialRatings from "./SocialRatings";
+import StickySidebar from "../../components/shared/StickySidebar";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
-import { setActiveMovie } from "../../store/shared/movie/Movie.slice";
 import { extractYearFromReleaseDate, sortObjectsByProperty } from "../../util/string";
 import { movieDetailsNavItems } from "../../constants/movieDetails";
 import styles from './MovieDetails.module.scss';
@@ -40,15 +38,8 @@ const MovieDetails = () => {
 
     const releaseYear = extractYearFromReleaseDate(details?.release_date);
 
-    const readMovieIdFromPath = (callback) => {
-        dispatch(setActiveMovie(params.id));
-        callback(params.id);
-    };
-
     useEffect(() => {
-        readMovieIdFromPath((activeId) => {
-            dispatch(movieActions.getMovieDetailsAndToggleLoader(activeId))
-        });
+        dispatch(movieActions.getMovieDetailsAndToggleLoader(params.id));
     }, []);
 
     return (
@@ -67,16 +58,17 @@ const MovieDetails = () => {
                         maxWidth='lg'
                         className={styles.movieDetails__detailsSection}
                     >
-                        <div className={styles.movieDetails__sidenavWrapper}>
-                            <Poster
-                                src={details.poster_path ? `https://image.tmdb.org/t/p/w300${details.poster_path}` : null}
-                                width={300}
-                                height={450}
-                                alt={details.original_title}
-                            />
-                            <Sidenav/>
+                        <StickySidebar
+                            poster={{
+                                src: details.poster_path ? `https://image.tmdb.org/t/p/w300${details.poster_path}` : null,
+                                width: 300,
+                                height: 450,
+                                alt: details.original_title
+                            }}
+                            navItems={movieDetailsNavItems}
+                        >
                             <RatePicker/>
-                        </div>
+                        </StickySidebar>
                         <div className={styles.movieDetails__data}>
                             {details.tagline &&
                                 <Tagline tagline={details.tagline}/>
@@ -92,6 +84,7 @@ const MovieDetails = () => {
                                                     key={index}
                                                 >
                                                     <Overview
+                                                        context='Overview'
                                                         synopsys={details.overview}
                                                         genres={genres}
                                                         released={released}

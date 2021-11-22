@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Image from "../../../components/shared/Image";
+import Image from "../Image";
 import Fallback from '../../../assets/images/poster-fallback.png';
 import styles from './Poster.module.scss';
 

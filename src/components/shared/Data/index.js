@@ -27,7 +27,7 @@ const Data = ({
                 <div className={styles.data__values}>
                     {data.map((item, index) => (
                         <span className={styles.data__value} key={index}>
-                            {item}{index < data.length - 1 ? ',' : ''}&nbsp;
+                            {item?.trim()}{index < data.length - 1 ? ',' : ''}&nbsp;
                         </span>
                     ))}
                 </div>

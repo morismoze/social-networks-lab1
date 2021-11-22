@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
+import { useSnackbar } from "notistack";
 
 import LazyLoadedImage from "../../../components/shared/LazyLoadedImage";
 import MovieCardRating from "../../../components/shared/MovieCard/MovieCardRating";
@@ -18,6 +19,8 @@ const MovieCard = ({
 }) => {
     const dispatch = useDispatch();
 
+    const { enqueueSnackbar } = useSnackbar();
+
     const userId = useSelector(UserSelectors.id);
 
     const watchlist = useSelector(UserSelectors.watchlist);
@@ -25,10 +28,16 @@ const MovieCard = ({
     const isAddedToWatchlist = watchlist.find(movieId => movieId === movie.id);
 
     const handleAddToWatchlist = () => {
-        if (isAddedToWatchlist) {
-            dispatch(userActions.removeFromWatchlist({ userId, movieId: movie.id }));
+        if (!userId) {
+            enqueueSnackbar('You have to be logged in order to like a movie.', {
+                variant: 'error'
+            });
         } else {
-            dispatch(userActions.addToWatchlist({ userId, movieId: movie.id }));
+            if (isAddedToWatchlist) {
+                dispatch(userActions.removeFromWatchlist({ userId, movieId: movie.id }));
+            } else {
+                dispatch(userActions.addToWatchlist({ userId, movieId: movie.id }));
+            }
         }
     };
 

@@ -66,7 +66,7 @@ const getTextMonth = (month) => {
     return months[month - 1];
 };
 
-export const getStyledReleaseDate = (date) => {
+export const getStyledDate = (date) => {
     if (!date) {
         return null;
     }

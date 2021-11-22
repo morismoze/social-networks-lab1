@@ -1,16 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import { convertMinutesIntoHoursAndMinutes } from "../../../util/time";
-import { formatPrice, getStyledReleaseDate, setFixedNumberOfDecimals } from "../../../util/string";
+import { formatPrice, getStyledDate, setFixedNumberOfDecimals } from "../../../util/string";
 
 export const status = createSelector(
     (globalState) => globalState.movieReducer,
     (state) => state.status
-);
-
-export const activeId = createSelector(
-    (globalState) => globalState.movieReducer,
-    (state) => state.activeId
 );
 
 export const activeIdDetails = createSelector(
@@ -41,7 +36,7 @@ export const genres = createSelector(
 
 export const released = createSelector(
     activeIdDetails,
-    (details) => getStyledReleaseDate(details?.release_date)
+    (details) => getStyledDate(details?.release_date)
 );
 
 export const budget = createSelector(

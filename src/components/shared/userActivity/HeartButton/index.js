@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { AiFillHeart } from "react-icons/all";
+import { useSnackbar } from "notistack";
 
 import StyledTooltip from "../../StyledTooltip";
 import * as UserSelectors from "../../../../store/shared/user/User.selectors";
@@ -12,11 +13,15 @@ const HeartButton = ({
     onClick,
     active
 }) => {
+    const { enqueueSnackbar } = useSnackbar();
+
     const id = useSelector(UserSelectors.id);
 
     const handleClick = () => {
         if (!id) {
-            // @todo: add snackbar saying that the user has to login to like movies
+            enqueueSnackbar('You have to be logged in order to like a movie.', {
+                variant: 'error'
+            });
         } else {
             onClick();
         }

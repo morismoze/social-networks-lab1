@@ -1,5 +1,6 @@
 import React from 'react';
 
+import StyledTooltip from "../StyledTooltip";
 import styles from './Gauge.module.scss';
 
 const Gauge = ({
@@ -55,10 +56,12 @@ const Gauge = ({
                     }}
                 />
             </svg>
-            <img
-                {...icon}
-                className={styles.gauge__icon}
-            />
+            <StyledTooltip title={icon.alt}>
+                <img
+                    {...icon}
+                    className={styles.gauge__icon}
+                />
+            </StyledTooltip>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Data from "../Data";
+import Data from "../../../components/shared/Data";
 import styles from './Production.module.scss';
 
 const Production = ({

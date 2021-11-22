@@ -9,6 +9,7 @@
     font-size: 14px;
     color: lighten($dark-gray, 10%);
     line-height: 25px;
+    white-space: nowrap;
   }
 
   &__values {

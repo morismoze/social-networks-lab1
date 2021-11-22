@@ -12,5 +12,6 @@ export const moviePaths = {
     getMoviesInTheaters: (limit) => `${api.movies}/in-theaters?limit=${limit}`,
     getRegionMovies: (country, limit) => `${api.movies}?region=${country}&limit=${limit}`,
     getLatestMovie: `${api.movies}/latest`,
-    getMovieDetails: (id) => `${api.movies}/details/${id}`,
+    getMovieDetails: (id) => `${api.movies}/${id}/details`,
+    getPersonDetails: (id) => `${api.movies}/people/${id}/details`,
 };

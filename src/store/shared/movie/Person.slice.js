@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { actions } from "./Movie.actions";
+import { actions } from "./Person.actions";
 
 const initialState = {
     status: 'idle',
     activeIdDetails: null
 };
 
-const movieSlice = createSlice({
+const personSlice = createSlice({
     initialState,
-    name: 'movie',
+    name: 'person',
     extraReducers: (builder) => {
         builder
             .addCase(actions.getDetails.pending, (state) => {
@@ -27,4 +27,4 @@ const movieSlice = createSlice({
     }
 });
 
-export const movieReducer = movieSlice.reducer;
+export const personReducer = personSlice.reducer;

@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Gauge from "../../../components/shared/Gauge";
-import NotAvailable from "../NotAvailable";
+import NotAvailable from "../../../components/shared/NotAvailable";
+import Share from "../Share";
 import Imdb from '../../../assets/images/imdb_logo.png';
 import RottenTomatoes from '../../../assets/images/rotten-tomatoes-logo.png';
 import MetaCritic from '../../../assets/images/metacritic-logo.png';
@@ -11,7 +12,7 @@ import styles from './SocialRatings.module.scss';
 const SocialRatings = ({
     socialsRatings
 }) => {
-    if (socialsRatings.length === 0) {
+    if (!socialsRatings || socialsRatings.length === 0) {
         return (
             <NotAvailable itemNotAvailable={'Social networks ratings'}/>
         )
@@ -50,25 +51,30 @@ const SocialRatings = ({
 
     return (
         <div className={styles.socialRatings}>
-            {socialsRatings.map((rating, index) => {
-                const meta = getMeta(rating.Source, rating.Value);
+            <div className={styles.socialRatings__items}>
+                {socialsRatings.map((rating, index) => {
+                    const meta = getMeta(rating.Source, rating.Value);
 
-                return <div className={styles.socialRatings__wrapper}>
-                    <Gauge
-                        percentage={meta.value}
-                        size={70}
-                        icon={{
-                            src: meta.icon,
-                            alt: rating.Source,
-                            title: rating.Source
-                        }}
-                        color={meta.color}
-                    />
-                    <span className={styles.socialRatings__value}>
+                    return <div className={styles.socialRatings__wrapper} key={index}>
+                        <Gauge
+                            percentage={meta.value}
+                            size={70}
+                            icon={{
+                                src: meta.icon,
+                                alt: rating.Source
+                            }}
+                            color={meta.color}
+                        />
+                        <span className={styles.socialRatings__value}>
                         {(meta.value * 10).toFixed(1)}
                     </span>
-                </div>
-            })}
+                    </div>
+                })}
+            </div>
+            <div className={styles.socialRatings__shareWrapper}>
+                <span className={styles.socialRatings__share}>Share this page:</span>
+                <Share/>
+            </div>
         </div>
     );
 };

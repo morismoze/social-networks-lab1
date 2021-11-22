@@ -16,18 +16,7 @@
     gap: 50px;
     margin-top: 50px;
     top: calc(#{$homePageHeaderHeight} + 30px);
-    padding-bottom: 80px;
-  }
-
-  &__sidenavWrapper {
-    position: sticky;
-    align-self: flex-start;
-    top: calc(#{$homePageHeaderHeight} + 30px);
-    width: 250px;
-
-    & > div:last-of-type {
-      margin-top: 15px;
-    }
+    padding: 0 35px 80px !important;
   }
 
   &__data {

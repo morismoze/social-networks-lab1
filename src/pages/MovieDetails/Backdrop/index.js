@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Container, Fade } from "@mui/material";
 
 import Stat from "./Stat";
-import ImageLink from "./ImageLink";
+import ImageLink from "../../../components/shared/ImageLink";
 import ReleaseYear from "./ReleaseYear";
 import HeartButton from "../../../components/shared/userActivity/HeartButton";
 import AddButton from "../../../components/shared/userActivity/AddButton";
@@ -65,7 +65,7 @@ const Backdrop = ({
                 <div className={styles.backdrop__movieNameShadow}/>
                 <div className={styles.backdrop__movieName}>
                     <Container
-                        maxWidth={'lg'}
+                        maxWidth='lg'
                         className={styles.backdrop__movieAndReleased}
                     >
                         <h1 className={styles.backdrop__name}>{movieName}</h1>
@@ -74,7 +74,7 @@ const Backdrop = ({
                 </div>
                 <div className={styles.backdrop__stats}>
                     <Container
-                        maxWidth={'lg'}
+                        maxWidth='lg'
                         className={styles.backdrop__statsAndLinks}
                     >
                         <div className={styles.backdrop__statsValues}>

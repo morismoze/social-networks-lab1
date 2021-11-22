@@ -1,0 +1,11 @@
+.shareContainer {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,32 @@
+@import 'src/styles/colors.module';
+
+.person {
+  display: flex !important;
+  gap: 50px;
+  padding: 50px 35px 0 !important;
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+  }
+
+  &__dataHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  &__name {
+    font-size: 22px;
+    font-weight: 600;
+    color: $golden;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+}

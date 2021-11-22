@@ -19,7 +19,7 @@ const SectionLayoutWrapper = ({
             { [styles.light]: mode === 'light' }
         )}>
             <Container
-                maxWidth={'xl'}
+                maxWidth='xl'
                 className={styles.sectionWrapper__container}
             >
                 <Title title={title} mode={mode === 'light' ? 'dark': 'light'}/>

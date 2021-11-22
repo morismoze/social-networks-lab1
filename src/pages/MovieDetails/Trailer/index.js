@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-import NotAvailable from "../NotAvailable";
+import NotAvailable from "../../../components/shared/NotAvailable";
 import styles from './Trailer.module.scss';
 
 const Trailer = ({

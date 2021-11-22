@@ -2,8 +2,15 @@
 
 .socialRatings {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 25px;
+
+  &__items {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+  }
 
   &__wrapper {
     display: flex;
@@ -15,5 +22,17 @@
     color: $white;
     font-weight: 600;
     font-size: 18px;
+  }
+
+  &__shareWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__share {
+    color: $white;
+    font-size: 14px;
+    font-weight: 600;
   }
 }
