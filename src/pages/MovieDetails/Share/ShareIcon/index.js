@@ -17,6 +17,7 @@ const ShareIcon = ({
                     width: size,
                     height: size
                 }}
+                className={styles.shareIcon}
             />
         </StyledTooltip>
     );

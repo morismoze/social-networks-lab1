@@ -90,14 +90,15 @@ export const removeFromWatchlist = async ({ userId, movieId }) => {
     }
 };
 
-export const getUserCountry = async (lat, lon) => {
+export const addToRatings = async ({ userId, movieId, rating }) => {
     try {
-        const response = await instance.get(
-            user.getUserCountry(lat, lon),
+        const response = await instance.post(
+            user.addToRatings(userId),
+            { [movieId]: rating },
             { headers: defaultHeaders }
         );
 
-        return response;
+        return response.data;
     } catch (err) {
         console.error(err);
         return Promise.reject(err.statusText);

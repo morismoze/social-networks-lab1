@@ -9,4 +9,9 @@
     color: $lighter-gray;
     font-size: 13px;
   }
+
+  &__starsContainer {
+    display: flex;
+    align-items: center;
+  }
 }

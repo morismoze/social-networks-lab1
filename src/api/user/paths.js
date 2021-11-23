@@ -15,5 +15,5 @@ export const user = {
     removeFromLikes: (id) => `${api.users}/${id}/movies/likes/remove`,
     addToWatchlist: (id) => `${api.users}/${id}/movies/watchlist/add`,
     removeFromWatchlist: (id) => `${api.users}/${id}/movies/watchlist/remove`,
-    getUserCountry: (lat, lon) => `${api.location}/reverse?lat=${lat}&lon=${lon}&apiKey=${geoapifyApiKey}`
+    addToRatings: (id) => `${api.users}/${id}/movies/rate`,
 };

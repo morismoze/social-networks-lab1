@@ -47,3 +47,8 @@ export const user = createSelector(
         location: state.location
     })
 );
+
+export const ratings = createSelector(
+    (globalState) => globalState.userReducer,
+    (state) => state.ratings
+);

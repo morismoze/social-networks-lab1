@@ -1,0 +1,7 @@
+.shareIcon {
+  filter: brightness(.85);
+
+  &:hover {
+    filter: brightness(1);
+  }
+}

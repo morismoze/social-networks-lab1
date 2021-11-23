@@ -10,6 +10,7 @@ const initialState = {
     pictureUrl: null,
     likes: [],
     watchlist: [],
+    ratings: [],
     location: null
 };
 
@@ -41,6 +42,7 @@ const userSlice = createSlice({
                 state.pictureUrl = action.payload.pictureUrl;
                 state.likes = action.payload.likes;
                 state.watchlist = action.payload.watchlist;
+                state.ratings = action.payload.ratings;
                 state.location = action.payload.location;
             })
             .addCase(actions.getUserData.rejected, (state, action) => {
@@ -71,7 +73,7 @@ const userSlice = createSlice({
             })
             .addCase(actions.addToWatchlist.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.watchlist = [...state.watchlist, action.payload]
+                state.watchlist = [...state.watchlist, action.payload];
             })
             .addCase(actions.addToWatchlist.rejected, (state, action) => {
                 state.status = 'failure';
@@ -81,9 +83,29 @@ const userSlice = createSlice({
             })
             .addCase(actions.removeFromWatchlist.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.watchlist = [...state.watchlist.filter(id => id !== action.payload)]
+                state.watchlist = [...state.watchlist.filter(id => id !== action.payload)];
             })
             .addCase(actions.removeFromWatchlist.rejected, (state, action) => {
+                state.status = 'failure';
+            })
+            .addCase(actions.addToRatings.pending, (state, action) => {
+                state.status = 'waiting';
+            })
+            .addCase(actions.addToRatings.fulfilled, (state, action) => {
+                state.status = 'success';
+
+                const movieId = Object.keys(action.payload)[0];
+                const index = state.ratings.findIndex((ratingsObj) => Object.keys(ratingsObj)[0] === movieId);
+
+                if (index > -1) {
+                    state.ratings[index] = {
+                        [movieId]: action.payload[movieId]
+                    };
+                } else {
+                    state.ratings = [...state.ratings, action.payload];
+                }
+            })
+            .addCase(actions.addToRatings.rejected, (state, action) => {
                 state.status = 'failure';
             })
     }
