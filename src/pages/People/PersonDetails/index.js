@@ -51,6 +51,10 @@ const PersonDetails = () => {
             {personStatus === 'success' &&
                 <>
                     <Helmet>
+                        <meta property="og:image" content={person.profile_path ? `https://image.tmdb.org/t/p/w300${person.profile_path}` : '../../assets/images/movie-backdrop-fallback.png'}/>
+                        <meta property='og:image:type' content='image/jpeg'/>
+                        <meta property='og:image:width' content='200'/>
+                        <meta property='og:image:height' content='200'/>
                         <title>{person.name} &bull; Recommend.me</title>
                     </Helmet>
                     <Container

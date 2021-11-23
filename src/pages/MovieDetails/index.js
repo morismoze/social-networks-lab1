@@ -21,6 +21,7 @@ import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
 import { extractYearFromReleaseDate, sortObjectsByProperty } from "../../util/string";
 import { movieDetailsNavItems } from "../../constants/movieDetails";
+import Fallback from '../../assets/images/movie-backdrop-fallback.png';
 import styles from './MovieDetails.module.scss';
 
 const MovieDetails = () => {
@@ -48,6 +49,14 @@ const MovieDetails = () => {
             {status === 'success' &&
                 <>
                     <Helmet>
+                        <meta
+                            name='description'
+                            content={details.overview}
+                        />
+                        <meta property="og:image" content={details.backdrop_path ? `https://image.tmdb.org/t/p/w300${details.backdrop_path}` : '../../assets/images/movie-backdrop-fallback.png'}/>
+                        <meta property='og:image:type' content='image/jpeg'/>
+                        <meta property='og:image:width' content='200'/>
+                        <meta property='og:image:height' content='200'/>
                         <title>{details.title} ({releaseYear}) &bull; Recommend.me</title>
                     </Helmet>
                     <div className={styles.movieDetails}>
