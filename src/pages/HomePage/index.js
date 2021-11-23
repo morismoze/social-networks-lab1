@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import { Helmet } from "react-helmet";
+
 import HomeRoutes from "../../router/HomeRoutes";
 import Header from "../../components/shared/Header";
 
@@ -11,6 +13,9 @@ const HomePage = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Recommend.me &bull; Home</title>
+            </Helmet>
             <Header/>
             <HomeRoutes/>
         </>

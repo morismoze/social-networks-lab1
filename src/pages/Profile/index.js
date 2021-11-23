@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import ProfileRoutes from "../../router/ProfileRoutes";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
@@ -19,6 +20,7 @@ const ProfilePage = () => {
     const [ activeSidebarTab, setActiveSidebarTab ] = useState();
 
     const userId = useSelector(UserSelectors.id);
+    const userName = useSelector(UserSelectors.name);
 
     const extractTabFromPath = () => {
         const active = location.pathname.split('/')[2];
@@ -41,6 +43,9 @@ const ProfilePage = () => {
 
     return (
         <>
+            <Helmet>
+                <title>{userName} - Profile &bull; Recommend.me</title>
+            </Helmet>
             <Header/>
             <WithLayoutWrapper className={styles.layout}>
                 <Sidebar
