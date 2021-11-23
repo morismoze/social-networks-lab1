@@ -14,6 +14,14 @@ const HomePage = () => {
     return (
         <>
             <Helmet>
+                <meta
+                    name='description'
+                    content='Recommend.me is a great source for movie content. Explore fresh-looking pages of many movie groups, details, actors and more important, get personalized recommendations.'
+                />
+                <meta property="og:image" content='../../assets/images/movie-backdrop-fallback.png'/>
+                <meta property='og:image:type' content='image/jpeg'/>
+                <meta property='og:image:width' content='200'/>
+                <meta property='og:image:height' content='200'/>
                 <title>Recommend.me &bull; Home</title>
             </Helmet>
             <Header/>
