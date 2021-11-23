@@ -4,8 +4,10 @@ export const instance = axios.create();
 
 instance.interceptors.request.use((config) => {
     // @todo: attach token auth only on particular list of routes
-    const token = localStorage.getItem('fb_token');
-    config.headers.Authorization = `Bearer ${token}`;
+    if (!config.url.includes('geoapify')) {
+        const token = localStorage.getItem('fb_token');
+        config.headers.Authorization = `Bearer ${token}`;
+    }
 
     return config;
 }, (error) => {

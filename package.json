@@ -30,7 +30,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set HTTPS=true&&react-scripts start",
     "start:local": "npm run start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -56,6 +56,5 @@
   },
   "devDependencies": {
     "node-sass": "^6.0.1"
-  },
-  "proxy": "http://localhost:8080/"
+  }
 }

@@ -55,8 +55,8 @@ export const spokenLanguages = createSelector(
 
 export const ytVideo = createSelector(
     activeIdDetails,
-    (details) => {
-        const ytVideo = details?.videos.find(video => video.site === 'YouTube' && video.type === 'Trailer');
+    (details) => {console.log(details)
+        const ytVideo = details?.videos.results.find(video => video.site === 'YouTube' && video.type === 'Trailer');
 
         return ytVideo;
     }
