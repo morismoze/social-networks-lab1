@@ -43,9 +43,7 @@ const LazyLoadedImage = ({
             )}
             <div
                 className={styles.lazyLoadedImg__inner}
-                style={{
-                    paddingBottom: `${100/(width/height)}%`
-                }}
+                style={{ paddingBottom: `${100/(width/height)}%` }}
             >
                 {isInView && (
                     <Image

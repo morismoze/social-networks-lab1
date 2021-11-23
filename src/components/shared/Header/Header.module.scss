@@ -68,4 +68,14 @@
   &__user {
     padding: 10px 0;
   }
+
+  @media screen and (max-width: $md) {
+    padding: 0 20px;
+    justify-content: space-between;
+
+    &__nav,
+    &__signInWrapper {
+      display: none;
+    }
+  }
 }

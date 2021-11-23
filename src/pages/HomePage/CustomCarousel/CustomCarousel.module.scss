@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import "src/styles/variables.module";
 
 .carousel {
   height: 100%;
@@ -22,6 +23,13 @@
       width: 8px;
       height: 8px;
       background-color: $white;
+    }
+  }
+
+  @media screen and (max-width: $lg) {
+    & nav {
+      bottom: 15px;
+      right: 20px;
     }
   }
 }

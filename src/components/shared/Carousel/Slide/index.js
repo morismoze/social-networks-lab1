@@ -11,9 +11,7 @@ const Slide = ({
     return (
         <div
             className={styles.slide}
-            style={{
-                width: `${width}px`
-            }}
+            style={{ width: `${width}px` }}
         >
             {item}
         </div>

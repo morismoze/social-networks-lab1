@@ -12,9 +12,7 @@ const Logo = ({
         <Link
             to='/'
             className={styles.logo}
-            style={{
-                flexDirection: horizontal ? 'row' : 'column'
-            }}
+            style={{ flexDirection: horizontal ? 'row' : 'column' }}
         >
             <img
                 src={logoIcon}

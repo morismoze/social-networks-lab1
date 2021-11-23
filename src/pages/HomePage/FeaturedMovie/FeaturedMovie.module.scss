@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import "src/styles/variables.module";
 
 .featuredMovie {
   height: 100%;
@@ -7,4 +8,22 @@
   background-repeat: no-repeat;
   background-color: $dark-gray;
   position: relative;
+
+  &__name {
+    display: none;
+    color: $white;
+    font-weight: 600;
+    text-align: left;
+    font-size: 14px;
+    max-width: calc(100% - 150px);
+  }
+
+  @media screen and (max-width: $md) {
+    &__name {
+      display: block;
+      position: absolute;
+      bottom: 15px;
+      left: 20px;
+    }
+  }
 }

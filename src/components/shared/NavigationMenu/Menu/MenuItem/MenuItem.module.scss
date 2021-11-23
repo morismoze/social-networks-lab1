@@ -1,0 +1,16 @@
+@import './src/styles/colors.module';
+
+.menuItem {
+  color: $golden;
+
+  &__link {
+    text-decoration: none;
+    font-size: 20px;
+    color: $white;
+    display: inline-block;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

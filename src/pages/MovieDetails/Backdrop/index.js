@@ -58,9 +58,7 @@ const Backdrop = ({
             <div className={styles.backdrop}>
                 <div
                     className={styles.backdrop__img}
-                    style={{
-                        backgroundImage: picture
-                    }}
+                    style={{ backgroundImage: picture }}
                 />
                 <div className={styles.backdrop__movieNameShadow}/>
                 <div className={styles.backdrop__movieName}>

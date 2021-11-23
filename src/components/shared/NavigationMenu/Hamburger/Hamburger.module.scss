@@ -1,0 +1,30 @@
+@import './src/styles/colors.module';
+
+.hamburger {
+  z-index: 102;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+
+  &__pillar {
+    z-index: 102;
+    width: 20px;
+    height: 2px;
+    background-color: $golden;
+    transition: transform .25s ease-in-out;
+  }
+
+  &--active &__pillar:first-of-type {
+    transform: rotateZ(45deg) translate(4px, 6px);
+  }
+
+  &--active &__pillar:nth-of-type(2) {
+    transform: translateX(200px);
+  }
+
+  &--active &__pillar:last-of-type {
+    transform: rotateZ(-45deg) translate(4px, -6px);
+  }
+}

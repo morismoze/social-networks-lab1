@@ -19,9 +19,7 @@ const Dropdown = ({
             className={styles.dropdown}
             onMouseOver={onMouseOver}
             onMouseLeave={onMouseLeave}
-            style={{
-                top: itemRef.current.offsetHeight - 5
-            }}
+            style={{ top: itemRef.current.offsetHeight - 5 }}
         >
             {items.map((item, index) => (
                 <Item

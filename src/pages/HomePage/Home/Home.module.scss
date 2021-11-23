@@ -1,5 +1,6 @@
 @import 'src/styles/footer';
 @import 'src/styles/scrollbar';
+@import 'src/styles/variables.module';
 
 .home {
   @include footer-container;
@@ -27,5 +28,11 @@
 
   &__singular {
     width: 50%;
+  }
+
+  @media screen and (max-width: $md) {
+    &__singular {
+      width: 100%;
+    }
   }
 }

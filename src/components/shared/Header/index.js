@@ -9,6 +9,7 @@ import User from "./User";
 import Logo from "../Logo";
 import UserMenu from "./UserMenu";
 import Button from "../Button";
+import NavigationMenu from "../NavigationMenu";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
 import useScrollPosition from "../../../hooks/useScrollPosition";
@@ -98,6 +99,7 @@ const Header = () => {
                     isOpen={isMenuOpen}
                     name={name}
                 />
+                <NavigationMenu/>
             </header>
         </>
     );

@@ -51,9 +51,7 @@ const Gauge = ({
                     strokeWidth={BAR_WIDTH}
                     strokeDasharray={DASHARRAY}
                     strokeDashoffset={DASHOFFSET && DASHOFFSET}
-                    style={{
-                        stroke: color
-                    }}
+                    style={{ stroke: color }}
                 />
             </svg>
             <StyledTooltip title={icon.alt}>

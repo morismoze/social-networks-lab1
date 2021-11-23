@@ -14,6 +14,7 @@ const FeaturedMovie = ({
                 backgroundImage: movie.backdrop_path ? `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` : `url(${Fallback})`
             }}
         >
+            <span className={styles.featuredMovie__name}>{movie.title}</span>
             <MovieData
                 id={movie.id}
                 name={movie.title}

@@ -1,4 +1,5 @@
 @import './src/styles/colors.module';
+@import './src/styles/variables.module';
 
 .logo {
   display: flex;
@@ -7,6 +8,7 @@
   padding: 10px 0;
   gap: 10px;
   text-decoration: none;
+  z-index: 102;
 
   &__icon {
     width: 25px;

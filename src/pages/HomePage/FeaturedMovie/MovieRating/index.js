@@ -34,7 +34,10 @@ const MovieRating = ({
                     <StarIcon
                         htmlColor='transparent'
                         fontSize={'small'}
-                        style={{ stroke: colors.yellow, strokeWidth: '1px' }}
+                        style={{
+                            stroke: colors.yellow,
+                            strokeWidth: '1px'
+                        }}
                     />
                 }
                 title={formattedValue}
