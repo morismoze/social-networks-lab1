@@ -1,11 +1,7 @@
 const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
-const geoapifyUrl = process.env.REACT_APP_GEOAPIFY;
-const geoapifyApiKey = process.env.REACT_APP_GEOAPIFY_API_KEY;
-
 const api = {
-    users: `${apiUrl}/users`,
-    location: `${geoapifyUrl}`
+    users: `${apiUrl}/users`
 };
 
 export const user = {
