@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 
+import { useSelector } from "react-redux";
 import { Slide } from "@mui/material";
 
 import MenuItem from "./MenuItem";
+import * as UserSelectors from '../../../../../store/shared/user/User.selectors';
 import styles from './Menu.module.scss';
 
 const Menu = ({
@@ -10,6 +12,8 @@ const Menu = ({
     toggleMenu
 }) => {
     const menuItemsRef = useRef();
+
+    const userId = useSelector(UserSelectors.id);
 
     const handleClick = () => {
         toggleMenu();
@@ -37,6 +41,13 @@ const Menu = ({
                         to='/movies'
                         onClick={handleClick}
                         text='Movies'
+                        timeout={650}
+                        containerRef={menuItemsRef}
+                    />
+                    <MenuItem
+                        to={userId ? '/profile' : '/auth'}
+                        onClick={handleClick}
+                        text={userId ? 'Profile' : 'Sign In'}
                         timeout={650}
                         containerRef={menuItemsRef}
                     />

@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .releaseYear {
   display: flex;
@@ -11,5 +12,11 @@
     font-size: 22px;
     font-weight: 500;
     color: lighten($dark-gray, 50%);
+  }
+
+  @media screen and (max-width: $md) {
+    &__year {
+      font-size: 17px;
+    }
   }
 }

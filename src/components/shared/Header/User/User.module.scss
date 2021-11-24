@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .user {
   display: flex;
@@ -10,5 +11,11 @@
     font-size: 12px;
     margin-right: 10px;
     font-weight: 500;
+  }
+
+  @media screen and (max-width: $sm) {
+    &__name {
+      display: none;
+    }
   }
 }

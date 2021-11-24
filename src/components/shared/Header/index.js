@@ -9,7 +9,7 @@ import User from "./User";
 import Logo from "../Logo";
 import UserMenu from "./UserMenu";
 import Button from "../Button";
-import NavigationMenu from "../NavigationMenu";
+import NavigationMenu from "./NavigationMenu";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
 import useScrollPosition from "../../../hooks/useScrollPosition";
@@ -54,6 +54,7 @@ const Header = () => {
                     { [ styles.scrolled ]: scrollPosition > 1 }
                 )}
             >
+                <NavigationMenu/>
                 <Logo/>
                 <nav className={styles.header__nav}>
                     <ul className={styles.header__navList}>
@@ -99,7 +100,6 @@ const Header = () => {
                     isOpen={isMenuOpen}
                     name={name}
                 />
-                <NavigationMenu/>
             </header>
         </>
     );

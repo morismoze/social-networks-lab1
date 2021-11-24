@@ -66,7 +66,7 @@ const Backdrop = ({
                         maxWidth='lg'
                         className={styles.backdrop__movieAndReleased}
                     >
-                        <h1 className={styles.backdrop__name}>{movieName}</h1>
+                        <span className={styles.backdrop__name}>{movieName}</span>
                         <ReleaseYear year={releaseYear}/>
                     </Container>
                 </div>

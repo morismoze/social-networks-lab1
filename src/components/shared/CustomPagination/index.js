@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Pagination } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useWindowSize } from "../../../hooks/useWindowSize";
 
 import colors from '../../../styles/colors.module.scss';
 import styles from './CustomPagination.module.scss';
@@ -36,6 +37,8 @@ const CustomPagination = ({
     page,
     onChange
 }) => {
+    const { width } = useWindowSize();
+
     const classes = useStyles();
 
     return (
@@ -48,6 +51,7 @@ const CustomPagination = ({
                 shape='rounded'
                 className={classes.root}
                 disabled={false}
+                siblingCount={width < 768 ? 0 : undefined}
             />
         </div>
     );

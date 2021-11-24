@@ -47,4 +47,19 @@
 
     @include scrollbar;
   }
+
+  @media screen and (max-width: $md) {
+    &__detailsSection {
+      margin-top: 30px;
+      padding: 0 20px 10px !important;
+    }
+  }
+
+  @media screen and (max-width: $sm) {
+    &__castWrapper {
+      &::-webkit-scrollbar {
+        display: none !important;
+      }
+    }
+  }
 }

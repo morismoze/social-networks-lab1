@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 10px;
 }
 
 .loader__wrapper {
@@ -58,5 +59,16 @@
     }
     20% {
         transform: scaleY(1) translateX(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .loader__pillar {
+        width: 4px;
+        height: 70%;
+    }
+
+    .logo {
+        transform: translateX(-50%);
     }
 }

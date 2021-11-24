@@ -20,7 +20,6 @@ import * as LatestMovieSelectors from '../redux/LatestMovie/LatestMovie.selector
 import { actions as latestMovieActions } from '../redux/LatestMovie/LatestMovie.actions';
 import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
 import styles from './Home.module.scss';
-import {region} from "../redux/RegionMovies/RegionMovies.selectors";
 
 const NUMBER_OF_CAROUSEL_ITEMS = 5;
 

@@ -32,6 +32,8 @@
     align-items: center;
     justify-content: center;
     padding-bottom: 10px;
+    font-size: 32px;
+    font-weight: 600;
   }
 
   &__movieAndReleased {
@@ -89,5 +91,28 @@
   &__imdb {
     width: 42px;
     height: auto;
+  }
+
+  @media screen and (max-width: $md) {
+    &__img {
+      background-position: center;
+    }
+
+    &__movieName {
+      font-size: 17px;
+    }
+
+    &__statsAndLinks {
+      padding: 0 20px !important;
+    }
+
+    &__statsValues {
+      gap: 20px;
+    }
+
+    &__activity,
+    &__links {
+      display: none;
+    }
   }
 }

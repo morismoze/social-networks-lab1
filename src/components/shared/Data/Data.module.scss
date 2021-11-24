@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .data {
   display: flex;
@@ -10,6 +11,7 @@
     color: lighten($dark-gray, 10%);
     line-height: 25px;
     white-space: nowrap;
+    width: min-content;
   }
 
   &__values {
@@ -22,5 +24,11 @@
     color: $lighter-gray;
     white-space: nowrap;
     line-height: 25px;
+  }
+
+  @media screen and (max-width: $sm) {
+    &__title {
+      white-space: pre-wrap;
+    }
   }
 }

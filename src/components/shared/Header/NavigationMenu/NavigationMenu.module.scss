@@ -2,7 +2,6 @@
 @import './src/styles/variables.module';
 
 .navigationMenu {
-
   @media screen and (min-width: $md) {
     display: none;
   }

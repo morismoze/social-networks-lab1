@@ -8,6 +8,7 @@
   font-weight: 500;
   transition: color, background-color .25s ease-in-out;
   font-size: 15px;
+  white-space: nowrap;
 
   &--active,
   &:hover {

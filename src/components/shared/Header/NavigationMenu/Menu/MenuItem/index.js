@@ -16,7 +16,7 @@ const MenuItem = ({
         <Slide
             in={true}
             timeout={timeout}
-            container={containerRef.current}
+            direction='up'
         >
             <div
                 className={styles.menuItem}

@@ -19,15 +19,17 @@ import SocialRatings from "./SocialRatings";
 import StickySidebar from "../../components/shared/StickySidebar";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
+import { useWindowSize } from "../../hooks/useWindowSize";
 import { extractYearFromReleaseDate, sortObjectsByProperty } from "../../util/string";
 import { movieDetailsNavItems } from "../../constants/movieDetails";
-import Fallback from '../../assets/images/movie-backdrop-fallback.png';
 import styles from './MovieDetails.module.scss';
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
 
     const params = useParams();
+
+    const { width } = useWindowSize();
 
     const status = useSelector(MovieSelectors.status);
     const details = useSelector(MovieSelectors.activeIdDetails);
@@ -39,6 +41,11 @@ const MovieDetails = () => {
     const ytVideo = useSelector(MovieSelectors.ytVideo);
 
     const releaseYear = extractYearFromReleaseDate(details?.release_date);
+
+    const backdropImage = width <= 576 ?
+        `https://image.tmdb.org/t/p/w780${details?.backdrop_path}`
+        :
+        `https://image.tmdb.org/t/p/w1280${details?.backdrop_path}`;
 
     useEffect(() => {
         dispatch(movieActions.getMovieDetailsAndToggleLoader(params.id));
@@ -64,7 +71,7 @@ const MovieDetails = () => {
                             id={details.id}
                             movieName={details.title}
                             releaseYear={releaseYear}
-                            pictureUrl={details.backdrop_path ? `https://image.tmdb.org/t/p/w1280${details.backdrop_path}` : null}
+                            pictureUrl={details.backdrop_path ? backdropImage : null}
                             mainStats={mainStats}
                             imdbId={details.imdb_id}
                         />

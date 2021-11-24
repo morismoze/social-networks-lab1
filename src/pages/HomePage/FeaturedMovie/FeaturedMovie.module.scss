@@ -7,6 +7,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color: $dark-gray;
+  background-position: center;
   position: relative;
 
   &__name {
@@ -16,9 +17,14 @@
     text-align: left;
     font-size: 14px;
     max-width: calc(100% - 150px);
+    padding: 3px;
+    background: linear-gradient(to right, rgba($black, .6), transparent);
+    text-decoration: none;
   }
 
   @media screen and (max-width: $md) {
+    background-position: center;
+
     &__name {
       display: block;
       position: absolute;

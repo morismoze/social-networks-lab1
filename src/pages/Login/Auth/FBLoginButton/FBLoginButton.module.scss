@@ -1,8 +1,9 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .fbLoginButton {
   border: none;
-  padding: 15px 20px;
+  padding: 15px 0;
   color: $facebook;
   background-color: white;
   font-weight: 500;
@@ -20,5 +21,12 @@
     margin-top: 1px;
     font-weight: 600;
     color: $dark-gray;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: $sm) {
+    &__text {
+      font-size: 13px;
+    }
   }
 }
