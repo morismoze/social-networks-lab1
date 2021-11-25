@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import { AiOutlineFacebook } from "react-icons/all";
 
-import { fbLogin } from "../../../../api/facebook";
+import { toggleLoading } from "../../../../store/shared/navigation/Navigation.slice";
 import styles from './FBLoginButton.module.scss';
 
 const FBLoginButton = () => {
-    const navigate = useNavigate();
-
     const location = useLocation();
+
+    const dispatch = useDispatch();
 
     const getProtectedRouteToVisit = () => {
         if (!location.state) {
@@ -26,10 +27,12 @@ const FBLoginButton = () => {
     };
 
     const onLoginClick = () => {
-        fbLogin(() => {
-            const protectedRouteToVisit = getProtectedRouteToVisit();
-            navigate(protectedRouteToVisit, { replace: true });
-        });
+        const redirectUri = window.location.href;
+        const fbId = process.env.REACT_APP_FB_APP_ID;
+        const state = getProtectedRouteToVisit();
+
+        dispatch(toggleLoading(true));
+        window.location = encodeURI(`https://www.facebook.com/dialog/oauth?client_id=${fbId}&redirect_uri=${redirectUri}&response_type=token&state=${state}`);
     };
 
     return (

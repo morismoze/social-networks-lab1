@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Fade } from "@mui/material";
 import { Helmet } from "react-helmet";
 
+import { useLocation, useNavigate } from "react-router-dom";
+
 import Login from "./Auth/Login";
+import { getSearchParamsFromHash } from "../../util/navigation";
+import { getUserFbData } from "../../api/facebook";
 import styles from './Login.module.scss';
 
 const LoginPage = () => {
+    const { hash } = useLocation();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (hash) {
+            const searchParams = getSearchParamsFromHash(hash);
+
+            if (searchParams.access_token) {
+                localStorage.setItem('fb_token',searchParams.access_token);
+
+                if (searchParams.state) {
+                    getUserFbData(() => {
+                        navigate(decodeURIComponent(searchParams.state), { replace: true });
+                    });
+                } else {
+                    getUserFbData(() => {
+                        navigate('/', { replace: true });
+                    });
+                }
+            }
+        }
+    }, [hash]);
     return (
         <>
             <Helmet>
