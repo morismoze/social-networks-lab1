@@ -23,6 +23,7 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import { extractYearFromReleaseDate, sortObjectsByProperty } from "../../util/string";
 import { movieDetailsNavItems } from "../../constants/movieDetails";
 import styles from './MovieDetails.module.scss';
+import {revenue} from "../../store/shared/movie/Movie.selectors";
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const MovieDetails = () => {
     const released = useSelector(MovieSelectors.released);
     const spokenLanguages = useSelector(MovieSelectors.spokenLanguages);
     const budget = useSelector(MovieSelectors.budget);
+    const revenue = useSelector(MovieSelectors.revenue);
     const ytVideo = useSelector(MovieSelectors.ytVideo);
 
     const releaseYear = extractYearFromReleaseDate(details?.release_date);
@@ -46,6 +48,13 @@ const MovieDetails = () => {
         `https://image.tmdb.org/t/p/w780${details?.backdrop_path}`
         :
         `https://image.tmdb.org/t/p/w1280${details?.backdrop_path}`;
+
+    const getCastImage = (member) => {
+        return width <= 576 ?
+            `https://image.tmdb.org/t/p/w92${member.profile_path}`
+            :
+            `https://image.tmdb.org/t/p/w154${member.profile_path}`;
+    };
 
     useEffect(() => {
         dispatch(movieActions.getMovieDetailsAndToggleLoader(params.id));
@@ -64,7 +73,7 @@ const MovieDetails = () => {
                         <meta property='og:image:type' content='image/jpeg'/>
                         <meta property='og:image:width' content='200'/>
                         <meta property='og:image:height' content='200'/>
-                        <title>{details.title} ({releaseYear}) &bull; Recommend.me</title>
+                        <title>{details.title} {releaseYear ? `(${releaseYear})` : ''} &bull; Recommend.me</title>
                     </Helmet>
                     <div className={styles.movieDetails}>
                         <Backdrop
@@ -111,6 +120,7 @@ const MovieDetails = () => {
                                                             released={released}
                                                             adult={details.adult ? 'Yes' : 'No'}
                                                             budget={budget}
+                                                            revenue={revenue}
                                                             spokenLanguages={spokenLanguages}
                                                         />
                                                     </ParagraphLayoutWrapper>
@@ -125,12 +135,14 @@ const MovieDetails = () => {
                                                     >
                                                         {details.cast.length > 0 ? (
                                                             <div className={styles.movieDetails__castWrapper}>
-                                                                {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => (
-                                                                    <CastMember
+                                                                {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => {
+                                                                    const castImage = getCastImage(member);
+
+                                                                    return <CastMember
                                                                         id={member.id}
                                                                         pictureLink={
                                                                             member.profile_path ?
-                                                                                `https://image.tmdb.org/t/p/w154${member.profile_path}`
+                                                                                castImage
                                                                                 :
                                                                                 null
                                                                         }
@@ -140,7 +152,7 @@ const MovieDetails = () => {
                                                                         character={member.character}
                                                                         key={index}
                                                                     />
-                                                                ))}
+                                                                })}
                                                             </div>
                                                         ) : (
                                                             <NotAvailable itemNotAvailable='Actors'/>

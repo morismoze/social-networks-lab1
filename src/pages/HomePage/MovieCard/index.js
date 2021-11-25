@@ -29,7 +29,7 @@ const MovieCard = ({
 
     const handleAddToWatchlist = () => {
         if (!userId) {
-            enqueueSnackbar('You have to be logged in order to like a movie.', {
+            enqueueSnackbar('You have to be logged in order to add a movie to the watchlist.', {
                 variant: 'error'
             });
         } else {

@@ -52,12 +52,14 @@ export const fbLogin = (callback) => {
 };
 
 export const fbLogout = (callback) => {
-    window.FB.getLoginStatus((response) => {
-        if (response.status === 'connected') {
-            window.FB.logout((response) => {
-                localStorage.removeItem('fb_token');
-                callback();
-            });
-        }
-    })
+    window.FB.api('/me/permissions', 'DELETE', (response) => {
+        window.FB.getLoginStatus((response) => {
+            if (response.status === 'connected') {
+                window.FB.logout((response) => {
+                    localStorage.removeItem('fb_token');
+                    callback();
+                });
+            }
+        });
+    });
 };

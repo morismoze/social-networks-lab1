@@ -11,7 +11,7 @@ const NotAvailable = ({
     return (
         <span className={styles.notAvailable}>
             <span>
-                <span className={styles.notAvailable__item}>{splitItem}</span> data not available.
+                <span className={styles.notAvailable__item}>{splitItem}</span>&nbsp;data not available.
             </span>
         </span>
     );

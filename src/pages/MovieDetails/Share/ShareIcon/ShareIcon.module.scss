@@ -6,9 +6,4 @@
   &:hover {
     filter: brightness(1);
   }
-
-  @media screen and (max-width: $sm) {
-    height: 25px !important;
-    width: 25px !important;
-  }
 }

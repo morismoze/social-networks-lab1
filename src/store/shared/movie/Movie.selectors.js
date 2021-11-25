@@ -48,6 +48,15 @@ export const budget = createSelector(
     }
 );
 
+export const revenue = createSelector(
+    activeIdDetails,
+    (details) => {
+        const formattedRevenue = formatPrice(details?.revenue);
+
+        return formattedRevenue;
+    }
+);
+
 export const spokenLanguages = createSelector(
     activeIdDetails,
     (details) => details?.spoken_languages.map(lang => lang.english_name)
@@ -55,7 +64,7 @@ export const spokenLanguages = createSelector(
 
 export const ytVideo = createSelector(
     activeIdDetails,
-    (details) => {console.log(details)
+    (details) => {
         const ytVideo = details?.videos.results.find(video => video.site === 'YouTube' && video.type === 'Trailer');
 
         return ytVideo;

@@ -78,7 +78,8 @@ const Backdrop = ({
                         <div className={styles.backdrop__statsValues}>
                             {Object.keys(mainStats).map((stat, index) => (
                                 <Stat
-                                    name={stat} value={mainStats[stat]}
+                                    name={stat}
+                                    value={mainStats[stat]}
                                     key={index}
                                 />
                             ))}

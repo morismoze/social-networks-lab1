@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useWindowSize } from "../../../hooks/useWindowSize";
+
 import Synopsys from "../Synopsys";
 import Genre from "../../../pages/MovieDetails/Genre";
 import Data from "../Data";
@@ -12,6 +14,8 @@ const Overview = ({
     genres,
     ...rest
 }) => {
+    const { width } = useWindowSize();
+
     return (
         <div className={styles.overview}>
             <Synopsys
@@ -19,11 +23,13 @@ const Overview = ({
                 context={context}
             />
             {Object.keys(rest).map((data, index) => (
-                <Data
-                    title={data}
-                    value={rest[data]}
-                    key={index}
-                />
+                data === 'revenue' && width > 768 ? null : (
+                    <Data
+                        title={data}
+                        value={rest[data]}
+                        key={index}
+                    />
+                )
             ))}
             {genres &&
                 <div className={styles.overview__genresWrapper}>
