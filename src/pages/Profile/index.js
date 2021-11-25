@@ -8,8 +8,10 @@ import ProfileRoutes from "../../router/ProfileRoutes";
 import WithLayoutWrapper from "../../components/shared/withLayoutWrapper";
 import Header from "../../components/shared/Header";
 import Sidebar from "./Sidebar";
+import TabBar from "./TabBar";
 import * as UserSelectors from "../../store/shared/user/User.selectors";
 import { setActiveTab } from "../../store/shared/navigation/Navigation.slice";
+import { SIDEBAR_NAV_ITEMS } from "../../constants/profile";
 import styles from './ProfilePage.module.scss';
 
 const ProfilePage = () => {
@@ -32,6 +34,10 @@ const ProfilePage = () => {
         }
     };
 
+    const toggleTabBarTabs = (event, value) => {
+      setActiveSidebarTab(SIDEBAR_NAV_ITEMS[value].id);
+    };
+
     useEffect(() => {
         dispatch(setActiveTab(null));
         extractTabFromPath();
@@ -48,6 +54,10 @@ const ProfilePage = () => {
             </Helmet>
             <Header/>
             <WithLayoutWrapper className={styles.layout}>
+                <TabBar
+                    activeSidebarTab={activeSidebarTab}
+                    setActiveSidebarTab={toggleTabBarTabs}
+                />
                 <Sidebar
                     activeSidebarTab={activeSidebarTab}
                     setActiveSidebarTab={setActiveSidebarTab}

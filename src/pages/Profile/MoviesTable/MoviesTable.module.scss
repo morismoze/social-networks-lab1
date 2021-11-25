@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .moviesTable {
   background-color: $black;
@@ -25,5 +26,9 @@
     &:first-of-type {
       padding-left: 10px;
     }
+  }
+
+  @media screen and (max-width: $md) {
+    display: none;
   }
 }

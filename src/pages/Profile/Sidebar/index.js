@@ -1,8 +1,8 @@
 import React from 'react';
 
+import Item from "./Item";
 import { SIDEBAR_NAV_ITEMS } from "../../../constants/profile";
 import styles from './Sidebar.module.scss';
-import Item from "./Item";
 
 const Sidebar = ({
     activeSidebarTab,
