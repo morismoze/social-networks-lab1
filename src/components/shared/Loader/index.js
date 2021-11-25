@@ -4,19 +4,15 @@ import { useSelector } from "react-redux";
 import { Fade } from "@mui/material";
 
 import * as NavigationSelectors from '../../../store/shared/navigation/Navigation.selectors';
-import logoLoader from '../../../assets/images/logo-loader.png';
+import logoLoader from '../../../assets/images/logo-loader.svg';
 import styles from './Loader.module.scss';
 
 const Loader = () => {
     const isLoading = useSelector(NavigationSelectors.isLoading);
 
-    if (!isLoading) {
-        return null;
-    }
-
     return (
         <Fade
-            in={true}
+            in={isLoading}
             exit={true}
         >
             <div className={styles.loader}>

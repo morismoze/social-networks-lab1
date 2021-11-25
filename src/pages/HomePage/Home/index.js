@@ -18,7 +18,6 @@ import * as RegionMoviesSelectors from '../redux/RegionMovies/RegionMovies.selec
 import { actions as regionMoviesActions } from '../redux/RegionMovies/RegionMovies.actions';
 import * as LatestMovieSelectors from '../redux/LatestMovie/LatestMovie.selectors';
 import { actions as latestMovieActions } from '../redux/LatestMovie/LatestMovie.actions';
-import { toggleLoading } from "../../../store/shared/navigation/Navigation.slice";
 import styles from './Home.module.scss';
 
 const NUMBER_OF_CAROUSEL_ITEMS = 5;
@@ -42,15 +41,13 @@ const Home = () => {
     const userLocation = useSelector(UserSelectors.location);
 
     useEffect(() => {
-        dispatch(toggleLoading(true));
-        dispatch(featuredMoviesActions.getMovies(NUMBER_OF_CAROUSEL_ITEMS));
-        dispatch(moviesInTheatersSelectorsActions.getMovies(20));
-        dispatch(latestMovieActions.getMovie());
-        dispatch(regionMoviesActions.getMovies({
+        dispatch(featuredMoviesActions.getMoviesAndToggleLoader(NUMBER_OF_CAROUSEL_ITEMS));
+        dispatch(moviesInTheatersSelectorsActions.getMoviesAndToggleLoader(20));
+        dispatch(latestMovieActions.getMovieAndToggleLoader());
+        dispatch(regionMoviesActions.getMoviesAndToggleLoader({
             country: userLocation ? userLocation.country : null,
             limit: 20
         }));
-        dispatch(toggleLoading(false));
     }, []);
 
     return (
