@@ -24,7 +24,7 @@ const LoginPage = () => {
 
                 if (searchParams.state) {
                     getUserFbData(() => {
-                        navigate('/', { replace: true });
+                        navigate(decodeURIComponent(searchParams.state), { replace: true });
                     });
                 } else {
                     getUserFbData(() => {
