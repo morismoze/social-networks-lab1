@@ -13,7 +13,11 @@ const Loader = () => {
     return (
         <Fade
             in={isLoading}
-            exit={true}
+            timeout={{
+                appear: 0,
+                enter: 0,
+                exit: 1000,
+            }}
         >
             <div className={styles.loader}>
                 <div className={styles.loader__wrapper}>
