@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 
 import Title from "../MoviesTable/Title";
 import MoviesTable from "../MoviesTable";
+import MoviesMobileList from "../MoviesMobileList";
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import styles from './LikedList.module.scss';
 
@@ -21,10 +22,16 @@ const LikedList = () => {
             <div className={styles.likedList}>
                 <Title title={'Movies You liked'}/>
                 {likedMovies.length > 0 ? (
-                    <MoviesTable
-                        type='liked-list'
-                        moviesIds={likedMovies}
-                    />
+                    <>
+                        <MoviesTable
+                            type='liked-list'
+                            moviesIds={likedMovies}
+                        />
+                        <MoviesMobileList
+                            type='liked-list'
+                            moviesIds={likedMovies}
+                        />
+                    </>
                 ) : (
                     <div className={styles.likedList__wrapper}>
                     <span className={styles.likedList__emptyWatchlist}>

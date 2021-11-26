@@ -1,13 +1,14 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 
 import Title from "../MoviesTable/Title";
 import MoviesTable from "../MoviesTable";
+import MoviesMobileList from "../MoviesMobileList";
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import styles from './WatchList.module.scss';
-import {Link} from "react-router-dom";
-import {Helmet} from "react-helmet";
 
 const WatchList = () => {
     const userName = useSelector(UserSelectors.name);
@@ -21,10 +22,16 @@ const WatchList = () => {
             <div className={styles.watchlist}>
                 <Title title={'Your watchlist'}/>
                 {watchlist.length > 0 ? (
-                    <MoviesTable
-                        type='watch-list'
-                        moviesIds={watchlist}
-                    />
+                    <>
+                        <MoviesTable
+                            type='watch-list'
+                            moviesIds={watchlist}
+                        />
+                        <MoviesMobileList
+                            type='watch-list'
+                            moviesIds={watchlist}
+                        />
+                    </>
                 ) : (
                     <div className={styles.watchlist__wrapper}>
                     <span className={styles.watchlist__emptyWatchlist}>

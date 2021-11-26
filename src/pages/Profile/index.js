@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import ProfileRoutes from "../../router/ProfileRoutes";
@@ -21,7 +21,6 @@ const ProfilePage = () => {
 
     const [ activeSidebarTab, setActiveSidebarTab ] = useState();
 
-    const userId = useSelector(UserSelectors.id);
     const userName = useSelector(UserSelectors.name);
 
     const extractTabFromPath = () => {
@@ -42,10 +41,6 @@ const ProfilePage = () => {
         dispatch(setActiveTab(null));
         extractTabFromPath();
     }, [location]);
-
-    if (!userId) {
-        return <Navigate to='/auth'/>
-    }
 
     return (
         <>

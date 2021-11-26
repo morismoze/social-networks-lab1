@@ -14,7 +14,6 @@ const Loader = () => {
         <Fade
             in={isLoading}
             timeout={{
-                appear: 0,
                 enter: 0,
                 exit: 1000,
             }}

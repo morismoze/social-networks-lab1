@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .data {
   display: flex;
@@ -10,4 +11,11 @@
   width: 450px;
   background-color: $black;
   border: 1px solid $dark-gray;
+
+  @media screen and (max-width: $md) {
+    background-color: transparent;
+    border: none;
+    padding: 0 20px 0;
+    width: 100%;
+  }
 }

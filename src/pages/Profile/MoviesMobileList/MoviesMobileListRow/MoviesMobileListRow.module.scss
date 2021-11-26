@@ -1,0 +1,37 @@
+@import 'src/styles/colors.module';
+
+.moviesMobileListRow {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  gap: 20px;
+  align-items: center;
+  height: 90px;
+  width: 100%;
+
+  &__poster {
+    height: 85px;
+    width: auto;
+  }
+
+  &__movieTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: $white;
+    text-decoration: underline;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+
+  &__loaderWrapper {
+    grid-column: 1 / 4;
+    text-align: center;
+
+    & > span {
+      color: $golden;
+    }
+  }
+}

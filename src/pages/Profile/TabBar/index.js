@@ -1,18 +1,20 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
 import { Tab, Tabs } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 import { SIDEBAR_NAV_ITEMS } from "../../../constants/profile";
 import styles from './TabBar.module.scss';
 import colors from "../../../styles/colors.module.scss";
-import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) =>({
     root: {
         backgroundColor: 'transparent',
         '& .MuiButtonBase-root': {
             color: colors.lighterGray,
+            paddingLeft: 8,
+            paddingRight: 8
         },
         '& .Mui-selected': {
             color: `${colors.golden} !important`,
@@ -36,6 +38,7 @@ const TabBar = ({
             <Tabs
                 value={getTabIndex}
                 onChange={setActiveSidebarTab}
+                variant='scrollable'
                 classes={classes}
             >
                 {SIDEBAR_NAV_ITEMS.map((item, index) => (

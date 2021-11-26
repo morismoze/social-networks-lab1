@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .userData {
   display: flex;
@@ -33,5 +34,20 @@
     font-size: 14px;
     color: rgba($lighter-gray, .3);
     font-weight: 500;
+  }
+
+  @media screen and (max-width: $xl) {
+    margin: 30px auto 0;
+  }
+
+  @media screen and (max-width: $md) {
+    flex-direction: column;
+    gap: 0;
+
+    &__basicDataContainer {
+      & > div {
+        display: none;
+      }
+    }
   }
 }
