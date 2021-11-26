@@ -34,12 +34,12 @@
   }
 
   @media screen and (max-width: $sm) {
-    height: 160px;
-    width: 100px;
-    min-width: 100px;
+    height: 190px;
+    width: 120px;
+    min-width: 120px;
 
     &__name {
-      font-size: 11px;
+      font-size: 12px;
     }
   }
 }
