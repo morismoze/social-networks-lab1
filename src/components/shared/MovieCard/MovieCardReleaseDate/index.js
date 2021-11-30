@@ -3,7 +3,7 @@ import React from 'react';
 import { AiOutlineCalendar } from "react-icons/all";
 
 import StyledTooltip from "../../StyledTooltip";
-import { extractYearFromReleaseDate } from "../../../../util/string";
+import { extractYearFromReleaseDate } from "../../../../util/timeAndDate";
 import styles from './MovieCardReleaseDate.module.scss';
 
 const MovieCardReleaseDate = ({

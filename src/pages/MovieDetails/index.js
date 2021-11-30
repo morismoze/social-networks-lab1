@@ -20,10 +20,10 @@ import StickySidebar from "../../components/shared/StickySidebar";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
 import { useWindowSize } from "../../hooks/useWindowSize";
-import { extractYearFromReleaseDate, sortObjectsByProperty } from "../../util/string";
+import { sortObjectsByProperty } from "../../util/string";
+import { extractYearFromReleaseDate } from "../../util/timeAndDate";
 import { movieDetailsNavItems } from "../../constants/movieDetails";
 import styles from './MovieDetails.module.scss';
-import {revenue} from "../../store/shared/movie/Movie.selectors";
 
 const MovieDetails = () => {
     const dispatch = useDispatch();

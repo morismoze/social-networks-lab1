@@ -3,8 +3,9 @@ import React from 'react';
 import { Fade } from "@mui/material";
 import { useSelector } from "react-redux";
 
-import Avatar from "../../../components/Avatar";
+import Avatar from "../../../components/shared/Avatar";
 import Data from "./Data";
+import Weather from "./Weather";
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import styles from './UserData.module.scss';
 
@@ -21,24 +22,27 @@ const UserData = () => {
             timeout={500}
         >
             <div className={styles.userData}>
-                <div className={styles.userData__basicDataContainer}>
-                    <Avatar
-                        pictureUrl={user.pictureUrl}
-                        size={92}
-                        name={user.name}
-                    />
-                    <div className={styles.userData__basicData}>
-                        <span className={styles.userData__name}>{user.name}</span>
-                        <span className={styles.userData__location}>
+                <div className={styles.userData__wrapper}>
+                    <div className={styles.userData__basicDataContainer}>
+                        <Avatar
+                            pictureUrl={user.pictureUrl}
+                            size={92}
+                            name={user.name}
+                        />
+                        <div className={styles.userData__basicData}>
+                            <span className={styles.userData__name}>{user.name}</span>
+                            <span className={styles.userData__location}>
                             {user.location.timezone}
                         </span>
+                        </div>
                     </div>
+                    <Data
+                        name={user.name}
+                        email={user.email}
+                        country={user.location.country}
+                    />
                 </div>
-                <Data
-                    name={user.name}
-                    email={user.email}
-                    country={user.location.country}
-                />
+                <Weather weather={user.weather}/>
             </div>
         </Fade>
     );

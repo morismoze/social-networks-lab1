@@ -1,7 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-import { convertMinutesIntoHoursAndMinutes } from "../../../util/time";
-import { formatPrice, getStyledDate, setFixedNumberOfDecimals } from "../../../util/string";
+import { convertMinutesIntoHoursAndMinutes } from "../../../util/timeAndDate";
+import { formatPrice, setFixedNumberOfDecimals } from "../../../util/string";
+import { getStyledDate } from "../../../util/timeAndDate";
 
 export const status = createSelector(
     (globalState) => globalState.movieReducer,

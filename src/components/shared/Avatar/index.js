@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import PictureLoading from "../shared/PictureLoading";
-import Image from "../shared/Image";
-import Fallback from "../../assets/images/user-profile-fallback.png";
+import PictureLoading from "../PictureLoading";
+import Image from "../Image";
+import Fallback from "../../../assets/images/user-profile-fallback.png";
 import styles from './Avatar.module.scss';
 
 const Avatar = ({

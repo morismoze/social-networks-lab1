@@ -1,0 +1,89 @@
+@import 'src/styles/colors.module';
+
+.weather {
+  padding: 15px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  border: 1px solid $dark-gray;
+  border-radius: 15px;
+  background-color: $black;
+
+  &__dataWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__mainData {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__description {
+    font-size: 14px;
+    font-weight: 500;
+    color: $white;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__mainDataWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__tempWrapper {
+    padding-right: 15px;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 60%;
+      background-color: rgba($white, .4);
+    }
+  }
+
+  &__temp {
+    font-size: 40px;
+    font-weight: 600;
+    color: $golden;
+  }
+
+  &__tempUnit {
+    color: $golden;
+    vertical-align: top;
+    font-size: 20px;
+  }
+
+  &__dateAndLocation {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 15px;
+  }
+
+  &__date {
+    color: $white;
+    font-size: 13px;
+  }
+
+  &__city {
+    color: $white;
+    font-size: 13px;
+  }
+
+  &__icon {
+    width: 100px;
+    height: auto;
+  }
+}

@@ -32,8 +32,7 @@ const useStyles = makeStyles((theme) => ({
 const Data = ({
     name,
     email,
-    country,
-    city
+    country
 }) => {
     const userName = name.split(' ');
 

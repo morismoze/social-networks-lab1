@@ -14,7 +14,7 @@ import * as UserSelectors from '../../../../store/shared/user/User.selectors';
 import { actions as userActions } from "../../../../store/shared/user/User.actions";
 import { actions as tableMoviesActions } from '../../redux/TableMovies.actions';
 import { useIntersection } from "../../../../hooks/useIntersection";
-import { extractYearFromReleaseDate } from "../../../../util/string";
+import { extractYearFromReleaseDate } from "../../../../util/timeAndDate";
 import Fallback from '../../../../assets/images/table-movie-poster-fallback.png';
 import styles from './MoviesTableRow.module.scss';
 
@@ -42,6 +42,8 @@ const MoviesTableRow = ({
     const handleRemoveFromLikedList = () => {
         dispatch(userActions.removeFromLikes({ userId, movieId: id }));
     };
+
+    const releaseDate = movie?.release_date ? extractYearFromReleaseDate(movie.release_date) : '--';
 
     return (
         <Fade
@@ -74,11 +76,7 @@ const MoviesTableRow = ({
                         </td>
                         <td className={styles.moviesTableRow__cell}>
                             <span>
-                                {movie.release_date ? (
-                                    extractYearFromReleaseDate(movie.release_date)
-                                ) : (
-                                    '--'
-                                )}
+                                {releaseDate}
                             </span>
                         </td>
                         <td className={styles.moviesTableRow__cell}>

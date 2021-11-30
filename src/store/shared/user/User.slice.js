@@ -11,7 +11,8 @@ const initialState = {
     likes: [],
     watchlist: [],
     ratings: [],
-    location: null
+    location: null,
+    weather: null
 };
 
 const userSlice = createSlice({
@@ -44,6 +45,7 @@ const userSlice = createSlice({
                 state.watchlist = action.payload.watchlist;
                 state.ratings = action.payload.ratings;
                 state.location = action.payload.location;
+                state.weather = action.payload.weather;
             })
             .addCase(actions.getUserData.rejected, (state, action) => {
                 state.status = 'failure';

@@ -44,7 +44,8 @@ export const user = createSelector(
         pictureUrl: state.pictureUrl,
         likedMovies: state.likedMovies,
         watchlist: state.watchlist,
-        location: state.location
+        location: state.location,
+        weather: state.weather
     })
 );
 

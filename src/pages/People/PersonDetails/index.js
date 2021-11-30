@@ -12,7 +12,7 @@ import Overview from "../../../components/shared/Overview";
 import * as PersonSelectors from '../../../store/shared/movie/Person.selectors';
 import { actions as personActions } from '../../../store/shared/movie/Person.actions';
 import { personDetailsNavItems } from "../../../constants/personDetails";
-import { getStyledDate } from "../../../util/string";
+import { getStyledDate } from "../../../util/timeAndDate";
 import ImdbIcon from "../../../assets/images/imdb_logo.png";
 import styles from './PersonDetails.module.scss';
 
@@ -88,7 +88,7 @@ const PersonDetails = () => {
                                     synopsys={person.biography}
                                     gender={gender}
                                     born={born}
-                                    { ...(person.deathday && { died: person.deathday}) }
+                                    { ...(person.deathday && { died: getStyledDate(person.deathday)}) }
                                     knownAs={person.also_known_as}
                                     department={person.known_for_department}
                                 />
