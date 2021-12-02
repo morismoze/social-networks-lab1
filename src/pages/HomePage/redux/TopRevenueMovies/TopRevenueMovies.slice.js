@@ -1,31 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { actions } from "./LatestMovie.actions";
+import { actions } from "./TopRevenueMovies.actions";
 
 const initialState = {
     status: 'idle',
-    movie: {}
+    movies: []
 };
 
-const latestMovieSlice = createSlice({
+const topRevenueMoviesSlice = createSlice({
     initialState,
-    name: 'latest',
+    name: 'topRevenue',
     reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(actions.getMovie.pending, (state) => {
                 state.status = 'waiting';
-                state.movie = initialState.movie;
+                state.movies = initialState.movies;
             })
             .addCase(actions.getMovie.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.movie = action.payload;
+                state.movies = action.payload;
             })
             .addCase(actions.getMovie.rejected, (state) => {
                 state.status = 'failure';
-                state.movie = initialState.movie;
+                state.movies = initialState.movies;
             })
     }
 });
 
-export const latestMovieReducer = latestMovieSlice.reducer;
+export const topRevenueMoviesReducer = topRevenueMoviesSlice.reducer;

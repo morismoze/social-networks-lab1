@@ -1,0 +1,76 @@
+@import 'src/styles/colors.module';
+
+.topRevenueMovie {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+  border-radius: 5px;
+
+  &.odd {
+    background: linear-gradient(to right, transparent, $black, transparent);
+  }
+
+  &.even {
+    background: linear-gradient(to left, transparent, $black, transparent);
+  }
+
+  &__index {
+    font-size: 14px;
+    color: $white;
+    position: relative;
+    padding-right: 15px;
+    font-weight: 600;
+
+    &:after {
+      content: '';
+      background-color: $golden;
+      height: 120%;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+    }
+  }
+
+  &__details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 15px;
+    flex: 1;
+  }
+
+  &__watchlistBtn {
+    background-color: rgba($dark-gray, .85);
+  }
+
+  &__dataWrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    text-decoration: none;
+    flex: 1;
+  }
+
+  &__title {
+    color: $white;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__revenue {
+    color: $white;
+    font-size: 13px;
+  }
+
+  &__dataWrapper:hover &__title {
+    text-decoration: underline;
+  }
+}

@@ -14,11 +14,14 @@ const removeFromWatchlist = createAsyncThunk('user/removeFromWatchlist', api.rem
 
 const addToRatings = createAsyncThunk('user/addToRatings', api.addToRatings);
 
+const logVisit = createAsyncThunk('user/logVisit', api.logVisit);
+
 export const actions = {
     getUserData,
     addToLikes,
     removeFromLikes,
     addToWatchlist,
     removeFromWatchlist,
-    addToRatings
+    addToRatings,
+    logVisit
 };

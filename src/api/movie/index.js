@@ -83,10 +83,10 @@ export const getMoviesInTheaters = async (limit) => {
     }
 };
 
-export const getRegionMovies = async ({ country, limit }) => {
+export const getRegionMovies = async (limit) => {
     try {
         const response = await instance.get(
-            moviePaths.getRegionMovies(country, limit),
+            moviePaths.getRegionMovies(limit),
             {
                 headers: defaultHeaders
             }
@@ -99,10 +99,26 @@ export const getRegionMovies = async ({ country, limit }) => {
     }
 };
 
-export const getLatestMovie = async () => {
+export const getTopRevenueMovies = async (limit) => {
     try {
         const response = await instance.get(
-            moviePaths.getLatestMovie,
+            moviePaths.getTopRevenueMovies(limit),
+            {
+                headers: defaultHeaders
+            }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};
+
+export const getMostVisitedMovies = async (limit) => {
+    try {
+        const response = await instance.get(
+            moviePaths.getMostVisited(limit),
             {
                 headers: defaultHeaders
             }

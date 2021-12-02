@@ -10,8 +10,9 @@ export const moviePaths = {
     getPopularMovies: (page, limit) => `${api.movies}/popular?page=${page}&limit=${limit}`,
     getFeaturedMovies: (limit) => `${api.movies}/featured?limit=${limit}`,
     getMoviesInTheaters: (limit) => `${api.movies}/in-theaters?limit=${limit}`,
-    getRegionMovies: (country, limit) => `${api.movies}?region=${country}&limit=${limit}`,
-    getLatestMovie: `${api.movies}/latest`,
+    getRegionMovies: (limit) => `${api.movies}/region?limit=${limit}`,
+    getTopRevenueMovies: (limit) => `${api.movies}/top-revenue?limit=${limit}`,
+    getMostVisited: (limit) => `${api.movies}/most-visited?limit=${limit}`,
     getMovieDetails: (id) => `${api.movies}/${id}/details`,
     getPersonDetails: (id) => `${api.movies}/people/${id}/details`,
 };

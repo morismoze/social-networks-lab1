@@ -8,16 +8,17 @@ import FeaturedMovie from "../FeaturedMovie";
 import WithLayoutWrapper from "../../../components/shared/withLayoutWrapper";
 import SectionLayoutWrapper from "../SectionLayoutWrapper";
 import MovieCard from "../MovieCard";
-import LatestMovie from "../LatestMovie";
+import TopRevenueMovie from "../TopRevenueMovie";
 import * as FeaturedMoviesSelectors from '../redux/FeaturedMovies/FeaturedMovies.selectors';
 import { actions as featuredMoviesActions } from '../redux/FeaturedMovies/FeaturedMovies.actions';
 import * as MoviesInTheatersSelectors from '../redux/MoviesInTheaters/MoviesInTheaters.selectors';
 import { actions as moviesInTheatersSelectorsActions } from '../redux/MoviesInTheaters/MoviesInTheaters.actions';
-import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import * as RegionMoviesSelectors from '../redux/RegionMovies/RegionMovies.selectors';
 import { actions as regionMoviesActions } from '../redux/RegionMovies/RegionMovies.actions';
-import * as LatestMovieSelectors from '../redux/LatestMovie/LatestMovie.selectors';
-import { actions as latestMovieActions } from '../redux/LatestMovie/LatestMovie.actions';
+import * as TopRevenueMoviesSelectors from '../redux/TopRevenueMovies/TopRevenueMovies.selectors';
+import { actions as topRevenueMoviesActions } from '../redux/TopRevenueMovies/TopRevenueMovies.actions';
+import * as MostVisitedMoviesSelectors from '../redux/MostVisitedMovies/MostVisitedMovies.selectors';
+import { actions as mostVisitedMoviesActions } from '../redux/MostVisitedMovies/MostVisitedMovies.actions';
 import styles from './Home.module.scss';
 
 const NUMBER_OF_CAROUSEL_ITEMS = 5;
@@ -35,19 +36,18 @@ const Home = () => {
     const regionMovies = useSelector(RegionMoviesSelectors.movies);
     const region = useSelector(RegionMoviesSelectors.region);
 
-    const latestMovieStatus = useSelector(LatestMovieSelectors.status);
-    const latestMovie = useSelector(LatestMovieSelectors.movie);
+    const topRevenueMoviesStatus = useSelector(TopRevenueMoviesSelectors.status);
+    const topRevenueMovies = useSelector(TopRevenueMoviesSelectors.movies);
 
-    const userLocation = useSelector(UserSelectors.location);
+    const mostVisitedMoviesStatus = useSelector(MostVisitedMoviesSelectors.status);
+    const mostVisitedMovies = useSelector(MostVisitedMoviesSelectors.movies);
 
     useEffect(() => {
         dispatch(featuredMoviesActions.getMoviesAndToggleLoader(NUMBER_OF_CAROUSEL_ITEMS));
         dispatch(moviesInTheatersSelectorsActions.getMoviesAndToggleLoader(20));
-        dispatch(latestMovieActions.getMovieAndToggleLoader());
-        dispatch(regionMoviesActions.getMoviesAndToggleLoader({
-            country: userLocation ? userLocation.country : null,
-            limit: 20
-        }));
+        dispatch(regionMoviesActions.getMoviesAndToggleLoader(20));
+        dispatch(topRevenueMoviesActions.getMovieAndToggleLoader(8));
+        dispatch(mostVisitedMoviesActions.getMoviesAndToggleLoader(20));
     }, []);
 
     return (
@@ -96,12 +96,24 @@ const Home = () => {
                         )}
                     </div>
                 </SectionLayoutWrapper>
-                <SectionLayoutWrapper
-                    title={'Latest movie'}
-                    className={styles.home__singular}
-                >
-                    {latestMovieStatus === 'success' &&
-                        <LatestMovie movie={latestMovie}/>
+                <SectionLayoutWrapper title={'Top revenues'}>
+                    <div className={styles.home__topRevenuesWrapper}>
+                        {topRevenueMoviesStatus === 'success' &&
+                            topRevenueMovies.map((movie, index) => (
+                                <TopRevenueMovie
+                                    movie={movie}
+                                    index={index + 1}
+                                    key={index}
+                                />
+                            )
+                        )}
+                    </div>
+                </SectionLayoutWrapper>
+                <SectionLayoutWrapper title={'Most Visited'}>
+                    {mostVisitedMoviesStatus === 'success' &&
+                        mostVisitedMovies.map((movie) => (
+                            <div/>
+                        ))
                     }
                 </SectionLayoutWrapper>
                 <Footer/>

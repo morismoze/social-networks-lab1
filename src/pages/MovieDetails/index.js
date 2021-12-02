@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,8 @@ import SocialRatings from "./SocialRatings";
 import StickySidebar from "../../components/shared/StickySidebar";
 import * as MovieSelectors from '../../store/shared/movie/Movie.selectors';
 import { actions as movieActions } from '../../store/shared/movie/Movie.actions';
+import * as UserSelectors from '../../store/shared/user/User.selectors';
+import { actions as userActions } from '../../store/shared/user/User.actions';
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { sortObjectsByProperty } from "../../util/string";
 import { extractYearFromReleaseDate } from "../../util/timeAndDate";
@@ -30,7 +32,11 @@ const MovieDetails = () => {
 
     const params = useParams();
 
+    const movieRef = useRef();
+
     const { width } = useWindowSize();
+
+    const [startVisit] = useState(new Date().getTime());
 
     const status = useSelector(MovieSelectors.status);
     const details = useSelector(MovieSelectors.activeIdDetails);
@@ -41,6 +47,8 @@ const MovieDetails = () => {
     const budget = useSelector(MovieSelectors.budget);
     const revenue = useSelector(MovieSelectors.revenue);
     const ytVideo = useSelector(MovieSelectors.ytVideo);
+
+    const userId = useSelector(UserSelectors.id);
 
     const releaseYear = extractYearFromReleaseDate(details?.release_date);
 
@@ -56,8 +64,19 @@ const MovieDetails = () => {
             `https://image.tmdb.org/t/p/w154${member.profile_path}`;
     };
 
+    movieRef.current = details;
+
     useEffect(() => {
         dispatch(movieActions.getMovieDetailsAndToggleLoader(params.id));
+
+        return () => {
+            const seconds = (new Date().getTime() - startVisit) / 1000;
+            dispatch(userActions.logVisit({
+                userId: userId,
+                movieId: movieRef.current.id,
+                time: seconds.toFixed(0)
+            }));
+        };
     }, []);
 
     return (

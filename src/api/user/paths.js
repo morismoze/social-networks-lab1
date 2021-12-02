@@ -12,4 +12,5 @@ export const user = {
     addToWatchlist: (id) => `${api.users}/${id}/movies/watchlist/add`,
     removeFromWatchlist: (id) => `${api.users}/${id}/movies/watchlist/remove`,
     addToRatings: (id) => `${api.users}/${id}/movies/rate`,
+    logVisit: (id) => `${api.users}/${id}/movies/visit`,
 };

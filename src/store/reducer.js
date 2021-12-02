@@ -10,13 +10,14 @@ import { featuredMoviesReducer } from "../pages/HomePage/redux/FeaturedMovies/Fe
 import { moviesInTheatersReducer } from "../pages/HomePage/redux/MoviesInTheaters/MoviesInTheaters.slice";
 import { regionMoviesReducer } from "../pages/HomePage/redux/RegionMovies/RegionMovies.slice";
 import { tableMoviesReducer } from "../pages/Profile/redux/TableMovies.slice";
-import { latestMovieReducer } from "../pages/HomePage/redux/LatestMovie/LatestMovie.slice";
+import { topRevenueMoviesReducer } from "../pages/HomePage/redux/TopRevenueMovies/TopRevenueMovies.slice";
 import { personReducer } from "./shared/movie/Person.slice";
+import { mostVisitedMoviesReducer } from "../pages/HomePage/redux/MostVisitedMovies/MostVisitedMovies.slice";
 
 export const rootReducer = combineReducers({
     featuredMoviesReducer,
-    latestMovieReducer,
     movieReducer,
+    mostVisitedMoviesReducer,
     moviesInTheatersReducer,
     navigationReducer,
     personReducer,
@@ -25,5 +26,6 @@ export const rootReducer = combineReducers({
     regionMoviesReducer,
     tableMoviesReducer,
     topRatedMoviesReducer,
+    topRevenueMoviesReducer,
     userReducer
 });

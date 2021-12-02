@@ -32,7 +32,7 @@ const FBLoginButton = () => {
         const state = getProtectedRouteToVisit();
 
         dispatch(toggleLoading(true));
-        window.location = encodeURI(`https://www.facebook.com/dialog/oauth?client_id=${fbId}&redirect_uri=${redirectUri}&response_type=token&state=${state}`);
+        window.location = encodeURI(`https://www.facebook.com/dialog/oauth?client_id=${fbId}&redirect_uri=${redirectUri}&response_type=token&state=${state}&scope=email,public_profile`);
     };
 
     return (

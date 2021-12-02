@@ -104,3 +104,18 @@ export const addToRatings = async ({ userId, movieId, rating }) => {
         return Promise.reject(err.statusText);
     }
 };
+
+export const logVisit = async ({ userId, movieId, time }) => {
+    try {
+        const response = await instance.post(
+            user.logVisit(userId),
+            { [movieId]: time },
+            { headers: defaultHeaders }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};

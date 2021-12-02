@@ -26,13 +26,27 @@
     background: radial-gradient(circle, rgba(62,62,62,1) 0%, rgba(21,21,21,1) 0%, rgba(226,226,226,1) 100%);
   }
 
-  &__singular {
-    width: 50%;
+  &__topRevenuesWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    grid-auto-flow: dense;
+    width: 100%;
   }
 
   @media screen and (max-width: $md) {
     &__singular {
       width: 100%;
+    }
+
+    &__topRevenuesWrapper {
+      grid-template-columns: none;
+    }
+  }
+
+  @media screen and (max-width: $sm) {
+    &__topRevenuesWrapper {
+      gap: 10px;
     }
   }
 }
