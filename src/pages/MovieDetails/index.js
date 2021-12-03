@@ -154,7 +154,10 @@ const MovieDetails = () => {
                                                     >
                                                         {details.cast.length > 0 ? (
                                                             <div className={styles.movieDetails__castWrapper}>
-                                                                {details.cast.slice().sort(sortObjectsByProperty('popularity')).map((member, index) => {
+                                                                {details.cast
+                                                                    .slice()
+                                                                    .sort(sortObjectsByProperty('popularity'))
+                                                                    .map((member, index) => {
                                                                     const castImage = getCastImage(member);
 
                                                                     return <CastMember

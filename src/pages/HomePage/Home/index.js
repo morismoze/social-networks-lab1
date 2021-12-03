@@ -9,6 +9,7 @@ import WithLayoutWrapper from "../../../components/shared/withLayoutWrapper";
 import SectionLayoutWrapper from "../SectionLayoutWrapper";
 import MovieCard from "../MovieCard";
 import TopRevenueMovie from "../TopRevenueMovie";
+import SlateCard from "../SlateCard";
 import * as FeaturedMoviesSelectors from '../redux/FeaturedMovies/FeaturedMovies.selectors';
 import { actions as featuredMoviesActions } from '../redux/FeaturedMovies/FeaturedMovies.actions';
 import * as MoviesInTheatersSelectors from '../redux/MoviesInTheaters/MoviesInTheaters.selectors';
@@ -110,11 +111,16 @@ const Home = () => {
                     </div>
                 </SectionLayoutWrapper>
                 <SectionLayoutWrapper title={'Most Visited'}>
-                    {mostVisitedMoviesStatus === 'success' &&
-                        mostVisitedMovies.map((movie) => (
-                            <div/>
-                        ))
-                    }
+                    <div className={styles.home__sectionMoviesWrapper}>
+                        {mostVisitedMoviesStatus === 'success' &&
+                            mostVisitedMovies.map((movie, index) => (
+                                <SlateCard
+                                    movie={movie}
+                                    key={index}
+                                />
+                            ))
+                        }
+                    </div>
                 </SectionLayoutWrapper>
                 <Footer/>
             </div>

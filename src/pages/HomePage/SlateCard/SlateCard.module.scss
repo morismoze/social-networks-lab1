@@ -1,0 +1,47 @@
+@import 'src/styles/colors.module';
+@import 'src/styles/img-shade';
+
+.slateCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+
+  &__visitWrapper {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    z-index: 2;
+  }
+
+  &__detailsIcon {
+    color: $golden;
+  }
+
+  &__visitCount {
+    color: $white;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &__imgWrapper {
+    overflow: hidden;
+    border-radius: 7px;
+    width: 300px;
+    height: 170px;
+  }
+
+  &__title {
+    color: $white;
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }
+}
