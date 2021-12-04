@@ -16,18 +16,21 @@ const SlateCard = ({
             to={`/${movie.id}/details`}
             className={styles.slateCard}
         >
-            <StyledTooltip
-                title={`No. of visits: ${movie.visit_counter}`}
-                placement='top'
-            >
-                <div className={styles.slateCard__visitWrapper}>
-                    <AiOutlineFire
-                        size={20}
-                        className={styles.slateCard__detailsIcon}
-                    />
-                    <span className={styles.slateCard__visitCount}>{movie.visit_counter}</span>
-                </div>
-            </StyledTooltip>
+
+            <div className={styles.slateCard__visitShadeWrapper}>
+                <StyledTooltip
+                    title={`No. of visits: ${movie.visit_counter}`}
+                    placement='top'
+                >
+                    <div className={styles.slateCard__visitWrapper}>
+                        <AiOutlineFire
+                            size={20}
+                            className={styles.slateCard__detailsIcon}
+                        />
+                        <span className={styles.slateCard__visitCount}>{movie.visit_counter}</span>
+                    </div>
+                </StyledTooltip>
+            </div>
             <div className={styles.slateCard__imgWrapper}>
                 <LazyLoadedImage
                     src={`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`}
