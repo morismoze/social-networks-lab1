@@ -23,8 +23,8 @@ const Login = () => {
                         recommend.me
                     </Link>
                         <span className={styles.container__headerSubTitle}>
-                        Log in to get the best movie recommendations.
-                    </span>
+                            Log in to get the best movie recommendations.
+                        </span>
                     </div>
                     <div className={styles.container__loginButtonWrapper}>
                         <FBLoginButton/>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import ProfileRoutes from "../../router/ProfileRoutes";
@@ -18,6 +18,8 @@ const ProfilePage = () => {
     const dispatch = useDispatch();
 
     const location = useLocation();
+
+    const navigate = useNavigate();
 
     const [ activeSidebarTab, setActiveSidebarTab ] = useState();
 
@@ -41,6 +43,11 @@ const ProfilePage = () => {
         dispatch(setActiveTab(null));
         extractTabFromPath();
     }, [location]);
+
+    if (!userName) {
+        navigate('/auth', { state: location });
+        return null;
+    }
 
     return (
         <>

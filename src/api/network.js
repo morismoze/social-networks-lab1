@@ -19,9 +19,7 @@ export const setResponsesInterceptor = (navigate, location) => {
         return response;
     }, (error) => {
         if (error.response.status === 401) {
-            if (location.pathname.includes('/profile')) {
-                navigate('/auth', { state: location })
-            }
+            // do nothing for now
         }
     });
 }
