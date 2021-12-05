@@ -26,17 +26,17 @@ const ProfilePage = () => {
     const userName = useSelector(UserSelectors.name);
 
     const extractTabFromPath = () => {
-        const active = location.pathname.split('/')[2];
+        const activeTab = location.pathname.split('/')[2];
 
-        if (active) {
-            setActiveSidebarTab(active);
+        if (activeTab) {
+            setActiveSidebarTab(SIDEBAR_NAV_ITEMS.find((item) => item.path === activeTab).id);
         } else {
-            setActiveSidebarTab('personal-information');
+            setActiveSidebarTab(1);
         }
     };
 
     const toggleTabBarTabs = (event, value) => {
-      setActiveSidebarTab(SIDEBAR_NAV_ITEMS[value].id);
+      setActiveSidebarTab(value);
     };
 
     useEffect(() => {

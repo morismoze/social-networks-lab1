@@ -65,8 +65,9 @@ const Header = () => {
                             >
                                 <Item
                                     id={item.id}
+                                    path={item.path}
                                     name={item.name}
-                                    key={item.id}
+                                    key={index}
                                 />
                             </li>
                         ))}

@@ -15,6 +15,7 @@ const Footer = () => {
                     {FOOTER_NAV_ITEMS.map((item, index) => (
                         <Item
                             id={item.id}
+                            path={item.path}
                             name={item.name}
                             key={index}
                         />

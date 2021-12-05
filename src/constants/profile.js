@@ -1,16 +1,19 @@
 export const SIDEBAR_NAV_ITEMS = [
     {
-        id: 'personal-information',
+        id: 0,
+        path: 'personal-information',
         name: 'Personal information',
         icon: 'AiFillProfile'
     },
     {
-        id: 'watchlist',
+        id: 1,
+        path: 'watchlist',
         name: 'Watchlist',
         icon: 'AiFillStar'
     },
     {
-        id: 'liked',
+        id: 2,
+        path: 'liked',
         name: 'Liked movies',
         icon: 'AiFillHeart'
     }

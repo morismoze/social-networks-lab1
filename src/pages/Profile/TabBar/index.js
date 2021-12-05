@@ -31,12 +31,12 @@ const TabBar = ({
 }) => {
     const classes = useStyles();
 
-    const getTabIndex = SIDEBAR_NAV_ITEMS.findIndex((item) => item.id === activeSidebarTab);
+    const tabIndex = SIDEBAR_NAV_ITEMS.findIndex((item) => item.id === activeSidebarTab);
 
     return (
         <div className={styles.tabBar}>
             <Tabs
-                value={getTabIndex}
+                value={tabIndex}
                 onChange={setActiveSidebarTab}
                 variant='scrollable'
                 classes={classes}
@@ -45,7 +45,7 @@ const TabBar = ({
                     <Tab
                         label={item.name}
                         component={Link}
-                        to={item.id}
+                        to={item.path}
                         key={index}
                     />
                 ))}

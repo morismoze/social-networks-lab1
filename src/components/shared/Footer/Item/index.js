@@ -6,11 +6,12 @@ import styles from './Item.module.scss';
 
 const Item = ({
     id,
+    path,
     name
 }) => {
     return (
         <Link
-            to={id === 'home' ? '/' : `/${id}`}
+            to={path}
             className={styles.item}
         >
             <span className={styles.item__name}>{name}</span>

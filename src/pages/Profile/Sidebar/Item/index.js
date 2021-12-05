@@ -15,7 +15,7 @@ const Item = ({
 
     return (
         <Link
-            to={item.id}
+            to={item.path}
             onClick={() => onClick(item.id)}
             className={classNames(
                 styles.item,

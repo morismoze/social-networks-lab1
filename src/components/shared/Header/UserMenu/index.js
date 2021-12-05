@@ -68,7 +68,7 @@ const UserMenu = ({
 
     const handleGoToProfile = () => {
         handleCloseMenu();
-        navigate('/profile');
+        navigate('/profile/personal-information');
     };
 
     const handleGoToWatchlist = () => {
