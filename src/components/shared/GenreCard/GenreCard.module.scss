@@ -27,7 +27,7 @@
     transition: color .25s ease-in-out;
   }
 
-  @media screen and (min-width: $xl) {
+  @media screen and (min-width: $lg) {
     &:hover {
       background-color: $golden;
     }
