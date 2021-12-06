@@ -13,9 +13,11 @@ import { tableMoviesReducer } from "../pages/Profile/redux/TableMovies.slice";
 import { topRevenueMoviesReducer } from "../pages/HomePage/redux/TopRevenueMovies/TopRevenueMovies.slice";
 import { personReducer } from "./shared/movie/Person.slice";
 import { mostVisitedMoviesReducer } from "../pages/HomePage/redux/MostVisitedMovies/MostVisitedMovies.slice";
+import { genresReducer } from "./shared/movie/Genres.slice";
 
 export const rootReducer = combineReducers({
     featuredMoviesReducer,
+    genresReducer,
     movieReducer,
     mostVisitedMoviesReducer,
     moviesInTheatersReducer,

@@ -20,6 +20,11 @@ export const pictureUrl = createSelector(
     (state) => state.pictureUrl
 );
 
+export const favouriteGenres = createSelector(
+    (globalState) => globalState.userReducer,
+    (state) => state.favouriteGenres
+);
+
 export const likedMovies = createSelector(
     (globalState) => globalState.userReducer,
     (state) => state.likes

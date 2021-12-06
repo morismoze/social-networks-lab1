@@ -9,6 +9,12 @@
     height: 70vh;
   }
 
+  &__genresWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   &__sectionMoviesWrapper {
     display: grid;
     grid-auto-flow: column;
@@ -21,7 +27,7 @@
     @include scrollbar;
   }
 
-  &__darkSection {
+  &__lightSection {
     background: rgb(62,62,62);
     background: radial-gradient(circle, rgba(62,62,62,1) 0%, rgba(21,21,21,1) 0%, rgba(226,226,226,1) 100%);
   }

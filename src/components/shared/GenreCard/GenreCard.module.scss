@@ -1,0 +1,45 @@
+@import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
+
+.genre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1px solid $golden;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color .25s ease-in-out;
+
+  &--active {
+    background-color: $golden;
+  }
+
+  &--active &__name {
+    color: $lighter-black;
+  }
+
+  &__name {
+    color: $golden;
+    font-size: 15px;
+    font-weight: 600;
+    transition: color .25s ease-in-out;
+  }
+
+  &:hover {
+    background-color: $golden;
+  }
+
+  &:hover &__name {
+    color: $lighter-black;
+  }
+
+  @media screen and (max-width: $sm) {
+    padding: 10px;
+
+    &__name {
+      font-size: 14px;
+    }
+  }
+}

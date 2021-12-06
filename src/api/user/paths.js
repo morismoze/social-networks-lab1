@@ -7,6 +7,8 @@ const api = {
 export const user = {
     storeUserData: `${api.users}/create`,
     getUserData: `${api.users}/current`,
+    addToFavouriteGenres: (id) => `${api.users}/${id}/genres/add`,
+    removeFromFavouriteGenres: (id) => `${api.users}/${id}/genres/remove`,
     addToLikes: (id) => `${api.users}/${id}/movies/likes/add`,
     removeFromLikes: (id) => `${api.users}/${id}/movies/likes/remove`,
     addToWatchlist: (id) => `${api.users}/${id}/movies/watchlist/add`,

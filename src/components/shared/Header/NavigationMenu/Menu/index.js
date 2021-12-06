@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { useSelector } from "react-redux";
 import { Slide } from "@mui/material";
@@ -18,6 +18,14 @@ const Menu = ({
     const handleClick = () => {
         toggleMenu();
     };
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflowY = 'hidden';
+        } else {
+            document.body.style.overflowY = 'unset';
+        }
+    }, [isOpen]);
 
     return (
         <Slide

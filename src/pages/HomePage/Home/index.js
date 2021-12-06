@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import CustomCarousel from "../CustomCarousel";
+import GenreCard from "../../../components/shared/GenreCard";
 import Footer from "../../../components/shared/Footer";
 import FeaturedMovie from "../FeaturedMovie";
 import WithLayoutWrapper from "../../../components/shared/withLayoutWrapper";
@@ -10,6 +11,8 @@ import SectionLayoutWrapper from "../SectionLayoutWrapper";
 import MovieCard from "../MovieCard";
 import TopRevenueMovie from "../TopRevenueMovie";
 import SlateCard from "../SlateCard";
+import * as GenresSelectors from '../../../store/shared/movie/Genres.selectors';
+import { actions as genresActions } from '../../../store/shared/movie/Genres.actions';
 import * as FeaturedMoviesSelectors from '../redux/FeaturedMovies/FeaturedMovies.selectors';
 import { actions as featuredMoviesActions } from '../redux/FeaturedMovies/FeaturedMovies.actions';
 import * as MoviesInTheatersSelectors from '../redux/MoviesInTheaters/MoviesInTheaters.selectors';
@@ -26,6 +29,9 @@ const NUMBER_OF_CAROUSEL_ITEMS = 5;
 
 const Home = () => {
     const dispatch = useDispatch();
+
+    const genresStatus = useSelector(GenresSelectors.status);
+    const genres = useSelector(GenresSelectors.genres);
 
     const featuredMoviesStatus = useSelector(FeaturedMoviesSelectors.status);
     const featuredMovies = useSelector(FeaturedMoviesSelectors.movies);
@@ -44,6 +50,7 @@ const Home = () => {
     const mostVisitedMovies = useSelector(MostVisitedMoviesSelectors.movies);
 
     useEffect(() => {
+        dispatch(genresActions.getGenresAndToggleLoader());
         dispatch(featuredMoviesActions.getMoviesAndToggleLoader(NUMBER_OF_CAROUSEL_ITEMS));
         dispatch(moviesInTheatersSelectorsActions.getMoviesAndToggleLoader(20));
         dispatch(regionMoviesActions.getMoviesAndToggleLoader(20));
@@ -68,6 +75,18 @@ const Home = () => {
                         interval={8000}
                     />
                 </div>
+                <SectionLayoutWrapper title={'Pick Your favourite genres'}>
+                    <div className={styles.home__genresWrapper}>
+                        {genresStatus === 'success' &&
+                            genres.map((genre, index) => (
+                                <GenreCard
+                                    genre={genre}
+                                    key={index}
+                                />
+                            )
+                        )}
+                    </div>
+                </SectionLayoutWrapper>
                 <SectionLayoutWrapper title={'In Theatres'}>
                     <div className={styles.home__sectionMoviesWrapper}>
                         {moviesInTheatersStatus === 'success' &&
@@ -83,7 +102,7 @@ const Home = () => {
                 <SectionLayoutWrapper
                     title={`Top Picks in ${region}`}
                     mode={'light'}
-                    className={styles.home__darkSection}
+                    className={styles.home__lightSection}
                 >
                     <div className={styles.home__sectionMoviesWrapper}>
                         {regionMoviesStatus === 'success' &&

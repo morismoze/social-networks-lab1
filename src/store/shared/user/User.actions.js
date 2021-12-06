@@ -4,6 +4,10 @@ import * as api from '../../../api/user/index';
 
 const getUserData = createAsyncThunk('user/getData', api.getUserData);
 
+const addToFavouriteGenres = createAsyncThunk('user/addToFavouriteGenres', api.addToFavouriteGenres);
+
+const removeFromFavouriteGenres = createAsyncThunk('user/removeFromFavouriteGenres', api.removeFromFavouriteGenres);
+
 const addToLikes = createAsyncThunk('user/addToLikes', api.addToLikes);
 
 const removeFromLikes = createAsyncThunk('user/removeFromLikes', api.removeFromLikes);
@@ -18,6 +22,8 @@ const logVisit = createAsyncThunk('user/logVisit', api.logVisit);
 
 export const actions = {
     getUserData,
+    addToFavouriteGenres,
+    removeFromFavouriteGenres,
     addToLikes,
     removeFromLikes,
     addToWatchlist,

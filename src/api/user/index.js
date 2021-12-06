@@ -30,6 +30,36 @@ export const getUserData = async () => {
     }
 };
 
+export const addToFavouriteGenres = async ({ userId, genreId }) => {
+    try {
+        const response = await instance.post(
+            user.addToFavouriteGenres(userId),
+            { genreId: genreId },
+            { headers: defaultHeaders }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};
+
+export const removeFromFavouriteGenres = async ({ userId, genreId }) => {
+    try {
+        const response = await instance.post(
+            user.removeFromFavouriteGenres(userId),
+            { genreId: genreId },
+            { headers: defaultHeaders }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};
+
 export const addToLikes = async ({ userId, movieId }) => {
     try {
         const response = await instance.post(
@@ -94,7 +124,7 @@ export const addToRatings = async ({ userId, movieId, rating }) => {
     try {
         const response = await instance.post(
             user.addToRatings(userId),
-            { [movieId]: rating },
+            { movieId: movieId, rating: rating },
             { headers: defaultHeaders }
         );
 
@@ -109,7 +139,7 @@ export const logVisit = async ({ userId, movieId, time }) => {
     try {
         const response = await instance.post(
             user.logVisit(userId),
-            { [movieId]: time },
+            { movieId: movieId, time: Number(time) },
             { headers: defaultHeaders }
         );
 

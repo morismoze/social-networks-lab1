@@ -3,6 +3,22 @@ import { defaultHeaders, instance } from "../network";
 
 const RESULTS_PER_PAGE = 22;
 
+export const getGenres = async () => {
+    try {
+        const response = await instance.get(
+            moviePaths.getGenres,
+            {
+                headers: defaultHeaders
+            }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};
+
 export const getRecommendedMovies = async (page) => {
     try {
         const response = await instance.get(
