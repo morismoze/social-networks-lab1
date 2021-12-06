@@ -11,6 +11,7 @@ import SectionLayoutWrapper from "../SectionLayoutWrapper";
 import MovieCard from "../MovieCard";
 import TopRevenueMovie from "../TopRevenueMovie";
 import SlateCard from "../SlateCard";
+import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import * as GenresSelectors from '../../../store/shared/movie/Genres.selectors';
 import { actions as genresActions } from '../../../store/shared/movie/Genres.actions';
 import * as FeaturedMoviesSelectors from '../redux/FeaturedMovies/FeaturedMovies.selectors';
@@ -29,6 +30,8 @@ const NUMBER_OF_CAROUSEL_ITEMS = 5;
 
 const Home = () => {
     const dispatch = useDispatch();
+
+    const userId = useSelector(UserSelectors.id);
 
     const genresStatus = useSelector(GenresSelectors.status);
     const genres = useSelector(GenresSelectors.genres);
@@ -50,13 +53,18 @@ const Home = () => {
     const mostVisitedMovies = useSelector(MostVisitedMoviesSelectors.movies);
 
     useEffect(() => {
-        dispatch(genresActions.getGenresAndToggleLoader());
         dispatch(featuredMoviesActions.getMoviesAndToggleLoader(NUMBER_OF_CAROUSEL_ITEMS));
         dispatch(moviesInTheatersSelectorsActions.getMoviesAndToggleLoader(20));
         dispatch(regionMoviesActions.getMoviesAndToggleLoader(20));
         dispatch(topRevenueMoviesActions.getMovieAndToggleLoader(8));
         dispatch(mostVisitedMoviesActions.getMoviesAndToggleLoader(20));
     }, []);
+
+    useEffect(() => {
+        if (userId && genres.length === 0) {
+            dispatch(genresActions.getGenresAndToggleLoader());
+        }
+    }, [userId]);
 
     return (
         <WithLayoutWrapper>
@@ -75,18 +83,20 @@ const Home = () => {
                         interval={8000}
                     />
                 </div>
-                <SectionLayoutWrapper title={'Pick Your favourite genres'}>
-                    <div className={styles.home__genresWrapper}>
-                        {genresStatus === 'success' &&
+                {userId &&
+                    <SectionLayoutWrapper title={'Pick Your favourite genres'}>
+                        <div className={styles.home__genresWrapper}>
+                            {genresStatus === 'success' &&
                             genres.map((genre, index) => (
-                                <GenreCard
-                                    genre={genre}
-                                    key={index}
-                                />
-                            )
-                        )}
-                    </div>
-                </SectionLayoutWrapper>
+                                    <GenreCard
+                                        genre={genre}
+                                        key={index}
+                                    />
+                                )
+                            )}
+                        </div>
+                    </SectionLayoutWrapper>
+                }
                 <SectionLayoutWrapper title={'In Theatres'}>
                     <div className={styles.home__sectionMoviesWrapper}>
                         {moviesInTheatersStatus === 'success' &&

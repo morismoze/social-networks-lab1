@@ -27,12 +27,14 @@
     transition: color .25s ease-in-out;
   }
 
-  &:hover {
-    background-color: $golden;
-  }
+  @media screen and (min-width: $xl) {
+    &:hover {
+      background-color: $golden;
+    }
 
-  &:hover &__name {
-    color: $lighter-black;
+    &:hover &__name {
+      color: $lighter-black;
+    }
   }
 
   @media screen and (max-width: $sm) {
