@@ -41,13 +41,5 @@
     &__name {
       font-size: 14px;
     }
-
-    &:hover {
-      background-color: unset;
-    }
-
-    &:hover &__name {
-      color: unset;
-    }
   }
 }
