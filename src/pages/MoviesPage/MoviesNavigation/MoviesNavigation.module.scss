@@ -1,0 +1,25 @@
+@import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
+
+.moviesNav {
+  width: 100%;
+  height: 80px;
+  background-color: $lighter-black;
+  padding: 18px 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  overflow-x: auto;
+
+  &.advancedOptions {
+    height: 100vh;
+  }
+
+  &__groups {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}

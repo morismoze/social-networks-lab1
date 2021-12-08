@@ -14,7 +14,6 @@ const personSlice = createSlice({
         builder
             .addCase(actions.getDetails.pending, (state) => {
                 state.status = 'waiting';
-                state.activeIdDetails = initialState.activeIdDetails;
             })
             .addCase(actions.getDetails.fulfilled, (state, action) => {
                 state.status = 'success';
@@ -22,7 +21,6 @@ const personSlice = createSlice({
             })
             .addCase(actions.getDetails.rejected, (state) => {
                 state.status = 'failure';
-                state.activeIdDetails = initialState.activeIdDetails;
             })
     }
 });

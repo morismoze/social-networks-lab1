@@ -1,0 +1,8 @@
+@import 'src/styles/colors.module';
+
+.advancedOptionBtn {
+  color: $golden;
+  border: 1px solid $golden;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -20,7 +20,7 @@ const WatchList = () => {
                 <title>{userName} - Watchlist &bull; Recommend.me</title>
             </Helmet>
             <div className={styles.watchlist}>
-                <Title title={'Your watchlist'}/>
+                <Title title='Your watchlist'/>
                 {watchlist.length > 0 ? (
                     <>
                         <MoviesTable

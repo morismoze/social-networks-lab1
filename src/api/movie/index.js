@@ -19,6 +19,22 @@ export const getGenres = async () => {
     }
 };
 
+export const getStatuses = async () => {
+    try {
+        const response = await instance.get(
+            moviePaths.getStatuses,
+            {
+                headers: defaultHeaders
+            }
+        );
+
+        return response.data;
+    } catch (err) {
+        console.error(err);
+        return Promise.reject(err.statusText);
+    }
+};
+
 export const getRecommendedMovies = async (page) => {
     try {
         const response = await instance.get(
@@ -35,10 +51,13 @@ export const getRecommendedMovies = async (page) => {
     }
 };
 
-export const getTopRatedMovies = async (page) => {
+export const getTopRatedMovies = async ({ page, genreFilters, statusFilters }) => {
+    const genreString = genreFilters.join(',');
+    const statusString = statusFilters.join(',');
+
     try {
         const response = await instance.get(
-            moviePaths.getTopRatedMovies(page, RESULTS_PER_PAGE),
+            moviePaths.getTopRatedMovies(page, RESULTS_PER_PAGE, genreString, statusString),
             {
                 headers: defaultHeaders
             }

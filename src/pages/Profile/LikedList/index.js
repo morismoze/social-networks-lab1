@@ -20,7 +20,7 @@ const LikedList = () => {
                 <title>{userName} - Liked list &bull; Recommend.me</title>
             </Helmet>
             <div className={styles.likedList}>
-                <Title title={'Movies You liked'}/>
+                <Title title='Movies You liked'/>
                 {likedMovies.length > 0 ? (
                     <>
                         <MoviesTable

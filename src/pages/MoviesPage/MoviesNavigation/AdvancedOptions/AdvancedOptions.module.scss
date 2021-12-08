@@ -1,0 +1,19 @@
+@import 'src/styles/colors.module';
+
+.advancedOptions {
+  z-index: 20;
+  background-color: $lighter-black;
+  border: 1px solid rgba($golden, .4);
+  margin: 0 35px 35px;
+  padding: 15px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  &__submitBtn {
+    width: 100%;
+    margin-top: 20px;
+  }
+}

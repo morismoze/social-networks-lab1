@@ -1,16 +1,9 @@
 @import 'src/styles/colors.module';
 
 .title {
-  font-size: 18px;
-  color: $dark-gray;
-  font-weight: 600;
-
-  &:after {
-    content: '';
-    background-color: $golden;
-    width: 50px;
-    height: 3px;
-    display: block;
-    margin-top: 5px;
-  }
+  font-size: 16px;
+  font-weight: 500;
+  color: $white;
+  padding: 5px;
+  border-radius: 5px;
 }

@@ -6,7 +6,8 @@ import classNames from "classnames";
 const Button = ({
     onClick,
     fill = true,
-    text
+    text,
+    className
 }) => {
     const handleOnClick = () => {
         onClick();
@@ -17,7 +18,8 @@ const Button = ({
             onClick={handleOnClick}
             className={classNames(
                 styles.detailsButton,
-                { [styles.noFill]: !fill }
+                { [styles.noFill]: !fill },
+                className
             )}
         >
             {text}

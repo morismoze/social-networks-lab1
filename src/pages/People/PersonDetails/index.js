@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 import ParagraphLayoutWrapper from "../../../components/shared/ParagraphLayoutWrapper";
 import ImageLink from "../../../components/shared/ImageLink";
 import StickySidebar from "../../../components/shared/StickySidebar";
-import Overview from "../../../components/shared/Overview";
+import Overview from "../../MovieDetails/Overview";
 import * as PersonSelectors from '../../../store/shared/movie/Person.selectors';
 import { actions as personActions } from '../../../store/shared/movie/Person.actions';
 import { personDetailsNavItems } from "../../../constants/personDetails";

@@ -12,8 +12,8 @@ import MovieCard from "../MovieCard";
 import TopRevenueMovie from "../TopRevenueMovie";
 import SlateCard from "../SlateCard";
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
-import * as GenresSelectors from '../../../store/shared/movie/Genres.selectors';
-import { actions as genresActions } from '../../../store/shared/movie/Genres.actions';
+import * as MovieDataListSelectors from '../../../store/shared/movie/DataList.selectors';
+import { actions as movieDataListActions } from '../../../store/shared/movie/DataList.actions';
 import * as FeaturedMoviesSelectors from '../redux/FeaturedMovies/FeaturedMovies.selectors';
 import { actions as featuredMoviesActions } from '../redux/FeaturedMovies/FeaturedMovies.actions';
 import * as MoviesInTheatersSelectors from '../redux/MoviesInTheaters/MoviesInTheaters.selectors';
@@ -33,8 +33,8 @@ const Home = () => {
 
     const userId = useSelector(UserSelectors.id);
 
-    const genresStatus = useSelector(GenresSelectors.status);
-    const genres = useSelector(GenresSelectors.genres);
+    const genresStatus = useSelector(MovieDataListSelectors.status);
+    const { genres } = useSelector(MovieDataListSelectors.list);
 
     const featuredMoviesStatus = useSelector(FeaturedMoviesSelectors.status);
     const featuredMovies = useSelector(FeaturedMoviesSelectors.movies);
@@ -58,13 +58,11 @@ const Home = () => {
         dispatch(regionMoviesActions.getMoviesAndToggleLoader(20));
         dispatch(topRevenueMoviesActions.getMovieAndToggleLoader(8));
         dispatch(mostVisitedMoviesActions.getMoviesAndToggleLoader(20));
-    }, []);
 
-    useEffect(() => {
-        if (userId && genres.length === 0) {
-            dispatch(genresActions.getGenresAndToggleLoader());
+        if (genres.length === 0) {
+            dispatch(movieDataListActions.getGenresAndToggleLoader());
         }
-    }, [userId]);
+    }, []);
 
     return (
         <WithLayoutWrapper>
@@ -87,13 +85,13 @@ const Home = () => {
                     <SectionLayoutWrapper title={'Pick Your favourite genres'}>
                         <div className={styles.home__genresWrapper}>
                             {genresStatus === 'success' &&
-                            genres.map((genre, index) => (
-                                    <GenreCard
-                                        genre={genre}
-                                        key={index}
-                                    />
-                                )
-                            )}
+                                genres.map((genre, index) => (
+                                        <GenreCard
+                                            genre={genre}
+                                            key={index}
+                                        />
+                                    )
+                                )}
                         </div>
                     </SectionLayoutWrapper>
                 }

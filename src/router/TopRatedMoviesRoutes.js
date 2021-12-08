@@ -3,7 +3,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import MovieDetails from "../pages/MovieDetails";
-import Movies from "../pages/TopRatedMovies/Movies";
+import Movies from "../pages/MoviesPage/TopRatedMovies/Movies";
 
 const TopRatedMoviesRoutes = () => {
     return (

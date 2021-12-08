@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 
 import Backdrop from "./Backdrop";
 import ParagraphLayoutWrapper from "../../components/shared/ParagraphLayoutWrapper";
-import Overview from "../../components/shared/Overview";
+import Overview from "./Overview";
 import Tagline from "./Tagline";
 import CastMember from "./Actors/CastMember";
 import Trailer from "./Trailer";
