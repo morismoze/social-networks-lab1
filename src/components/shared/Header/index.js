@@ -75,7 +75,6 @@ const Header = () => {
                 </nav>
                 {name ? (
                     <div className={styles.header__weatherUserWrapper}>
-                        {/*<Weather/>*/}
                         <div
                             className={styles.header__user}
                             onClick={handleMenuClick}

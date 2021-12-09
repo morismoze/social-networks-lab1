@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 import Avatar from "../../../components/shared/Avatar";
 import Data from "./Data";
-import Weather from "./Weather";
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import styles from './UserData.module.scss';
 
@@ -42,7 +41,6 @@ const UserData = () => {
                         country={user.location.country}
                     />
                 </div>
-                <Weather weather={user.weather}/>
             </div>
         </Fade>
     );
