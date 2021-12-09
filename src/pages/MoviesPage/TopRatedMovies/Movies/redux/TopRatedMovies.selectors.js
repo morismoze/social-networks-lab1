@@ -14,8 +14,3 @@ export const movies = createSelector(
     (state) => state.topRatedMoviesReducer,
     (state) => state.movies
 );
-
-export const filter = createSelector(
-    (state) => state.topRatedMoviesReducer,
-    (state) => state.filter
-);

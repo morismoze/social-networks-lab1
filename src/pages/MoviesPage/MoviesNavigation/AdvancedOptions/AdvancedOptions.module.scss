@@ -1,19 +1,31 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
-.advancedOptions {
-  z-index: 20;
-  background-color: $lighter-black;
-  border: 1px solid rgba($golden, .4);
-  margin: 0 35px 35px;
-  padding: 15px;
-  max-width: 600px;
+.options {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  align-items: flex-start;
+  gap: 35px;
+  padding: 0 20px 20px;
+
+  &__advanced {
+    background-color: $lighter-black;
+    border: 1px solid rgba($golden, .4);
+    padding: 15px;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 
   &__submitBtn {
     width: 100%;
     margin-top: 20px;
+  }
+
+  @media screen and (min-width: $md) {
+    padding: 0 35px 35px;
   }
 }

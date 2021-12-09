@@ -35,10 +35,13 @@ export const getStatuses = async () => {
     }
 };
 
-export const getRecommendedMovies = async (page) => {
+export const getRecommendedMovies = async ({ page, genreFilters, statusFilters }) => {
+    const genreString = genreFilters.join(',');
+    const statusString = statusFilters.join(',');
+
     try {
         const response = await instance.get(
-            moviePaths.getRecommendedMovies(page, RESULTS_PER_PAGE),
+            moviePaths.getRecommendedMovies(page, RESULTS_PER_PAGE, genreString, statusString),
             {
                 headers: defaultHeaders
             }
@@ -70,10 +73,13 @@ export const getTopRatedMovies = async ({ page, genreFilters, statusFilters }) =
     }
 };
 
-export const getPopularMovies = async (page) => {
+export const getPopularMovies = async ({ page, genreFilters, statusFilters }) => {
+    const genreString = genreFilters.join(',');
+    const statusString = statusFilters.join(',');
+
     try {
         const response = await instance.get(
-            moviePaths.getPopularMovies(page, RESULTS_PER_PAGE),
+            moviePaths.getPopularMovies(page, RESULTS_PER_PAGE, genreString, statusString),
             {
                 headers: defaultHeaders
             }

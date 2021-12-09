@@ -4,7 +4,8 @@ import { actions } from "./PopularMovies.actions";
 
 const initialState = {
     status: 'idle',
-    movies: []
+    movies: [],
+    pages: 0
 };
 
 const popularMoviesSlice = createSlice({
@@ -19,7 +20,8 @@ const popularMoviesSlice = createSlice({
             })
             .addCase(actions.getMovies.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.movies = action.payload;
+                state.movies = action.payload.movies;
+                state.pages = action.payload.pages;
             })
             .addCase(actions.getMovies.rejected, (state) => {
                 state.status = 'failure';

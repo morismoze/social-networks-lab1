@@ -38,7 +38,7 @@ const useFormControlStyles = makeStyles((theme) => ({
 const useMenuItemStyles = makeStyles((theme) => ({
     root: {
         '&.Mui-selected': {
-            backgroundColor: 'rgba(191, 167, 93, .1) !important'
+            backgroundColor: 'rgba(191, 167, 93, .2) !important'
         }
     }
 }));

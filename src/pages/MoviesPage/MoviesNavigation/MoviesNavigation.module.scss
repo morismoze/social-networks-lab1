@@ -16,10 +16,12 @@
     height: 100vh;
   }
 
-  &__groups {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
+  @media screen and (max-width: $md) {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    &__groups {
+      display: none;
+    }
   }
 }

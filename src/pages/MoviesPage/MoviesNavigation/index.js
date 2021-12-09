@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router";
 import { useDispatch } from "react-redux";
 
-import Group from "./Group";
 import AdvancedOptionsButton from "./AdvancedOptionsButton";
 import AdvancedOptions from "./AdvancedOptions";
+import Groups from "./Groups";
 import { setActiveMovieGroup } from "../../../store/shared/navigation/Navigation.slice";
-import { MOVIES_GROUPS } from "../../../constants/moviesNavigation";
+import { useWindowSize } from "../../../hooks/useWindowSize";
 import styles from './MoviesNavigation.module.scss';
 
 const MoviesNavigation = ({
@@ -17,11 +17,13 @@ const MoviesNavigation = ({
 
     const location = useLocation();
 
+    const { width } = useWindowSize();
+
     const [ isAdvancedOptions, setIsAdvancedOptions ] = useState(false);
 
     const handleAdvancedOptions = () => {
         setIsAdvancedOptions(!isAdvancedOptions);
-    }
+    };
 
     useEffect(() => {
         const activeMovieGroup = location.pathname.split('/')[2];
@@ -31,15 +33,9 @@ const MoviesNavigation = ({
     return (
         <>
             <div className={styles.moviesNav}>
-                <div className={styles.moviesNav__groups}>
-                    {MOVIES_GROUPS.map((group, index) => (
-                        <Group
-                            id={group.id}
-                            name={group.name}
-                            key={index}
-                        />
-                    ))}
-                </div>
+                {width > 576 &&
+                    <Groups/>
+                }
                 <AdvancedOptionsButton
                     isOpen={isAdvancedOptions}
                     onClick={handleAdvancedOptions}
