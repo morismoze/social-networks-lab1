@@ -24,4 +24,8 @@
       display: none;
     }
   }
+
+  @media screen and (max-width: $sm) {
+    height: unset;
+  }
 }

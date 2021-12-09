@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .group {
   text-decoration: none;
@@ -14,5 +15,9 @@
   &:hover {
     background-color: $golden;
     color: $lighter-black;
+  }
+
+  @media screen and (max-width: $sm) {
+    font-size: 14px;
   }
 }
