@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .person {
   display: flex !important;
@@ -18,6 +19,13 @@
     margin-bottom: 40px;
   }
 
+  &__posterNameWrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
   &__name {
     font-size: 22px;
     font-weight: 600;
@@ -27,6 +35,32 @@
   &__links {
     display: flex;
     align-items: center;
-    margin-left: auto;
+  }
+
+  @media screen and (min-width: $lg) {
+    &__posterWrapper {
+      display: none;
+    }
+
+    &__name {
+      font-size: 22px;
+    }
+  }
+
+  @media screen and (max-width: $lg) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  @media screen and (max-width: $md) {
+    &__dataHeader {
+      margin-bottom: 25px;
+    }
+  }
+
+  @media screen and (max-width: $sm) {
+    &__name {
+      font-size: 18px;
+    }
   }
 }

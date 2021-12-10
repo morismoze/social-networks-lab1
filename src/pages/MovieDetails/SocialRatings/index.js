@@ -12,12 +12,6 @@ import styles from './SocialRatings.module.scss';
 const SocialRatings = ({
     socialsRatings
 }) => {
-    if (!socialsRatings || socialsRatings.length === 0) {
-        return (
-            <NotAvailable itemNotAvailable={'Social networks ratings'}/>
-        )
-    }
-
     const getMeta = (source, value) => {
         switch (source) {
             case 'Internet Movie Database': {
@@ -52,24 +46,27 @@ const SocialRatings = ({
     return (
         <div className={styles.socialRatings}>
             <div className={styles.socialRatings__items}>
-                {socialsRatings.map((rating, index) => {
-                    const meta = getMeta(rating.Source, rating.Value);
+                {socialsRatings && socialsRatings.length > 0 ?
+                    socialsRatings.map((rating, index) => {
+                        const meta = getMeta(rating.Source, rating.Value);
 
-                    return <div className={styles.socialRatings__wrapper} key={index}>
-                        <Gauge
-                            percentage={meta.value}
-                            size={70}
-                            icon={{
-                                src: meta.icon,
-                                alt: rating.Source
-                            }}
-                            color={meta.color}
-                        />
-                        <span className={styles.socialRatings__value}>
-                        {(meta.value * 10).toFixed(1)}
-                    </span>
-                    </div>
-                })}
+                        return <div className={styles.socialRatings__wrapper} key={index}>
+                            <Gauge
+                                percentage={meta.value}
+                                size={70}
+                                icon={{
+                                    src: meta.icon,
+                                    alt: rating.Source
+                                }}
+                                color={meta.color}
+                            />
+                            <span className={styles.socialRatings__value}>
+                            {(meta.value * 10).toFixed(1)}
+                        </span>
+                        </div>
+                    }) : (
+                        <NotAvailable itemNotAvailable={'Social networks ratings'}/>
+                    )}
             </div>
             <div className={styles.socialRatings__shareWrapper}>
                 <span className={styles.socialRatings__share}>Share this page:</span>

@@ -11,9 +11,7 @@ const StickySidebar = ({
 }) => {
     return (
         <div className={styles.stickySidenav}>
-            <Poster
-                {...poster}
-            />
+            <Poster {...poster}/>
             <Sidenav items={navItems}/>
             {children}
         </div>

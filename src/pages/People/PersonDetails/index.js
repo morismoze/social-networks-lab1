@@ -9,6 +9,7 @@ import ParagraphLayoutWrapper from "../../../components/shared/ParagraphLayoutWr
 import ImageLink from "../../../components/shared/ImageLink";
 import StickySidebar from "../../../components/shared/StickySidebar";
 import Overview from "../../MovieDetails/Overview";
+import Poster from "../../../components/shared/Poster";
 import * as PersonSelectors from '../../../store/shared/movie/Person.selectors';
 import { actions as personActions } from '../../../store/shared/movie/Person.actions';
 import { personDetailsNavItems } from "../../../constants/personDetails";
@@ -72,7 +73,17 @@ const PersonDetails = () => {
                         />
                         <div className={styles.person__data}>
                             <div className={styles.person__dataHeader}>
-                                <span className={styles.person__name}>{person.name}</span>
+                                <div className={styles.person__posterNameWrapper}>
+                                    <div className={styles.person__posterWrapper}>
+                                        <Poster
+                                            src={person.profile_path ? `https://image.tmdb.org/t/p/w92${person.profile_path}` : null}
+                                            width={92}
+                                            height={150}
+                                            alt={person.name}
+                                        />
+                                    </div>
+                                    <span className={styles.person__name}>{person.name}</span>
+                                </div>
                                 <div className={styles.person__links}>
                                     {person.imdb_id &&
                                         <ImageLink
