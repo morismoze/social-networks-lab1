@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { AiOutlineExpandAlt, AiOutlineShrink } from "react-icons/all";
+import { AiFillControl, AiOutlineControl } from "react-icons/all";
 
+import { useWindowSize } from "../../../../hooks/useWindowSize";
 import styles from './AdvancedOptionsButton.module.scss';
-import {useWindowSize} from "../../../../hooks/useWindowSize";
 
 const AdvancedOptionsButton = ({
     isOpen,
@@ -27,14 +27,14 @@ const AdvancedOptionsButton = ({
     return (
         <>
             {isOpen ? (
-                <AiOutlineShrink
-                    size={27}
+                <AiFillControl
+                    size={30}
                     onClick={onClick}
                     className={styles.advancedOptionBtn}
                 />
             ) : (
-                <AiOutlineExpandAlt
-                    size={27}
+                <AiOutlineControl
+                    size={30}
                     onClick={onClick}
                     className={styles.advancedOptionBtn}
                 />
