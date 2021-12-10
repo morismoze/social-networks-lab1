@@ -76,9 +76,9 @@ const PersonDetails = () => {
                                 <div className={styles.person__posterNameWrapper}>
                                     <div className={styles.person__posterWrapper}>
                                         <Poster
-                                            src={person.profile_path ? `https://image.tmdb.org/t/p/w92${person.profile_path}` : null}
-                                            width={92}
-                                            height={150}
+                                            src={person.profile_path ? `https://image.tmdb.org/t/p/w154${person.profile_path}` : null}
+                                            width={154}
+                                            height={220}
                                             alt={person.name}
                                         />
                                     </div>

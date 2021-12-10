@@ -52,12 +52,6 @@
     padding-right: 20px !important;
   }
 
-  @media screen and (max-width: $md) {
-    &__dataHeader {
-      margin-bottom: 25px;
-    }
-  }
-
   @media screen and (max-width: $sm) {
     &__name {
       font-size: 18px;
