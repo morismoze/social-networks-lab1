@@ -58,17 +58,15 @@ const MoviesGrid = ({
                 styles.moviesContainer__wrapper,
                 { [styles.moviesContainer__noResults]: status === 'success' && movies.length === 0 }
             )}>
-                {status === 'success' && movies.length > 0 && (
-                    movies.map((movie, index) => (
-                        <MovieCard
-                            movie={movie}
-                            width={789}
-                            height={439}
-                            index={index + 1}
-                            key={movie.id}
-                        />
-                    ))
-                )}
+                {movies.map((movie, index) => (
+                    <MovieCard
+                        movie={movie}
+                        width={789}
+                        height={439}
+                        index={index + 1}
+                        key={movie.id}
+                    />
+                ))}
                 {status === 'success' && movies.length === 0 && (
                     <NoResults/>
                 )}
