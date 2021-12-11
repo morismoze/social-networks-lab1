@@ -7,4 +7,9 @@ export const FOOTER_NAV_ITEMS = [
         path: '/about',
         name: 'About'
     },
+    {
+        id: '4',
+        path: '/contact',
+        name: 'Contact'
+    }
 ];
