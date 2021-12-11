@@ -141,6 +141,7 @@ const MovieDetails = () => {
                                                             budget={budget}
                                                             revenue={revenue}
                                                             spokenLanguages={spokenLanguages}
+                                                            imdbId={details.imdb_id}
                                                         />
                                                     </ParagraphLayoutWrapper>
                                                 )

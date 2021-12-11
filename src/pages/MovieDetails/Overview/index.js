@@ -7,11 +7,14 @@ import Genre from "../Genre";
 import Data from "../../../components/shared/Data";
 import NotAvailable from "../../../components/shared/NotAvailable";
 import styles from './Overview.module.scss';
+import ImdbIcon from "../../../assets/images/imdb_logo.png";
+import ImageLink from "../../../components/shared/ImageLink";
 
 const Overview = ({
     context,
     synopsys,
     genres,
+    imdbId,
     ...rest
 }) => {
     const { width } = useWindowSize();
@@ -42,6 +45,10 @@ const Overview = ({
                     )}
                 </div>
             }
+            <ImageLink
+                href={`https://imdb.com/title/${imdbId}`}
+                picture={ImdbIcon}
+            />
         </div>
     );
 };
