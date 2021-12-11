@@ -45,10 +45,12 @@ const Overview = ({
                     )}
                 </div>
             }
-            <ImageLink
-                href={`https://imdb.com/title/${imdbId}`}
-                picture={ImdbIcon}
-            />
+            <div className={styles.overview__imdbLinkWrapper}>
+                <ImageLink
+                    href={`https://imdb.com/title/${imdbId}`}
+                    picture={ImdbIcon}
+                />
+            </div>
         </div>
     );
 };

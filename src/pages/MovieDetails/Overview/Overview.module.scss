@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .overview {
   display: flex;
@@ -10,5 +11,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+  }
+
+  @media screen and (max-width: $md) {
+    &__imdbLinkWrapper {
+      display: none;
+    }
   }
 }
