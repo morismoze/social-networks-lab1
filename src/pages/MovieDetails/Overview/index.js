@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useLocation } from "react-router-dom";
-
 import Synopsys from "../../../components/shared/Synopsys";
 import Genre from "../Genre";
 import Data from "../../../components/shared/Data";
@@ -24,8 +22,6 @@ const Overview = ({
     handleToggleWatchlist,
     ...rest
 }) => {
-    const location = useLocation();
-
     const { width } = useWindowSize();
 
     return (
@@ -54,7 +50,7 @@ const Overview = ({
                     )}
                 </div>
             }
-            {location.pathname.includes('/movies') &&
+            {isLiked && isAddedToWatchlist &&
                 <div className={styles.overview__imdbLinkWrapper}>
                     <ImageLink
                         href={`https://imdb.com/title/${imdbId}`}
