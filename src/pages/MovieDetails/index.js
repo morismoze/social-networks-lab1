@@ -49,6 +49,8 @@ const MovieDetails = () => {
     const ytVideo = useSelector(MovieSelectors.ytVideo);
 
     const userId = useSelector(UserSelectors.id);
+    const likedMovies = useSelector(UserSelectors.likedMovies);
+    const watchlist = useSelector(UserSelectors.watchlist);
 
     const releaseYear = extractYearFromReleaseDate(details?.release_date);
 
@@ -62,6 +64,26 @@ const MovieDetails = () => {
             `https://image.tmdb.org/t/p/w92${member.profile_path}`
             :
             `https://image.tmdb.org/t/p/w154${member.profile_path}`;
+    };
+
+    const isLiked = likedMovies.find(movieId => movieId === details.id);
+
+    const isAddedToWatchlist = watchlist.find(movieId => movieId === details.id);
+
+    const handleMovieLike = () => {
+        if (isLiked) {
+            dispatch(userActions.removeFromLikes({ userId, movieId: details.id }));
+        } else {
+            dispatch(userActions.addToLikes({ userId, movieId: details.id }));
+        }
+    };
+
+    const handleToggleWatchlist = () => {
+        if (isAddedToWatchlist) {
+            dispatch(userActions.removeFromWatchlist({ userId, movieId: details.id }));
+        } else {
+            dispatch(userActions.addToWatchlist({ userId, movieId: details.id }));
+        }
     };
 
     movieRef.current = details;
@@ -102,6 +124,10 @@ const MovieDetails = () => {
                             pictureUrl={details.backdrop_path ? backdropImage : null}
                             mainStats={mainStats}
                             imdbId={details.imdb_id}
+                            isLiked={isLiked}
+                            isAddedToWatchlist={isAddedToWatchlist}
+                            handleMovieLike={handleMovieLike}
+                            handleToggleWatchlist={handleToggleWatchlist}
                         />
                         <Container
                             maxWidth='lg'
@@ -142,6 +168,10 @@ const MovieDetails = () => {
                                                             revenue={revenue}
                                                             spokenLanguages={spokenLanguages}
                                                             imdbId={details.imdb_id}
+                                                            isLiked={isLiked}
+                                                            isAddedToWatchlist={isAddedToWatchlist}
+                                                            handleMovieLike={handleMovieLike}
+                                                            handleToggleWatchlist={handleToggleWatchlist}
                                                         />
                                                     </ParagraphLayoutWrapper>
                                                 )

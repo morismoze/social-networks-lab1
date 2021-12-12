@@ -13,6 +13,12 @@
     gap: 10px;
   }
 
+  &__imdbLinkWrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
   @media screen and (min-width: $md) {
     &__imdbLinkWrapper {
       display: none;
