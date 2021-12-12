@@ -27,7 +27,7 @@ const FBLoginButton = () => {
     };
 
     const onLoginClick = () => {
-        const redirectUri = window.location.href;
+        const redirectUri = window.location.origin + window.location.pathname;
         const fbId = process.env.REACT_APP_FB_APP_ID;
         const state = getProtectedRouteToVisit();
 
