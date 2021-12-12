@@ -66,23 +66,23 @@ const MovieDetails = () => {
             `https://image.tmdb.org/t/p/w154${member.profile_path}`;
     };
 
-    const isLiked = likedMovies.find(movieId => movieId === details.id);
+    const isLiked = likedMovies.find(movieId => movieId === details?.id);
 
-    const isAddedToWatchlist = watchlist.find(movieId => movieId === details.id);
+    const isAddedToWatchlist = watchlist.find(movieId => movieId === details?.id);
 
     const handleMovieLike = () => {
         if (isLiked) {
-            dispatch(userActions.removeFromLikes({ userId, movieId: details.id }));
+            dispatch(userActions.removeFromLikes({ userId, movieId: details?.id }));
         } else {
-            dispatch(userActions.addToLikes({ userId, movieId: details.id }));
+            dispatch(userActions.addToLikes({ userId, movieId: details?.id }));
         }
     };
 
     const handleToggleWatchlist = () => {
         if (isAddedToWatchlist) {
-            dispatch(userActions.removeFromWatchlist({ userId, movieId: details.id }));
+            dispatch(userActions.removeFromWatchlist({ userId, movieId: details?.id }));
         } else {
-            dispatch(userActions.addToWatchlist({ userId, movieId: details.id }));
+            dispatch(userActions.addToWatchlist({ userId, movieId: details?.id }));
         }
     };
 
