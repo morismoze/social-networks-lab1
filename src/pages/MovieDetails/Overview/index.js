@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useWindowSize } from "../../../hooks/useWindowSize";
+import { useLocation } from "react-router-dom";
 
 import Synopsys from "../../../components/shared/Synopsys";
 import Genre from "../Genre";
@@ -9,6 +9,7 @@ import NotAvailable from "../../../components/shared/NotAvailable";
 import ImageLink from "../../../components/shared/ImageLink";
 import HeartButton from "../../../components/shared/userActivity/HeartButton";
 import AddButton from "../../../components/shared/userActivity/AddButton";
+import { useWindowSize } from "../../../hooks/useWindowSize";
 import ImdbIcon from "../../../assets/images/imdb_logo.png";
 import styles from './Overview.module.scss';
 
@@ -23,6 +24,8 @@ const Overview = ({
     handleToggleWatchlist,
     ...rest
 }) => {
+    const location = useLocation();
+
     const { width } = useWindowSize();
 
     return (
@@ -51,20 +54,22 @@ const Overview = ({
                     )}
                 </div>
             }
-            <div className={styles.overview__imdbLinkWrapper}>
-                <ImageLink
-                    href={`https://imdb.com/title/${imdbId}`}
-                    picture={ImdbIcon}
-                />
-                <HeartButton
-                    onClick={handleMovieLike}
-                    active={isLiked}
-                />
-                <AddButton
-                    onClick={handleToggleWatchlist}
-                    active={isAddedToWatchlist}
-                />
-            </div>
+            {location.pathname.includes('/movies') &&
+                <div className={styles.overview__imdbLinkWrapper}>
+                    <ImageLink
+                        href={`https://imdb.com/title/${imdbId}`}
+                        picture={ImdbIcon}
+                    />
+                    <HeartButton
+                        onClick={handleMovieLike}
+                        active={isLiked}
+                    />
+                    <AddButton
+                        onClick={handleToggleWatchlist}
+                        active={isAddedToWatchlist}
+                    />
+                </div>
+            }
         </div>
     );
 };
