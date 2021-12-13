@@ -42,9 +42,7 @@ const TopRevenueMovie = ({
     const revenue = formatPrice(movie.revenue);
 
     return (
-        <div
-            to={`/${movie.id}/details`}
-            className={classNames(
+        <div className={classNames(
                 styles.topRevenueMovie,
                 { [styles.even]: index % 2 === 0 },
                 { [styles.odd]: index % 2 !== 0 }

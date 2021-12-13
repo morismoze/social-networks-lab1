@@ -16,6 +16,12 @@
   &__imdbLinkWrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
+  }
+
+  &__activityWrapper {
+    display: flex;
+    align-items: center;
     gap: 20px;
   }
 

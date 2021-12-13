@@ -6,7 +6,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  text-align: center;
   overflow: hidden;
 
   &__img {
@@ -15,6 +15,7 @@
     height: 100%;
     background-color: $white;
     object-fit: cover;
+    margin: 0 auto;
   }
 
   @media screen and (max-width: $sm) {

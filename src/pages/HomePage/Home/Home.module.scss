@@ -53,6 +53,7 @@
   @media screen and (max-width: $sm) {
     &__topRevenuesWrapper {
       gap: 10px;
+      grid-template-columns: 100%;
     }
   }
 }
