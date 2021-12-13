@@ -50,18 +50,16 @@ const Overview = ({
                     )}
                 </div>
             }
-            {isLiked && isAddedToWatchlist &&
+            {handleMovieLike && handleToggleWatchlist &&
                 <div className={styles.overview__imdbLinkWrapper}>
-                    <div className={styles.overview__activityWrapper}>
-                        <HeartButton
-                            onClick={handleMovieLike}
-                            active={isLiked}
-                        />
-                        <AddButton
-                            onClick={handleToggleWatchlist}
-                            active={isAddedToWatchlist}
-                        />
-                    </div>
+                    <HeartButton
+                        onClick={handleMovieLike}
+                        active={isLiked}
+                    />
+                    <AddButton
+                        onClick={handleToggleWatchlist}
+                        active={isAddedToWatchlist}
+                    />
                     <ImageLink
                         href={`https://imdb.com/title/${imdbId}`}
                         picture={ImdbIcon}
