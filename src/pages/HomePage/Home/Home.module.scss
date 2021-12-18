@@ -18,6 +18,7 @@
   &__sectionMoviesWrapper {
     display: grid;
     grid-auto-flow: column;
+    justify-content: flex-start;
     padding-bottom: 15px;
     gap: 20px;
     overflow-x: auto;
