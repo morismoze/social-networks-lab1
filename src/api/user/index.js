@@ -120,11 +120,11 @@ export const removeFromWatchlist = async ({ userId, movieId }) => {
     }
 };
 
-export const addToRatings = async ({ userId, movieId, rating }) => {
+export const addToRatings = async ({ userId, movieId, rating, genres }) => {
     try {
         const response = await instance.post(
             user.addToRatings(userId),
-            { movieId: movieId, rating: rating },
+            { movieId: movieId, rating: rating, genres: genres },
             { headers: defaultHeaders }
         );
 

@@ -9,7 +9,9 @@ import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import { actions as userActions } from '../../../store/shared/user/User.actions';
 import styles from './RatePicker.module.scss';
 
-const RatePicker = () => {
+const RatePicker = ({
+    genres
+}) => {
     const dispatch = useDispatch();
 
     const params = useParams();
@@ -40,17 +42,18 @@ const RatePicker = () => {
             dispatch(userActions.addToRatings({
                 userId: userId,
                 movieId: params.id,
-                rating: index + 1
+                rating: index + 1,
+                genres: Array.from(genres.map((genre) => genre.id))
             }));
             setSelectedIndex(index);
         }
     };
 
     useEffect(() => {
-        const rating = ratings.find((ratingsObj) => Object.keys(ratingsObj)[0] === params.id);
+        const rating = ratings.find((rating) => rating.movieId === Number(params.id));
 
         if (rating) {
-            setSelectedIndex(Object.values(rating)[0] - 1);
+            setSelectedIndex(rating.rating - 1);
         }
     }, [ratings]);
 
@@ -58,7 +61,7 @@ const RatePicker = () => {
         <div className={styles.ratePicker}>
             <span className={styles.ratePicker__label}>Rate this movie:</span>
             <div className={styles.ratePicker__starsContainer}>
-                {Array(10).fill('').map((item, index) =>(
+                {Array(10).fill('').map((item, index) => (
                     <Star
                         index={index}
                         hoverIndex={hoverIndex}

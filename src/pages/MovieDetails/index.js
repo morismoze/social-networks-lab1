@@ -142,7 +142,7 @@ const MovieDetails = () => {
                                 }}
                                 navItems={movieDetailsNavItems}
                             >
-                                <RatePicker/>
+                                <RatePicker genres={details.genres}/>
                             </StickySidebar>
                             <div className={styles.movieDetails__data}>
                                 {details.tagline &&

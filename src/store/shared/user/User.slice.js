@@ -118,13 +118,11 @@ const userSlice = createSlice({
             .addCase(actions.addToRatings.fulfilled, (state, action) => {
                 state.status = 'success';
 
-                const movieId = Object.keys(action.payload)[0];
-                const index = state.ratings.findIndex((ratingsObj) => Object.keys(ratingsObj)[0] === movieId);
+                const { movieId, rating, genres } = action.payload;
+                const index = state.ratings.findIndex((rating) => rating.movieId === movieId);
 
                 if (index > -1) {
-                    state.ratings[index] = {
-                        [movieId]: action.payload[movieId]
-                    };
+                    state.ratings[index].rating = rating;
                 } else {
                     state.ratings = [...state.ratings, action.payload];
                 }
