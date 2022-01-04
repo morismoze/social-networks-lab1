@@ -124,7 +124,7 @@ const Home = () => {
                         )}
                     </div>
                 </SectionLayoutWrapper>
-                <SectionLayoutWrapper title={'Top revenues'}>
+                <SectionLayoutWrapper title={'Top Revenues'}>
                     <div className={styles.home__topRevenuesWrapper}>
                         {topRevenueMoviesStatus === 'success' &&
                             topRevenueMovies.map((movie, index) => (
