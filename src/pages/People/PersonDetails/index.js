@@ -37,7 +37,7 @@ const PersonDetails = () => {
         if (person) {
             if (person.gender === 0) {
                 setGender('Not specified');
-            } else if (person.gender === 0) {
+            } else if (person.gender === 1) {
                 setGender('Female');
             } else {
                 setGender('Male');
