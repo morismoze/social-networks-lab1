@@ -3,16 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import queryString from 'query-string';
+import classNames from "classnames";
 
 import WithLayoutWrapper from "../../../components/shared/withLayoutWrapper";
 import MovieCard from "../../../components/shared/MovieCard";
 import CustomPagination from "../../../components/shared/CustomPagination";
 import Footer from "../../../components/shared/Footer";
 import MoviesNavigation from "../MoviesNavigation";
+import NoResults from "../../../components/shared/NoResults";
+import NoUserRatings from "../../../components/shared/NoUserRatings";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import styles from './MoviesGrid.module.scss';
-import NoResults from "../../../components/shared/NoResults";
-import classNames from "classnames";
 
 const MoviesGrid = ({
     getMovies,
@@ -56,9 +57,10 @@ const MoviesGrid = ({
             <MoviesNavigation page={page}/>
             <div className={classNames(
                 styles.moviesContainer__wrapper,
-                { [styles.moviesContainer__noResults]: status === 'success' && movies.length === 0 }
+                { [styles.moviesContainer__noResults]:
+                    (status === 'success' && movies && movies.length === 0) || (status === 'success' && movies === null)}
             )}>
-                {movies.map((movie, index) => (
+                {movies && movies.map((movie, index) => (
                     <MovieCard
                         movie={movie}
                         width={789}
@@ -67,8 +69,11 @@ const MoviesGrid = ({
                         key={movie.id}
                     />
                 ))}
-                {status === 'success' && movies.length === 0 && (
+                {status === 'success' && movies && movies.length === 0 && (
                     <NoResults/>
+                )}
+                {status === 'success' && movies === null && (
+                    <NoUserRatings/>
                 )}
             </div>
             {status === 'failure' && !userId && location.pathname.includes('recommended') &&

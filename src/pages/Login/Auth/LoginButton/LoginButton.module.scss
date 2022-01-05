@@ -1,10 +1,9 @@
 @import 'src/styles/colors.module';
 @import 'src/styles/variables.module';
 
-.fbLoginButton {
+.loginBtn {
   border: none;
-  padding: 15px 0;
-  color: $facebook;
+  padding: 15px 25px;
   background-color: white;
   font-weight: 500;
   border-radius: 10px;

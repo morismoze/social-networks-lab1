@@ -1,0 +1,25 @@
+@import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
+
+.noUserRatings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 30px 30px;
+  gap: 15px;
+
+  &__ratingIcon {
+    margin-bottom: 20px;
+  }
+
+  &__main {
+    font-size: 15px;
+    font-weight: 500;
+    color: $lighter-gray;
+    text-align: center;
+  }
+
+  @media screen and (max-width: $sm) {
+    padding-top: 30px;
+  }
+}

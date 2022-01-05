@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useLocation } from "react-router-dom";
 import { AiFillControl, AiOutlineControl } from "react-icons/all";
 
 import { useWindowSize } from "../../../../hooks/useWindowSize";
@@ -10,6 +11,8 @@ const AdvancedOptionsButton = ({
     onClick
 }) => {
     const { width } = useWindowSize();
+
+    const location = useLocation();
 
     if (width <= 576) {
         return (
@@ -22,6 +25,10 @@ const AdvancedOptionsButton = ({
                 </span>
             </div>
         );
+    }
+
+    if (location.pathname.includes('/recommended')) {
+        return null;
     }
 
     return (

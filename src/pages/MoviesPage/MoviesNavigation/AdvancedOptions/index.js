@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Collapse } from "@mui/material";
 
@@ -22,6 +23,8 @@ const AdvancedOptions = ({
     page
 }) => {
     const dispatch = useDispatch();
+
+    const location = useLocation();
 
     const { width } = useWindowSize();
 
@@ -75,27 +78,29 @@ const AdvancedOptions = ({
                 {width <= 576 &&
                     <Groups/>
                 }
-                <div className={styles.options__advanced}>
-                    <StyledSelect
-                        items={genresNames}
-                        label='Genre'
-                        value={genreFilters}
-                        onSelect={handleSelectGenres}
-                        multiple
-                    />
-                    <StyledSelect
-                        items={statusesNames}
-                        label='Status'
-                        value={statusFilters}
-                        onSelect={handleSelectStatuses}
-                        multiple
-                    />
-                    <Button
-                        onClick={handleFilterResults}
-                        text='Search'
-                        className={styles.options__submitBtn}
-                    />
-                </div>
+                {!location.pathname.includes('/recommended') &&
+                    <div className={styles.options__advanced}>
+                        <StyledSelect
+                            items={genresNames}
+                            label='Genre'
+                            value={genreFilters}
+                            onSelect={handleSelectGenres}
+                            multiple
+                        />
+                        <StyledSelect
+                            items={statusesNames}
+                            label='Status'
+                            value={statusFilters}
+                            onSelect={handleSelectStatuses}
+                            multiple
+                        />
+                        <Button
+                            onClick={handleFilterResults}
+                            text='Search'
+                            className={styles.options__submitBtn}
+                        />
+                    </div>
+                }
             </div>
         </Collapse>
     );
