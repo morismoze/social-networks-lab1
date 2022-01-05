@@ -16,7 +16,6 @@ const SlateCard = ({
             to={`/${movie.id}/details`}
             className={styles.slateCard}
         >
-
             <div className={styles.slateCard__visitShadeWrapper}>
                 <StyledTooltip
                     title={`No. of visits: ${movie.visit_counter}`}

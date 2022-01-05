@@ -11,6 +11,7 @@ import SectionLayoutWrapper from "../SectionLayoutWrapper";
 import MovieCard from "../MovieCard";
 import TopRevenueMovie from "../TopRevenueMovie";
 import SlateCard from "../SlateCard";
+import ShowCard from "../ShowCard";
 import * as UserSelectors from '../../../store/shared/user/User.selectors';
 import * as MovieDataListSelectors from '../../../store/shared/movie/DataList.selectors';
 import { actions as movieDataListActions } from '../../../store/shared/movie/DataList.actions';
@@ -24,6 +25,8 @@ import * as TopRevenueMoviesSelectors from '../redux/TopRevenueMovies/TopRevenue
 import { actions as topRevenueMoviesActions } from '../redux/TopRevenueMovies/TopRevenueMovies.actions';
 import * as MostVisitedMoviesSelectors from '../redux/MostVisitedMovies/MostVisitedMovies.selectors';
 import { actions as mostVisitedMoviesActions } from '../redux/MostVisitedMovies/MostVisitedMovies.actions';
+import * as PopularShowsSelectors from '../redux/PopularShows/PopularShows.selectors';
+import { actions as popularShowsActions } from '../redux/PopularShows/PopularShows.actions';
 import styles from './Home.module.scss';
 
 const NUMBER_OF_CAROUSEL_ITEMS = 5;
@@ -52,12 +55,16 @@ const Home = () => {
     const mostVisitedMoviesStatus = useSelector(MostVisitedMoviesSelectors.status);
     const mostVisitedMovies = useSelector(MostVisitedMoviesSelectors.movies);
 
+    const popularShowsStatus = useSelector(PopularShowsSelectors.status);
+    const popularShows = useSelector(PopularShowsSelectors.shows);
+
     useEffect(() => {
         dispatch(featuredMoviesActions.getMoviesAndToggleLoader(NUMBER_OF_CAROUSEL_ITEMS));
         dispatch(moviesInTheatersSelectorsActions.getMoviesAndToggleLoader(20));
         dispatch(regionMoviesActions.getMoviesAndToggleLoader(20));
         dispatch(topRevenueMoviesActions.getMovieAndToggleLoader(8));
         dispatch(mostVisitedMoviesActions.getMoviesAndToggleLoader(20));
+        dispatch(popularShowsActions.getShowsAndToggleLoader());
 
         if (genres.length === 0) {
             dispatch(movieDataListActions.getGenresAndToggleLoader());
@@ -82,7 +89,7 @@ const Home = () => {
                     />
                 </div>
                 {userId &&
-                    <SectionLayoutWrapper title={'Pick Your favourite genres'}>
+                    <SectionLayoutWrapper title={'Pick Your Favourite Genres'}>
                         <div className={styles.home__genresWrapper}>
                             {genresStatus === 'success' &&
                                 genres.map((genre, index) => (
@@ -96,7 +103,7 @@ const Home = () => {
                     </SectionLayoutWrapper>
                 }
                 <SectionLayoutWrapper title={'In Theatres'}>
-                    <div className={styles.home__sectionMoviesWrapper}>
+                    <div className={styles.home__sectionWrapper}>
                         {moviesInTheatersStatus === 'success' &&
                             moviesInTheaters.map((movie, index) => (
                                 <MovieCard
@@ -108,11 +115,11 @@ const Home = () => {
                     </div>
                 </SectionLayoutWrapper>
                 <SectionLayoutWrapper
-                    title={`Top Picks in ${region}`}
+                    title={`Top Picks In ${region}`}
                     mode={'light'}
                     className={styles.home__lightSection}
                 >
-                    <div className={styles.home__sectionMoviesWrapper}>
+                    <div className={styles.home__sectionWrapper}>
                         {regionMoviesStatus === 'success' &&
                             regionMovies.map((movie, index) => (
                                 <MovieCard
@@ -138,11 +145,23 @@ const Home = () => {
                     </div>
                 </SectionLayoutWrapper>
                 <SectionLayoutWrapper title={'Most Visited'}>
-                    <div className={styles.home__sectionMoviesWrapper}>
+                    <div className={styles.home__sectionWrapper}>
                         {mostVisitedMoviesStatus === 'success' &&
                             mostVisitedMovies.map((movie, index) => (
                                 <SlateCard
                                     movie={movie}
+                                    key={index}
+                                />
+                            ))
+                        }
+                    </div>
+                </SectionLayoutWrapper>
+                <SectionLayoutWrapper title={'Popular Shows'}>
+                    <div className={styles.home__sectionWrapper}>
+                        {popularShowsStatus === 'success' &&
+                            popularShows.map((show, index) => (
+                                <ShowCard
+                                    show={show}
                                     key={index}
                                 />
                             ))

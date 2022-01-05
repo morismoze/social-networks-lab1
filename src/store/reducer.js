@@ -15,6 +15,7 @@ import { personReducer } from "./shared/movie/Person.slice";
 import { mostVisitedMoviesReducer } from "../pages/HomePage/redux/MostVisitedMovies/MostVisitedMovies.slice";
 import { dataListReducer } from "./shared/movie/DataList.slice";
 import { filterReducer } from "../pages/MoviesPage/redux/Filter.slice";
+import { popularShowsReducer } from "../pages/HomePage/redux/PopularShows/PopularShows.slice";
 
 export const rootReducer = combineReducers({
     featuredMoviesReducer,
@@ -26,6 +27,7 @@ export const rootReducer = combineReducers({
     navigationReducer,
     personReducer,
     popularMoviesReducer,
+    popularShowsReducer,
     recommendedMoviesReducer,
     regionMoviesReducer,
     tableMoviesReducer,
