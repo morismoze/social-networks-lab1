@@ -49,14 +49,28 @@ const Menu = ({
                         to='/movies/top-rated'
                         onClick={handleClick}
                         text='Movies'
-                        timeout={650}
+                        timeout={615}
                         containerRef={menuItemsRef}
                     />
                     <MenuItem
                         to={userId ? '/profile/personal-information' : '/auth'}
                         onClick={handleClick}
                         text={userId ? 'Profile' : 'Sign In'}
-                        timeout={650}
+                        timeout={630}
+                        containerRef={menuItemsRef}
+                    />
+                    <MenuItem
+                        to='/about'
+                        onClick={handleClick}
+                        text='About'
+                        timeout={645}
+                        containerRef={menuItemsRef}
+                    />
+                    <MenuItem
+                        to='/contact'
+                        onClick={handleClick}
+                        text='Contact'
+                        timeout={660}
                         containerRef={menuItemsRef}
                     />
                 </div>
