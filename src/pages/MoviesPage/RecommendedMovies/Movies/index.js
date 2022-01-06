@@ -15,7 +15,7 @@ const Movies = () => {
 
     const location = useLocation();
 
-    const [ moviesCopy, setMoviesCopy ] = useState([]);
+    const [ moviesCopy, setMoviesCopy ] = useState(undefined);
 
     const recommendedMoviesStatus = useSelector(RecommendedMoviesSelectors.status);
     const recommendedMovies = useSelector(RecommendedMoviesSelectors.movies);
@@ -25,10 +25,6 @@ const Movies = () => {
     const statusFilters = useSelector(FilterSelectors.statusFilters);
 
     const getMovies = (page) => {
-        if (recommendedMovies.length === 0) {
-            dispatch(recommendedMoviesActions.getMoviesAndToggleLoader());
-        }
-
         setMoviesCopy([...recommendedMovies].slice((MAX_NO_OF_MOVIES_PER_PAGE * (page - 1)), MAX_NO_OF_MOVIES_PER_PAGE * page));
     };
 
@@ -36,6 +32,16 @@ const Movies = () => {
         document.documentElement.style = 'scroll-behavior: auto';
         window.scrollTo(0, 0);
     }, [location]);
+
+    useEffect(() => {
+        if (recommendedMovies.length === 0) {
+            dispatch(recommendedMoviesActions.getMoviesAndToggleLoader());
+        }
+    }, []);
+
+    if (recommendedMovies.length === 0 && recommendedMoviesStatus !== 'success') {
+        return null;
+    }
 
     return (
         <MoviesGrid
