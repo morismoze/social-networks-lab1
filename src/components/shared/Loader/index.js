@@ -30,7 +30,7 @@ const Loader = () => {
                 <img
                     src={logoLoader}
                     className={styles.loader__logo}
-                    alt={'Logo'}
+                    alt='Logo'
                 />
             </div>
         </Fade>

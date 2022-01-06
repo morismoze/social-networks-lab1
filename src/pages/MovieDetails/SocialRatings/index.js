@@ -65,7 +65,7 @@ const SocialRatings = ({
                         </span>
                         </div>
                     }) : (
-                        <NotAvailable itemNotAvailable={'Social networks ratings'}/>
+                        <NotAvailable itemNotAvailable='Social networks ratings'/>
                     )}
             </div>
             <div className={styles.socialRatings__shareWrapper}>

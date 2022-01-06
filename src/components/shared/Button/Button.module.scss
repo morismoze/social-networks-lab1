@@ -1,10 +1,10 @@
 @import 'src/styles/colors.module';
 
-.detailsButton {
+.btn {
   padding: 6px 15px;
   background-color: $golden;
   color: $lighter-black;
-  font-weight: 500;
+  font-weight: 600;
   border: 2px solid $golden;
   transition: all .25s ease-in-out;
   cursor: pointer;

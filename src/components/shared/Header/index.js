@@ -89,7 +89,7 @@ const Header = () => {
                     <div className={styles.header__signInWrapper}>
                         <Button
                             onClick={() => navigate('/auth', { state: location })}
-                            text={'Sign In'}
+                            text='Sign In'
                             fill={false}
                         />
                     </div>

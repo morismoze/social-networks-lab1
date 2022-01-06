@@ -35,13 +35,10 @@ export const getStatuses = async () => {
     }
 };
 
-export const getRecommendedMovies = async ({ page, genreFilters, statusFilters }) => {
-    const genreString = genreFilters.join(',');
-    const statusString = statusFilters.join(',');
-
+export const getRecommendedMovies = async () => {
     try {
         const response = await instance.get(
-            moviePaths.getRecommendedMovies(page, RESULTS_PER_PAGE, genreString, statusString),
+            moviePaths.getRecommendedMovies(null, RESULTS_PER_PAGE, null, null),
             {
                 headers: defaultHeaders
             }

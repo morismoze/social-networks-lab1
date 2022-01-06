@@ -17,7 +17,7 @@ const Button = ({
         <button
             onClick={handleOnClick}
             className={classNames(
-                styles.detailsButton,
+                styles.btn,
                 { [styles.noFill]: !fill },
                 className
             )}

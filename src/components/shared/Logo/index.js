@@ -16,7 +16,7 @@ const Logo = ({
         >
             <img
                 src={logoIcon}
-                alt={'Logo icon, movie ticket'}
+                alt='Logo icon, movie ticket'
                 className={styles.logo__icon}
             />
             <span className={styles.logo__name}>

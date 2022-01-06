@@ -15,7 +15,7 @@ const ImageLink = ({
         >
             <img
                 src={picture}
-                alt={'IMDb'}
+                alt='IMDb'
                 className={styles.imgLink__img}
             />
         </a>

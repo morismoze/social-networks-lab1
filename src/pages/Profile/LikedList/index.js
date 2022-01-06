@@ -39,7 +39,7 @@ const LikedList = () => {
                     </span>
                         &nbsp;
                         <Link
-                            to={'/movies/top-rated'}
+                            to='/movies/top-rated'
                             className={styles.likedList__exploreLink}
                         >
                             Start exploring!

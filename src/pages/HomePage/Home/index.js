@@ -65,10 +65,12 @@ const Home = () => {
         dispatch(topRevenueMoviesActions.getMovieAndToggleLoader(8));
         dispatch(mostVisitedMoviesActions.getMoviesAndToggleLoader(20));
         dispatch(popularShowsActions.getShowsAndToggleLoader());
-
         if (genres.length === 0) {
             dispatch(movieDataListActions.getGenresAndToggleLoader());
         }
+
+        document.documentElement.style = 'scroll-behavior: auto';
+        window.scrollTo(0, 0);
     }, []);
 
     return (
@@ -89,7 +91,7 @@ const Home = () => {
                     />
                 </div>
                 {userId &&
-                    <SectionLayoutWrapper title={'Pick Your Favourite Genres'}>
+                    <SectionLayoutWrapper title='Pick Your Favourite Genres'>
                         <div className={styles.home__genresWrapper}>
                             {genresStatus === 'success' &&
                                 genres.map((genre, index) => (
@@ -102,7 +104,7 @@ const Home = () => {
                         </div>
                     </SectionLayoutWrapper>
                 }
-                <SectionLayoutWrapper title={'In Theatres'}>
+                <SectionLayoutWrapper title='In Theatres'>
                     <div className={styles.home__sectionWrapper}>
                         {moviesInTheatersStatus === 'success' &&
                             moviesInTheaters.map((movie, index) => (
@@ -116,7 +118,7 @@ const Home = () => {
                 </SectionLayoutWrapper>
                 <SectionLayoutWrapper
                     title={`Top Picks In ${region}`}
-                    mode={'light'}
+                    mode='light'
                     className={styles.home__lightSection}
                 >
                     <div className={styles.home__sectionWrapper}>
@@ -124,14 +126,14 @@ const Home = () => {
                             regionMovies.map((movie, index) => (
                                 <MovieCard
                                     movie={movie}
-                                    mode={'dark'}
+                                    mode='dark'
                                     key={index}
                                 />
                             )
                         )}
                     </div>
                 </SectionLayoutWrapper>
-                <SectionLayoutWrapper title={'Top Revenues'}>
+                <SectionLayoutWrapper title='Top Revenues'>
                     <div className={styles.home__topRevenuesWrapper}>
                         {topRevenueMoviesStatus === 'success' &&
                             topRevenueMovies.map((movie, index) => (
@@ -144,7 +146,7 @@ const Home = () => {
                         )}
                     </div>
                 </SectionLayoutWrapper>
-                <SectionLayoutWrapper title={'Most Visited'}>
+                <SectionLayoutWrapper title='Most Visited'>
                     <div className={styles.home__sectionWrapper}>
                         {mostVisitedMoviesStatus === 'success' &&
                             mostVisitedMovies.map((movie, index) => (
@@ -156,7 +158,7 @@ const Home = () => {
                         }
                     </div>
                 </SectionLayoutWrapper>
-                <SectionLayoutWrapper title={'Popular Shows'}>
+                <SectionLayoutWrapper title='Popular Shows'>
                     <div className={styles.home__sectionWrapper}>
                         {popularShowsStatus === 'success' &&
                             popularShows.map((show, index) => (

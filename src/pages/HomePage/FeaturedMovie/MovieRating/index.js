@@ -27,13 +27,13 @@ const MovieRating = ({
                     <StarIcon
                         className={styles.rating__star}
                         htmlColor={colors.yellow}
-                        fontSize={'small'}
+                        fontSize='small'
                     />
                 }
                 emptyIcon={
                     <StarIcon
                         htmlColor='transparent'
-                        fontSize={'small'}
+                        fontSize='small'
                         style={{
                             stroke: colors.yellow,
                             strokeWidth: '1px'

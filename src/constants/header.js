@@ -9,4 +9,14 @@ export const HEADER_NAV_ITEMS = [
         path: '/movies/top-rated',
         name: 'Movies'
     },
+    {
+        id: 3,
+        path: '/about',
+        name: 'About'
+    },
+    {
+        id: 4,
+        path: '/contact',
+        name: 'Contact'
+    },
 ];

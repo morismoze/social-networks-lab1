@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import MoviesGrid from "../../MoviesGrid";
 import * as RecommendedMoviesSelectors from './redux/RecommendedMovies.selectors';
 import * as FilterSelectors from "../../redux/Filter.selectors";
 import { actions as recommendedMoviesActions} from './redux/RecommendedMovies.actions';
 
+const MAX_NO_OF_MOVIES_PER_PAGE = 22;
+
 const Movies = () => {
     const dispatch = useDispatch();
+
+    const location = useLocation();
+
+    const [ moviesCopy, setMoviesCopy ] = useState([]);
 
     const recommendedMoviesStatus = useSelector(RecommendedMoviesSelectors.status);
     const recommendedMovies = useSelector(RecommendedMoviesSelectors.movies);
@@ -18,18 +25,23 @@ const Movies = () => {
     const statusFilters = useSelector(FilterSelectors.statusFilters);
 
     const getMovies = (page) => {
-        dispatch(recommendedMoviesActions.getMoviesAndToggleLoader({
-            page,
-            genreFilters,
-            statusFilters
-        }));
+        if (recommendedMovies.length === 0) {
+            dispatch(recommendedMoviesActions.getMoviesAndToggleLoader());
+        }
+
+        setMoviesCopy([...recommendedMovies].slice((MAX_NO_OF_MOVIES_PER_PAGE * (page - 1)), MAX_NO_OF_MOVIES_PER_PAGE * page));
     };
+
+    useEffect(() => {
+        document.documentElement.style = 'scroll-behavior: auto';
+        window.scrollTo(0, 0);
+    }, [location]);
 
     return (
         <MoviesGrid
             getMovies={getMovies}
             status={recommendedMoviesStatus}
-            movies={recommendedMovies}
+            movies={moviesCopy}
             pages={pages}
         />
     );

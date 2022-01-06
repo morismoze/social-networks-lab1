@@ -39,7 +39,7 @@ const WatchList = () => {
                     </span>
                         &nbsp;
                         <Link
-                            to={'/movies/top-rated'}
+                            to='/movies/top-rated'
                             className={styles.watchlist__exploreLink}
                         >
                             Start exploring!

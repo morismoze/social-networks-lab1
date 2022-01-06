@@ -1,0 +1,30 @@
+@import 'src/styles/colors.module';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  &__title {
+    color: $white;
+    letter-spacing: 5px;
+    font-size: 40px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__splitter {
+    background-color: $golden;
+    width: 80px;
+    height: 2px;
+  }
+
+  &__sub {
+    color: $white;
+    font-size: 14px;
+    width: 350px;
+    text-align: center;
+    line-height: 25px;
+  }
+}

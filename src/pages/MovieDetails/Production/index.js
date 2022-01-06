@@ -14,11 +14,11 @@ const Production = ({
     return (
         <div className={styles.production}>
             <Data
-                title={'Companies'}
+                title='Companies'
                 value={companiesNames}
             />
             <Data
-                title={'Countries'}
+                title='Countries'
                 value={countriesNames}
             />
         </div>

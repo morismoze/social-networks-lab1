@@ -39,16 +39,16 @@ const MoviesGrid = ({
 
     const handleGoToLoginClick = () => {
         navigate('/auth', { state: location })
-    }
+    };
 
     useEffect(() => {
         if (location && location.search) {
             const page = queryString.parse(location.search).page;
             setPage(page);
-            getMovies(page)
+            getMovies(Number(page));
         } else if (!location.search) {
             setPage(1);
-            getMovies(1)
+            getMovies(1);
         }
     }, [location]);
 
@@ -60,7 +60,7 @@ const MoviesGrid = ({
                 { [styles.moviesContainer__noResults]:
                     (status === 'success' && movies && movies.length === 0) || (status === 'success' && movies === null)}
             )}>
-                {movies && movies.map((movie, index) => (
+                {status === 'success' && movies && movies.map((movie, index) => (
                     <MovieCard
                         movie={movie}
                         width={789}
