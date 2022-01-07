@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 
-import { useDispatch } from "react-redux";
-
 import SearchBar from "./SearchBar";
 import SearchButton from "./SearchButton";
-import { searchMovies } from "../../../api/movie";
+import { searchMovies } from "../../../../api/movie";
 
 const Search = () => {
-    const dispatch = useDispatch();
-
     const [ isToggled, setIsToggled ] = useState(false);
 
     const toggleSearch = () => {
@@ -30,7 +26,7 @@ const Search = () => {
             <SearchBar
                 isToggled={isToggled}
                 toggleSearch={toggleSearch}
-                handleSearch={handleSearch}
+                onSearch={handleSearch}
             />
         </>
     )

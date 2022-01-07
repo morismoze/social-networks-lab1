@@ -10,7 +10,7 @@ import Logo from "../Logo";
 import UserMenu from "./UserMenu";
 import Button from "../Button";
 import NavigationMenu from "./NavigationMenu";
-import Search from "../Search";
+import Search from "./Search";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
 import useScrollPosition from "../../../hooks/useScrollPosition";

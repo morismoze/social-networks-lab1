@@ -4,12 +4,13 @@ import { Grow } from "@mui/material";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 
 import SearchResult from "../SearchResult";
+import Fallback from '../../../../../assets/images/search-result-fallback.png';
 import styles from './SearchBar.module.scss';
 
 const SearchBar = ({
     isToggled,
     toggleSearch,
-    handleSearch
+    onSearch
 }) => {
     const [ entry, setEntry ] = useState('');
 
@@ -17,9 +18,9 @@ const SearchBar = ({
 
     const [ isLoading, setIsLoading ] = useState(false);
 
-    const handleSearchh = async (entry) => {
+    const handleSearch = async (entry) => {
         setIsLoading(true);
-        const movies = await handleSearch(entry);console.log(movies)
+        const movies = await onSearch(entry);
         setIsLoading(false);
         setResults(movies);
     };
@@ -42,18 +43,23 @@ const SearchBar = ({
                     options={results}
                     id='search-bar'
                     minLength={3}
-                    onSearch={handleSearchh}
+                    onSearch={handleSearch}
                     placeholder='e.g. Titanic'
                     searchText='Searching...'
-                    renderMenuItemChildren={(option) => (
-                        <SearchResult
+                    renderMenuItemChildren={(option) => {
+                        const posterSrc = option.poster_path ?
+                            `https://image.tmdb.org/t/p/w92${option.poster_path}`
+                            :
+                            Fallback;
+
+                        return <SearchResult
                             id={option.id}
                             title={option.title}
-                            posterSrc={`https://image.tmdb.org/t/p/w92${option.poster_path}`}
+                            posterSrc={posterSrc}
                             onClick={handleOnResultClick}
                             key={option.id}
                         />
-                    )}
+                    }}
                     useCache={false}
                 />
             </div>

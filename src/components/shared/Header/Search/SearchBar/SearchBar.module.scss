@@ -20,9 +20,14 @@
 
     & > div:first-child > input {
       border-color: $golden;
+      transform: none !important;
     }
 
     & > div:last-child > a {
+      &[aria-selected=true] {
+        background-color: rgba($golden, .2) !important;
+      }
+
       &:hover,
       &:focus {
         background-color: rgba($golden, .2) !important;
@@ -31,11 +36,6 @@
       &:active {
         background-color: rgba($golden, .4) !important;
       }
-    }
-
-    &,
-    & * {
-      animation: none !important;
     }
   }
 }
