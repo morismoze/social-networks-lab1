@@ -12,7 +12,6 @@ import Tagline from "./Tagline";
 import CastMember from "./Actors/CastMember";
 import Trailer from "./Trailer";
 import Production from "./Production";
-import RatePicker from "./RatePicker";
 import Footer from "../../components/shared/Footer";
 import NotAvailable from "../../components/shared/NotAvailable";
 import SocialRatings from "./SocialRatings";
@@ -124,6 +123,7 @@ const MovieDetails = () => {
                             pictureUrl={details.backdrop_path ? backdropImage : null}
                             mainStats={mainStats}
                             imdbId={details.imdb_id}
+                            genres={genres}
                             isLiked={isLiked}
                             isAddedToWatchlist={isAddedToWatchlist}
                             handleMovieLike={handleMovieLike}
@@ -141,9 +141,7 @@ const MovieDetails = () => {
                                     alt: details.original_title
                                 }}
                                 navItems={movieDetailsNavItems}
-                            >
-                                <RatePicker genres={details.genres}/>
-                            </StickySidebar>
+                            />
                             <div className={styles.movieDetails__data}>
                                 {details.tagline &&
                                     <Tagline tagline={details.tagline}/>

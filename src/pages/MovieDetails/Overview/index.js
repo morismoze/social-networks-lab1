@@ -7,6 +7,7 @@ import NotAvailable from "../../../components/shared/NotAvailable";
 import ImageLink from "../../../components/shared/ImageLink";
 import HeartButton from "../../../components/shared/userActivity/HeartButton";
 import AddButton from "../../../components/shared/userActivity/AddButton";
+import RatePicker from "../RatePicker";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import ImdbIcon from "../../../assets/images/imdb_logo.png";
 import styles from './Overview.module.scss';
@@ -52,14 +53,17 @@ const Overview = ({
             }
             {handleMovieLike && handleToggleWatchlist &&
                 <div className={styles.overview__imdbLinkWrapper}>
-                    <HeartButton
-                        onClick={handleMovieLike}
-                        active={isLiked}
-                    />
-                    <AddButton
-                        onClick={handleToggleWatchlist}
-                        active={isAddedToWatchlist}
-                    />
+                    <div className={styles.overview__userActivityWrapper}>
+                        <RatePicker genres={genres}/>
+                        <HeartButton
+                            onClick={handleMovieLike}
+                            active={isLiked}
+                        />
+                        <AddButton
+                            onClick={handleToggleWatchlist}
+                            active={isAddedToWatchlist}
+                        />
+                    </div>
                     <ImageLink
                         href={`https://imdb.com/title/${imdbId}`}
                         picture={ImdbIcon}

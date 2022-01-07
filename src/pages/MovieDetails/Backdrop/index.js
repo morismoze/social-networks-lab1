@@ -7,6 +7,7 @@ import ImageLink from "../../../components/shared/ImageLink";
 import ReleaseYear from "./ReleaseYear";
 import HeartButton from "../../../components/shared/userActivity/HeartButton";
 import AddButton from "../../../components/shared/userActivity/AddButton";
+import RatePicker from "../RatePicker";
 import ImdbIcon from '../../../assets/images/imdb_logo.png';
 import Fallback from '../../../assets/images/movie-backdrop-fallback.png';
 import styles from './Backdrop.module.scss';
@@ -17,6 +18,7 @@ const Backdrop = ({
     pictureUrl,
     mainStats,
     imdbId,
+    genres,
     isLiked,
     isAddedToWatchlist,
     handleMovieLike,
@@ -58,6 +60,7 @@ const Backdrop = ({
                                 />
                             ))}
                             <div className={styles.backdrop__activity}>
+                                <RatePicker genres={genres}/>
                                 <HeartButton
                                     onClick={handleMovieLike}
                                     active={isLiked}
