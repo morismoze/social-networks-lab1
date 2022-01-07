@@ -16,11 +16,9 @@
   & > div:first-child {
     width: 100%;
     max-width: 1000px;
-    animation: none;
 
     & > div:first-child > input {
       border-color: $golden;
-      transform: none !important;
     }
 
     & > div:last-child > a {

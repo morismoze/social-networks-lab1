@@ -23,10 +23,13 @@ const useStyles = makeStyles((theme) => ({
         '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
             borderColor: `${colors.white} !important`
         },
+        '& > div > fieldset > legend' : {
+        float: 'unset'
+        }
     },
     label: {
         color: `${colors.white} !important`
-    }
+    },
 }));
 
 const Data = ({

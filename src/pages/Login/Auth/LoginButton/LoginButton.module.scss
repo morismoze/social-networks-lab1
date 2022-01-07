@@ -15,6 +15,7 @@
   color: $facebook;
   box-shadow: rgba($black, 0.15) 0px 4px 12px;
   outline: none;
+  line-height: normal;
 
   &__text {
     margin-left: 15px;
@@ -22,6 +23,7 @@
     font-weight: 600;
     color: $dark-gray;
     white-space: nowrap;
+    font-size: 13px;
   }
 
   @media screen and (max-width: $sm) {

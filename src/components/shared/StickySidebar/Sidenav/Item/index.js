@@ -1,7 +1,8 @@
 import React from 'react';
 
-import styles from './Item.module.scss';
 import classNames from "classnames";
+
+import styles from './Item.module.scss';
 
 const Item = ({
     item,

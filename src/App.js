@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { SnackbarProvider } from 'notistack';
 import { Collapse } from "@mui/material";
-import {makeStyles} from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 
 import MainRoutes from "./router/Routes";
 import Loader from "./components/shared/Loader";

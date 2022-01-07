@@ -9,6 +9,8 @@
   transition: all .25s ease-in-out;
   cursor: pointer;
   font-size: 14px;
+  line-height: normal;
+
   &.noFill {
     background-color: transparent;
     color: $golden;

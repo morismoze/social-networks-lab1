@@ -5,9 +5,9 @@ import { toggleLoading } from "../../../../../store/shared/navigation/Navigation
 
 const getMovies = createAsyncThunk('recommended/getMovies', api.getRecommendedMovies);
 
-const getMoviesAndToggleLoader = (params) => async (dispatch) => {
+const getMoviesAndToggleLoader = () => async (dispatch) => {
     await dispatch(toggleLoading(true));
-    await dispatch(getMovies(params));
+    await dispatch(getMovies());
     await dispatch(toggleLoading(false));
 };
 

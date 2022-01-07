@@ -95,7 +95,7 @@ const MovieDetails = () => {
             const seconds = (new Date().getTime() - startVisit) / 1000;
             dispatch(userActions.logVisit({
                 userId: userId,
-                movieId: movieRef.current.id,
+                movieId: movieRef.current?.id,
                 time: seconds.toFixed(0)
             }));
         };

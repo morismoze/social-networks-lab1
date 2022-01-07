@@ -15,7 +15,7 @@ const Movies = () => {
 
     const location = useLocation();
 
-    const [ moviesCopy, setMoviesCopy ] = useState(undefined);
+    const [ moviesCopy, setMoviesCopy ] = useState([]);
 
     const recommendedMoviesStatus = useSelector(RecommendedMoviesSelectors.status);
     const recommendedMovies = useSelector(RecommendedMoviesSelectors.movies);
@@ -24,7 +24,11 @@ const Movies = () => {
     const genreFilters = useSelector(FilterSelectors.genreFilters);
     const statusFilters = useSelector(FilterSelectors.statusFilters);
 
-    const getMovies = (page) => {
+    const getMovies = async (page) => {
+        if (recommendedMovies.length === 0 && recommendedMoviesStatus === 'idle') {
+            await dispatch(recommendedMoviesActions.getMoviesAndToggleLoader());
+        }
+
         setMoviesCopy([...recommendedMovies].slice((MAX_NO_OF_MOVIES_PER_PAGE * (page - 1)), MAX_NO_OF_MOVIES_PER_PAGE * page));
     };
 
@@ -33,21 +37,11 @@ const Movies = () => {
         window.scrollTo(0, 0);
     }, [location]);
 
-    useEffect(() => {
-        if (recommendedMovies.length === 0) {
-            dispatch(recommendedMoviesActions.getMoviesAndToggleLoader());
-        }
-    }, []);
-
-    if (recommendedMovies.length === 0 && recommendedMoviesStatus !== 'success') {
-        return null;
-    }
-
     return (
         <MoviesGrid
             getMovies={getMovies}
             status={recommendedMoviesStatus}
-            movies={moviesCopy}
+            movies={moviesCopy.length !== 0 ? moviesCopy : [...recommendedMovies].slice(0, MAX_NO_OF_MOVIES_PER_PAGE)}
             pages={pages}
         />
     );
