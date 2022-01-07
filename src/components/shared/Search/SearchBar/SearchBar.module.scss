@@ -1,0 +1,41 @@
+@import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $black;
+  padding: 0 25px;
+  height: $homePageHeaderHeight;
+  display: flex;
+  align-items: center;
+  z-index: 103;
+
+  & > div:first-child {
+    width: 100%;
+    max-width: 1000px;
+    animation: none;
+
+    & > div:first-child > input {
+      border-color: $golden;
+    }
+
+    & > div:last-child > a {
+      &:hover,
+      &:focus {
+        background-color: rgba($golden, .2) !important;
+      }
+
+      &:active {
+        background-color: rgba($golden, .4) !important;
+      }
+    }
+
+    &,
+    & * {
+      animation: none !important;
+    }
+  }
+}

@@ -20,6 +20,10 @@
     color: $white;
   }
 
+  @media screen and (max-width: $md) {
+    margin-left: 20px;
+  }
+
   @media screen and (max-width: $sm) {
     gap: 5px;
 

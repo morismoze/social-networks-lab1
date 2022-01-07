@@ -99,7 +99,7 @@ const MovieDetails = () => {
                 time: seconds.toFixed(0)
             }));
         };
-    }, []);
+    }, [params]);
 
     return (
         <>

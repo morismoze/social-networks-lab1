@@ -52,17 +52,12 @@
     }
   }
 
-  &__signInWrapper {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-  }
-
-  &__weatherUserWrapper {
+  &__userWrapper {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-left: auto;
+    height: 100%;
   }
 
   &__user {

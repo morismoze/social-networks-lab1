@@ -17,4 +17,5 @@ export const moviePaths = {
     getMostVisited: (limit) => `${api.movies}/most-visited?limit=${limit}`,
     getMovieDetails: (id) => `${api.movies}/${id}/details`,
     getPersonDetails: (id) => `${api.movies}/people/${id}/details`,
+    searchMovies: (entry) => `${api.movies}/search?entry=${entry}`,
 };

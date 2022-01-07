@@ -8,7 +8,7 @@
   border: 2px solid $golden;
   transition: all .25s ease-in-out;
   cursor: pointer;
-
+  font-size: 14px;
   &.noFill {
     background-color: transparent;
     color: $golden;

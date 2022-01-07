@@ -10,6 +10,7 @@ import Logo from "../Logo";
 import UserMenu from "./UserMenu";
 import Button from "../Button";
 import NavigationMenu from "./NavigationMenu";
+import Search from "../Search";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
 import { actions as userActions } from "../../../store/shared/user/User.actions";
 import useScrollPosition from "../../../hooks/useScrollPosition";
@@ -73,8 +74,9 @@ const Header = () => {
                         ))}
                     </ul>
                 </nav>
-                {name ? (
-                    <div className={styles.header__weatherUserWrapper}>
+                <div className={styles.header__userWrapper}>
+                    <Search/>
+                    {name ? (
                         <div
                             className={styles.header__user}
                             onClick={handleMenuClick}
@@ -84,16 +86,14 @@ const Header = () => {
                                 pictureUrl={pictureUrl}
                             />
                         </div>
-                    </div>
-                ) : (
-                    <div className={styles.header__signInWrapper}>
+                    ) : (
                         <Button
                             onClick={() => navigate('/auth', { state: location })}
                             text='Sign In'
                             fill={false}
                         />
-                    </div>
-                )}
+                    )}
+                </div>
                 <UserMenu
                     anchorEl={anchorEl}
                     handleCloseMenu={handleMenuClose}
