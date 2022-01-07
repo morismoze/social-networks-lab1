@@ -1,4 +1,5 @@
 @import 'src/styles/colors.module';
+@import 'src/styles/variables.module';
 
 .star {
   color: $lighter-gray;
@@ -19,5 +20,9 @@
 
   &__removeSelection {
     color: lighten($dark-red, 25%);
+  }
+
+  @media screen and (max-width: $sm) {
+    font-size: 20px;
   }
 }
