@@ -123,7 +123,7 @@ const MovieDetails = () => {
                             pictureUrl={details.backdrop_path ? backdropImage : null}
                             mainStats={mainStats}
                             imdbId={details.imdb_id}
-                            genres={genres}
+                            genres={details.genres}
                             isLiked={isLiked}
                             isAddedToWatchlist={isAddedToWatchlist}
                             handleMovieLike={handleMovieLike}

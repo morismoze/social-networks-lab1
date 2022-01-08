@@ -38,7 +38,7 @@ const RatePicker = ({
             enqueueSnackbar('You have to be logged in order to rate a movie.', {
                 variant: 'error'
             });
-        } else {
+        } else {console.log(genres)
             dispatch(userActions.addToRatings({
                 userId: userId,
                 movieId: params.id,
