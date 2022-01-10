@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -7,6 +7,7 @@ import MoviesGrid from "../../MoviesGrid";
 import * as RecommendedMoviesSelectors from './redux/RecommendedMovies.selectors';
 import * as FilterSelectors from "../../redux/Filter.selectors";
 import { actions as recommendedMoviesActions} from './redux/RecommendedMovies.actions';
+import useScrollToTop from "../../../../hooks/useScrollToTop";
 
 const MAX_NO_OF_MOVIES_PER_PAGE = 22;
 
@@ -32,10 +33,7 @@ const Movies = () => {
         setMoviesCopy([...recommendedMovies].slice((MAX_NO_OF_MOVIES_PER_PAGE * (page - 1)), MAX_NO_OF_MOVIES_PER_PAGE * page));
     };
 
-    useEffect(() => {
-        document.documentElement.style = 'scroll-behavior: auto !important';
-        window.scrollTo(0, 0);
-    }, [location]);
+    useScrollToTop(location);
 
     return (
         <MoviesGrid

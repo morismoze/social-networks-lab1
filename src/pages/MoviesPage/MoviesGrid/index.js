@@ -13,6 +13,7 @@ import MoviesNavigation from "../MoviesNavigation";
 import NoResults from "../../../components/shared/NoResults";
 import NoUserRatings from "../../../components/shared/NoUserRatings";
 import * as UserSelectors from "../../../store/shared/user/User.selectors";
+import useScrollToTop from "../../../hooks/useScrollToTop";
 import styles from './MoviesGrid.module.scss';
 
 const MoviesGrid = ({
@@ -51,6 +52,8 @@ const MoviesGrid = ({
             getMovies(1);
         }
     }, [location]);
+
+    useScrollToTop(location);
 
     return (
         <WithLayoutWrapper className={styles.moviesContainer}>

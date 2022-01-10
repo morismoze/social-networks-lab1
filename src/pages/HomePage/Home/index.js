@@ -69,8 +69,6 @@ const Home = () => {
             dispatch(movieDataListActions.getGenresAndToggleLoader());
         }
 
-        document.documentElement.style = 'scroll-behavior: auto !important';
-        window.scrollTo(0, 0);
     }, []);
 
     return (
