@@ -26,6 +26,10 @@
     color: $golden;
     font-weight: 400;
     font-size: 14px;
+
+    &:hover {
+      color: $golden;
+    }
   }
 
   @media screen and (max-width: $md) {
